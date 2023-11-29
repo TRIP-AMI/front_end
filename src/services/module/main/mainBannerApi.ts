@@ -6,4 +6,4 @@ const getBanner = () => {
   return instance({ url, method });
 };
 
-export default getBanner;
+export default { getBanner };
