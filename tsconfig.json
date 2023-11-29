@@ -5,9 +5,15 @@
     "allowJs": true,
     "baseUrl": "./",
     "paths": {
-      "~/*": ["./*"],
+      "@/*": ["./*"],
       "@components/*": ["components/*"],
-      "@assets/*": ["assets/*"]
+      "@containers/*": ["containers/*"],
+      "@styles/*": ["src/styles/*"],
+      "@hooks/*": ["hooks/*"],
+      "@screens/*": ["screens/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["utils/*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "babel.config.js"]
 }
