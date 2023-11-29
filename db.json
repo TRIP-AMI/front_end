@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "banner": [
+    {
+      "id": 1,
+      "title": "item1",
+      "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "item2",
+      "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg"
+    },
+    {
+      "id": 3,
+      "title": "item3",
+      "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg"
+    },
+    {
+      "id": 4,
+      "title": "item4",
+      "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg"
+    },
+    {
+      "id": 5,
+      "title": "item5",
+      "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg"
+    }
+  ]
+}
