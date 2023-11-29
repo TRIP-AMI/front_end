@@ -11,6 +11,8 @@
     "stdb": "json-server --watch db.json -p 9999"
   },
   "dependencies": {
+    "@ant-design/icons-react-native": "^2.3.2",
+    "@ant-design/react-native": "^5.0.5",
     "axios": "^1.6.2",
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
