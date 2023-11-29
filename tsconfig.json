@@ -3,15 +3,15 @@
   "compilerOptions": {
     "strict": true,
     "allowJs": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
       "@/*": ["./*"],
       "@components/*": ["components/*"],
       "@containers/*": ["containers/*"],
-      "@styles/*": ["src/styles/*"],
+      "@styles/*": ["styles/*"],
       "@hooks/*": ["hooks/*"],
       "@screens/*": ["screens/*"],
-      "@services/*": ["src/services/*"],
+      "@services/*": ["services/*"],
       "@utils/*": ["utils/*"]
     }
   },
