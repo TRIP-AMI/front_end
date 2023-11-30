@@ -1,13 +1,10 @@
 import { Pressable, View, StyleSheet } from 'react-native';
 import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 
-// TODO: 린트 오류 해결필요
 type IconButtonProps = {
   icon: keyof typeof Ionicons.glyphMap;
-  // eslint-disable-next-line react/require-default-props
-  size?: number;
-  // eslint-disable-next-line react/require-default-props
-  color?: string;
+  size: number;
+  color: string;
   onPress: () => void;
 };
 
@@ -26,10 +23,8 @@ export function IconButton({ icon, size, color, onPress }: IconButtonProps) {
 
 type SimpleLineIconButtonProps = {
   icon: keyof typeof SimpleLineIcons.glyphMap;
-  // eslint-disable-next-line react/require-default-props
-  size?: number;
-  // eslint-disable-next-line react/require-default-props
-  color?: string;
+  size: number;
+  color: string;
   onPress: () => void;
 };
 

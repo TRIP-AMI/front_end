@@ -13,6 +13,7 @@ export default function HomeHeaderIcons() {
         <IconButton
           icon='search'
           size={24}
+          color='black'
           onPress={() => navigation.navigate('Search')}
         />
       </View>
@@ -20,6 +21,7 @@ export default function HomeHeaderIcons() {
         <IconButton
           icon='notifications-outline'
           size={24}
+          color='black'
           onPress={() => console.log('notification')}
         />
         <Badge size={7} visible style={styles.badge} />
@@ -28,6 +30,7 @@ export default function HomeHeaderIcons() {
         <IconButton
           icon='globe-outline'
           size={24}
+          color='black'
           onPress={() => console.log('globe')}
         />
       </View>
