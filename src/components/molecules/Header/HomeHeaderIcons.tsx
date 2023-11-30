@@ -1,10 +1,8 @@
 import { View, StyleSheet } from 'react-native';
-// import { Badge } from 'react-native-paper';
+import { Badge } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { IconButton } from '@components/atoms/IconButton/IconButton';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
-
-// TODO: 린트 오류 해결필요
 
 export default function HomeHeaderIcons() {
   const navigation = useNavigation<RootStackNavigationProp>();
@@ -15,6 +13,7 @@ export default function HomeHeaderIcons() {
         <IconButton
           icon='search'
           size={24}
+          color='black'
           onPress={() => navigation.navigate('Search')}
         />
       </View>
@@ -22,14 +21,16 @@ export default function HomeHeaderIcons() {
         <IconButton
           icon='notifications-outline'
           size={24}
+          color='black'
           onPress={() => console.log('notification')}
         />
-        {/* <Badge size={7} visible style={styles.badge} /> */}
+        <Badge size={7} visible style={styles.badge} />
       </View>
       <View>
         <IconButton
           icon='globe-outline'
           size={24}
+          color='black'
           onPress={() => console.log('globe')}
         />
       </View>
