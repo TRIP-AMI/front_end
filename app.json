@@ -23,6 +23,17 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "fonts": {
+      "Pretendard-Thin": "./assets/fonts/pretendard/Pretendard-Thin.ttf",
+      "Pretendard-Light": "./assets/fonts/pretendard/Pretendard-Light.ttf",
+      "Pretendard-Regular": "./assets/fonts/pretendard/Pretendard-Regular.ttf",
+      "Pretendard-Medium": "./assets/fonts/pretendard/Pretendard-Medium.ttf",
+      "Pretendard-Bold": "./assets/fonts/pretendard/Pretendard-Bold.ttf",
+      "Pretendard-ExtraBold": "./assets/fonts/pretendard/Pretendard-ExtraBold.ttf",
+      "Pretendard-ExtraLight": "./assets/fonts/pretendard/Pretendard-ExtraLight.ttf",
+      "Pretendard-SemiBold": "./assets/fonts/pretendard/Pretendard-SemiBold.ttf",
+      "Pretendard-Black": "./assets/fonts/pretendard/Pretendard-Black.ttf"
     }
   }
 }
