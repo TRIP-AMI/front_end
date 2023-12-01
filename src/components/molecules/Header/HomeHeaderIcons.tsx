@@ -1,11 +1,22 @@
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import { IconButton } from '@components/atoms/IconButton/IconButton';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { useState } from 'react';
+// import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import SearchModal from '@/components/organisms/Modal/SearchModal';
 
 export default function HomeHeaderIcons() {
-  const navigation = useNavigation<RootStackNavigationProp>();
+  // const navigation = useNavigation<RootStackNavigationProp>();
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const onOpen = () => {
+    setIsVisible(true);
+  };
+  const onClose = () => {
+    setIsVisible(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -14,8 +25,10 @@ export default function HomeHeaderIcons() {
           icon='search'
           size={24}
           color='black'
-          onPress={() => navigation.navigate('Search')}
+          // onPress={() => navigation.navigate('Search')}
+          onPress={onOpen}
         />
+        <SearchModal isVisible={isVisible} onClose={onClose} />
       </View>
       <View>
         <IconButton
