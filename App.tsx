@@ -4,12 +4,16 @@ import * as SplashScreen from 'expo-splash-screen';
 import Navigation from '@/navigations/';
 
 const fetchFonts = async () => {
-  // TODO: eslint 룰 제거하거나 오류 수정 필요
   await Font.loadAsync({
-    // eslint-disable-next-line global-require
+    'Pretendard-Regular': require('./assets/fonts/pretendard/Pretendard-Regular.ttf'),
     'Pretendard-Medium': require('./assets/fonts/pretendard/Pretendard-Medium.ttf'),
-    // eslint-disable-next-line global-require
-    'Pretendard-Black': require('./assets/fonts/pretendard/Pretendard-Black.ttf'),
+    'Pretendard-Bold': require('./assets/fonts/pretendard/Pretendard-Bold.ttf'),
+    'Pretendard-ExtraBold': require('./assets/fonts/pretendard/Pretendard-ExtraBold.ttf'),
+    'Mortend-Bold': require('./assets/fonts/mortend/Mortend-Bold.ttf'),
+    'Montseraat-Regular': require('./assets/fonts/montserrat/Montserrat-Regular.ttf'),
+    'Montseraat-Medium': require('./assets/fonts/montserrat/Montserrat-Medium.ttf'),
+    'Montseraat-Bold': require('./assets/fonts/montserrat/Montserrat-Bold.ttf'),
+    'Montseraat-ExtraBold': require('./assets/fonts/montserrat/Montserrat-ExtraBold.ttf'),
   });
 };
 
