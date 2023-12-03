@@ -35,18 +35,22 @@ export default function HomeHeaderIcons() {
           icon='notifications-outline'
           size={24}
           color='black'
-          onPress={() => console.log('notification')}
+          onPress={() => {}}
         />
         <Badge size={7} visible style={styles.badge} />
       </View>
-      <View>
+
+      {
+        // TODO: 추후에 추가될 예정
+        /* <View>
         <IconButton
           icon='globe-outline'
           size={24}
           color='black'
           onPress={() => console.log('globe')}
         />
-      </View>
+      </View> */
+      }
     </View>
   );
 }
