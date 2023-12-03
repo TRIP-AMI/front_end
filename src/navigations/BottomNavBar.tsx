@@ -31,6 +31,7 @@ export default function BottomNavBar() {
           tabBarIcon: ({ color }) => (
             <Ionicons name='menu' color={color} size={26} />
           ),
+          headerRight: () => <HomeHeaderIcons />,
           title: 'MENU',
         }}
       />
