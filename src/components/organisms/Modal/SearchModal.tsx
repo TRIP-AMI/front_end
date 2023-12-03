@@ -1,9 +1,7 @@
-import { Modal, View, Pressable, SafeAreaView } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import Spacing from '@styles/spacing';
 import SearchInput from '@components/molecules/Input/SearchInput';
 import SearchRecommeded from '@components/molecules/etc/SearchRecommeded';
 import SearchTopProgram from '@components/molecules/etc/SearchTopProgram';
+import BasicFullScreenModal from '@components/atoms/Modal/BasicFullScreenModal';
 
 function SearchModal({
   isVisible,
@@ -13,35 +11,14 @@ function SearchModal({
   onClose: () => void;
 }) {
   return (
-    <Modal
-      animationType='slide'
-      transparent={false}
-      visible={isVisible}
-      presentationStyle='fullScreen'
-    >
-      <SafeAreaView style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            paddingVertical: 15,
-            paddingHorizontal: Spacing.IOS392Margin,
-          }}
-        >
-          <Pressable onPress={onClose}>
-            <AntDesign name='close' size={24} color='black' />
-          </Pressable>
-        </View>
-        <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
-          {/* search input */}
-          <SearchInput />
-          {/* recommeded keywords */}
-          <SearchRecommeded />
-          {/* top 5 program */}
-          <SearchTopProgram />
-        </View>
-      </SafeAreaView>
-    </Modal>
+    <BasicFullScreenModal isVisible={isVisible} onClose={onClose}>
+      {/* search input */}
+      <SearchInput />
+      {/* recommeded keywords */}
+      <SearchRecommeded />
+      {/* top 5 program */}
+      <SearchTopProgram />
+    </BasicFullScreenModal>
   );
 }
 
