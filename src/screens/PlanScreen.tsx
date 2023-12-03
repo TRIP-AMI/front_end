@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function PlanScreen() {
   return (
     <View style={styles.container}>
-      <Text>템플릿</Text>
       <StatusBar style='auto' />
+      <Text>템플릿</Text>
     </View>
   );
 }
