@@ -33,7 +33,11 @@
       "Pretendard-ExtraBold": "./assets/fonts/pretendard/Pretendard-ExtraBold.ttf",
       "Pretendard-ExtraLight": "./assets/fonts/pretendard/Pretendard-ExtraLight.ttf",
       "Pretendard-SemiBold": "./assets/fonts/pretendard/Pretendard-SemiBold.ttf",
-      "Pretendard-Black": "./assets/fonts/pretendard/Pretendard-Black.ttf"
+      "Mortend-Bold": "./assets/fonts/mortend/Mortend-Bold.ttf",
+      "Montserrat-Regular": "./assets/fonts/montserrat/Montserrat-Regular.ttf",
+      "Montserrat-Medium": "./assets/fonts/montserrat/Montserrat-Medium.ttf",
+      "Montserrat-Bold": "./assets/fonts/montserrat/Montserrat-Bold.ttf",
+      "Montserrat-ExtraBold": "./assets/fonts/montserrat/Montserrat-ExtraBold.ttf"
     }
   }
 }
