@@ -1,34 +1,14 @@
-import { StyleSheet, View, Text, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import {
-  RootStackParamList,
-  RootStackNavigationProp,
-} from '@/types/NavigationTypes';
-
-type MenuItemProps = {
-  title: string;
-  path: keyof RootStackParamList;
-};
-
-function MenuItem({ title, path }: MenuItemProps) {
-  const navigation = useNavigation<RootStackNavigationProp>();
-
-  return (
-    <View style={styles.menuItem}>
-      <Pressable onPress={() => navigation.navigate(path)}>
-        <Text>{title}</Text>
-      </Pressable>
-    </View>
-  );
-}
+import { StyleSheet, View } from 'react-native';
+import Spacing from '@/styles/spacing';
+import MenuItem, { MenuItemProps } from '@/components/atoms/Text/MenuItem';
 
 export default function MenuScreen() {
   const menuList: MenuItemProps[] = [
-    { title: '서비스', path: 'Service' },
-    { title: '배너 리스트', path: 'BannerList' },
-    { title: '공지사항', path: 'Notification' },
+    { title: 'Service', path: 'Service' },
+    { title: 'Event', path: 'BannerList' },
+    { title: 'Notification', path: 'Notification' },
     { title: 'FAQ', path: 'FAQ' },
-    { title: '1:1 문의', path: 'Contact' },
+    { title: '1:1 Inquiry', path: 'Contact' },
   ];
 
   return (
@@ -44,10 +24,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  menuItem: {
-    margin: 10,
+    paddingTop: 42 - 10,
+    paddingHorizontal: Spacing.IOS392Margin,
   },
 });
