@@ -22,7 +22,7 @@ export default function StyledButton({
 // TODO: 구체적인 스타일 수정 필요
 const styles = StyleSheet.create({
   container: {
-    width: 300,
+    width: '85%',
     height: 50,
     backgroundColor: Colors.main,
     borderRadius: 5,
