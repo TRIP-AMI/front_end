@@ -7,15 +7,9 @@ import {
   StyleSheet,
   Pressable,
 } from 'react-native';
+import Plan from '@/types/plan';
 
-type PlanItemProps = {
-  planId: string;
-  planImg: string;
-  planTitle: string;
-  planSubTitle: string;
-};
-
-export default function PlanItem({ planItem }: { planItem: PlanItemProps }) {
+export default function PlanItem({ planItem }: { planItem: Plan }) {
   const likeBtn = useRef<LottieView>(null);
 
   const likePress = () => {
