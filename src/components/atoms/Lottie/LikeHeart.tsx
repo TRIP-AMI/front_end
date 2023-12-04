@@ -13,7 +13,7 @@ export default function LikeHeart() {
   useEffect(() => {
     if (isOn) {
       likeBtn.current?.reset();
-      likeBtn.current?.play(10, 30);
+      likeBtn.current?.play(10, 35);
     } else {
       likeBtn.current?.reset();
     }
