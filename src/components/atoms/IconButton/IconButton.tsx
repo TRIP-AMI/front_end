@@ -1,5 +1,5 @@
 import { Pressable, View, StyleSheet } from 'react-native';
-import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
+import { Ionicons, SimpleLineIcons, Feather } from '@expo/vector-icons';
 
 type IconButtonProps = {
   icon: keyof typeof Ionicons.glyphMap;
@@ -16,6 +16,31 @@ export function IconButton({ icon, size, color, onPress }: IconButtonProps) {
     >
       <View style={styles.buttonContainer}>
         <Ionicons name={icon} color={color} size={size} />
+      </View>
+    </Pressable>
+  );
+}
+
+type FeatherIconButtonProps = {
+  icon: keyof typeof Feather.glyphMap;
+  size: number;
+  color: string;
+  onPress: () => void;
+};
+
+export function FeatherIconButton({
+  icon,
+  size,
+  color,
+  onPress,
+}: FeatherIconButtonProps) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => pressed && styles.pressed}
+    >
+      <View style={styles.buttonContainer}>
+        <Feather name={icon} color={color} size={size} />
       </View>
     </Pressable>
   );
@@ -45,6 +70,7 @@ export function SimpleLineIconButton({
     </Pressable>
   );
 }
+
 const styles = StyleSheet.create({
   buttonContainer: {
     padding: 4,
