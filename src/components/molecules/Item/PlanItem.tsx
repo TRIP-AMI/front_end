@@ -1,13 +1,9 @@
 import LottieView from 'lottie-react-native';
 import { useRef } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  StyleSheet,
-  Pressable,
-} from 'react-native';
+import { View, ImageBackground, StyleSheet, Pressable } from 'react-native';
 import Plan from '@/types/plan';
+import PlanItemTitle from '@/components/atoms/Text/PlanItemTitle';
+import PlanItemSubTitle from '@/components/atoms/Text/PlanItemSubTitle';
 
 export default function PlanItem({ planItem }: { planItem: Plan }) {
   const likeBtn = useRef<LottieView>(null);
@@ -42,9 +38,11 @@ export default function PlanItem({ planItem }: { planItem: Plan }) {
           </Pressable>
         </ImageBackground>
       </View>
-      <View style={styles.textWrap}>
-        <Text>{planItem.planTitle}</Text>
-        <Text>{planItem.planSubTitle}</Text>
+      <View>
+        <PlanItemTitle style={{ marginBottom: 1 }}>
+          {planItem.planTitle}
+        </PlanItemTitle>
+        <PlanItemSubTitle>{planItem.planSubTitle}</PlanItemSubTitle>
       </View>
     </View>
   );
@@ -58,6 +56,6 @@ const styles = StyleSheet.create({
   imgWrap: {
     width: '100%',
     height: 161,
+    marginBottom: 8,
   },
-  textWrap: {},
 });
