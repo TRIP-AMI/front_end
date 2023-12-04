@@ -21,13 +21,21 @@ export default function ApplyModal({
   const [selectedDate, setSelectedDate] = useState('');
 
   const onApply = () => {
-    console.log('apply');
+    console.log(selectedDate);
     onClose();
   };
 
+  const onDismiss = () => {
+    setSelectedDate('');
+  };
+
   return (
-    <BasicBottomModal isVisible={isVisible} onClose={onClose}>
-      {/* select box => dropdown 컴포넌트로 수정 예정 */}
+    <BasicBottomModal
+      isVisible={isVisible}
+      onClose={onClose}
+      onDismiss={onDismiss}
+    >
+      {/* Select Options */}
       <SelectBox
         dates={dates}
         selectedDate={selectedDate}

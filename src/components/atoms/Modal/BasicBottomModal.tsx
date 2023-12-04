@@ -7,13 +7,20 @@ export default function BasicBottomModal({
   children,
   isVisible,
   onClose,
+  onDismiss,
 }: {
   children: ReactNode;
   isVisible: boolean;
   onClose: () => void;
+  onDismiss: () => void;
 }) {
   return (
-    <Modal animationType='fade' visible={isVisible} transparent>
+    <Modal
+      animationType='fade'
+      visible={isVisible}
+      onDismiss={onDismiss}
+      transparent
+    >
       <View style={styles.container}>
         <Pressable style={{ flex: 1 }} onPress={onClose} />
         <View style={styles.modalView}>
@@ -56,6 +63,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 30,
+    paddingBottom: 30,
   },
 });
