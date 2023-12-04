@@ -13,8 +13,9 @@ export default function BasicBottomModal({
   onClose: () => void;
 }) {
   return (
-    <Modal animationType='slide' visible={isVisible} transparent>
+    <Modal animationType='fade' visible={isVisible} transparent>
       <View style={styles.container}>
+        <Pressable style={{ flex: 1 }} onPress={onClose} />
         <View style={styles.modalView}>
           <View style={styles.modalHeader}>
             <Pressable onPress={onClose}>
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalView: {
     borderRadius: 20,
