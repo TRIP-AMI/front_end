@@ -32,5 +32,43 @@
       "title": "item5",
       "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg"
     }
+  ],
+  "plan": [
+    {
+      "planId": "1",
+      "planImg": "https://via.placeholder.com/450x450/ECECEC",
+      "planTitle": "Itaewon Tour",
+      "planSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "planId": "12",
+      "planImg": "https://via.placeholder.com/450x450/ECECEC",
+      "planTitle": "Itaewon Tour",
+      "planSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "planId": "123",
+      "planImg": "https://via.placeholder.com/450x450/ECECEC",
+      "planTitle": "Itaewon Tour",
+      "planSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "planId": "1234",
+      "planImg": "https://via.placeholder.com/450x450/ECECEC",
+      "planTitle": "Itaewon Tour",
+      "planSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "planId": "12345",
+      "planImg": "https://via.placeholder.com/450x450/ECECEC",
+      "planTitle": "Itaewon Tour",
+      "planSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "planId": "123456",
+      "planImg": "https://via.placeholder.com/450x450/ECECEC",
+      "planTitle": "Itaewon Tour",
+      "planSubTitle": "Restaurant - Cafe - Photo"
+    }
   ]
 }
