@@ -25,7 +25,7 @@ export default function PlanItem({ planItem }: { planItem: Plan }) {
 
 const styles = StyleSheet.create({
   planItemWrap: {
-    width: '48%',
+    width: '48.5%',
     marginBottom: 20,
   },
   imgWrap: {

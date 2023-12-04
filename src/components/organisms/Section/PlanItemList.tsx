@@ -1,54 +1,52 @@
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
 import PlanItem from '@/components/molecules/Item/PlanItem';
 import Plan from '@/types/plan';
-
-// api 에서 받아온 데이터
-const data = [
-  {
-    planId: '1',
-    planImg: 'https://via.placeholder.com/450x450/ECECEC',
-    planTitle: 'Itaewon Tour',
-    planSubTitle: 'Restaurant - Cafe - Photo',
-  },
-  {
-    planId: '12',
-    planImg: 'https://via.placeholder.com/450x450/ECECEC',
-    planTitle: 'Itaewon Tour',
-    planSubTitle: 'Restaurant - Cafe - Photo',
-  },
-  {
-    planId: '123',
-    planImg: 'https://via.placeholder.com/450x450/ECECEC',
-    planTitle: 'Itaewon Tour',
-    planSubTitle: 'Restaurant - Cafe - Photo',
-  },
-];
+import planApi from '@/services/module/plan/plan';
 
 // 클래스로 데이터 가공
-const processData = data.map((item) => {
-  return Plan.Builder.withPlanId(item.planId)
-    .withPlanImg(item.planImg)
-    .withPlanTitle(item.planTitle)
-    .withPlanSubTitle(item.planSubTitle)
-    .build();
-});
-
+// TODO: any 말고 타입 선정을 어떻게 해야될까.. dto 선언?
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const processData = (list: any): Plan[] => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return list.map((item: any) => {
+    return Plan.Builder.withPlanId(item.planId)
+      .withPlanImg(item.planImg)
+      .withPlanTitle(item.planTitle)
+      .withPlanSubTitle(item.planSubTitle)
+      .build();
+  });
+};
 export default function PlanItemList() {
+  const [planList, setPlanList] = useState<Plan[]>([]);
+
+  const getData = async () => {
+    try {
+      const data = await planApi.getPlanList();
+      setPlanList(processData(data));
+    } catch (error) {
+      console.error('plan 목록 호출에 실패하였습니다.', error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
-    <View style={styles.listWrap}>
-      {processData.map((plan) => {
-        return <PlanItem key={plan.planId} planItem={plan} />;
-      })}
-    </View>
+    <FlatList
+      data={planList}
+      renderItem={(plan) => <PlanItem planItem={plan.item} />}
+      keyExtractor={(item) => item.planId}
+      numColumns={2}
+      columnWrapperStyle={{ justifyContent: 'space-between' }}
+      style={styles.listWrap}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   listWrap: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
     marginTop: 10,
   },
 });
