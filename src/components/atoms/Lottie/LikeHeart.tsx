@@ -1,5 +1,5 @@
 import LottieView from 'lottie-react-native';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Pressable } from 'react-native';
 
 export default function LikeHeart() {
@@ -8,14 +8,17 @@ export default function LikeHeart() {
 
   const likePress = () => {
     setIsOn((prev) => !prev);
+  };
 
+  useEffect(() => {
     if (isOn) {
       likeBtn.current?.reset();
       likeBtn.current?.play(10, 30);
     } else {
       likeBtn.current?.reset();
     }
-  };
+  }, [isOn]);
+
   return (
     <Pressable
       onPress={likePress}
