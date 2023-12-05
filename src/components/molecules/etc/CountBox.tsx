@@ -1,30 +1,19 @@
 import { useEffect, useState } from 'react';
-import { View, StyleSheet, TextInput, Alert } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { IconButton } from '@/components/atoms/IconButton/IconButton';
+import StyledText from '@/components/atoms/Text/StyledText';
 
 export default function CountBox() {
-  const [count, setCount] = useState('1');
+  const [count, setCount] = useState(1);
   const MAX = 4; // TODO: 예약 가능한 최대 인원 받아오기
 
-  const handleCount = (input: string) => {
-    const inputNum = Number(input);
-    if (Number.isNaN(inputNum)) return;
-    if (inputNum >= MAX) {
-      Alert.alert('Not Available!', `Current Available Spots: ${MAX} people`, [
-        {
-          text: 'Cancel',
-          onPress: () => setCount(MAX.toString()),
-          style: 'cancel',
-        },
-      ]);
-    } else {
-      setCount(input);
-    }
+  const onCountUp = () => {
+    if (count === MAX) return;
+    setCount(count + 1);
   };
-
-  const onPress = () => {
-    if (Number(count) >= MAX) return;
-    setCount((Number(count) + 1).toLocaleString());
+  const onCountDown = () => {
+    if (count === 1) return;
+    setCount(count - 1);
   };
 
   useEffect(() => {
@@ -33,16 +22,23 @@ export default function CountBox() {
   return (
     <View style={styles.container}>
       <View style={styles.box1}>
-        <TextInput
-          style={styles.input}
-          onChangeText={handleCount}
-          value={count}
-          placeholder='1'
-          keyboardType='numeric'
+        <StyledText
+          content={count.toLocaleString()}
+          color='black'
+          size={14}
+          font='Montserrat-Medium'
         />
       </View>
       <View style={styles.box2}>
-        <IconButton icon='add' size={14} color='#AAAAAA' onPress={onPress} />
+        <IconButton
+          icon='remove'
+          size={14}
+          color='#AAAAAA'
+          onPress={onCountDown}
+        />
+      </View>
+      <View style={styles.box3}>
+        <IconButton icon='add' size={14} color='#AAAAAA' onPress={onCountUp} />
       </View>
     </View>
   );
@@ -63,12 +59,18 @@ const styles = StyleSheet.create({
   },
   box2: {
     flex: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderColor: '#DCDCDC',
+    alignItems: 'center',
+  },
+  box3: {
+    flex: 1,
+    alignItems: 'center',
   },
   input: {
     width: '100%',
     height: '100%',
     textAlign: 'center',
-    borderRightWidth: 1,
-    borderColor: '#DCDCDC',
   },
 });
