@@ -82,10 +82,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: '7.5%',
   },
   selectBoxTitle: {
+    flex: 1,
     fontFamily: 'Montserrat-Medium',
     fontSize: 18,
-    textAlign: 'center',
-    paddingHorizontal: '25%',
+    marginHorizontal: '21%',
   },
   modalContent: {
     flex: 1,
