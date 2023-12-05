@@ -7,11 +7,11 @@ function ContentTime({ time, location }: { time: string; location: string }) {
   return (
     <>
       <View style={styles.container}>
-        <EvilIcons name='clock' color={colors.contentIcon} size={20} />
+        <EvilIcons name='clock' color={colors.contentLine} size={20} />
         <Text style={styles.time}>{time}</Text>
       </View>
       <View style={styles.container}>
-        <EvilIcons name='location' color={colors.contentIcon} size={20} />
+        <EvilIcons name='location' color={colors.contentLine} size={20} />
         <Text style={styles.location}>{location}</Text>
       </View>
     </>
