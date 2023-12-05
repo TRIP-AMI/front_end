@@ -1,7 +1,7 @@
 import { Modal, View, Pressable, StyleSheet, Text } from 'react-native';
 import { ReactNode } from 'react';
+import { IconButton } from '@components/atoms/IconButton/IconButton';
 import Colors from '@/styles/colors';
-import { IconButton } from '../IconButton/IconButton';
 
 export default function BasicBottomModal({
   children,
