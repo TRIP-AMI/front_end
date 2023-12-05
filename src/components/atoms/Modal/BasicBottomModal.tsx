@@ -1,7 +1,7 @@
 import { Modal, View, Pressable, StyleSheet } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
 import { ReactNode } from 'react';
 import Colors from '@/styles/colors';
+import { IconButton } from '../IconButton/IconButton';
 
 export default function BasicBottomModal({
   children,
@@ -25,14 +25,13 @@ export default function BasicBottomModal({
         <Pressable style={{ flex: 1 }} onPress={onClose} />
         <View style={styles.modalView}>
           <View style={styles.modalHeader}>
-            <Pressable onPress={onClose}>
-              {/* TODO: 아이콘 확인 */}
-              <Entypo
-                name='chevron-thin-down'
-                size={24}
-                color={Colors.fontGray01}
-              />
-            </Pressable>
+            {/* TODO: 아이콘 확인 */}
+            <IconButton
+              icon='chevron-down'
+              size={24}
+              color={Colors.fontGray01}
+              onPress={onClose}
+            />
           </View>
           <View style={styles.modalContent}>{children}</View>
         </View>
