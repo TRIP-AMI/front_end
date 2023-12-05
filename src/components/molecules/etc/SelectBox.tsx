@@ -1,6 +1,6 @@
 import { useState, Dispatch, SetStateAction } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Colors from '@/styles/colors';
 
 export default function SelectBox({
@@ -21,22 +21,24 @@ export default function SelectBox({
   );
 
   return (
-    <DropDownPicker
-      open={selectOpen}
-      value={selectedDate}
-      items={items}
-      setOpen={setSelectOpen}
-      setValue={setSelectedDate}
-      setItems={setItems}
-      style={selectOpen ? styles.pickerOpened : styles.pickerClosed}
-      textStyle={styles.itemText}
-      placeholder='Available Dates (select one)'
-      dropDownDirection='BOTTOM'
-      dropDownContainerStyle={styles.dropDownContainer}
-      containerStyle={{ flex: 1 }}
-      listItemContainerStyle={styles.listContainer}
-      listItemLabelStyle={{ color: 'black' }}
-    />
+    <View style={{ height: '20%' }}>
+      <DropDownPicker
+        open={selectOpen}
+        value={selectedDate}
+        items={items}
+        setOpen={setSelectOpen}
+        setValue={setSelectedDate}
+        setItems={setItems}
+        style={selectOpen ? styles.pickerOpened : styles.pickerClosed}
+        textStyle={styles.itemText}
+        placeholder='Available Dates (select one)'
+        dropDownDirection='BOTTOM'
+        dropDownContainerStyle={styles.dropDownContainer}
+        containerStyle={{ flex: 1 }}
+        listItemContainerStyle={styles.listContainer}
+        listItemLabelStyle={{ color: 'black' }}
+      />
+    </View>
   );
 }
 
