@@ -29,13 +29,13 @@ export default function SelectBox({
       setValue={setSelectedDate}
       setItems={setItems}
       style={selectOpen ? styles.pickerOpened : styles.pickerClosed}
+      textStyle={styles.itemText}
       placeholder='Available Dates (select one)'
-      placeholderStyle={styles.placeholder}
       dropDownDirection='BOTTOM'
       dropDownContainerStyle={styles.dropDownContainer}
       containerStyle={{ flex: 1 }}
       listItemContainerStyle={styles.listContainer}
-      listItemLabelStyle={styles.listItem}
+      listItemLabelStyle={{ color: 'black' }}
     />
   );
 }
@@ -51,11 +51,6 @@ const styles = StyleSheet.create({
     width: '85%',
     borderColor: Colors.main,
   },
-  placeholder: {
-    fontFamily: 'Montserrat-Medium',
-    fontSize: 14,
-    color: Colors.fontGray01,
-  },
   dropDownContainer: {
     flex: 1,
     marginHorizontal: '7.5%',
@@ -70,9 +65,10 @@ const styles = StyleSheet.create({
     borderTopWidth: 0.5,
     borderColor: Colors.lineGray01,
   },
-  listItem: {
+  itemText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
+    color: Colors.fontGray01,
   },
   modalTitle: {
     fontFamily: 'Montserrat-SemiBold',
