@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import BasicBottomModal from '@components/atoms/Modal/BasicBottomModal';
 import SelectBox from '@/components/molecules/etc/SelectBox';
-import StyledButton from '@/components/atoms/Buttons/StyledButton';
-import SelectedOptionCard from '@/components/atoms/Card/SelectedOptionCard';
 import {
   BasicModalHeader,
   ModalHeaderWithTitle,
 } from '@/components/atoms/Modal/ModalHeader';
+import ApplyModalContent from '@/components/molecules/Modal/ApplyModalContent';
 
 // TODO: 상세 페이지에서 prop으로 받아오기
 const dates = [
@@ -24,17 +23,22 @@ export default function ApplyModal({
   isVisible: boolean;
   onClose: () => void;
 }) {
+  const originalPrice = 150000; // TODO: 상세 페이지에서 prop으로 받아오기
   const [selectedDate, setSelectedDate] = useState('');
   const [selectOpen, setSelectOpen] = useState(false);
-
+  const [price, setPrice] = useState(originalPrice); // TODO: 상세 페이지에서 prop으로 받아오기
   // TODO: Apply 버튼 누르면 확인 모달 띄우기
   const onApply = () => {
-    console.log(selectedDate);
+    console.log(
+      `date: ${selectedDate}, count: ${price / originalPrice}, price: ${price}`,
+    );
+    setPrice(originalPrice);
     onClose();
   };
 
   const onDismiss = () => {
     setSelectedDate('');
+    setPrice(originalPrice);
   };
 
   return (
@@ -62,13 +66,16 @@ export default function ApplyModal({
         selectOpen={selectOpen}
         setSelectOpen={setSelectOpen}
       />
-      {!selectOpen && selectedDate && (
-        <SelectedOptionCard
-          selectedItem={selectedDate}
-          setSelectedItem={setSelectedDate}
+      {selectOpen ? null : (
+        <ApplyModalContent
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          originalPrice={originalPrice}
+          price={price}
+          setPrice={setPrice}
+          onApply={onApply}
         />
       )}
-      {!selectOpen && <StyledButton content='Apply' onPress={onApply} />}
     </BasicBottomModal>
   );
 }

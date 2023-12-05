@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { IconButton } from '@components/atoms/IconButton/IconButton';
 import StyledText from '@components/atoms/Text/StyledText';
@@ -8,37 +8,52 @@ import CountBox from '@/components/molecules/etc/CountBox';
 export default function SelectedOptionCard({
   selectedItem,
   setSelectedItem,
+  originalPrice,
+  price,
+  setPrice,
 }: {
   selectedItem: string;
   setSelectedItem: Dispatch<SetStateAction<string>>;
+  originalPrice: number;
+  price: number;
+  setPrice: Dispatch<SetStateAction<number>>;
 }) {
+  const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    setPrice(150000 * count);
+  }, [count, setPrice]);
+
+  const onClose = () => {
+    setSelectedItem('');
+    setPrice(originalPrice); // 기본 가격으로 초기화
+  };
+
   return (
-    <View style={{ flex: 1, width: '85%' }}>
-      <View style={styles.container}>
-        <View style={styles.header}>
+    <View style={styles.cardContainer}>
+      <View style={styles.header}>
+        <StyledText
+          content={selectedItem}
+          color='black'
+          size={14}
+          font='Montserrat-Medium'
+        />
+        <IconButton
+          icon='close-outline'
+          size={24}
+          color={Colors.fontGray01}
+          onPress={onClose}
+        />
+      </View>
+      <View style={styles.content}>
+        <CountBox count={count} setCount={setCount} />
+        <View style={{ flex: 2, alignItems: 'flex-end' }}>
           <StyledText
-            content={selectedItem}
+            content={`${price.toLocaleString()} won`}
             color='black'
             size={14}
             font='Montserrat-Medium'
           />
-          <IconButton
-            icon='close-outline'
-            size={24}
-            color={Colors.fontGray01}
-            onPress={() => setSelectedItem('')}
-          />
-        </View>
-        <View style={styles.content}>
-          <CountBox />
-          <View style={{ flex: 2, alignItems: 'flex-end' }}>
-            <StyledText
-              content='1,000,000원'
-              color='black'
-              size={14}
-              font='Montserrat-Medium'
-            />
-          </View>
         </View>
       </View>
     </View>
@@ -46,14 +61,14 @@ export default function SelectedOptionCard({
 }
 
 const styles = StyleSheet.create({
-  container: {
+  cardContainer: {
     backgroundColor: '#F2F2F2',
-    height: '40%',
+    width: '85%',
+    height: '50%',
     padding: 10,
   },
   header: {
     flex: 1,
-
     flexDirection: 'row',
     height: '40%',
     justifyContent: 'space-between',

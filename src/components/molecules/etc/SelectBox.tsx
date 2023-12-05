@@ -21,7 +21,7 @@ export default function SelectBox({
   );
 
   return (
-    <View style={{ height: '20%' }}>
+    <View style={{ flex: 1 }}>
       <DropDownPicker
         open={selectOpen}
         value={selectedDate}

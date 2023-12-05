@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { IconButton } from '@/components/atoms/IconButton/IconButton';
 import StyledText from '@/components/atoms/Text/StyledText';
 
-export default function CountBox() {
-  const [count, setCount] = useState(1);
+export default function CountBox({
+  count,
+  setCount,
+}: {
+  count: number;
+  setCount: Dispatch<SetStateAction<number>>;
+}) {
   const MAX = 4; // TODO: 예약 가능한 최대 인원 받아오기
 
   const onCountUp = () => {
@@ -16,9 +21,6 @@ export default function CountBox() {
     setCount(count - 1);
   };
 
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
   return (
     <View style={styles.container}>
       <View style={styles.box1}>
