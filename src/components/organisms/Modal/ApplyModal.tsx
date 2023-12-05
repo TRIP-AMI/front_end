@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BasicBottomModal from '@components/atoms/Modal/BasicBottomModal';
 import SelectBox from '@/components/molecules/etc/SelectBox';
 import {
@@ -25,7 +25,7 @@ export default function ApplyModal({
 }) {
   const originalPrice = 150000; // TODO: 상세 페이지에서 prop으로 받아오기
   const [selectedDate, setSelectedDate] = useState('');
-  const [selectOpen, setSelectOpen] = useState(false);
+  const [selectOpen, setSelectOpen] = useState(true);
   const [price, setPrice] = useState(originalPrice); // TODO: 상세 페이지에서 prop으로 받아오기
   // TODO: Apply 버튼 누르면 확인 모달 띄우기
   const onApply = () => {
@@ -40,6 +40,10 @@ export default function ApplyModal({
     setSelectedDate('');
     setPrice(originalPrice);
   };
+
+  useEffect(() => {
+    setSelectOpen(true);
+  }, [isVisible]);
 
   return (
     <BasicBottomModal
