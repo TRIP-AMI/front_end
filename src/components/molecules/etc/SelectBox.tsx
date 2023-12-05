@@ -7,25 +7,28 @@ export default function SelectBox({
   dates,
   selectedDate,
   setSelectedDate,
+  selectOpen,
+  setSelectOpen,
 }: {
   dates: string[];
   selectedDate: string;
   setSelectedDate: Dispatch<SetStateAction<string>>;
+  selectOpen: boolean;
+  setSelectOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-  const [open, setOpen] = useState(false);
   const [items, setItems] = useState(
     dates.map((date) => ({ label: date, value: date })),
   );
 
   return (
     <DropDownPicker
-      open={open}
+      open={selectOpen}
       value={selectedDate}
       items={items}
-      setOpen={setOpen}
+      setOpen={setSelectOpen}
       setValue={setSelectedDate}
       setItems={setItems}
-      style={open ? styles.pickerOpened : styles.pickerClosed}
+      style={selectOpen ? styles.pickerOpened : styles.pickerClosed}
       placeholder='Available Dates (select one)'
       placeholderStyle={styles.placeholder}
       dropDownDirection='BOTTOM'

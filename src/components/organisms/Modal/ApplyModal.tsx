@@ -19,6 +19,7 @@ export default function ApplyModal({
   onClose: () => void;
 }) {
   const [selectedDate, setSelectedDate] = useState('');
+  const [selectOpen, setSelectOpen] = useState(false);
 
   const onApply = () => {
     console.log(selectedDate);
@@ -34,12 +35,16 @@ export default function ApplyModal({
       isVisible={isVisible}
       onClose={onClose}
       onDismiss={onDismiss}
+      selectOpen={selectOpen}
+      setSelectOpen={setSelectOpen}
     >
       {/* Select Options */}
       <SelectBox
         dates={dates}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
+        selectOpen={selectOpen}
+        setSelectOpen={setSelectOpen}
       />
       <StyledButton content='Apply' onPress={onApply} />
     </BasicBottomModal>
