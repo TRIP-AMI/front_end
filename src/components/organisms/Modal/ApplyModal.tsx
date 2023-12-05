@@ -2,7 +2,9 @@ import { useState } from 'react';
 import BasicBottomModal from '@components/atoms/Modal/BasicBottomModal';
 import SelectBox from '@/components/molecules/etc/SelectBox';
 import StyledButton from '@/components/atoms/Buttons/StyledButton';
+import SelectedOptionCard from '@/components/atoms/Card/SelectedOptionCard';
 
+// TODO: 상세 페이지에서 prop으로 받아오기
 const dates = [
   'January 2, 2024',
   'January 3, 2024',
@@ -21,6 +23,7 @@ export default function ApplyModal({
   const [selectedDate, setSelectedDate] = useState('');
   const [selectOpen, setSelectOpen] = useState(false);
 
+  // TODO: Apply 버튼 누르면 확인 모달 띄우기
   const onApply = () => {
     console.log(selectedDate);
     onClose();
@@ -46,6 +49,12 @@ export default function ApplyModal({
         selectOpen={selectOpen}
         setSelectOpen={setSelectOpen}
       />
+      {!selectOpen && selectedDate && (
+        <SelectedOptionCard
+          selectedItem={selectedDate}
+          setSelectedItem={setSelectedDate}
+        />
+      )}
       <StyledButton content='Apply' onPress={onApply} />
     </BasicBottomModal>
   );
