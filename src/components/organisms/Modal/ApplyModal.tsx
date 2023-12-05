@@ -3,6 +3,10 @@ import BasicBottomModal from '@components/atoms/Modal/BasicBottomModal';
 import SelectBox from '@/components/molecules/etc/SelectBox';
 import StyledButton from '@/components/atoms/Buttons/StyledButton';
 import SelectedOptionCard from '@/components/atoms/Card/SelectedOptionCard';
+import {
+  BasicModalHeader,
+  ModalHeaderWithTitle,
+} from '@/components/atoms/Modal/ModalHeader';
 
 // TODO: 상세 페이지에서 prop으로 받아오기
 const dates = [
@@ -38,8 +42,17 @@ export default function ApplyModal({
       isVisible={isVisible}
       onClose={onClose}
       onDismiss={onDismiss}
-      selectOpen={selectOpen}
-      setSelectOpen={setSelectOpen}
+      header={
+        selectOpen ? (
+          <ModalHeaderWithTitle
+            icon='chevron-back'
+            title='Select Options'
+            onClose={() => setSelectOpen(false)}
+          />
+        ) : (
+          <BasicModalHeader icon='chevron-down' onClose={onClose} />
+        )
+      }
     >
       {/* Select Options */}
       <SelectBox
@@ -55,7 +68,7 @@ export default function ApplyModal({
           setSelectedItem={setSelectedDate}
         />
       )}
-      <StyledButton content='Apply' onPress={onApply} />
+      {!selectOpen && <StyledButton content='Apply' onPress={onApply} />}
     </BasicBottomModal>
   );
 }

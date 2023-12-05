@@ -1,22 +1,18 @@
-import { Modal, View, Pressable, StyleSheet, Text } from 'react-native';
+import { Modal, View, Pressable, StyleSheet } from 'react-native';
 import { ReactNode } from 'react';
-import { IconButton } from '@components/atoms/IconButton/IconButton';
-import Colors from '@/styles/colors';
 
 export default function BasicBottomModal({
   children,
   isVisible,
   onClose,
   onDismiss,
-  selectOpen,
-  setSelectOpen,
+  header,
 }: {
   children: ReactNode;
   isVisible: boolean;
   onClose: () => void;
   onDismiss: () => void;
-  selectOpen: boolean;
-  setSelectOpen: (selectOpen: boolean) => void;
+  header: ReactNode;
 }) {
   return (
     <Modal
@@ -28,29 +24,7 @@ export default function BasicBottomModal({
       <View style={styles.container}>
         <Pressable style={{ flex: 1 }} onPress={onClose} />
         <View style={styles.modalView}>
-          {/* TODO: 아이콘 확인 */}
-          <View style={styles.modalHeader}>
-            {selectOpen ? (
-              <View style={styles.selectBoxHeader}>
-                <IconButton
-                  icon='chevron-back'
-                  size={24}
-                  color='black'
-                  onPress={() => {
-                    setSelectOpen(false);
-                  }}
-                />
-                <Text style={styles.selectBoxTitle}>Select Options</Text>
-              </View>
-            ) : (
-              <IconButton
-                icon='chevron-down'
-                size={24}
-                color={Colors.fontGray01}
-                onPress={onClose}
-              />
-            )}
-          </View>
+          <View style={styles.modalHeader}>{header}</View>
           <View style={styles.modalContent}>{children}</View>
         </View>
       </View>
@@ -74,18 +48,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingVertical: 15,
-  },
-  selectBoxHeader: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: '7.5%',
-  },
-  selectBoxTitle: {
-    flex: 1,
-    fontFamily: 'Montserrat-Medium',
-    fontSize: 18,
-    marginHorizontal: '21%',
   },
   modalContent: {
     flex: 1,

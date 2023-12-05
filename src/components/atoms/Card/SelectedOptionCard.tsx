@@ -31,7 +31,7 @@ export default function SelectedOptionCard({
         </View>
         <View style={styles.content}>
           <CountBox />
-          <View style={{ flex: 4, alignItems: 'flex-end' }}>
+          <View style={{ flex: 2, alignItems: 'flex-end' }}>
             <StyledText
               content='1,000,000원'
               color='black'
