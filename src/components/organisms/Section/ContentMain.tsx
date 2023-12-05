@@ -2,7 +2,7 @@ import ContentBannerCarousel from '@components/molecules/Banner/ContentBannerCar
 import DdayBadge from '@components/atoms/Tag/DdayBadge';
 import ContentTitles from '@components/molecules/Text/ContentTitles';
 import HashTagList from '@components/molecules/etc/HashTagList';
-import ContentTime from '@components/molecules/Text/ContentTime';
+import ContentTimeLocation from '@components/molecules/Text/ContentTimeLocation';
 import Separator from '@components/atoms/etc/Separator';
 import ContentPrice from '@components/molecules/Text/ContentPrice';
 
@@ -17,7 +17,7 @@ function ContentMain() {
         subtitle="Let's Play Together at Itaewon Street!"
       />
       <HashTagList data={dummyData} />
-      <ContentTime
+      <ContentTimeLocation
         time='12/16(Sat) 19:30'
         location='3-11, Jamsil-dong, Songpa-gu, Seoul'
       />
