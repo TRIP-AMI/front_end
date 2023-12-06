@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingVertical: 15,
+    paddingVertical: 10,
   },
   modalContent: {
     flex: 1,

@@ -7,7 +7,7 @@ const Colors = {
   secondMain: '#EEF8FE',
   titleBlack: '#161616',
   moreGray: '#77787A',
-  navIcon: '#1E1E20',
+  fontBlack: '#1E1E20',
   subtitle: '#4A4A4A',
   likeBlank: '#CBCBCBE3',
   footerBackground: '#404040',
@@ -15,7 +15,6 @@ const Colors = {
   footerLight: '#808080',
   fontGray01: '#8E8E8E',
   lineGray01: '#ECECEC',
-  modalTitle: '#1E1E20',
 };
 
 export default Colors;

@@ -29,12 +29,14 @@ export function BasicModalHeader({
   onClose: () => void;
 }) {
   return (
-    <IconButton
-      icon={icon}
-      size={24}
-      color={Colors.fontGray01}
-      onPress={onClose}
-    />
+    <View style={styles.iconContainer}>
+      <IconButton
+        icon={icon}
+        size={24}
+        color={Colors.fontGray01}
+        onPress={onClose}
+      />
+    </View>
   );
 }
 
@@ -51,10 +53,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontSize: 16,
     letterSpacing: -0.48,
-    color: Colors.modalTitle,
+    color: Colors.fontBlack,
     textAlign: 'center',
   },
   empty: {
     width: 24,
+  },
+  iconContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
