@@ -1,13 +1,20 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TextStyle, StyleProp } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 import Spacing from '@styles/spacing';
 import colors from '@styles/colors';
 
-function ContentLocation({ location }: { location: string }) {
+function ContentLocation({
+  location,
+  style,
+}: {
+  location: string;
+  // eslint-disable-next-line react/require-default-props
+  style?: StyleProp<TextStyle> | undefined;
+}) {
   return (
     <View style={styles.container}>
       <EvilIcons name='location' color={colors.contentLine} size={20} />
-      <Text style={styles.location}>{location}</Text>
+      <Text style={[styles.location, style]}>{location}</Text>
     </View>
   );
 }
@@ -21,9 +28,10 @@ const styles = StyleSheet.create({
   },
   location: {
     color: colors.subtitle,
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: 'Montserrat-Medium',
-    marginLeft: 5,
+    marginLeft: 10.64,
+    letterSpacing: -0.32,
   },
 });
 

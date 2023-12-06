@@ -12,19 +12,20 @@ function DdayBadge() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#000000',
-    borderRadius: 5,
+    borderRadius: 3,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 40,
-    height: 25,
+    width: 39,
+    height: 21,
+    opacity: 1,
     marginTop: 15,
-    marginBottom: 10,
+    marginBottom: 8,
     marginLeft: Spacing.IOS392Margin,
   },
   text: {
     color: '#ffffff',
-    fontSize: 14,
-    fontFamily: 'Montserrat-Bold',
+    fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
   },
 });
 

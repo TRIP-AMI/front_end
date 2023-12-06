@@ -55,7 +55,7 @@ const dummyIntroduce =
   '- January 6, 2024\n' +
   '- January 6, 2024\n' +
   '\n' +
-  'Contact: tripamics@trimami.co.kr\n';
+  'Contact: tripamics@trimami.co.kr';
 
 function ContentAmi() {
   const dummyProfile = dummyData[0];
@@ -68,32 +68,35 @@ function ContentAmi() {
         <AmiScoreTable key={score.title} scores={score} />
       ))}
       <AmiIntroduce>{dummyIntroduce}</AmiIntroduce>
-      <Separator hei={10} marginVer={20} />
+      <Separator color={colors.blankMoreGray} hei={8} marginVer={30} />
     </>
   );
 }
 
 const styles = StyleSheet.create({
   title: {
-    color: colors.titleBlack,
+    color: '#000000',
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
+    letterSpacing: -0.36,
     marginLeft: Spacing.IOS392Margin,
     marginTop: 10,
+    marginBottom: 20,
   },
   image: {
-    width: 120,
-    height: 120,
+    width: 107,
+    height: 107,
     alignSelf: 'center',
     borderRadius: 100,
-    marginTop: 30,
+    marginBottom: 8,
   },
   name: {
-    color: colors.titleBlack,
+    color: '#000000',
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
+    letterSpacing: -0.36,
     alignSelf: 'center',
-    marginTop: 5,
+    marginBottom: 12,
   },
 });
 

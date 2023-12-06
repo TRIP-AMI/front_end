@@ -15,16 +15,18 @@ function ContentTitles({ price, option }: { price: string; option: string }) {
 const styles = StyleSheet.create({
   title: {
     color: '#000000',
-    marginLeft: Spacing.IOS392Margin,
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
-    marginBottom: 5,
+    letterSpacing: -0.36,
+    marginLeft: Spacing.IOS392Margin,
+    marginBottom: 1,
   },
   subtitle: {
-    color: colors.subtitle,
-    marginLeft: Spacing.IOS392Margin,
-    fontSize: 13,
+    color: colors.contentLine,
+    fontSize: 14,
     fontFamily: 'Montserrat-Regular',
+    letterSpacing: -0.28,
+    marginLeft: Spacing.IOS392Margin,
   },
 });
 

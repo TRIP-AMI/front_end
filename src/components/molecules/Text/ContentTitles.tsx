@@ -22,16 +22,18 @@ const styles = StyleSheet.create({
   title: {
     color: '#000000',
     marginLeft: Spacing.IOS392Margin,
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'Montserrat-Bold',
-    marginBottom: 5,
+    marginBottom: 3,
+    letterSpacing: -0.4,
   },
   subtitle: {
     color: colors.subtitle,
     marginLeft: Spacing.IOS392Margin,
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: 'Montserrat-Regular',
     marginBottom: 10,
+    letterSpacing: -0.32,
   },
 });
 

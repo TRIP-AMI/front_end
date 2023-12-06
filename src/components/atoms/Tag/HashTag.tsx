@@ -1,11 +1,6 @@
 import { ReactNode } from 'react';
-import {
-  Text,
-  StyleProp,
-  StyleSheet,
-  TextStyle,
-  PixelRatio,
-} from 'react-native';
+import { Text, StyleProp, StyleSheet, TextStyle } from 'react-native';
+import colors from '@styles/colors';
 
 function HashTag({
   children,
@@ -20,15 +15,18 @@ function HashTag({
 
 const styles = StyleSheet.create({
   tag: {
+    marginBottom: 15,
     marginRight: 5,
-    paddingVertical: 8,
-    paddingHorizontal: 11,
+    borderRadius: 14,
     borderColor: '#CCCCCC',
     borderWidth: 1,
-    borderRadius: 18,
-    textAlign: 'center',
-    // TODO 글씨 길이에 따라 width가 달라지게 하기
-    width: PixelRatio.getPixelSizeForLayoutSize(30),
+    height: 27,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    color: colors.titleBlack,
+    fontSize: 12,
+    letterSpacing: -0.24,
+    fontFamily: 'Montserrat-Medium',
   },
 });
 

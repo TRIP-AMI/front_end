@@ -16,15 +16,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   score: {
-    fontSize: 16,
     color: colors.main,
+    fontSize: 18,
     fontFamily: 'Montserrat-Bold',
-    marginBottom: 3,
+    letterSpacing: -0.36,
+    marginBottom: 1,
   },
   title: {
+    color: colors.contentLine,
     fontSize: 12,
-    color: colors.moreGray,
-    fontFamily: 'Montserrat-Regular',
+    fontFamily: 'Montserrat-Medium',
+    letterSpacing: -0.24,
   },
 });
 

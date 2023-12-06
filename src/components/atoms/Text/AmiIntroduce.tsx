@@ -1,18 +1,18 @@
 import { ReactNode } from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View } from 'react-native';
 import Spacing from '@styles/spacing';
+import colors from '@styles/colors';
 
 function AmiIntroduce({
   children,
-  style,
 }: {
   children: ReactNode;
-  // eslint-disable-next-line react/require-default-props
+  // eslint-disable-next-line react/no-unused-prop-types,react/require-default-props
   style?: StyleProp<TextStyle> | undefined;
 }) {
   return (
     <View style={styles.container}>
-      <Text style={[styles.text, style]}>{children}</Text>
+      <Text style={styles.text}>{children}</Text>
     </View>
   );
 }
@@ -20,11 +20,12 @@ function AmiIntroduce({
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: Spacing.IOS392Margin,
-    marginTop: 10,
   },
   text: {
-    fontSize: 15,
+    color: colors.subtitle,
+    fontSize: 16,
     fontFamily: 'Montserrat-Regular',
+    letterSpacing: -0.32,
   },
 });
 

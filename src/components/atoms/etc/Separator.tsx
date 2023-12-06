@@ -1,11 +1,18 @@
 import { View } from 'react-native';
-import colors from '@styles/colors';
 
-function Separator({ hei, marginVer }: { hei: number; marginVer: number }) {
+function Separator({
+  color,
+  hei,
+  marginVer,
+}: {
+  color: string;
+  hei: number;
+  marginVer: number;
+}) {
   return (
     <View
       style={{
-        backgroundColor: colors.blank,
+        backgroundColor: color,
         height: hei,
         marginVertical: marginVer,
       }}

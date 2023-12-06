@@ -7,9 +7,7 @@ function HashTagList({ data }: { data: string[] }) {
     <View style={styles.container}>
       <FlatList
         data={data}
-        renderItem={({ item }) => (
-          <HashTag style={styles.hashTag}>#{item}</HashTag>
-        )}
+        renderItem={({ item }) => <HashTag>#{item}</HashTag>}
         horizontal
       />
     </View>
@@ -20,11 +18,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginLeft: Spacing.IOS392Margin,
-  },
-  hashTag: {
-    fontSize: 12,
-    fontFamily: 'Montserrat-Regular',
-    marginBottom: 13,
   },
 });
 

@@ -8,7 +8,7 @@ function VerticalLine({ style }: { style?: StyleProp<TextStyle> | undefined }) {
 
 const styles = StyleSheet.create({
   verticalLine: {
-    height: '35%',
+    height: 22,
     width: 1,
     backgroundColor: colors.lineGray,
   },

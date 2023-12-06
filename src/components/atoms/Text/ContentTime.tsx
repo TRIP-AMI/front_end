@@ -17,13 +17,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: Spacing.IOS392Margin,
-    marginBottom: 3,
+    marginBottom: 5,
   },
   time: {
     color: colors.main,
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: 'Montserrat-Medium',
-    marginLeft: 5,
+    marginLeft: 9.13,
+    letterSpacing: -0.32,
   },
 });
 

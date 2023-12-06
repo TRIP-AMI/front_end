@@ -31,12 +31,12 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginHorizontal: Spacing.IOS392Margin,
-    marginVertical: 10,
-    height: 70,
+    height: 72,
     borderRadius: 5,
     borderColor: colors.lineGray,
     borderWidth: 1,
+    marginHorizontal: Spacing.IOS392Margin,
+    marginBottom: 20,
   },
 });
 
