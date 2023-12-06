@@ -1,6 +1,7 @@
 import { useState, Dispatch, SetStateAction } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { View, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/styles/colors';
 
 export default function SelectBox({
@@ -26,6 +27,13 @@ export default function SelectBox({
         open={selectOpen}
         value={selectedDate}
         items={items}
+        showTickIcon={false}
+        ArrowUpIconComponent={() => (
+          <Ionicons name='chevron-up' size={20} color={Colors.fontGray01} />
+        )}
+        ArrowDownIconComponent={() => (
+          <Ionicons name='chevron-down' size={20} color={Colors.fontGray01} />
+        )}
         setOpen={setSelectOpen}
         setValue={setSelectedDate}
         setItems={setItems}
@@ -36,7 +44,7 @@ export default function SelectBox({
         dropDownContainerStyle={styles.dropDownContainer}
         containerStyle={{ flex: 1 }}
         listItemContainerStyle={styles.listContainer}
-        listItemLabelStyle={{ color: 'black' }}
+        listItemLabelStyle={{ color: Colors.titleBlack }}
       />
     </View>
   );
@@ -44,25 +52,27 @@ export default function SelectBox({
 
 const styles = StyleSheet.create({
   pickerClosed: {
-    marginHorizontal: '7.5%',
-    width: '85%',
+    marginHorizontal: '6%',
+    height: 40,
+    width: '88%',
     borderColor: Colors.lineGray01,
   },
   pickerOpened: {
-    marginHorizontal: '7.5%',
-    width: '85%',
+    marginHorizontal: '6%',
+    height: 40,
+    width: '88%',
     borderColor: Colors.main,
   },
   dropDownContainer: {
-    flex: 1,
-    marginHorizontal: '7.5%',
-    width: '85%',
-    borderRadius: 10,
+    height: 200,
+    marginHorizontal: '6%',
+    width: '88%',
+    borderRadius: 5,
     borderColor: Colors.main,
-    // borderTopColor: 'transparent', => 적용 시 양 옆 라인 끊어져보이는 문제
+    borderTopColor: 'transparent', // => 적용 시 양 옆 라인 끊어져보이는 문제
   },
   listContainer: {
-    height: 35,
+    flex: 1,
     justifyContent: 'center',
     borderTopWidth: 0.5,
     borderColor: Colors.lineGray01,
@@ -71,10 +81,5 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     color: Colors.fontGray01,
-  },
-  modalTitle: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: 16,
-    paddingVertical: 10,
   },
 });

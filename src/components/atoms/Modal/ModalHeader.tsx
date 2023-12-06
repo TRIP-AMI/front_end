@@ -16,6 +16,7 @@ export function ModalHeaderWithTitle({
     <View style={styles.container}>
       <IconButton icon={icon} size={24} color='black' onPress={onClose} />
       <Text style={styles.title}>{title}</Text>
+      <View style={styles.empty} />
     </View>
   );
 }
@@ -42,12 +43,18 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: '7.5%',
+    paddingHorizontal: '6%',
+    justifyContent: 'flex-start',
   },
   title: {
     flex: 1,
     fontFamily: 'Montserrat-Medium',
-    fontSize: 18,
-    marginHorizontal: '21%',
+    fontSize: 16,
+    letterSpacing: -0.48,
+    color: Colors.modalTitle,
+    textAlign: 'center',
+  },
+  empty: {
+    width: 24,
   },
 });

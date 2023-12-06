@@ -15,6 +15,7 @@ const Colors = {
   footerLight: '#808080',
   fontGray01: '#8E8E8E',
   lineGray01: '#ECECEC',
+  modalTitle: '#1E1E20',
 };
 
 export default Colors;
