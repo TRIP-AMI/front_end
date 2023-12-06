@@ -1,9 +1,9 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { IconButton } from '@components/atoms/IconButton/IconButton';
 import StyledText from '@components/atoms/Text/StyledText';
 import Colors from '@/styles/colors';
-import CountBox from '@/components/molecules/etc/CountBox';
+// import CountBox from '@/components/molecules/etc/CountBox';
 
 export default function SelectedOptionCard({
   selectedItem,
@@ -18,11 +18,11 @@ export default function SelectedOptionCard({
   price: number;
   setPrice: Dispatch<SetStateAction<number>>;
 }) {
-  const [count, setCount] = useState(1);
+  // const [count, setCount] = useState(1);
 
-  useEffect(() => {
-    setPrice(150000 * count);
-  }, [count, setPrice]);
+  // useEffect(() => {
+  //   setPrice(150000 * count);
+  // }, [count, setPrice]);
 
   const onClose = () => {
     setSelectedItem('');
@@ -40,16 +40,16 @@ export default function SelectedOptionCard({
         />
         <IconButton
           icon='close-outline'
-          size={24}
+          size={20}
           color={Colors.fontGray01}
           onPress={onClose}
         />
       </View>
       <View style={styles.content}>
-        <CountBox count={count} setCount={setCount} />
+        {/* <CountBox count={count} setCount={setCount} /> */}
         <View style={{ flex: 2, alignItems: 'flex-end' }}>
           <StyledText
-            content={`${price.toLocaleString()} won`}
+            content={price > 0 ? `${price.toLocaleString()} won` : 'Free'}
             color='black'
             size={14}
             font='Montserrat-Medium'
@@ -63,9 +63,10 @@ export default function SelectedOptionCard({
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: '#F2F2F2',
-    width: '85%',
-    height: '50%',
-    padding: 10,
+    width: '88%',
+    height: 80,
+    paddingHorizontal: 15,
+    paddingVertical: 14,
   },
   header: {
     flex: 1,

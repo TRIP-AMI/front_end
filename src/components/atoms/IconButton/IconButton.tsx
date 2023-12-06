@@ -1,4 +1,4 @@
-import { Pressable, View, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 
 type IconButtonProps = {
@@ -14,9 +14,7 @@ export function IconButton({ icon, size, color, onPress }: IconButtonProps) {
       onPress={onPress}
       style={({ pressed }) => pressed && styles.pressed}
     >
-      <View style={styles.buttonContainer}>
-        <Ionicons name={icon} color={color} size={size} />
-      </View>
+      <Ionicons name={icon} color={color} size={size} />
     </Pressable>
   );
 }
@@ -39,16 +37,11 @@ export function SimpleLineIconButton({
       onPress={onPress}
       style={({ pressed }) => pressed && styles.pressed}
     >
-      <View style={styles.buttonContainer}>
-        <SimpleLineIcons name={icon} color={color} size={size} />
-      </View>
+      <SimpleLineIcons name={icon} color={color} size={size} />
     </Pressable>
   );
 }
 const styles = StyleSheet.create({
-  buttonContainer: {
-    padding: 4,
-  },
   pressed: {
     opacity: 0.5,
   },
