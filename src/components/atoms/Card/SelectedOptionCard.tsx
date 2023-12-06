@@ -8,15 +8,14 @@ import Colors from '@/styles/colors';
 export default function SelectedOptionCard({
   selectedItem,
   setSelectedItem,
-  originalPrice,
-  price,
-  setPrice,
+  // originalPrice,
+  price, // setPrice,
 }: {
   selectedItem: string;
   setSelectedItem: Dispatch<SetStateAction<string>>;
-  originalPrice: number;
+  // originalPrice: number;
   price: number;
-  setPrice: Dispatch<SetStateAction<number>>;
+  // setPrice: Dispatch<SetStateAction<number>>;
 }) {
   // const [count, setCount] = useState(1);
 
@@ -26,7 +25,7 @@ export default function SelectedOptionCard({
 
   const onClose = () => {
     setSelectedItem('');
-    setPrice(originalPrice); // 기본 가격으로 초기화
+    // setPrice(originalPrice); // 기본 가격으로 초기화
   };
 
   return (
