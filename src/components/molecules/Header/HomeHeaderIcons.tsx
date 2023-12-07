@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
 // import { useNavigation } from '@react-navigation/native';
-import { IconButton } from '@components/atoms/IconButton/IconButton';
 import { useState } from 'react';
+import { IconButton } from '@/components/atoms/Button/IconButton';
 // import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 
