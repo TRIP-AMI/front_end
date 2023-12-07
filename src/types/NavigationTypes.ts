@@ -8,6 +8,7 @@ export type RootStackParamList = {
   FAQ: undefined;
   Contact: undefined;
   Search: undefined;
+  Content: undefined;
 };
 
 export type BottomTabParamList = {

@@ -1,4 +1,5 @@
 import { View, StyleSheet, Pressable, Image } from 'react-native';
+import ContentScreen from '@screens/ContentScreen';
 
 export type SectionItemProps = {
   id: number;
@@ -9,7 +10,7 @@ export type SectionItemProps = {
 export default function SectionItem({ item }: { item: SectionItemProps }) {
   return (
     <View style={styles.imgContainer}>
-      <Pressable onPress={() => console.log(item.title)}>
+      <Pressable onPress={() => ContentScreen}>
         <Image
           source={{ uri: item.imgUrl }}
           resizeMode='cover'

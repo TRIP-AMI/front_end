@@ -1,9 +1,9 @@
 import instance, { BASE_API_URL } from '@/services/config/axios';
 
-const getBanner = () => {
-  const url = `${BASE_API_URL}/banner`;
+const getPlanList = () => {
+  const url = `${BASE_API_URL}/plan`;
   const method = 'GET';
   return instance({ url, method });
 };
 
-export default { getBanner };
+export default { getPlanList };
