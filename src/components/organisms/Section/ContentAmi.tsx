@@ -57,6 +57,7 @@ const dummyIntroduce =
   '\n' +
   'Contact: tripamics@trimami.co.kr';
 
+// TODO Image와 이름 묶어서 컴포넌트 만들기
 function ContentAmi() {
   const dummyProfile = dummyData[0];
   return (

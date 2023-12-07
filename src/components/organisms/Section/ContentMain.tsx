@@ -1,4 +1,3 @@
-import ContentBannerCarousel from '@components/molecules/Banner/ContentBannerCarousel';
 import DdayBadge from '@components/atoms/Tag/DdayBadge';
 import ContentTitles from '@components/molecules/Text/ContentTitles';
 import HashTagList from '@components/molecules/etc/HashTagList';
@@ -11,7 +10,6 @@ function ContentMain() {
   const dummyData = ['Itaewon', 'Seoul', 'Korea'];
   return (
     <>
-      <ContentBannerCarousel />
       <DdayBadge />
       <ContentTitles
         title="Jenny's Seoul tour"
