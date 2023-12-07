@@ -9,11 +9,11 @@ const fetchFonts = async () => {
     'Pretendard-Medium': require('./assets/fonts/pretendard/Pretendard-Medium.ttf'),
     'Pretendard-Bold': require('./assets/fonts/pretendard/Pretendard-Bold.ttf'),
     'Pretendard-ExtraBold': require('./assets/fonts/pretendard/Pretendard-ExtraBold.ttf'),
-    // TODO: 파일 자체 문제인지 확인 필요
-    // 'Mortend-Bold': require('./assets/fonts/mortend/Mortend-Bold.ttf'),
+    'Mortend-Bold': require('./assets/fonts/mortend/Mortend-Bold.ttf'),
     'Montserrat-Regular': require('./assets/fonts/montserrat/Montserrat-Regular.ttf'),
     'Montserrat-Medium': require('./assets/fonts/montserrat/Montserrat-Medium.ttf'),
     'Montserrat-Bold': require('./assets/fonts/montserrat/Montserrat-Bold.ttf'),
+    'Montserrat-SemiBold': require('./assets/fonts/montserrat/Montserrat-SemiBold.ttf'),
     'Montserrat-ExtraBold': require('./assets/fonts/montserrat/Montserrat-ExtraBold.ttf'),
   });
 };

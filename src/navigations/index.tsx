@@ -7,6 +7,9 @@ import NotificationScreen from '@screens/menu/NotificationScreen';
 import FAQScreen from '@screens/menu/FAQScreen';
 import ContactScreen from '@screens/menu/ContactScreen';
 import SearchScreen from '@screens/SearchScreen';
+import ContentScreen from '@screens/ContentScreen';
+import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderRightIcons';
+import ContentHeaderLeftIcon from '@components/molecules/Header/ContentHeaderLeftIcon';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
 
@@ -39,6 +42,15 @@ function Navigation() {
         <Stack.Screen name='FAQ' component={FAQScreen} />
         <Stack.Screen name='Contact' component={ContactScreen} />
         <Stack.Screen name='Search' component={SearchScreen} />
+        <Stack.Screen
+          name='Content'
+          component={ContentScreen}
+          options={{
+            title: '',
+            headerRight: () => <ContentHeaderRightIcons />,
+            headerLeft: () => <ContentHeaderLeftIcon />,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
