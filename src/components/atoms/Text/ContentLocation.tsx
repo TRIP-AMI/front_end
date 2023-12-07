@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, TextStyle, StyleProp } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
-import Spacing from '@styles/spacing';
 import colors from '@styles/colors';
+import Spacing from '@styles/spacing';
 
 function ContentLocation({
   location,
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: Spacing.IOS392Margin,
     marginBottom: 3,
+    marginLeft: Spacing.IOS392Margin,
   },
   location: {
     color: colors.subtitle,

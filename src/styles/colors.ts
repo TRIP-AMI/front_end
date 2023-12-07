@@ -11,6 +11,7 @@ const Colors = {
   blank: '#EEEEEE',
   blankMoreGray: '#F5F5F5',
   contentLine: '#8E8E8E',
+  skyBlue: '#EEF8FE',
   likeBlank: '#CBCBCBE3',
   footerBackground: '#404040',
   footerText: '#B9B9B9',

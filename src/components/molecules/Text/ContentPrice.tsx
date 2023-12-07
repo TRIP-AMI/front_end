@@ -5,7 +5,7 @@ import colors from '@styles/colors';
 
 function ContentTitles({ price, option }: { price: string; option: string }) {
   return (
-    <View>
+    <View style={{ marginHorizontal: Spacing.IOS392Margin }}>
       <TextTitle style={styles.title}>{price}</TextTitle>
       <TextTitle style={styles.subtitle}>{option}</TextTitle>
     </View>
@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,
-    marginLeft: Spacing.IOS392Margin,
     marginBottom: 1,
   },
   subtitle: {
@@ -26,7 +25,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Montserrat-Regular',
     letterSpacing: -0.28,
-    marginLeft: Spacing.IOS392Margin,
   },
 });
 

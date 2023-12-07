@@ -11,7 +11,7 @@ function ContentTitles({
   subtitle: string;
 }) {
   return (
-    <View>
+    <View style={{ marginHorizontal: Spacing.IOS392Margin }}>
       <TextTitle style={styles.title}>{title}</TextTitle>
       <TextTitle style={styles.subtitle}>{subtitle}</TextTitle>
     </View>
@@ -21,7 +21,6 @@ function ContentTitles({
 const styles = StyleSheet.create({
   title: {
     color: '#000000',
-    marginLeft: Spacing.IOS392Margin,
     fontSize: 20,
     fontFamily: 'Montserrat-Bold',
     marginBottom: 3,
@@ -29,7 +28,6 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: colors.subtitle,
-    marginLeft: Spacing.IOS392Margin,
     fontSize: 16,
     fontFamily: 'Montserrat-Regular',
     marginBottom: 10,
