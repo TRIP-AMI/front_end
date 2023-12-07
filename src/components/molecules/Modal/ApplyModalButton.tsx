@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    borderTopColor: Colors.lineGray01,
+    borderTopColor: Colors.lineGray,
     borderTopWidth: 1,
   },
   priceTag: {

@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '6%',
     height: 40,
     width: '88%',
-    borderColor: Colors.lineGray01,
+    borderColor: Colors.lineGray,
   },
   pickerOpened: {
     marginHorizontal: '6%',
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     borderTopWidth: 0.5,
-    borderColor: Colors.lineGray01,
+    borderColor: Colors.lineGray,
   },
   itemText: {
     fontFamily: 'Montserrat-Medium',
