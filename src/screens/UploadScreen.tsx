@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import Spacing from '@/styles/spacing';
-import PlanItemList from '@/components/organisms/Section/PlanItemList';
 
-export default function PlanScreen() {
+export default function UploadScreen() {
   return (
     <View style={styles.container}>
       <StatusBar style='auto' />
-      <PlanItemList />
+      <View>
+        <Text>temp</Text>
+      </View>
     </View>
   );
 }

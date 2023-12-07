@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import LikeItemList from '@/components/organisms/Section/LikeItemList';
+import Spacing from '@/styles/spacing';
 
 export default function LikeScreen() {
   return (
     <View style={styles.container}>
-      <Text>찜 목록</Text>
       <StatusBar style='auto' />
+      <LikeItemList />
     </View>
   );
 }
@@ -14,7 +16,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: Spacing.IOS392Margin,
   },
 });

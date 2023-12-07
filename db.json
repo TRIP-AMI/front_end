@@ -70,5 +70,43 @@
       "planTitle": "Itaewon Tour",
       "planSubTitle": "Restaurant - Cafe - Photo"
     }
+  ],
+  "like": [
+    {
+      "likeId": "1",
+      "likeImg": "https://via.placeholder.com/450x450/ECECEC",
+      "likeTitle": "Itaewon Tour",
+      "likeSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "likeId": "12",
+      "likeImg": "https://via.placeholder.com/450x450/ECECEC",
+      "likeTitle": "Itaewon Tour",
+      "likeSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "likeId": "123",
+      "likeImg": "https://via.placeholder.com/450x450/ECECEC",
+      "likeTitle": "Itaewon Tour",
+      "likeSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "likeId": "1234",
+      "likeImg": "https://via.placeholder.com/450x450/ECECEC",
+      "likeTitle": "Itaewon Tour",
+      "likeSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "likeId": "12345",
+      "likeImg": "https://via.placeholder.com/450x450/ECECEC",
+      "likeTitle": "Itaewon Tour",
+      "likeSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "likeId": "123456",
+      "likeImg": "https://via.placeholder.com/450x450/ECECEC",
+      "likeTitle": "Itaewon Tour",
+      "likeSubTitle": "Restaurant - Cafe - Photo"
+    }
   ]
 }
