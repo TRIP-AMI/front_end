@@ -15,8 +15,8 @@ export type BottomTabParamList = {
   Menu: undefined;
   Like: undefined;
   Home: undefined;
+  Upload: undefined;
   MyPage: undefined;
-  Plan: undefined;
 };
 
 export type RootStackNavigationProp =

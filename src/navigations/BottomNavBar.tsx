@@ -1,12 +1,12 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '@screens/HomeScreen';
 import MyPageScreen from '@screens/MyPageScreen';
-import PlanScreen from '@screens/PlanScreen';
 import LikeScreen from '@screens/LikeScreen';
 import MenuScreen from '@screens/MenuScreen';
 import Colors from '@styles/colors';
 import HomeHeaderIcons from '@components/molecules/Header/HomeHeaderIcons';
+import UploadScreen from '@screens/UploadScreen';
 import { BottomTabParamList } from '@/types/NavigationTypes';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
@@ -57,6 +57,16 @@ export default function BottomNavBar() {
         }}
       />
       <Tab.Screen
+        name='Upload'
+        component={UploadScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='pluscircleo' color={color} size={26} />
+          ),
+          title: 'UPLOAD',
+        }}
+      />
+      <Tab.Screen
         name='MyPage'
         component={MyPageScreen}
         options={{
@@ -64,17 +74,6 @@ export default function BottomNavBar() {
           tabBarIcon: ({ color }) => (
             <Ionicons name='person' color={color} size={26} />
           ),
-        }}
-      />
-      <Tab.Screen
-        name='Plan'
-        component={PlanScreen}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name='clipboard' color={color} size={26} />
-          ),
-          headerRight: () => <HomeHeaderIcons />,
-          title: 'PLAN',
         }}
       />
     </Tab.Navigator>
