@@ -21,7 +21,7 @@
     "web": "expo start --web",
     "lint": "eslint .",
     "prepare": "husky install",
-    "stdb": "json-server --host 10.19.201.109 --watch db.json -p 9999"
+    "stdb": "json-server --watch db.json -p 9999"
   },
   "dependencies": {
     "@ant-design/icons-react-native": "^2.3.2",
