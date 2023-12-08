@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
-import { IconButton } from '@components/atoms/IconButton/IconButton';
+import { IconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 import useModalHook from '@/hooks/modalHook';
