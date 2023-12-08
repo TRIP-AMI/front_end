@@ -1,3 +1,4 @@
+import { Text } from 'react-native';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '@screens/HomeScreen';
@@ -7,6 +8,7 @@ import MenuScreen from '@screens/MenuScreen';
 import Colors from '@styles/colors';
 import HomeHeaderIcons from '@components/molecules/Header/HomeHeaderIcons';
 import UploadScreen from '@screens/UploadScreen';
+import SettingIcon from '@components/molecules/etc/SettingIcon';
 import { BottomTabParamList } from '@/types/NavigationTypes';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
@@ -70,10 +72,17 @@ export default function BottomNavBar() {
         name='MyPage'
         component={MyPageScreen}
         options={{
-          title: 'MY',
+          title: 'My',
           tabBarIcon: ({ color }) => (
             <Ionicons name='person' color={color} size={26} />
           ),
+          headerRight: () => <SettingIcon />,
+          // TODO 전환버튼 추가
+          headerLeft: () => <Text>{'Tourist <=> Ami 전환 버튼'}</Text>,
+          headerTitle: '',
+          headerStyle: {
+            shadowColor: 'transparent',
+          },
         }}
       />
     </Tab.Navigator>
