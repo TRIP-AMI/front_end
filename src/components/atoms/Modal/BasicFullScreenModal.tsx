@@ -1,16 +1,19 @@
-import { Modal, View, Pressable, SafeAreaView } from 'react-native';
+import { Modal, View, Pressable, SafeAreaView, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Spacing from '@styles/spacing';
 import { ReactNode } from 'react';
+import ModalTitle from '@/components/atoms/Text/ModalTitle';
 
 function BasicFullScreenModal({
   children,
   isVisible,
   onClose,
+  modalTitle,
 }: {
   children: ReactNode;
   isVisible: boolean;
   onClose: () => void;
+  modalTitle?: string;
 }) {
   return (
     <Modal
@@ -23,13 +26,19 @@ function BasicFullScreenModal({
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'flex-end',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             paddingVertical: 15,
             paddingHorizontal: Spacing.IOS392Margin,
           }}
         >
+          {/* title */}
+          {!modalTitle && <Text />}
+          {modalTitle && <ModalTitle>{modalTitle}</ModalTitle>}
+
+          {/* close icon */}
           <Pressable onPress={onClose}>
-            <AntDesign name='close' size={24} color='black' />
+            <AntDesign name='close' size={22} color='black' />
           </Pressable>
         </View>
         <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>

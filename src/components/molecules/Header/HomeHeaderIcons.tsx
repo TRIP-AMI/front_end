@@ -1,22 +1,22 @@
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
-// import { useNavigation } from '@react-navigation/native';
 import { IconButton } from '@components/atoms/IconButton/IconButton';
-import { useState } from 'react';
-// import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
+import useModalHook from '@/hooks/modalHook';
+import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
 
 export default function HomeHeaderIcons() {
-  // const navigation = useNavigation<RootStackNavigationProp>();
+  const {
+    isVisible: searchModalVisible,
+    onOpen: searchModalOpen,
+    onClose: searchModalClose,
+  } = useModalHook();
 
-  const [isVisible, setIsVisible] = useState(false);
-
-  const onOpen = () => {
-    setIsVisible(true);
-  };
-  const onClose = () => {
-    setIsVisible(false);
-  };
+  const {
+    isVisible: notifcationModalVisible,
+    onOpen: notifcationModalOpen,
+    onClose: notifcationModalClose,
+  } = useModalHook();
 
   return (
     <View style={styles.container}>
@@ -25,19 +25,25 @@ export default function HomeHeaderIcons() {
           icon='search'
           size={24}
           color='black'
-          // onPress={() => navigation.navigate('Search')}
-          onPress={onOpen}
+          onPress={searchModalOpen}
         />
-        <SearchModal isVisible={isVisible} onClose={onClose} />
+        <SearchModal
+          isVisible={searchModalVisible}
+          onClose={searchModalClose}
+        />
       </View>
       <View>
         <IconButton
           icon='notifications-outline'
           size={24}
           color='black'
-          onPress={() => {}}
+          onPress={notifcationModalOpen}
         />
         <Badge size={7} visible style={styles.badge} />
+        <NotifcationModal
+          isVisible={notifcationModalVisible}
+          onClose={notifcationModalClose}
+        />
       </View>
 
       {
