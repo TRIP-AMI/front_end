@@ -5,7 +5,7 @@ import Spacing from '@styles/spacing';
 import AmiScoreTable from '@components/molecules/Text/AmiScoreTable';
 import AmiIntroduce from '@components/atoms/Text/AmiIntroduce';
 import Separator from '@components/atoms/etc/Separator';
-import MyProfile from '@components/molecules/Item/MyProfile';
+import AmiProfile from '@components/molecules/Item/AmiProfile';
 
 const dummyData = [
   {
@@ -63,7 +63,7 @@ function ContentAmi() {
   return (
     <>
       <TextTitle style={styles.title}>Introduce AMI</TextTitle>
-      <MyProfile imgUrl={dummyProfile.imgUrl} name={dummyProfile.name} />
+      <AmiProfile imgUrl={dummyProfile.imgUrl} name={dummyProfile.name} />
       {dummyAmiData.map((score) => (
         <AmiScoreTable key={score.title} scores={score} />
       ))}
