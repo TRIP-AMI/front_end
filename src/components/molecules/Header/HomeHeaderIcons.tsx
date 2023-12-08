@@ -1,22 +1,26 @@
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
-// import { useNavigation } from '@react-navigation/native';
+import { IconButton } from '@components/atoms/IconButton/IconButton';
 import { useState } from 'react';
-import { IconButton } from '@/components/atoms/Button/IconButton';
-// import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
+import useModalHook from '@/hooks/modalHook';
+import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
 
 export default function HomeHeaderIcons() {
-  // const navigation = useNavigation<RootStackNavigationProp>();
+  const {
+    isVisible: searchModalVisible,
+    onOpen: searchModalOpen,
+    onClose: searchModalClose,
+  } = useModalHook();
 
-  const [isVisible, setIsVisible] = useState(false);
+  const {
+    isVisible: notifcationModalVisible,
+    onOpen: notifcationModalOpen,
+    onClose: notifcationModalClose,
+  } = useModalHook();
 
-  const onOpen = () => {
-    setIsVisible(true);
-  };
-  const onClose = () => {
-    setIsVisible(false);
-  };
+  const [alarmCount] = useState(1);
+  const alarmBadgeShow = alarmCount > 0;
 
   return (
     <View style={styles.container}>
@@ -25,19 +29,25 @@ export default function HomeHeaderIcons() {
           icon='search'
           size={24}
           color='black'
-          // onPress={() => navigation.navigate('Search')}
-          onPress={onOpen}
+          onPress={searchModalOpen}
         />
-        <SearchModal isVisible={isVisible} onClose={onClose} />
+        <SearchModal
+          isVisible={searchModalVisible}
+          onClose={searchModalClose}
+        />
       </View>
       <View>
         <IconButton
           icon='notifications-outline'
           size={24}
           color='black'
-          onPress={() => {}}
+          onPress={notifcationModalOpen}
         />
-        <Badge size={7} visible style={styles.badge} />
+        <Badge size={7} visible={alarmBadgeShow} style={styles.badge} />
+        <NotifcationModal
+          isVisible={notifcationModalVisible}
+          onClose={notifcationModalClose}
+        />
       </View>
 
       {
