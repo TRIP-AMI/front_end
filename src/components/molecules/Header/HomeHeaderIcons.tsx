@@ -1,6 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
 import { IconButton } from '@components/atoms/IconButton/IconButton';
+import { useState } from 'react';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 import useModalHook from '@/hooks/modalHook';
 import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
@@ -17,6 +18,9 @@ export default function HomeHeaderIcons() {
     onOpen: notifcationModalOpen,
     onClose: notifcationModalClose,
   } = useModalHook();
+
+  const [alarmCount] = useState(1);
+  const alarmBadgeShow = alarmCount > 0;
 
   return (
     <View style={styles.container}>
@@ -39,7 +43,7 @@ export default function HomeHeaderIcons() {
           color='black'
           onPress={notifcationModalOpen}
         />
-        <Badge size={7} visible style={styles.badge} />
+        <Badge size={7} visible={alarmBadgeShow} style={styles.badge} />
         <NotifcationModal
           isVisible={notifcationModalVisible}
           onClose={notifcationModalClose}
