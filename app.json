@@ -37,6 +37,7 @@
       "Montserrat-Regular": "./assets/fonts/montserrat/Montserrat-Regular.ttf",
       "Montserrat-Medium": "./assets/fonts/montserrat/Montserrat-Medium.ttf",
       "Montserrat-Bold": "./assets/fonts/montserrat/Montserrat-Bold.ttf",
+      "Montserrat-SemiBold": "./assets/fonts/montserrat/Montserrat-SemiBold.ttf",
       "Montserrat-ExtraBold": "./assets/fonts/montserrat/Montserrat-ExtraBold.ttf"
     }
   }

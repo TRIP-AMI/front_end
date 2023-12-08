@@ -5,6 +5,7 @@ import ContentAmi from '@components/organisms/Section/ContentAmi';
 import ContentProgram from '@components/organisms/Section/ContentProgram';
 import ContentBannerCarousel from '@components/molecules/Banner/ContentBannerCarousel';
 import ContentPayment from '@components/molecules/Section/ContentPayment';
+import StyledButton from '@/components/atoms/Button/StyledButton';
 
 export default function ContentScreen() {
   return (
@@ -16,6 +17,8 @@ export default function ContentScreen() {
         <ContentAmi />
         <ContentProgram />
         <ContentPayment />
+        {/* 테스트용 코드 */}
+        <StyledButton type='full' content='Apply' active onPress={() => {}} />
       </ScrollView>
     </SafeAreaView>
   );
