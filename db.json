@@ -108,5 +108,25 @@
       "likeTitle": "Itaewon Tour",
       "likeSubTitle": "Restaurant - Cafe - Photo"
     }
+  ],
+  "review": [
+    {
+      "reviewId": 1,
+      "reviewName": "Jenny",
+      "reviewImg": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg",
+      "reviewContent": "The view of Namsan Tower is so pretty. The location was great to go around."
+    },
+    {
+      "reviewId": 2,
+      "reviewName": "Jenny",
+      "reviewImg": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg",
+      "reviewContent": "The view of Namsan Tower is so pretty. The location was great to go around."
+    },
+    {
+      "reviewId": 3,
+      "reviewName": "Jenny",
+      "reviewImg": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg",
+      "reviewContent": "The view of Namsan Tower is so pretty. The location was great to go around."
+    }
   ]
 }
