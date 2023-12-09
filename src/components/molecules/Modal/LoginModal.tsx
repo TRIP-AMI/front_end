@@ -1,12 +1,12 @@
 import { useSetRecoilState } from 'recoil';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import modalState from '@/utils/recoil/modal';
-
 import BasicTwoButtonModal from '@/components/atoms/Modal/BasicTwoButtonsModal';
+import loginState from '@/utils/recoil/login';
 
 export default function LoginModal() {
   const setModal = useSetRecoilState(modalState);
+  const setIsLoggedIn = useSetRecoilState(loginState);
 
   const onClose = () => {
     setModal(null);
@@ -16,6 +16,7 @@ export default function LoginModal() {
   const onConfirm = () => {
     console.log('login');
     AsyncStorage.setItem('token', 'test');
+    setIsLoggedIn(true);
     setModal(null);
   };
 
