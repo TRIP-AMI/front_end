@@ -3,7 +3,6 @@ import Colors from '@/styles/colors';
 import TextTitle from '@/components/atoms/Text/TextTitle';
 
 type BasicButtonProps = {
-  // eslint-disable-next-line react/require-default-props
   content: string;
   // eslint-disable-next-line react/require-default-props
   round?: boolean;
@@ -46,9 +45,6 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.5,
-  },
-  small: {
-    backgroundColor: Colors.lineGray,
   },
   basicText: {
     fontFamily: 'Montserrat-SemiBold',
