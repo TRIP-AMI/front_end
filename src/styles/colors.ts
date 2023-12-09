@@ -17,6 +17,7 @@ const Colors = {
   footerText: '#B9B9B9',
   footerLight: '#808080',
   lineGray: '#ECECEC',
+  borderGray: '#C1C1C1',
   inactiveColor: '#727272',
   tabIndicator: '#2D2D2D',
 };
