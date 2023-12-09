@@ -1,5 +1,6 @@
-import { View, Image, StyleSheet, StyleProp, TextStyle } from 'react-native';
+import { View, StyleSheet, StyleProp, TextStyle } from 'react-native';
 import TextTitle from '@components/atoms/Text/TextTitle';
+import AmiImg from '@components/atoms/Image/AmiImg';
 
 function AmiProfile({
   imgUrl,
@@ -13,20 +14,13 @@ function AmiProfile({
 }) {
   return (
     <View style={[null, style]}>
-      <Image source={{ uri: imgUrl }} style={styles.image} />
+      <AmiImg imgUrl={imgUrl} />
       <TextTitle style={styles.name}>{name}</TextTitle>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  image: {
-    width: 107,
-    height: 107,
-    alignSelf: 'center',
-    borderRadius: 100,
-    marginBottom: 8,
-  },
   name: {
     color: '#000000',
     fontSize: 18,
