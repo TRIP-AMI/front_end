@@ -17,6 +17,8 @@ const Colors = {
   footerText: '#B9B9B9',
   footerLight: '#808080',
   lineGray: '#ECECEC',
+  inactiveColor: '#727272',
+  tabIndicator: '#2D2D2D',
 };
 
 export default Colors;
