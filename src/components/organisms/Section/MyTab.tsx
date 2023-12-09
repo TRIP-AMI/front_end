@@ -9,6 +9,7 @@ import {
 import { TabBar, TabView } from 'react-native-tab-view';
 import PostItemList from '@components/organisms/Section/PostItemList';
 import colors from '@styles/colors';
+import ReviewItemList from '@components/organisms/Section/ReviewItemList';
 
 type RouteType = {
   key: string;
@@ -21,7 +22,7 @@ const renderScene = ({ route }: { route: RouteType }) => {
     case 'post':
       return <PostItemList />;
     case 'review':
-      return <PostItemList />;
+      return <ReviewItemList />;
     default:
       return null;
   }
