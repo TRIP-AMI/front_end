@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
+import ButtonText from '@components/atoms/Text/ButtonText';
 import Colors from '@/styles/colors';
-import TextTitle from '@/components/atoms/Text/TextTitle';
 
 type BasicButtonProps = {
   content: string;
@@ -27,7 +27,7 @@ export default function BasicButton({
       ]}
       onPress={onPress}
     >
-      <TextTitle style={styles.basicText}>{content}</TextTitle>
+      <ButtonText content={content} color='#ffffff' />
     </Pressable>
   );
 }
@@ -45,13 +45,5 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.5,
-  },
-  basicText: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: 16,
-    lineHeight: 18,
-    textAlign: 'center',
-    color: '#ffffff',
-    paddingVertical: '3%',
   },
 });
