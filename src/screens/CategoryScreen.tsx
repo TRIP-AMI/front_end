@@ -1,5 +1,7 @@
 import { StyleSheet, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import HomeBannerCarousel from '@components/molecules/Banner/HomeBannerCarousel';
+import CategoryTagList from '@/components/molecules/Section/CategoryTagList';
+import CategoryProductList from '@/components/organisms/Section/CategoryProductList';
 
 export default function CategoryScreen() {
   return (
@@ -9,7 +11,9 @@ export default function CategoryScreen() {
         {/* banner */}
         <HomeBannerCarousel />
         {/* tag */}
+        <CategoryTagList />
         {/* list */}
+        <CategoryProductList />
       </ScrollView>
     </SafeAreaView>
   );
