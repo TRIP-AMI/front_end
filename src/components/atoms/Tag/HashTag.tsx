@@ -7,7 +7,6 @@ function HashTag({
   style,
 }: {
   children: ReactNode;
-  // eslint-disable-next-line react/require-default-props
   style?: StyleProp<TextStyle> | undefined;
 }) {
   return <Text style={[styles.tag, style]}>{children}</Text>;
@@ -15,8 +14,6 @@ function HashTag({
 
 const styles = StyleSheet.create({
   tag: {
-    marginBottom: 15,
-    marginRight: 5,
     borderRadius: 14,
     borderColor: '#CCCCCC',
     borderWidth: 1,
