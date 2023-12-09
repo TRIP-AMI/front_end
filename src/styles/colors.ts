@@ -20,6 +20,8 @@ const Colors = {
   borderGray: '#C1C1C1',
   inactiveColor: '#727272',
   tabIndicator: '#2D2D2D',
+  reviewBackColor: '#F2F2F2',
+  reviewContent: '#757575',
 };
 
 export default Colors;
