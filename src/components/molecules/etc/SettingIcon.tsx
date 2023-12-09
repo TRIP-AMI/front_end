@@ -1,5 +1,5 @@
 import { View, StyleSheet } from 'react-native';
-import { FeatherIconButton } from '@components/atoms/IconButton/IconButton';
+import { FeatherIconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 
