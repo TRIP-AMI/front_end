@@ -1,23 +1,35 @@
+import { useSetRecoilState } from 'recoil';
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
 import { IconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
-import SearchModal from '@/components/organisms/Modal/SearchModal';
-import useModalHook from '@/hooks/modalHook';
-import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
+// import SearchModal from '@/components/organisms/Modal/SearchModal';
+// import useModalHook from '@/hooks/modalHook';
+// import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
+import modalState from '@/utils/recoil/modal';
 
 export default function HomeHeaderIcons() {
-  const {
-    isVisible: searchModalVisible,
-    onOpen: searchModalOpen,
-    onClose: searchModalClose,
-  } = useModalHook();
+  const setModal = useSetRecoilState(modalState);
 
-  const {
-    isVisible: notifcationModalVisible,
-    onOpen: notifcationModalOpen,
-    onClose: notifcationModalClose,
-  } = useModalHook();
+  // const {
+  //   isVisible: searchModalVisible,
+  //   onOpen: searchModalOpen,
+  //   onClose: searchModalClose,
+  // } = useModalHook();
+
+  const onSearchPress = () => {
+    setModal({ modalName: 'SEARCH' });
+  };
+
+  const onNotiPress = () => {
+    setModal({ modalName: 'NOTIFICATION' });
+  };
+
+  // const {
+  //   isVisible: notifcationModalVisible,
+  //   onOpen: notifcationModalOpen,
+  //   onClose: notifcationModalClose,
+  // } = useModalHook();
 
   const [alarmCount] = useState(1);
   const alarmBadgeShow = alarmCount > 0;
@@ -29,25 +41,25 @@ export default function HomeHeaderIcons() {
           icon='search'
           size={24}
           color='black'
-          onPress={searchModalOpen}
+          onPress={onSearchPress}
         />
-        <SearchModal
+        {/* <SearchModal
           isVisible={searchModalVisible}
           onClose={searchModalClose}
-        />
+        /> */}
       </View>
       <View>
         <IconButton
           icon='notifications-outline'
           size={24}
           color='black'
-          onPress={notifcationModalOpen}
+          onPress={onNotiPress}
         />
         <Badge size={7} visible={alarmBadgeShow} style={styles.badge} />
-        <NotifcationModal
+        {/* <NotifcationModal
           isVisible={notifcationModalVisible}
           onClose={notifcationModalClose}
-        />
+        /> */}
       </View>
 
       {
