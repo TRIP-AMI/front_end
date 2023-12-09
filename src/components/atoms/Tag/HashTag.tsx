@@ -14,10 +14,11 @@ function HashTag({
 
 const styles = StyleSheet.create({
   tag: {
+    marginBottom: 15,
+    marginRight: 5,
     borderRadius: 14,
     borderColor: '#CCCCCC',
     borderWidth: 1,
-    height: 27,
     paddingVertical: 6,
     paddingHorizontal: 10,
     color: colors.titleBlack,

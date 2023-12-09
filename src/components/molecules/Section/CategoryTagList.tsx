@@ -1,5 +1,5 @@
 import { ScrollView } from 'react-native';
-import HashTag from '@/components/atoms/Tag/HashTag';
+import PressHashTag from '@/components/atoms/Tag/PressHashTag';
 import Spacing from '@/styles/spacing';
 
 const categoryTagList = [
@@ -18,9 +18,11 @@ function CategoryTagList() {
     >
       {categoryTagList.map((tag) => {
         return (
-          <HashTag key={tag.id} style={{ marginRight: 5 }}>
-            #{tag.label}
-          </HashTag>
+          <PressHashTag
+            key={tag.id}
+            label={`#${tag.label}`}
+            style={{ marginRight: 5 }}
+          />
         );
       })}
     </ScrollView>
