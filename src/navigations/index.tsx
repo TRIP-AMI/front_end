@@ -14,6 +14,8 @@ import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
 import CategoryScreen from '@/screens/CategoryScreen';
 import Colors from '@/styles/colors';
+import SearchNotificationRight from '@/components/molecules/Header/SearchNotificationRight';
+import BackLeft from '@/components/molecules/Header/BackLeft';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -57,6 +59,8 @@ function Navigation() {
               fontFamily: 'Montserrat-ExtraBold',
               fontSize: 20,
             },
+            headerLeft: () => <BackLeft theme='white' />,
+            headerRight: () => <SearchNotificationRight theme='white' />,
           })}
         />
         <Stack.Screen
