@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import DropToggle from '@/components/molecules/Toggle/DropToggle';
 
 const data = [
@@ -25,11 +25,17 @@ const data = [
 export default function FAQScreen() {
   return (
     <View style={styles.container}>
-      {data.map((item) => {
-        return (
-          <DropToggle key={item.id} title={item.title} content={item.content} />
-        );
-      })}
+      <FlatList
+        data={data}
+        renderItem={(item) => (
+          <DropToggle
+            key={item.item.id}
+            title={item.item.title}
+            content={item.item.content}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }
