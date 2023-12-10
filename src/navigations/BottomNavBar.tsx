@@ -8,6 +8,7 @@ import Colors from '@styles/colors';
 import HomeHeaderIcons from '@components/molecules/Header/HomeHeaderIcons';
 import UploadScreen from '@screens/UploadScreen';
 import { BottomTabParamList } from '@/types/NavigationTypes';
+import Fonts from '@/styles/typography';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -17,10 +18,7 @@ export default function BottomNavBar() {
       initialRouteName='Home'
       screenOptions={{
         tabBarActiveTintColor: Colors.main,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          fontSize: 24,
-        },
+        headerTitleStyle: Fonts.header.title,
         headerTitleAlign: 'left',
       }}
     >
@@ -53,6 +51,7 @@ export default function BottomNavBar() {
             <Ionicons name='home' color={color} size={26} />
           ),
           title: 'TRIPAMI',
+          headerTitleStyle: Fonts.header.logo,
           headerRight: () => <HomeHeaderIcons />,
         }}
       />
