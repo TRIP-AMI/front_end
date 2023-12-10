@@ -31,7 +31,13 @@ function SearchRecommeded() {
       <SearchTitle style={{ marginTop: 30 }}>Recommended keywords</SearchTitle>
       <View style={style.tagWrap}>
         {tagList.map((tag) => {
-          return <PressHashTag key={tag.id} label={tag.label} />;
+          return (
+            <PressHashTag
+              key={tag.id}
+              label={tag.label}
+              style={{ marginRight: 5 }}
+            />
+          );
         })}
       </View>
     </View>
