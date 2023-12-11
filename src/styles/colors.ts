@@ -17,7 +17,6 @@ const Colors = {
   lineGray02: '#F5F5F5',
   // etc.
   titleBlack: '#161616',
-  moreGray: '#77787A',
   contentLine: '#8E8E8E',
   likeBlank: '#CBCBCBE3',
   footerLight: '#808080',
