@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   score: {
-    color: Colors.main,
+    color: Colors.primary,
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,

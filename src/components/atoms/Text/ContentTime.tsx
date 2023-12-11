@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   time: {
-    color: Colors.main,
+    color: Colors.primary,
     fontSize: 16,
     fontFamily: 'Montserrat-Medium',
     marginLeft: 9.13,

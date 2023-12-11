@@ -19,7 +19,7 @@ function FooterInfo() {
         onPress={() => console.log('email')}
         style={({ pressed }) => pressed && styles.pressed}
       >
-        <FooterDefaultText style={{ color: Colors.main }}>
+        <FooterDefaultText style={{ color: Colors.primary }}>
           tripamics@gmail.com
         </FooterDefaultText>
       </Pressable>

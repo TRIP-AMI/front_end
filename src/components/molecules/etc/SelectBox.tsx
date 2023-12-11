@@ -61,14 +61,14 @@ const styles = StyleSheet.create({
     marginHorizontal: '6%',
     height: 40,
     width: '88%',
-    borderColor: Colors.main,
+    borderColor: Colors.primary,
   },
   dropDownContainer: {
     height: 200,
     marginHorizontal: '6%',
     width: '88%',
     borderRadius: 5,
-    borderColor: Colors.main,
+    borderColor: Colors.primary,
     borderTopColor: 'transparent', // => 적용 시 양 옆 라인 끊어져보이는 문제
   },
   listContainer: {
