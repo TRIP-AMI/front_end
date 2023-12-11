@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Text, StyleProp, StyleSheet, TextStyle } from 'react-native';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 
 function HashTag({
   children,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: 6,
     paddingHorizontal: 10,
-    color: colors.titleBlack,
+    color: Colors.titleBlack,
     fontSize: 12,
     letterSpacing: -0.24,
     fontFamily: 'Montserrat-Medium',

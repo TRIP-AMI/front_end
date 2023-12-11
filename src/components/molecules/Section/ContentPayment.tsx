@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import TextTitle from '@components/atoms/Text/TextTitle';
 import Spacing from '@styles/spacing';
 import Separator from '@components/atoms/etc/Separator';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 
 function ContentPayment() {
   return (
@@ -14,7 +14,7 @@ function ContentPayment() {
           to AMI the day of the trip
         </Text>
       </View>
-      <Separator color={colors.blankMoreGray} hei={8} marginVer={30} />
+      <Separator color={Colors.blankMoreGray} hei={8} marginVer={30} />
     </View>
   );
 }

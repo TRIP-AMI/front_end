@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View } from 'react-native';
 import Spacing from '@styles/spacing';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 
 function AmiIntroduce({
   children,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginHorizontal: Spacing.IOS392Margin,
   },
   text: {
-    color: colors.subtitle,
+    color: Colors.subtitle,
     fontSize: 16,
     fontFamily: 'Montserrat-Regular',
     letterSpacing: -0.32,
