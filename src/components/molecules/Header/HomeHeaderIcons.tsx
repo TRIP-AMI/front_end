@@ -29,7 +29,7 @@ export default function HomeHeaderIcons() {
           onPress={onSearchPress}
         />
       </View>
-      <View style={{ padding: 4 }}>
+      <View>
         <IconButton
           icon='notifications-outline'
           size={24}
@@ -41,7 +41,7 @@ export default function HomeHeaderIcons() {
 
       {
         // TODO: 추후에 추가될 예정
-        /* <View style={{ padding: 4 }}>
+        /* <View>
         <IconButton
           icon='globe-outline'
           size={24}
