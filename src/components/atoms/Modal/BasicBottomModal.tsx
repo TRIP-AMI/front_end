@@ -1,28 +1,23 @@
+import { useSetRecoilState } from 'recoil';
 import { Modal, View, Pressable, StyleSheet } from 'react-native';
 import { ReactNode } from 'react';
+import modalState from '@/utils/recoil/modal';
 
 export default function BasicBottomModal({
   children,
-  isVisible,
-  onClose,
   onDismiss,
   header,
 }: {
   children: ReactNode;
-  isVisible: boolean;
-  onClose: () => void;
   onDismiss: () => void;
   header: ReactNode;
 }) {
+  const setModal = useSetRecoilState(modalState);
+
   return (
-    <Modal
-      animationType='fade'
-      visible={isVisible}
-      onDismiss={onDismiss}
-      transparent
-    >
+    <Modal animationType='slide' onDismiss={onDismiss} transparent>
       <View style={styles.container}>
-        <Pressable style={{ flex: 1 }} onPress={onClose} />
+        <Pressable onPress={() => setModal(null)} style={styles.container} />
         <View style={styles.modalView}>
           <View style={styles.modalHeader}>{header}</View>
           <View style={styles.modalContent}>{children}</View>
@@ -37,7 +32,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalView: {
     borderRadius: 20,
