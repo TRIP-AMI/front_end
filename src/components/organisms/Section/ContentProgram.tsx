@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     marginLeft: Spacing.IOS392Margin,
   },
   location: {
-    color: Colors.subtitle,
+    color: Colors.fontGray02,
     fontSize: 16,
     fontFamily: 'Montserrat-Medium',
     marginLeft: 4.87,

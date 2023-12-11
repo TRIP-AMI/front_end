@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.4,
   },
   subtitle: {
-    color: Colors.subtitle,
+    color: Colors.fontGray02,
     fontSize: 16,
     fontFamily: 'Montserrat-Regular',
     marginBottom: 10,
