@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
 
-export default function PlanItemImg({
+export default function BasicProductItemImg({
   children,
   planUri,
 }: {

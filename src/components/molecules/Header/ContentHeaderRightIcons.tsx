@@ -3,7 +3,7 @@ import { Badge } from 'react-native-paper';
 import {
   FeatherIconButton,
   IconButton,
-} from '@components/atoms/IconButton/IconButton';
+} from '@/components/atoms/Button/IconButton';
 // import { useState } from 'react';
 // import SearchModal from '@/components/organisms/Modal/SearchModal';
 

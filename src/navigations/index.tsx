@@ -12,6 +12,11 @@ import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderR
 import ContentHeaderLeftIcon from '@components/molecules/Header/ContentHeaderLeftIcon';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
+import CategoryScreen from '@/screens/CategoryScreen';
+import Colors from '@/styles/colors';
+import SearchNotificationRight from '@/components/molecules/Header/SearchNotificationRight';
+import BackLeft from '@/components/molecules/Header/BackLeft';
+import Fonts from '@/styles/typography';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -39,9 +44,33 @@ function Navigation() {
           }}
         />
         <Stack.Screen name='Notification' component={NotificationScreen} />
-        <Stack.Screen name='FAQ' component={FAQScreen} />
+        <Stack.Screen
+          name='FAQ'
+          component={FAQScreen}
+          options={{
+            headerTitleStyle: Fonts.header.title,
+            headerLeft: () => <ContentHeaderLeftIcon />,
+          }}
+        />
         <Stack.Screen name='Contact' component={ContactScreen} />
         <Stack.Screen name='Search' component={SearchScreen} />
+        <Stack.Screen
+          name='Category'
+          component={CategoryScreen}
+          options={({ route }) => ({
+            title: route.params.title,
+            headerStyle: {
+              backgroundColor: Colors.main,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontFamily: 'Montserrat-ExtraBold',
+              fontSize: 20,
+            },
+            headerLeft: () => <BackLeft theme='white' />,
+            headerRight: () => <SearchNotificationRight theme='white' />,
+          })}
+        />
         <Stack.Screen
           name='Content'
           component={ContentScreen}

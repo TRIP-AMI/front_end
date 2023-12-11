@@ -1,33 +1,42 @@
+import { useSetRecoilState } from 'recoil';
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
-import { IconButton } from '@components/atoms/IconButton/IconButton';
+import { IconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
-import SearchModal from '@/components/organisms/Modal/SearchModal';
+import modalState from '@/utils/recoil/modal';
 
 export default function HomeHeaderIcons() {
-  const [isVisible, setIsVisible] = useState(false);
+  const setModal = useSetRecoilState(modalState);
 
-  const onOpen = () => {
-    setIsVisible(true);
+  const onSearchPress = () => {
+    setModal({ modalName: 'SEARCH' });
   };
-  const onClose = () => {
-    setIsVisible(false);
+
+  const onNotiPress = () => {
+    setModal({ modalName: 'NOTIFICATION' });
   };
+
+  const [alarmCount] = useState(1);
+  const alarmBadgeShow = alarmCount > 0;
 
   return (
     <View style={styles.container}>
-      <View style={{ padding: 4 }}>
-        <IconButton icon='search' size={24} color='black' onPress={onOpen} />
-        <SearchModal isVisible={isVisible} onClose={onClose} />
+      <View>
+        <IconButton
+          icon='search'
+          size={24}
+          color='black'
+          onPress={onSearchPress}
+        />
       </View>
       <View style={{ padding: 4 }}>
         <IconButton
           icon='notifications-outline'
           size={24}
           color='black'
-          onPress={() => {}}
+          onPress={onNotiPress}
         />
-        <Badge size={7} visible style={styles.badge} />
+        <Badge size={7} visible={alarmBadgeShow} style={styles.badge} />
       </View>
 
       {

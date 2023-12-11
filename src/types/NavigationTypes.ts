@@ -9,14 +9,15 @@ export type RootStackParamList = {
   Contact: undefined;
   Search: undefined;
   Content: undefined;
+  Category: { title: string };
 };
 
 export type BottomTabParamList = {
   Menu: undefined;
   Like: undefined;
   Home: undefined;
+  Upload: undefined;
   MyPage: undefined;
-  Plan: undefined;
 };
 
 export type RootStackNavigationProp =

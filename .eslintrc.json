@@ -18,12 +18,7 @@
   },
   "rules": {
     "import/no-unresolved": 0,
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".ts", ".tsx"]
-      }
-    ],
+    "import/extensions": ["error", "never"],
     "prettier/prettier": [
       "error",
       {
@@ -33,14 +28,22 @@
       }
     ],
     "global-require": 0,
-    "react/react-in-jsx-scope": "off",
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": "off",
-    "import/extensions": ["error", "never"],
-    "react/prop-types": 0,
     "no-shadow": "off",
+    // typescript
+    "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/no-shadow": ["error"],
+    // react
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".ts", ".tsx"]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0,
     "react/style-prop-object": "off",
-    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }]
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
+    "react/require-default-props": "off"
   }
 }

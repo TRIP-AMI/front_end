@@ -19,6 +19,7 @@ const Colors = {
   footerLight: '#808080',
   fontGray01: '#8E8E8E',
   lineGray: '#ECECEC',
+  borderGray: '#C1C1C1',
 };
 
 export default Colors;

@@ -5,6 +5,7 @@ import ContentAmi from '@components/organisms/Section/ContentAmi';
 import ContentProgram from '@components/organisms/Section/ContentProgram';
 import ContentBannerCarousel from '@components/molecules/Banner/ContentBannerCarousel';
 import ContentPayment from '@components/molecules/Section/ContentPayment';
+import ContentButtons from '@/components/organisms/Section/ContentButtons';
 
 export default function ContentScreen() {
   return (
@@ -17,6 +18,7 @@ export default function ContentScreen() {
         <ContentProgram />
         <ContentPayment />
       </ScrollView>
+      <ContentButtons />
     </SafeAreaView>
   );
 }

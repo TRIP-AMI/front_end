@@ -2,16 +2,12 @@ import SearchInput from '@components/molecules/Input/SearchInput';
 import SearchRecommeded from '@components/molecules/etc/SearchRecommeded';
 import SearchTopProgram from '@components/molecules/etc/SearchTopProgram';
 import BasicFullScreenModal from '@components/atoms/Modal/BasicFullScreenModal';
+import { StatusBar } from 'expo-status-bar';
 
-function SearchModal({
-  isVisible,
-  onClose,
-}: {
-  isVisible: boolean;
-  onClose: () => void;
-}) {
+function SearchModal() {
   return (
-    <BasicFullScreenModal isVisible={isVisible} onClose={onClose}>
+    <BasicFullScreenModal>
+      <StatusBar style='auto' />
       {/* search input */}
       <SearchInput />
       {/* recommeded keywords */}

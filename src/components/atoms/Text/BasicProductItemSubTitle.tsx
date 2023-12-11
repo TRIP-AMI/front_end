@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Text, StyleSheet, TextStyle, StyleProp } from 'react-native';
 
-export default function PlanItemSubTitle({
+export default function BasicProductItemSubTitle({
   children,
   style,
 }: {

@@ -1,17 +1,28 @@
-import { Pressable, Text, StyleSheet } from 'react-native';
+import {
+  Pressable,
+  Text,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 
-function PressHashTag({ label }: { label: string }) {
+function PressHashTag({
+  label,
+  style,
+}: {
+  label: string;
+  style?: StyleProp<ViewStyle>;
+}) {
   const onPressTag = () => {};
   return (
-    <Pressable onPress={onPressTag} style={style.tag}>
+    <Pressable onPress={onPressTag} style={[styles.tag, style]}>
       <Text style={{ color: '#161616' }}>{label}</Text>
     </Pressable>
   );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   tag: {
-    marginRight: 5,
     paddingVertical: 8,
     paddingHorizontal: 11,
     borderColor: '#CCCCCC',
