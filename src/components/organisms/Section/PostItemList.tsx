@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import likeApi from '@services/module/like/like';
+import postApi from '@services/module/post/post';
 import { FlatList, StyleSheet } from 'react-native';
 import MyPostItem from '@components/molecules/Item/MyPostItem';
 import Spacing from '@styles/spacing';
@@ -11,21 +11,21 @@ import BasicItem from '@/types/basicItem';
 const processData = (list: any): BasicItem[] => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return list.map((item: any) => {
-    return BasicItem.Builder.withBasicItemId(item.likeId)
-      .withBasicItemImg(item.likeImg)
-      .withBasicItemTitle(item.likeTitle)
-      .withBasicItemSubTitle(item.likeSubTitle)
+    return BasicItem.Builder.withBasicItemId(item.postId)
+      .withBasicItemImg(item.postImg)
+      .withBasicItemTitle(item.postTitle)
+      .withBasicItemSubTitle(item.postSubTitle)
       .build();
   });
 };
 
 function PostItemList() {
-  const [likeList, setLikeList] = useState<BasicItem[]>([]);
+  const [postList, setPostList] = useState<BasicItem[]>([]);
 
   const getData = async () => {
     try {
-      const data = await likeApi.getLikeList();
-      setLikeList(processData(data));
+      const data = await postApi.getPostList();
+      setPostList(processData(data));
     } catch (error) {
       console.error('plan 목록 호출에 실패하였습니다.', error);
     }
@@ -37,7 +37,7 @@ function PostItemList() {
 
   return (
     <FlatList
-      data={likeList}
+      data={postList}
       renderItem={(item) => <MyPostItem postItem={item.item} />}
       keyExtractor={(item) => item.itemId}
       numColumns={2}
