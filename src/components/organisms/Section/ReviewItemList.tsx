@@ -1,6 +1,6 @@
 import ReviewItem from '@components/molecules/Item/ReviewItem';
 import { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import reviewApi from '@/services/module/review/review';
 
 type ReviewItemType = {
@@ -27,19 +27,19 @@ function ReviewItemList() {
   }, []);
 
   return (
-    <View style={styles.bannerListContainer}>
-      <FlatList
-        data={dummyReviwe}
-        renderItem={({ item }) => <ReviewItem item={item} />}
-        keyExtractor={(item) => item.reviewId.toString()}
-      />
-    </View>
+    <FlatList
+      data={dummyReviwe}
+      renderItem={({ item }) => <ReviewItem item={item} />}
+      keyExtractor={(item) => item.reviewId.toString()}
+      scrollEnabled={false}
+      style={styles.listWrap}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  bannerListContainer: {
-    flex: 1,
+  listWrap: {
+    marginBottom: 52,
   },
 });
 

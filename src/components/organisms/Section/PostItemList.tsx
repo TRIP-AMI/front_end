@@ -43,14 +43,15 @@ function PostItemList() {
       numColumns={2}
       columnWrapperStyle={{ justifyContent: 'space-between' }}
       style={styles.listWrap}
+      scrollEnabled={false}
     />
   );
 }
 
 const styles = StyleSheet.create({
   listWrap: {
+    marginBottom: 40,
     marginHorizontal: Spacing.IOS392Margin,
-    marginTop: 10,
   },
 });
 
