@@ -18,11 +18,12 @@ type AmiScoreTableProps = {
 function AmiScoreTable({ scores }: AmiScoreTableProps) {
   return (
     <View style={styles.container}>
-      <AmiScore score={scores.data[0].score} title={scores.data[0].title} />
-      <VerticalLine />
-      <AmiScore score={scores.data[1].score} title={scores.data[1].title} />
-      <VerticalLine />
-      <AmiScore score={scores.data[2].score} title={scores.data[2].title} />
+      {scores.data.map((item, index) => (
+        <>
+          <AmiScore score={item.score} title={item.title} />
+          {index !== scores.data.length - 1 && <VerticalLine />}
+        </>
+      ))}
     </View>
   );
 }
