@@ -1,26 +1,37 @@
+import { useSetRecoilState } from 'recoil';
 import { View, Text, StyleSheet } from 'react-native';
-import StyledButton from '@/components/atoms/Buttons/StyledButton';
 import Colors from '@/styles/colors';
+import BasicButton from '@/components/atoms/Button/BasicButton';
+import modalState from '@/utils/recoil/modal';
 
 export default function ApplyModalButton({
   price,
-  onApply,
+  selectedDate,
 }: {
   price: number;
-  onApply: () => void;
+  selectedDate: string;
 }) {
+  const setModal = useSetRecoilState(modalState);
+  // TODO: Apply 버튼 누르면 확인 모달 띄우기
+  const onApply = () => {
+    console.log(`Apply on ${selectedDate}`);
+    setModal(null);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.priceTag}>
         <View style={styles.price}>
-          <Text style={styles.text}>{price.toLocaleString()}</Text>
+          {price > 0 && (
+            <Text style={styles.text}>{price.toLocaleString()}</Text>
+          )}
         </View>
         <View style={styles.unit}>
-          <Text style={styles.text}>{' won'}</Text>
+          <Text style={styles.text}>{price > 0 ? ' won' : 'Free'}</Text>
         </View>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-        <StyledButton content='Apply' onPress={onApply} />
+      <View style={styles.buttonContainer}>
+        <BasicButton content='Apply' round onPress={onApply} />
       </View>
     </View>
   );
@@ -51,6 +62,11 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'Montserrat-Bold',
     fontSize: 18,
+    lineHeight: 17,
     color: Colors.main,
+  },
+  buttonContainer: {
+    width: '88%',
+    height: 50,
   },
 });
