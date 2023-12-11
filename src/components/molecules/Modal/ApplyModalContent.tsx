@@ -6,17 +6,11 @@ import ApplyModalButton from '@/components/molecules/Modal/ApplyModalButton';
 export default function ApplyModalContent({
   selectedDate,
   setSelectedDate,
-  // originalPrice,
   price,
-  // setPrice,
-  onApply,
 }: {
   selectedDate: string;
   setSelectedDate: Dispatch<SetStateAction<string>>;
-  // originalPrice: number;
   price: number;
-  // setPrice: Dispatch<SetStateAction<number>>;
-  onApply: () => void;
 }) {
   return (
     <>
@@ -26,12 +20,10 @@ export default function ApplyModalContent({
             selectedItem={selectedDate}
             setSelectedItem={setSelectedDate}
             price={price}
-            // originalPrice={originalPrice}
-            // setPrice={setPrice}
           />
         )}
       </View>
-      <ApplyModalButton price={price} onApply={onApply} />
+      <ApplyModalButton price={price} selectedDate={selectedDate} />
     </>
   );
 }

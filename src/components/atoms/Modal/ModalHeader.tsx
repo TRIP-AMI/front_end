@@ -1,7 +1,9 @@
+import { useSetRecoilState } from 'recoil';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { IconButton } from '@/components/atoms/IconButton/IconButton';
+import { IconButton } from '@/components/atoms/Button/IconButton';
 import Colors from '@/styles/colors';
+import modalState from '@/utils/recoil/modal';
 
 export function ModalHeaderWithTitle({
   icon,
@@ -23,18 +25,17 @@ export function ModalHeaderWithTitle({
 
 export function BasicModalHeader({
   icon,
-  onClose,
 }: {
   icon: keyof typeof Ionicons.glyphMap;
-  onClose: () => void;
 }) {
+  const setModal = useSetRecoilState(modalState);
   return (
     <View style={styles.iconContainer}>
       <IconButton
         icon={icon}
         size={24}
         color={Colors.fontGray01}
-        onPress={onClose}
+        onPress={() => setModal(null)}
       />
     </View>
   );

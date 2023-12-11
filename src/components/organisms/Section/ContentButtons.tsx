@@ -9,9 +9,8 @@ import Spacing from '@/styles/spacing';
 export default function ContentButtons() {
   const setModal = useSetRecoilState(modalState);
 
-  // TODO: SelectOptions modal로 수정할 예정
   const onApply = () => {
-    setModal({ modalName: 'LOGIN_CHECK' });
+    setModal({ modalName: 'APPLY' });
   };
 
   return (
