@@ -29,10 +29,10 @@ export default function SelectBox({
         items={items}
         showTickIcon={false}
         ArrowUpIconComponent={() => (
-          <Ionicons name='chevron-up' size={20} color={Colors.fontGray01} />
+          <Ionicons name='chevron-up' size={20} color={Colors.contentLine} />
         )}
         ArrowDownIconComponent={() => (
-          <Ionicons name='chevron-down' size={20} color={Colors.fontGray01} />
+          <Ionicons name='chevron-down' size={20} color={Colors.contentLine} />
         )}
         setOpen={setSelectOpen}
         setValue={setSelectedDate}
@@ -80,6 +80,6 @@ const styles = StyleSheet.create({
   itemText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
-    color: Colors.fontGray01,
+    color: Colors.contentLine,
   },
 });
