@@ -15,7 +15,6 @@ const Colors = {
   // line
   lineGray01: '#EEEEEE',
   lineGray02: '#F5F5F5',
-  blankMoreGray: '#F5F5F5',
   // etc.
   titleBlack: '#161616',
   moreGray: '#77787A',
