@@ -18,11 +18,20 @@ export default function CancelButton({ content, onPress }: CancelButtonProps) {
   );
 }
 
+const size = {
+  default: {
+    paddingVertical: 16,
+  },
+  sm: {
+    paddingVertical: 12,
+  },
+};
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     width: '100%',
-    height: '100%',
+    paddingVertical: size.default.paddingVertical,
     backgroundColor: Colors.blankMoreGray,
   },
   pressed: {

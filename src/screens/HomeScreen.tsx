@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-import HomeIconGrid from '@components/organisms/Section/HomeIconGrid';
 import HomeBannerCarousel from '@components/molecules/Banner/HomeBannerCarousel';
 import HomeSectionList from '@components/organisms/Section/HomeSectionList';
 import HomeFooter from '@components/organisms/Section/HomeFooter';
+import HomeIconGrid from '@/components/organisms/Section/HomeCartegory';
 
 export default function HomeScreen() {
   return (

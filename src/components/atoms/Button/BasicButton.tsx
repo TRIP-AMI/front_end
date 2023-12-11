@@ -4,9 +4,7 @@ import Colors from '@/styles/colors';
 
 type BasicButtonProps = {
   content: string;
-  // eslint-disable-next-line react/require-default-props
   round?: boolean;
-  // eslint-disable-next-line react/require-default-props
   disabled?: boolean;
   onPress: () => void;
 };
@@ -32,11 +30,20 @@ export default function BasicButton({
   );
 }
 
+const size = {
+  default: {
+    paddingVertical: 16,
+  },
+  sm: {
+    paddingVertical: 12,
+  },
+};
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     width: '100%',
-    height: '100%',
+    paddingVertical: size.default.paddingVertical,
     backgroundColor: Colors.main,
   },
   disabled: {

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { RecoilRoot } from 'recoil';
 import Navigation from '@/navigations/';
+import ModalProvider from '@/components/organisms/Modal/ModalProvider';
 
 const fetchFonts = async () => {
   await Font.loadAsync({
@@ -34,5 +36,10 @@ export default function App() {
 
   if (!fontLoad) return null;
 
-  return <Navigation />;
+  return (
+    <RecoilRoot>
+      <Navigation />
+      <ModalProvider />
+    </RecoilRoot>
+  );
 }

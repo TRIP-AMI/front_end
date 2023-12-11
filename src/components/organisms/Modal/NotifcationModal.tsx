@@ -1,5 +1,6 @@
 import BasicFullScreenModal from '@components/atoms/Modal/BasicFullScreenModal';
 import { useEffect, useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import Alarm from '@/types/Notifcation';
 import NotifactionItem from '@/components/molecules/Item/NotifactionItem';
 
@@ -40,13 +41,7 @@ const processData = (): Alarm[] => {
   });
 };
 
-function NotifcationModal({
-  isVisible,
-  onClose,
-}: {
-  isVisible: boolean;
-  onClose: () => void;
-}) {
+function NotifcationModal() {
   const [alarmList, serAlarmList] = useState<Alarm[]>([]);
 
   useEffect(() => {
@@ -54,11 +49,8 @@ function NotifcationModal({
   }, []);
 
   return (
-    <BasicFullScreenModal
-      modalTitle='Notifcation'
-      isVisible={isVisible}
-      onClose={onClose}
-    >
+    <BasicFullScreenModal modalTitle='Notifcation'>
+      <StatusBar style='auto' />
       {alarmList.map((alarm) => {
         return <NotifactionItem key={alarm.alarmId} alarm={alarm} />;
       })}

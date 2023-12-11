@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import {
   View,
   StyleSheet,
@@ -6,6 +7,7 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 type HomeIconProps = {
   id: number;
@@ -13,48 +15,16 @@ type HomeIconProps = {
   imgUrl: string;
 };
 
-const dummyIcons = [
-  {
-    id: 1,
-    title: 'item1',
-    imgUrl:
-      'https://cdn.iconscout.com/icon/free/png-512/free-restaurant-1495593-1267764.png?f=webp&w=512',
-  },
-  {
-    id: 2,
-    title: 'item2',
-    imgUrl:
-      'https://cdn.iconscout.com/icon/free/png-512/free-restaurant-1495593-1267764.png?f=webp&w=512',
-  },
-  {
-    id: 3,
-    title: 'item3',
-    imgUrl:
-      'https://cdn.iconscout.com/icon/free/png-512/free-restaurant-1495593-1267764.png?f=webp&w=512',
-  },
-  {
-    id: 4,
-    title: 'item4',
-    imgUrl:
-      'https://cdn.iconscout.com/icon/free/png-512/free-restaurant-1495593-1267764.png?f=webp&w=512',
-  },
-  {
-    id: 5,
-    title: 'item5',
-    imgUrl:
-      'https://cdn.iconscout.com/icon/free/png-512/free-restaurant-1495593-1267764.png?f=webp&w=512',
-  },
-  {
-    id: 6,
-    title: 'item6',
-    imgUrl:
-      'https://cdn.iconscout.com/icon/free/png-512/free-restaurant-1495593-1267764.png?f=webp&w=512',
-  },
-];
+const dummyIcons = [];
+dummyIcons.length = 6;
 
 export default function HomeIcon({ item }: { item: HomeIconProps }) {
+  const navigation = useNavigation<RootStackNavigationProp>();
+
   return (
-    <Pressable onPress={() => console.log(item.title)}>
+    <Pressable
+      onPress={() => navigation.navigate('Category', { title: item.title })}
+    >
       <View style={styles.iconContainer}>
         <Image source={{ uri: item.imgUrl }} style={styles.icon} />
         <Text style={styles.iconTitle}>{item.title}</Text>

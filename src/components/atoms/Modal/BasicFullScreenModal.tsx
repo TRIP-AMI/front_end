@@ -1,3 +1,4 @@
+import { useSetRecoilState } from 'recoil';
 import {
   Modal,
   View,
@@ -10,23 +11,25 @@ import { AntDesign } from '@expo/vector-icons';
 import Spacing from '@styles/spacing';
 import { ReactNode } from 'react';
 import ModalTitle from '@/components/atoms/Text/ModalTitle';
+import modalState from '@/utils/recoil/modal';
 
 function BasicFullScreenModal({
   children,
-  isVisible,
-  onClose,
   modalTitle,
 }: {
   children: ReactNode;
-  isVisible: boolean;
-  onClose: () => void;
   modalTitle?: string;
 }) {
+  const setModal = useSetRecoilState(modalState);
+
+  const onClose = () => {
+    setModal(null);
+  };
+
   return (
     <Modal
       animationType='slide'
       transparent={false}
-      visible={isVisible}
       presentationStyle='fullScreen'
     >
       <SafeAreaView style={{ flex: 1 }}>

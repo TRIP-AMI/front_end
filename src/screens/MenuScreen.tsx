@@ -8,7 +8,7 @@ export default function MenuScreen() {
     { title: 'Event', path: 'BannerList' },
     { title: 'Notification', path: 'Notification' },
     { title: 'FAQ', path: 'FAQ' },
-    { title: '1:1 Inquiry', path: 'Contact' },
+    { title: '1:1 Inquiry', path: 'Inquiry' },
   ];
 
   return (
