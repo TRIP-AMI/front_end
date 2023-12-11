@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: Spacing.IOS392Margin,
   },
-  body: { paddingHorizontal: Spacing.IOS392Margin },
+  body: {},
 });
 
 export default BasicFullScreenModal;
