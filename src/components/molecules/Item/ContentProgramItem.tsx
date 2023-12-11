@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   textContainer: {
     alignSelf: 'center',
     flexDirection: 'row',
-    backgroundColor: Colors.skyBlue,
+    backgroundColor: Colors.second,
     borderRadius: 5,
     marginRight: Spacing.IOS392Margin,
     marginLeft: 15,
