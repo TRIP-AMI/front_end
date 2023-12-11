@@ -68,10 +68,12 @@ export default function MyPageScreen() {
 
   const tabData = [
     {
+      id: 1,
       tabName: 'Post',
       tabComponent: <PostItemList />,
     },
     {
+      id: 2,
       tabName: 'Review',
       tabComponent: <ReviewItemList />,
     },
@@ -88,16 +90,13 @@ export default function MyPageScreen() {
         />
         {dummyProfile.profileType === 'ami' && (
           <>
-            <AmiScoreTable key={dummyAmiData.title} scores={dummyAmiData} />
+            <AmiScoreTable scores={dummyAmiData} />
             <BasicTab data={tabData} />
           </>
         )}
         {dummyProfile.profileType === 'tourist' && (
           <>
-            <AmiScoreTable
-              key={dummyTouristData.title}
-              scores={dummyTouristData}
-            />
+            <AmiScoreTable scores={dummyTouristData} />
             <Text style={styles.text}>Have a great trip to Korea with AMI</Text>
           </>
         )}

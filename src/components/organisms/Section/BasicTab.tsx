@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import colors from '@styles/colors';
 
 type TabTypes = {
+  id: number;
   tabName: string;
   tabComponent: React.ReactNode;
 };
@@ -10,20 +11,22 @@ type TabTypes = {
 function BasicTab({ data }: { data: TabTypes[] }) {
   const [activeTab, setActiveTab] = React.useState('Post');
 
-  const renderTab = (tabName: string) => (
+  const renderTab = (item: TabTypes) => (
     <TouchableOpacity
-      key={tabName}
+      key={item.id.toString()}
       style={styles.tabTouch}
-      onPress={() => setActiveTab(tabName)}
+      onPress={() => setActiveTab(item.tabName)}
     >
-      <View style={[styles.tab, activeTab === tabName && styles.activeTab]}>
+      <View
+        style={[styles.tab, activeTab === item.tabName && styles.activeTab]}
+      >
         <Text
           style={[
             styles.tabText,
-            activeTab === tabName && styles.activeTabText,
+            activeTab === item.tabName && styles.activeTabText,
           ]}
         >
-          {tabName}
+          {item.tabName}
         </Text>
       </View>
     </TouchableOpacity>
@@ -32,7 +35,7 @@ function BasicTab({ data }: { data: TabTypes[] }) {
   return (
     <View style={styles.container}>
       <View style={styles.tabContainer}>
-        {data.map((item) => renderTab(item.tabName))}
+        {data.map((item) => renderTab(item))}
       </View>
       {data.map((item) => activeTab === item.tabName && item.tabComponent)}
     </View>
