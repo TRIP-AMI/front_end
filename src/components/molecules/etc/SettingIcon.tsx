@@ -1,17 +1,18 @@
 import { View, StyleSheet } from 'react-native';
 import { FeatherIconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
-import SearchModal from '@/components/organisms/Modal/SearchModal';
 
 export default function HomeHeaderIcons() {
   const [isVisible, setIsVisible] = useState(false);
 
+  console.log(isVisible);
+
   const onOpen = () => {
     setIsVisible(true);
   };
-  const onClose = () => {
-    setIsVisible(false);
-  };
+  // const onClose = () => {
+  //   setIsVisible(false);
+  // };
 
   return (
     <View style={styles.container}>
@@ -22,7 +23,6 @@ export default function HomeHeaderIcons() {
           color='#121212'
           onPress={onOpen}
         />
-        <SearchModal isVisible={isVisible} onClose={onClose} />
       </View>
     </View>
   );
