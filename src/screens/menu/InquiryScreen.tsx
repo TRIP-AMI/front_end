@@ -1,46 +1,108 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { useState } from 'react';
-import BasicInput, {
-  BasicInputTextarea,
-} from '@/components/atoms/Input/BasicInput';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { useForm, Controller } from 'react-hook-form';
+import BasicInput from '@/components/atoms/Input/BasicInput';
 import Spacing from '@/styles/spacing';
+import BasicButton from '@/components/atoms/Button/BasicButton';
 
 export default function ContactScreen() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      title: '',
+      content: '',
+    },
+  });
+
+  const onSubmit = (data: unknown) => {
+    console.log('data::::', data);
+  };
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text>If you have any questions,</Text>
-        <Text> feel free to ask!</Text>
+    <SafeAreaView style={styles.container}>
+      <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
+        {/* info */}
+        <View style={{ paddingVertical: 30 }}>
+          <Text style={styles.infoTitle}>
+            If you have any questions, {'\n'} feel free to ask!
+          </Text>
+        </View>
+        {/* input */}
+        <View>
+          <Controller
+            control={control}
+            rules={{
+              required: {
+                value: true,
+                message: 'Title is required.',
+              },
+            }}
+            render={({ field: { onChange, onBlur, value } }) => {
+              return (
+                <BasicInput
+                  value={value}
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  placeholder='Title'
+                  error={errors.title?.message}
+                />
+              );
+            }}
+            name='title'
+          />
+
+          <View style={{ marginVertical: 5 }} />
+
+          <Controller
+            control={control}
+            rules={{
+              required: {
+                value: true,
+                message: 'Content is required.',
+              },
+              maxLength: {
+                value: 500,
+                message: 'The maximum input is 500 characters.',
+              },
+            }}
+            render={({ field: { onChange, onBlur, value } }) => {
+              return (
+                <BasicInput
+                  textarea
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  placeholder='Feel free to leave your ask!'
+                  maxLength={500}
+                  error={errors.content?.message}
+                  style={{ height: 210 }}
+                />
+              );
+            }}
+            name='content'
+          />
+        </View>
       </View>
-      <View>
-        <BasicInput
-          value={title}
-          onChangeText={(value) => {
-            setTitle(value);
-          }}
-          placeholder='Title'
-        />
-        <BasicInputTextarea
-          value={content}
-          onChangeText={(value) => {
-            setContent(value);
-          }}
-          placeholder='Feel free to leave your ask!'
-          style={{ height: 210 }}
-        />
-      </View>
-    </View>
+      {/* TODO: disabled 조건 추가 필요 */}
+      <BasicButton content='Submit' onPress={handleSubmit(onSubmit)} />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: Spacing.IOS392Margin,
+    justifyContent: 'space-between',
     backgroundColor: '#fff',
-    // alignItems: 'center',
+  },
+  infoTitle: {
+    textAlign: 'center',
+    color: '#000000',
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 16,
+    lineHeight: 18,
+    letterSpacing: -0.32,
   },
 });

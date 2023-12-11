@@ -7,36 +7,33 @@ import {
 } from 'react-native';
 
 interface InputProps extends TextInputProps {
-  touched?: boolean;
+  textarea?: boolean;
   error?: string;
 }
 
-export default function BasicInput({ touched, error, ...props }: InputProps) {
+export default function BasicInput({ textarea, error, ...props }: InputProps) {
+  const textareaStyle = textarea ? styles.textarea : undefined;
   return (
     <View style={styles.container}>
       <TextInput
-        style={styles.input}
+        style={[styles.input, textareaStyle]}
         placeholderTextColor='#B9B9B9'
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
+        multiline={textarea}
       />
-      {touched && error && <Text style={styles.error}>{error}</Text>}
-    </View>
-  );
-}
 
-export function BasicInputTextarea({ touched, error, ...props }: InputProps) {
-  return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.textarea}
-        placeholderTextColor='#B9B9B9'
-        multiline
-        maxLength={500}
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...props}
-      />
-      {touched && error && <Text style={styles.error}>{error}</Text>}
+      {/* error text */}
+      {error && <Text style={styles.error}>{error}</Text>}
+
+      {/* 최대 갯수 설정시 사용 */}
+      {props.maxLength && (
+        <View style={{ flexDirection: 'row-reverse' }}>
+          <Text style={{ color: '#B9B9B9', fontSize: 13 }}>
+            {props.value?.length}/{props.maxLength}
+          </Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -55,6 +52,7 @@ const styles = StyleSheet.create({
     height: 130,
   },
   error: {
+    marginTop: 10,
     color: 'red',
   },
 });
