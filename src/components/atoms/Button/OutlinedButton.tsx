@@ -31,10 +31,16 @@ export default function OutlinedButton({
   );
 }
 
+const size = {
+  default: {
+    paddingVertical: 12,
+  },
+};
+
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '100%',
+    paddingVertical: size.default.paddingVertical,
     backgroundColor: '#ffffff',
     borderWidth: 1,
     borderColor: Colors.main,
