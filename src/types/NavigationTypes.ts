@@ -6,7 +6,7 @@ export type RootStackParamList = {
   BannerList: undefined;
   Notification: undefined;
   FAQ: undefined;
-  Contact: undefined;
+  Inquiry: undefined;
   Search: undefined;
   Content: undefined;
   Category: { title: string };
