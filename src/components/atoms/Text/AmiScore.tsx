@@ -1,12 +1,12 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, StyleSheet, Pressable } from 'react-native';
 import colors from '@styles/colors';
 
 function AmiScore({ score, title }: { score: number; title: string }) {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={() => console.log(title)}>
       <Text style={styles.score}>{score}</Text>
       <Text style={styles.title}>{title}</Text>
-    </View>
+    </Pressable>
   );
 }
 
