@@ -7,6 +7,7 @@ import LoginModal from '@/components/molecules/Modal/LoginModal';
 import loginState from '@/utils/recoil/login';
 import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
+import CalendarModal from '@/components/organisms/Modal/CalendarModal';
 
 export default function ModalProvider() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
@@ -30,6 +31,7 @@ export default function ModalProvider() {
     LOGIN_CHECK: <LoginModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
+    CALENDAR: <CalendarModal />,
   };
 
   return (
