@@ -20,20 +20,22 @@ function ReviewItem({ item }: { item: ReviewItemType }) {
   );
 }
 
+const screenHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height * 0.071,
+    height: screenHeight * 0.071,
     borderRadius: 5,
     flexDirection: 'row',
     backgroundColor: colors.reviewBackColor,
-    padding: Dimensions.get('window').height * 0.016,
+    padding: screenHeight * 0.016,
     marginHorizontal: Spacing.IOS392Margin,
-    marginBottom: Dimensions.get('window').height * 0.0094,
+    marginBottom: screenHeight * 0.0094,
     justifyContent: 'center',
   },
   img: {
-    width: Dimensions.get('window').height * 0.038,
-    height: Dimensions.get('window').height * 0.038,
+    width: screenHeight * 0.038,
+    height: screenHeight * 0.038,
     marginRight: Dimensions.get('window').width * 0.025,
     alignSelf: 'flex-start',
   },

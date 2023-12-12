@@ -12,15 +12,18 @@ function ReviewSummary({ name, content }: { name: string; content: string }) {
   );
 }
 
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     width:
-      Dimensions.get('window').width -
+      screenWidth -
       Spacing.IOS392Margin * 2 -
-      Dimensions.get('window').height * 0.015 * 2 - // padding
-      Dimensions.get('window').width * 0.025 - // img marginRight
-      Dimensions.get('window').height * 0.038, // img width
+      screenHeight * 0.015 * 2 - // padding
+      screenWidth * 0.025 - // img marginRight
+      screenHeight * 0.038, // img width
   },
   name: {
     color: '#000000',
