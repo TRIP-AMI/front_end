@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, ScrollView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import AmiProfile from '@components/molecules/Item/AmiProfile';
 import AmiScoreTable from '@components/molecules/Text/AmiScoreTable';
 import React from 'react';
@@ -83,8 +83,8 @@ export default function MyPageScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar style='auto' />
       <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.headerMargin} />
         <AmiProfile
-          style={{ marginTop: 20 }}
           imgUrl={dummyProfile.profileImgUrl}
           name={dummyProfile.profileName}
         />
@@ -110,6 +110,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+  },
+  headerMargin: {
+    marginTop: 20,
   },
   text: {
     color: colors.subtitle,

@@ -1,19 +1,10 @@
-import { View, StyleSheet, StyleProp, TextStyle } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import TextTitle from '@components/atoms/Text/TextTitle';
 import AmiImg from '@components/atoms/Image/AmiImg';
 
-function AmiProfile({
-  imgUrl,
-  name,
-  style,
-}: {
-  imgUrl: string;
-  name: string;
-  // eslint-disable-next-line react/require-default-props
-  style?: StyleProp<TextStyle> | undefined;
-}) {
+function AmiProfile({ imgUrl, name }: { imgUrl: string; name: string }) {
   return (
-    <View style={[null, style]}>
+    <View>
       <AmiImg imgUrl={imgUrl} />
       <TextTitle style={styles.name}>{name}</TextTitle>
     </View>
