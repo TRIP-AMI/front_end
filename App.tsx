@@ -10,6 +10,7 @@ const fetchFonts = async () => {
     'Pretendard-Regular': require('./assets/fonts/pretendard/Pretendard-Regular.ttf'),
     'Pretendard-Medium': require('./assets/fonts/pretendard/Pretendard-Medium.ttf'),
     'Pretendard-Bold': require('./assets/fonts/pretendard/Pretendard-Bold.ttf'),
+    'Pretendard-SemiBold': require('./assets/fonts/pretendard/Pretendard-SemiBold.ttf'),
     'Pretendard-ExtraBold': require('./assets/fonts/pretendard/Pretendard-ExtraBold.ttf'),
     'Mortend-Bold': require('./assets/fonts/mortend/Mortend-Bold.ttf'),
     'Montserrat-Regular': require('./assets/fonts/montserrat/Montserrat-Regular.ttf'),

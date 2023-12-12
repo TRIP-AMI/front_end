@@ -108,5 +108,63 @@
       "likeTitle": "Itaewon Tour",
       "likeSubTitle": "Restaurant - Cafe - Photo"
     }
+  ],
+  "review": [
+    {
+      "reviewId": 1,
+      "reviewName": "Jenny",
+      "reviewImg": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg",
+      "reviewContent": "The view of Namsan Tower is so pretty. The location was great to go around."
+    },
+    {
+      "reviewId": 2,
+      "reviewName": "Jenny",
+      "reviewImg": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg",
+      "reviewContent": "The view of Namsan Tower is so pretty. The location was great to go around."
+    },
+    {
+      "reviewId": 3,
+      "reviewName": "Jenny",
+      "reviewImg": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg",
+      "reviewContent": "The view of Namsan Tower is so pretty. The location was great to go around."
+    }
+  ],
+  "post": [
+    {
+      "postId": "1",
+      "postImg": "https://via.placeholder.com/450x450/ECECEC",
+      "postTitle": "Itaewon Tour",
+      "postSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "postId": "12",
+      "postImg": "https://via.placeholder.com/450x450/ECECEC",
+      "postTitle": "Itaewon Tour",
+      "postSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "postId": "123",
+      "postImg": "https://via.placeholder.com/450x450/ECECEC",
+      "postTitle": "Itaewon Tour",
+      "postSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "postId": "1234",
+      "postImg": "https://via.placeholder.com/450x450/ECECEC",
+      "postTitle": "Itaewon Tour",
+      "postSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "postId": "12345",
+      "postImg": "https://via.placeholder.com/450x450/ECECEC",
+      "postTitle": "Itaewon Tour",
+      "postSubTitle": "Restaurant - Cafe - Photo"
+    },
+    {
+      "postId": "123456",
+      "postImg": "https://via.placeholder.com/450x450/ECECEC",
+      "postTitle": "Itaewon Tour",
+      "postSubTitle": "Restaurant - Cafe - Photo"
+    }
   ]
 }
