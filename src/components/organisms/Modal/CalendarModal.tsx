@@ -1,11 +1,24 @@
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+
 import BasicFullScreenModal from '@components/atoms/Modal/BasicFullScreenModal';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { useState } from 'react';
 import Spacing from '@/styles/spacing';
+import useModalHook from '@/hooks/modalHook';
+import PickerSelectModal from './PickerSelectModal';
 
 export default function CalendarModal() {
-  const handlePress = () => {};
+  const [dateY, setDateY] = useState('2023');
+  const [dateM] = useState('5');
+
+  const { isVisible, onOpen } = useModalHook();
+  const handlePress = () => {
+    onOpen();
+  };
+
+  console.log(isVisible);
+
   return (
     <BasicFullScreenModal modalTitle='Available Dates'>
       <StatusBar style='auto' />
@@ -16,16 +29,20 @@ export default function CalendarModal() {
         {/* select box */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Pressable style={styles.selectBoxWrap} onPress={handlePress}>
-            <Text>2023</Text>
+            <Text>{dateY}</Text>
             <Feather name='chevron-down' size={24} color='#A1A5AE' />
           </Pressable>
           <Pressable style={styles.selectBoxWrap}>
-            <Text>5</Text>
+            <Text>{dateM}</Text>
             <Feather name='chevron-down' size={24} color='#A1A5AE' />
           </Pressable>
         </View>
         {/* calendar */}
       </View>
+
+      {isVisible && (
+        <PickerSelectModal selectedValue={dateY} setSelectedValue={setDateY} />
+      )}
     </BasicFullScreenModal>
   );
 }
