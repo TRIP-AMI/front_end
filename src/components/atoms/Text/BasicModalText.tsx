@@ -12,5 +12,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     textAlign: 'left',
     color: Colors.fontGray01,
+    paddingHorizontal: 20,
   },
 });

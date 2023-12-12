@@ -12,10 +12,26 @@ export default function ApplyModalButton({
   selectedDate: string;
 }) {
   const setModal = useSetRecoilState(modalState);
-  // TODO: Apply 버튼 누르면 확인 모달 띄우기
+
+  // TODO: user 정보 받아오기
+  const user = {
+    id: 1,
+    name: 'hellooo',
+    email: 'tripami42@gmail.com',
+  };
+
   const onApply = () => {
-    // console.log(`Apply on ${selectedDate}`);
-    setModal({ modalName: 'APPLY_CHECK' });
+    setModal({
+      modalName: 'APPLY_CHECK',
+      applyCheck: {
+        date: selectedDate,
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+        },
+      },
+    });
   };
 
   return (
@@ -31,11 +47,7 @@ export default function ApplyModalButton({
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        {selectedDate ? (
-          <BasicButton content='Apply' round onPress={onApply} />
-        ) : (
-          <BasicButton content='Apply' round disabled onPress={() => {}} />
-        )}
+        <BasicButton content='Apply' round onPress={onApply} />
       </View>
     </View>
   );

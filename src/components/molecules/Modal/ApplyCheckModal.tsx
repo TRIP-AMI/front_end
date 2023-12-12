@@ -2,8 +2,10 @@ import { useSetRecoilState } from 'recoil';
 import modalState from '@/utils/recoil/modal';
 import BasicTwoButtonModal from '@/components/atoms/Modal/BasicTwoButtonsModal';
 import BasicModalText from '@/components/atoms/Text/BasicModalText';
+import BasicModalDetail from '@/components/atoms/Modal/BasicModalDetail';
+import { ApplyCheckProps } from '@/types/ModalTypes';
 
-export default function ApplyCheckModal() {
+export default function ApplyCheckModal({ date, user }: ApplyCheckProps) {
   const setModal = useSetRecoilState(modalState);
 
   const onClose = () => {
@@ -11,10 +13,13 @@ export default function ApplyCheckModal() {
   };
 
   const onConfirm = () => {
-    console.log('apply check modal');
-    // setModal(null);
     setModal({ modalName: 'APPLY_COMPLETE' });
   };
+
+  const data = [
+    { key: `Application Date: ${date}` },
+    { key: `Email: ${user?.email}` },
+  ];
 
   return (
     <BasicTwoButtonModal
@@ -24,6 +29,7 @@ export default function ApplyCheckModal() {
       onConfirm={onConfirm}
     >
       <BasicModalText content='If the information here is correct, please click Check.' />
+      <BasicModalDetail data={data} />
     </BasicTwoButtonModal>
   );
 }

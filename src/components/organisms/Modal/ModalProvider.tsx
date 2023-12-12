@@ -29,12 +29,17 @@ export default function ModalProvider() {
 
   if (!modalName) return null;
 
-  const ModalList: { [key: string]: JSX.Element } = {
+  const ModalList: { [key: string]: JSX.Element | undefined } = {
     LOGIN_CHECK: <LoginModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     APPLY: <ApplyModal />,
-    APPLY_CHECK: <ApplyCheckModal />,
+    APPLY_CHECK: modal.applyCheck && (
+      <ApplyCheckModal
+        date={modal.applyCheck.date}
+        user={modal.applyCheck.user}
+      />
+    ),
     APPLY_COMPLETE: <ApplyCompleteModal />,
   };
 
