@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import colors from '@styles/colors';
 
 type TabTypes = {
@@ -12,7 +12,7 @@ function BasicTab({ data }: { data: TabTypes[] }) {
   const [activeTab, setActiveTab] = React.useState('Post');
 
   const renderTab = (item: TabTypes) => (
-    <TouchableOpacity
+    <Pressable
       key={item.id.toString()}
       style={styles.tabTouch}
       onPress={() => setActiveTab(item.tabName)}
@@ -29,7 +29,7 @@ function BasicTab({ data }: { data: TabTypes[] }) {
           {item.tabName}
         </Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 
   return (
