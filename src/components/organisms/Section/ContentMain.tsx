@@ -1,16 +1,20 @@
-import DdayBadge from '@components/atoms/Tag/DdayBadge';
+import BlackBadge from '@components/atoms/Tag/BlackBadge';
 import ContentTitles from '@components/molecules/Text/ContentTitles';
 import HashTagList from '@components/molecules/etc/HashTagList';
 import ContentTimeLocation from '@components/molecules/Text/ContentTimeLocation';
 import Separator from '@components/atoms/etc/Separator';
 import ContentPrice from '@components/molecules/Text/ContentPrice';
 import Colors from '@styles/colors';
+import { StyleSheet, View } from 'react-native';
+import Spacing from '@styles/spacing';
 
 function ContentMain() {
   const dummyData = ['Itaewon', 'Seoul', 'Korea'];
   return (
     <>
-      <DdayBadge />
+      <View style={styles.container}>
+        <BlackBadge text='D-1' />
+      </View>
       <ContentTitles
         title="Jenny's Seoul tour"
         subtitle="Let's Play Together at Itaewon Street!"
@@ -29,5 +33,14 @@ function ContentMain() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    marginTop: 15,
+    marginBottom: 8,
+    marginLeft: Spacing.IOS392Margin,
+  },
+});
 
 export default ContentMain;
