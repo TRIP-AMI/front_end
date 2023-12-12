@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     lineHeight: 17,
-    color: Colors.fontBlack,
+    color: Colors.fontGray01,
   },
 });
