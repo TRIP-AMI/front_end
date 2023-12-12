@@ -3,8 +3,19 @@
  */
 
 const Colors = {
-  main: '#ED6D34',
-  secondMain: '#EEF8FE',
+  // primary
+  primary: '#ED6D34',
+  // second
+  second: '#EEF8FE',
+  // font
+  fontGray01: '#1E1E20',
+  fontGray02: '#4A4A4A',
+  fontGray03: '#B9B9B9',
+  fontGray04: '#C1C1C1',
+  // line
+  lineGray01: '#EEEEEE',
+  lineGray02: '#F5F5F5',
+  // etc.
   titleBlack: '#161616',
   moreGray: '#77787A',
   fontBlack: '#1E1E20',
@@ -17,7 +28,6 @@ const Colors = {
   footerBackground: '#404040',
   footerText: '#B9B9B9',
   footerLight: '#808080',
-  fontGray01: '#8E8E8E',
   lineGray: '#ECECEC',
   borderGray: '#C1C1C1',
   inactiveColor: '#727272',

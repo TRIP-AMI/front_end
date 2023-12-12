@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import TextTitle from '@components/atoms/Text/TextTitle';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import AmiScoreTable from '@components/molecules/Text/AmiScoreTable';
 import AmiIntroduce from '@components/atoms/Text/AmiIntroduce';
@@ -68,7 +68,7 @@ function ContentAmi() {
         <AmiScoreTable key={score.title} scores={score} />
       ))}
       <AmiIntroduce>{dummyIntroduce}</AmiIntroduce>
-      <Separator color={colors.blankMoreGray} hei={8} marginVer={30} />
+      <Separator color={Colors.lineGray02} hei={8} marginVer={30} />
     </>
   );
 }

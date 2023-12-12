@@ -1,5 +1,5 @@
 import { Text, StyleSheet, Pressable } from 'react-native';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 
 function AmiScore({ score, title }: { score: number; title: string }) {
   return (
@@ -16,14 +16,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   score: {
-    color: colors.main,
+    color: Colors.primary,
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,
     marginBottom: 1,
   },
   title: {
-    color: colors.contentLine,
+    color: Colors.contentLine,
     fontSize: 12,
     fontFamily: 'Montserrat-Medium',
     letterSpacing: -0.24,

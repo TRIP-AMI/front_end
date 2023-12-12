@@ -19,7 +19,7 @@ export default function BottomNavBar() {
     <Tab.Navigator
       initialRouteName='Home'
       screenOptions={{
-        tabBarActiveTintColor: Colors.main,
+        tabBarActiveTintColor: Colors.primary,
         headerTitleStyle: Fonts.header.title,
         headerTitleAlign: 'left',
       }}

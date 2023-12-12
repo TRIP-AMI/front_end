@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TextStyle, StyleProp } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 
 function ContentLocation({
@@ -13,7 +13,7 @@ function ContentLocation({
 }) {
   return (
     <View style={styles.container}>
-      <EvilIcons name='location' color={colors.contentLine} size={20} />
+      <EvilIcons name='location' color={Colors.contentLine} size={20} />
       <Text style={[styles.location, style]}>{location}</Text>
     </View>
   );
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginLeft: Spacing.IOS392Margin,
   },
   location: {
-    color: colors.subtitle,
+    color: Colors.fontGray02,
     fontSize: 16,
     fontFamily: 'Montserrat-Medium',
     marginLeft: 10.64,

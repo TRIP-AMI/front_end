@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { ReactNode } from 'react';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 
 function ProgramOrder({ order }: { order: ReactNode }) {
   return (
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   container: {
     width: 23,
     height: 23,
-    backgroundColor: colors.main,
+    backgroundColor: Colors.primary,
     borderRadius: 100,
     justifyContent: 'center',
   },
