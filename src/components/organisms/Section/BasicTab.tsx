@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 
 type TabTypes = {
   id: number;
@@ -55,18 +55,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: colors.blank,
+    borderBottomColor: Colors.lineGray01,
   },
   tab: {
     paddingTop: 13,
   },
   activeTab: {
     borderBottomWidth: 2,
-    borderBottomColor: colors.tabIndicator,
+    borderBottomColor: Colors.tabIndicator,
   },
   tabText: {
     flex: 1,
-    color: colors.inactiveColor,
+    color: Colors.inactiveColor,
     fontSize: 16,
     fontFamily: 'Montserrat-SemiBold',
     lineHeight: 19,

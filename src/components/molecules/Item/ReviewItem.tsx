@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet, View } from 'react-native';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import AmiImg from '@components/atoms/Image/AmiImg';
 import ReviewSummary from '@components/atoms/Text/ReviewSummary';
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     height: screenHeight * 0.071,
     borderRadius: 5,
     flexDirection: 'row',
-    backgroundColor: colors.reviewBackColor,
+    backgroundColor: Colors.reviewBackColor,
     padding: screenHeight * 0.016,
     marginHorizontal: Spacing.IOS392Margin,
     marginBottom: screenHeight * 0.0094,

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   disabled: {
-    backgroundColor: Colors.footerText,
+    backgroundColor: Colors.fontGray03,
   },
   pressed: {
     opacity: 0.5,

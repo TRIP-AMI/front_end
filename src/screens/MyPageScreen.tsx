@@ -7,7 +7,7 @@ import HomeFooter from '@components/organisms/Section/HomeFooter';
 import PostItemList from '@components/organisms/Section/PostItemList';
 import ReviewItemList from '@components/organisms/Section/ReviewItemList';
 import BasicTab from '@components/organisms/Section/BasicTab';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 
 const dummyProfiles = [
   {
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   text: {
-    color: colors.subtitle,
+    color: Colors.fontGray02,
     fontSize: 16,
     fontFamily: 'Montserrat-Medium',
     letterSpacing: -0.32,

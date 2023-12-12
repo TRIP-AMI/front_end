@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 
 function ReviewSummary({ name, content }: { name: string; content: string }) {
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     lineHeight: 16,
   },
   content: {
-    color: colors.reviewContent,
+    color: Colors.reviewContent,
     fontSize: 14,
     fontFamily: 'Pretendard-Regular',
     letterSpacing: -0.42,

@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontSize: 16,
     letterSpacing: -0.48,
-    color: Colors.fontBlack,
+    color: Colors.fontGray01,
     textAlign: 'center',
   },
   empty: {
