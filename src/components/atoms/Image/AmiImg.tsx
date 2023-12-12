@@ -5,7 +5,6 @@ function AmiImg({
   style,
 }: {
   imgUrl: string;
-  // eslint-disable-next-line react/require-default-props
   style?: StyleProp<ImageStyle> | undefined;
 }) {
   return <Image source={{ uri: imgUrl }} style={[styles.image, style]} />;
