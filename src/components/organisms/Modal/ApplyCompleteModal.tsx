@@ -7,7 +7,6 @@ export default function ApplyCompleteModal() {
   const modal = useRecoilValue(modalState);
 
   useEffect(() => {
-    // console.log(Fonts.modal.title);
     console.log(modal?.modalName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
