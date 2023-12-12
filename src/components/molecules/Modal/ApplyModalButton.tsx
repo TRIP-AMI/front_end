@@ -31,7 +31,11 @@ export default function ApplyModalButton({
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <BasicButton content='Apply' round onPress={onApply} />
+        {selectedDate ? (
+          <BasicButton content='Apply' round onPress={onApply} />
+        ) : (
+          <BasicButton content='Apply' round disabled onPress={() => {}} />
+        )}
       </View>
     </View>
   );
