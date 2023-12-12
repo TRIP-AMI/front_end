@@ -8,6 +8,8 @@ import loginState from '@/utils/recoil/login';
 import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 import ApplyModal from '@/components/organisms/Modal/ApplyModal';
+import ApplyCheckModal from '@/components/molecules/Modal/ApplyCheckModal';
+import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal';
 
 export default function ModalProvider() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
@@ -32,6 +34,8 @@ export default function ModalProvider() {
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     APPLY: <ApplyModal />,
+    APPLY_CHECK: <ApplyCheckModal />,
+    APPLY_COMPLETE: <ApplyCompleteModal />,
   };
 
   return (
