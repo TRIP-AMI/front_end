@@ -14,8 +14,8 @@ export default function ApplyModalButton({
   const setModal = useSetRecoilState(modalState);
   // TODO: Apply 버튼 누르면 확인 모달 띄우기
   const onApply = () => {
-    console.log(`Apply on ${selectedDate}`);
-    setModal(null);
+    // console.log(`Apply on ${selectedDate}`);
+    setModal({ modalName: 'APPLY_CHECK' });
   };
 
   return (
