@@ -29,10 +29,10 @@ export default function ApplyModal() {
     <BasicBottomModal
       onDismiss={() => {}}
       header={
-        selectOpen ? (
-          <ModalHeaderWithTitle icon='chevron-back' title='Select Options' />
-        ) : (
+        selectedDate ? (
           <BasicModalHeader icon='chevron-down' />
+        ) : (
+          <ModalHeaderWithTitle icon='chevron-back' title='Select Options' />
         )
       }
     >
@@ -43,13 +43,13 @@ export default function ApplyModal() {
         selectOpen={selectOpen}
         setSelectOpen={setSelectOpen}
       />
-      {selectOpen ? null : (
+      {selectedDate ? (
         <ApplyModalContent
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
           price={price}
         />
-      )}
+      ) : null}
     </BasicBottomModal>
   );
 }
