@@ -25,25 +25,12 @@ export default function ApplyModal() {
     if (!selectedDate) setSelectOpen(true);
   }, [selectedDate]);
 
-  const onSelectClose = () => {
-    if (selectedDate) {
-      setSelectOpen(false);
-    } else {
-      setSelectOpen(true);
-      // TODO: 날짜 선택 하지 않았을 때 처리
-    }
-  };
-
   return (
     <BasicBottomModal
       onDismiss={() => {}}
       header={
         selectOpen ? (
-          <ModalHeaderWithTitle
-            icon='chevron-back'
-            title='Select Options'
-            onClose={onSelectClose}
-          />
+          <ModalHeaderWithTitle icon='chevron-back' title='Select Options' />
         ) : (
           <BasicModalHeader icon='chevron-down' />
         )
