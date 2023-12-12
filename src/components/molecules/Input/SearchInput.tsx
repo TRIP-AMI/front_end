@@ -7,7 +7,7 @@ function SearchInput() {
   const [text, setText] = useState('');
   return (
     <View style={style.searchWrap}>
-      <AntDesign name='search1' size={18} color={Colors.main} />
+      <AntDesign name='search1' size={18} color={Colors.primary} />
       <TextInput
         style={style.searchInput}
         placeholder='What kind of trip do you want?'

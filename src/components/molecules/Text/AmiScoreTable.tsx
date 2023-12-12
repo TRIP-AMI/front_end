@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native';
 import AmiScore from '@components/atoms/Text/AmiScore';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import VerticalLine from '@components/atoms/etc/VerticalLine';
 
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 72,
     borderRadius: 5,
-    borderColor: colors.lineGray,
+    borderColor: Colors.lineGray,
     borderWidth: 1,
     marginHorizontal: Spacing.IOS392Margin,
     marginBottom: 20,

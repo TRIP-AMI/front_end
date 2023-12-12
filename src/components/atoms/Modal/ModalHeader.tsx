@@ -34,7 +34,7 @@ export function BasicModalHeader({
       <IconButton
         icon={icon}
         size={24}
-        color={Colors.fontGray01}
+        color={Colors.contentLine}
         onPress={() => setModal(null)}
       />
     </View>

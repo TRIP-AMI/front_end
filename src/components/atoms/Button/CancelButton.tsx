@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     paddingVertical: size.default.paddingVertical,
-    backgroundColor: Colors.blankMoreGray,
+    backgroundColor: Colors.lineGray02,
   },
   pressed: {
     opacity: 0.5,

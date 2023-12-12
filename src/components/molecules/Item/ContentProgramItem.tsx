@@ -1,5 +1,5 @@
 import { View, StyleSheet } from 'react-native';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 import ProgramImg from '@components/atoms/Image/ProgramImg';
 import ProgramText from '@components/atoms/Text/ProgramText';
 import ProgramOrder from '@components/atoms/etc/ProgramOrder';
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   textContainer: {
     alignSelf: 'center',
     flexDirection: 'row',
-    backgroundColor: colors.skyBlue,
+    backgroundColor: Colors.second,
     borderRadius: 5,
     marginRight: Spacing.IOS392Margin,
     marginLeft: 15,

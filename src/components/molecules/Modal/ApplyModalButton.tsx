@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Bold',
     fontSize: 18,
     lineHeight: 17,
-    color: Colors.main,
+    color: Colors.primary,
   },
   buttonContainer: {
     width: '88%',

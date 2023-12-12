@@ -67,7 +67,7 @@ function Navigation() {
           options={({ route }) => ({
             title: route.params.title,
             headerStyle: {
-              backgroundColor: Colors.main,
+              backgroundColor: Colors.primary,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
