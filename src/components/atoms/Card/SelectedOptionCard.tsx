@@ -21,7 +21,7 @@ export default function SelectedOptionCard({
       <View style={styles.header}>
         <Text style={styles.text}>{selectedItem}</Text>
         <Pressable onPress={onClose}>
-          <Ionicons name='close-outline' size={20} color={Colors.contentLine} />
+          <Ionicons name='close-outline' size={20} color={Colors.fontGray05} />
         </Pressable>
       </View>
       <View style={styles.content}>

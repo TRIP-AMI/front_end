@@ -13,7 +13,7 @@ function ContentLocation({
 }) {
   return (
     <View style={styles.container}>
-      <EvilIcons name='location' color={Colors.contentLine} size={20} />
+      <EvilIcons name='location' color={Colors.fontGray05} size={20} />
       <Text style={[styles.location, style]}>{location}</Text>
     </View>
   );

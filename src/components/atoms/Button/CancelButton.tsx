@@ -13,7 +13,7 @@ export default function CancelButton({ content, onPress }: CancelButtonProps) {
       style={({ pressed }) => [styles.container, pressed && styles.pressed]}
       onPress={onPress}
     >
-      <ButtonText content={content} color={Colors.contentLine} />
+      <ButtonText content={content} color={Colors.fontGray05} />
     </Pressable>
   );
 }

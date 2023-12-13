@@ -25,7 +25,7 @@ export default function OutlinedButton({
     >
       <ButtonText
         content={content}
-        color={disabled ? Colors.contentLine : Colors.primary}
+        color={disabled ? Colors.fontGray05 : Colors.primary}
       />
     </Pressable>
   );

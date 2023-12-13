@@ -6,7 +6,7 @@ import Colors from '@styles/colors';
 function ContentTime({ time }: { time: string }) {
   return (
     <View style={styles.container}>
-      <EvilIcons name='clock' color={Colors.contentLine} size={20} />
+      <EvilIcons name='clock' color={Colors.fontGray05} size={20} />
       <Text style={styles.time}>{time}</Text>
     </View>
   );
