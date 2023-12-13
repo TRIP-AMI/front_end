@@ -8,24 +8,26 @@ const Colors = {
   // second
   second: '#EEF8FE',
   // font
-  fontGray01: '#1E1E20',
-  fontGray02: '#4A4A4A',
-  fontGray03: '#B9B9B9',
-  fontGray04: '#C1C1C1',
+  titleBlack: '#161616', // fontGray01
+  fontGray01: '#1E1E20', // fontGray02
+  fontGray02: '#4A4A4A', // fontGray03
+  inactiveColor: '#727272', // fontGray04
+  contentLine: '#8E8E8E', // fontGray05
+  fontGray06: '#C1C1C1', // fontGray06 (ok)
+  fontGray07: '#B9B9B9', // fontGray07 (ok)
+  fontGray08: '#F2F2F2', // fontGray08 (ok)
   // line
-  lineGray01: '#EEEEEE',
-  lineGray02: '#F5F5F5',
+  // lineGray01: '#4A4A4A', // lineGray01
+  // lineGray02: '#E3E3E3', // lineGray02
+  lineGray01: '#EEEEEE', // lineGray03
+  lineGray: '#ECECEC', // lineGray04
+  lineGray02: '#F5F5F5', // lineGray05
   // etc.
-  titleBlack: '#161616',
-  contentLine: '#8E8E8E',
   likeBlank: '#CBCBCBE3',
   footerLight: '#808080',
   footerBackground: '#404040',
-  lineGray: '#ECECEC',
-  moreGray: '#77787A',
-  inactiveColor: '#727272',
+  // moreGray: '#77787A',
   tabIndicator: '#2D2D2D',
-  reviewBackColor: '#F2F2F2',
   reviewContent: '#757575',
 };
 

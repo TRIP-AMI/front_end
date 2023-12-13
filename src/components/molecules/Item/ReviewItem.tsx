@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     height: screenHeight * 0.071,
     borderRadius: 5,
     flexDirection: 'row',
-    backgroundColor: Colors.reviewBackColor,
+    backgroundColor: Colors.fontGray08,
     padding: screenHeight * 0.016,
     marginHorizontal: Spacing.IOS392Margin,
     marginBottom: screenHeight * 0.0094,
