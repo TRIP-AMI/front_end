@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: Colors.lineGray01,
+    borderBottomColor: Colors.lineGray03,
   },
   tab: {
     paddingTop: 13,

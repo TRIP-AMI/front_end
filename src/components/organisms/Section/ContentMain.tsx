@@ -20,7 +20,7 @@ function ContentMain() {
         time='12/16(Sat) 19:30'
         location='3-11, Jamsil-dong, Songpa-gu, Seoul'
       />
-      <Separator color={Colors.lineGray01} hei={1} marginVer={20} />
+      <Separator color={Colors.lineGray03} hei={1} marginVer={20} />
       <ContentPrice
         price='Free'
         option='(It covers all expenses incurred in the program.)'
