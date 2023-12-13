@@ -68,7 +68,7 @@ function ContentAmi() {
         <AmiScoreTable key={score.title} scores={score} />
       ))}
       <AmiIntroduce>{dummyIntroduce}</AmiIntroduce>
-      <Separator color={Colors.lineGray02} hei={8} marginVer={30} />
+      <Separator color={Colors.lineGray05} hei={8} marginVer={30} />
     </>
   );
 }

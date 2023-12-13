@@ -64,7 +64,7 @@ function ContentProgram() {
           travelTime={item.travelTime}
         />
       ))}
-      <Separator color={Colors.lineGray02} hei={8} marginVer={30} />
+      <Separator color={Colors.lineGray05} hei={8} marginVer={30} />
     </View>
   );
 }

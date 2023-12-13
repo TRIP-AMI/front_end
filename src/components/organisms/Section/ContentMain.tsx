@@ -25,7 +25,7 @@ function ContentMain() {
         price='Free'
         option='(It covers all expenses incurred in the program.)'
       />
-      <Separator color={Colors.lineGray02} hei={8} marginVer={20} />
+      <Separator color={Colors.lineGray05} hei={8} marginVer={20} />
     </>
   );
 }
