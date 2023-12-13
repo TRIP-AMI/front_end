@@ -8,15 +8,20 @@ import modalState from '@/utils/recoil/modal';
 export function ModalHeaderWithTitle({
   icon,
   title,
-  onClose,
 }: {
   icon: keyof typeof Ionicons.glyphMap;
   title: string;
-  onClose: () => void;
 }) {
+  const setModal = useSetRecoilState(modalState);
+
   return (
     <View style={styles.container}>
-      <IconButton icon={icon} size={24} color='black' onPress={onClose} />
+      <IconButton
+        icon={icon}
+        size={24}
+        color='black'
+        onPress={() => setModal(null)}
+      />
       <Text style={styles.title}>{title}</Text>
       <View style={styles.empty} />
     </View>
