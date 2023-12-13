@@ -9,8 +9,8 @@ const Colors = {
   second: '#EEF8FE',
   // font
   titleBlack: '#161616', // fontGray01
-  fontGray01: '#1E1E20', // fontGray02
-  fontGray02: '#4A4A4A', // fontGray03
+  fontGray02: '#1E1E20', // fontGray02 (ok)
+  fontGray03: '#4A4A4A', // fontGray03 (ok)
   fontGray04: '#727272', // fontGray04 (ok)
   fontGray05: '#8E8E8E', // fontGray05 (ok)
   fontGray06: '#C1C1C1', // fontGray06 (ok)
