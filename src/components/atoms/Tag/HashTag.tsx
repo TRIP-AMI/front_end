@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: 6,
     paddingHorizontal: 10,
-    color: Colors.titleBlack,
+    color: Colors.fontGray01,
     fontSize: 12,
     letterSpacing: -0.24,
     fontFamily: 'Montserrat-Medium',

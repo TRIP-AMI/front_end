@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   title: {
-    color: Colors.contentLine,
+    color: Colors.fontGray05,
     fontSize: 12,
     fontFamily: 'Montserrat-Medium',
     letterSpacing: -0.24,

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginHorizontal: Spacing.IOS392Margin,
   },
   text: {
-    color: Colors.fontGray02,
+    color: Colors.fontGray03,
     fontSize: 16,
     fontFamily: 'Montserrat-Regular',
     letterSpacing: -0.32,

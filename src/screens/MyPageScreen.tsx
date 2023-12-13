@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   text: {
-    color: Colors.fontGray02,
+    color: Colors.fontGray03,
     fontSize: 16,
     fontFamily: 'Montserrat-Medium',
     letterSpacing: -0.32,

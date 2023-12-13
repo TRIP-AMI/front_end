@@ -25,7 +25,7 @@ export default function OutlinedButton({
     >
       <ButtonText
         content={content}
-        color={disabled ? Colors.contentLine : Colors.primary}
+        color={disabled ? Colors.fontGray05 : Colors.primary}
       />
     </Pressable>
   );
@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   disabled: {
-    borderColor: Colors.fontGray04,
+    borderColor: Colors.fontGray06,
   },
 });

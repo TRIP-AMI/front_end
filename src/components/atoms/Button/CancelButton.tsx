@@ -13,7 +13,7 @@ export default function CancelButton({ content, onPress }: CancelButtonProps) {
       style={({ pressed }) => [styles.container, pressed && styles.pressed]}
       onPress={onPress}
     >
-      <ButtonText content={content} color={Colors.contentLine} />
+      <ButtonText content={content} color={Colors.fontGray05} />
     </Pressable>
   );
 }
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     paddingVertical: size.default.paddingVertical,
-    backgroundColor: Colors.lineGray02,
+    backgroundColor: Colors.lineGray05,
   },
   pressed: {
     opacity: 0.5,

@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   cancel: {
     fontFamily: 'Montserrat-Medium',
-    color: Colors.contentLine,
+    color: Colors.fontGray05,
   },
   pressed: {
     opacity: 0.5,

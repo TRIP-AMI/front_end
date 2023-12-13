@@ -12,10 +12,26 @@ export default function ApplyModalButton({
   selectedDate: string;
 }) {
   const setModal = useSetRecoilState(modalState);
-  // TODO: Apply 버튼 누르면 확인 모달 띄우기
+
+  // TODO: user 정보 받아오기
+  const user = {
+    id: 1,
+    name: 'hellooo',
+    email: 'tripami42@gmail.com',
+  };
+
   const onApply = () => {
-    console.log(`Apply on ${selectedDate}`);
-    setModal(null);
+    setModal({
+      modalName: 'APPLY_CHECK',
+      applyCheck: {
+        date: selectedDate,
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+        },
+      },
+    });
   };
 
   return (
@@ -44,7 +60,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    borderTopColor: Colors.lineGray,
+    borderTopColor: Colors.lineGray04,
     borderTopWidth: 1,
   },
   priceTag: {

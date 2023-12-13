@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: Dimensions.get('window').height * 0.0845,
     borderRadius: 5,
-    borderColor: Colors.lineGray,
+    borderColor: Colors.lineGray04,
     borderWidth: 1,
     marginHorizontal: Spacing.IOS392Margin,
     marginBottom: 20,

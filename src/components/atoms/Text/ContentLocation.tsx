@@ -13,7 +13,7 @@ function ContentLocation({
 }) {
   return (
     <View style={styles.container}>
-      <EvilIcons name='location' color={Colors.contentLine} size={20} />
+      <EvilIcons name='location' color={Colors.fontGray05} size={20} />
       <Text style={[styles.location, style]}>{location}</Text>
     </View>
   );
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginLeft: Spacing.IOS392Margin,
   },
   location: {
-    color: Colors.fontGray02,
+    color: Colors.fontGray03,
     fontSize: 16,
     fontFamily: 'Montserrat-Medium',
     marginLeft: 10.64,

@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     lineHeight: 20,
-    textAlign: 'center',
-    color: Colors.fontGray01,
+    textAlign: 'left',
+    color: Colors.fontGray02,
+    paddingHorizontal: 20,
   },
 });

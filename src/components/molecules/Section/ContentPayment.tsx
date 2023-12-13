@@ -14,7 +14,7 @@ function ContentPayment() {
           to AMI the day of the trip
         </Text>
       </View>
-      <Separator color={Colors.lineGray02} hei={8} marginVer={30} />
+      <Separator color={Colors.lineGray05} hei={8} marginVer={30} />
     </View>
   );
 }
