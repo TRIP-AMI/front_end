@@ -12,8 +12,10 @@ export default function ApplyCheckModal({ date, user }: ApplyCheckProps) {
     setModal(null);
   };
 
+  // TODO: APPLY_COMPLETE 모달 띄우기
   const onConfirm = () => {
-    setModal({ modalName: 'APPLY_COMPLETE' });
+    setModal(null);
+    // setModal({ modalName: 'APPLY_COMPLETE' });
   };
 
   const data = [
