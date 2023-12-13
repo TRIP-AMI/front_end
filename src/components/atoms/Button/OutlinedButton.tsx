@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   disabled: {
-    borderColor: Colors.borderGray,
+    borderColor: Colors.fontGray04,
   },
 });
