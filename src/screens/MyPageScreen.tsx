@@ -12,8 +12,8 @@ import Colors from '@styles/colors';
 const dummyProfiles = [
   {
     profileId: 1,
-    profileType: 'ami',
-    // profileType: 'tourist',
+    // profileType: 'ami',
+    profileType: 'tourist',
     profileName: 'Jenny',
     profileImgUrl:
       'https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg',
@@ -109,7 +109,7 @@ export default function MyPageScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: 'white',
   },
   headerMargin: {
     marginTop: 20,
