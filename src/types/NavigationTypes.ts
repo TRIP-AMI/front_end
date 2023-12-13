@@ -10,6 +10,7 @@ export type RootStackParamList = {
   Search: undefined;
   Content: undefined;
   Category: { title: string };
+  ApplicationDetails: undefined;
 };
 
 export type BottomTabParamList = {
