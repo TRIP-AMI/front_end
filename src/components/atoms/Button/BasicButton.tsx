@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   disabled: {
-    backgroundColor: Colors.fontGray03,
+    backgroundColor: Colors.fontGray07,
   },
   pressed: {
     opacity: 0.5,

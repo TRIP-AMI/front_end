@@ -21,7 +21,7 @@ export default function SelectedOptionCard({
       <View style={styles.header}>
         <Text style={styles.text}>{selectedItem}</Text>
         <Pressable onPress={onClose}>
-          <Ionicons name='close-outline' size={20} color={Colors.contentLine} />
+          <Ionicons name='close-outline' size={20} color={Colors.fontGray05} />
         </Pressable>
       </View>
       <View style={styles.content}>
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     lineHeight: 17,
-    color: Colors.fontGray01,
+    color: Colors.fontGray02,
   },
 });

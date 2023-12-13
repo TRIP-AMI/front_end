@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 18,
     letterSpacing: -0.28,
-    color: Colors.fontGray02,
+    color: Colors.fontGray03,
     textAlign: 'center',
   },
 });

@@ -29,10 +29,10 @@ export default function SelectBox({
         items={items}
         showTickIcon={false}
         ArrowUpIconComponent={() => (
-          <Ionicons name='chevron-up' size={20} color={Colors.contentLine} />
+          <Ionicons name='chevron-up' size={20} color={Colors.fontGray05} />
         )}
         ArrowDownIconComponent={() => (
-          <Ionicons name='chevron-down' size={20} color={Colors.contentLine} />
+          <Ionicons name='chevron-down' size={20} color={Colors.fontGray05} />
         )}
         setOpen={setSelectOpen}
         setValue={setSelectedDate}
@@ -44,7 +44,7 @@ export default function SelectBox({
         dropDownContainerStyle={styles.dropDownContainer}
         containerStyle={{ flex: 1 }}
         listItemContainerStyle={styles.listContainer}
-        listItemLabelStyle={{ color: Colors.titleBlack }}
+        listItemLabelStyle={{ color: Colors.fontGray01 }}
       />
     </View>
   );
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '6%',
     height: 40,
     width: '88%',
-    borderColor: Colors.lineGray,
+    borderColor: Colors.lineGray04,
   },
   pickerOpened: {
     marginHorizontal: '6%',
@@ -75,11 +75,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     borderTopWidth: 0.5,
-    borderColor: Colors.lineGray,
+    borderColor: Colors.lineGray04,
   },
   itemText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
-    color: Colors.contentLine,
+    color: Colors.fontGray05,
   },
 });

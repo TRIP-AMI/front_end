@@ -64,7 +64,7 @@ function ContentProgram() {
           travelTime={item.travelTime}
         />
       ))}
-      <Separator color={Colors.lineGray02} hei={8} marginVer={30} />
+      <Separator color={Colors.lineGray05} hei={8} marginVer={30} />
     </View>
   );
 }
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     marginLeft: Spacing.IOS392Margin,
   },
   location: {
-    color: Colors.fontGray02,
+    color: Colors.fontGray03,
     fontSize: 16,
     fontFamily: 'Montserrat-Medium',
     marginLeft: 4.87,

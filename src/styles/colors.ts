@@ -8,24 +8,26 @@ const Colors = {
   // second
   second: '#EEF8FE',
   // font
-  fontGray01: '#1E1E20',
-  fontGray02: '#4A4A4A',
-  fontGray03: '#B9B9B9',
-  fontGray04: '#C1C1C1',
+  fontGray01: '#161616',
+  fontGray02: '#1E1E20',
+  fontGray03: '#4A4A4A',
+  fontGray04: '#727272',
+  fontGray05: '#8E8E8E',
+  fontGray06: '#C1C1C1',
+  fontGray07: '#B9B9B9',
+  fontGray08: '#F2F2F2',
   // line
-  lineGray01: '#EEEEEE',
-  lineGray02: '#F5F5F5',
+  // lineGray01: '#4A4A4A',
+  // lineGray02: '#E3E3E3',
+  lineGray03: '#EEEEEE',
+  lineGray04: '#ECECEC',
+  lineGray05: '#F5F5F5',
   // etc.
-  titleBlack: '#161616',
-  contentLine: '#8E8E8E',
   likeBlank: '#CBCBCBE3',
   footerLight: '#808080',
   footerBackground: '#404040',
-  lineGray: '#ECECEC',
-  moreGray: '#77787A',
-  inactiveColor: '#727272',
+  // moreGray: '#77787A',
   tabIndicator: '#2D2D2D',
-  reviewBackColor: '#F2F2F2',
   reviewContent: '#757575',
 };
 
