@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     paddingHorizontal: 20,
-    color: Colors.fontGray02,
+    color: Colors.fontGray03,
   },
 });
