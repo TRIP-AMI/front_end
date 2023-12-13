@@ -11,7 +11,7 @@ const Colors = {
   titleBlack: '#161616', // fontGray01
   fontGray01: '#1E1E20', // fontGray02
   fontGray02: '#4A4A4A', // fontGray03
-  inactiveColor: '#727272', // fontGray04
+  fontGray04: '#727272', // fontGray04 (ok)
   fontGray05: '#8E8E8E', // fontGray05 (ok)
   fontGray06: '#C1C1C1', // fontGray06 (ok)
   fontGray07: '#B9B9B9', // fontGray07 (ok)

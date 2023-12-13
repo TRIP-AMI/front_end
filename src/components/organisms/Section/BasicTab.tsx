@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   tabText: {
     flex: 1,
-    color: Colors.inactiveColor,
+    color: Colors.fontGray04,
     fontSize: 16,
     fontFamily: 'Montserrat-SemiBold',
     lineHeight: 19,
