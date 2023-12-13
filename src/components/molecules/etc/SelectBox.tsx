@@ -44,7 +44,7 @@ export default function SelectBox({
         dropDownContainerStyle={styles.dropDownContainer}
         containerStyle={{ flex: 1 }}
         listItemContainerStyle={styles.listContainer}
-        listItemLabelStyle={{ color: Colors.titleBlack }}
+        listItemLabelStyle={{ color: Colors.fontGray01 }}
       />
     </View>
   );
