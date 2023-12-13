@@ -1,10 +1,11 @@
-import { Image, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import TextTitle from '@components/atoms/Text/TextTitle';
 import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import AmiScoreTable from '@components/molecules/Text/AmiScoreTable';
 import AmiIntroduce from '@components/atoms/Text/AmiIntroduce';
 import Separator from '@components/atoms/etc/Separator';
+import AmiProfile from '@components/molecules/Item/AmiProfile';
 
 const dummyData = [
   {
@@ -57,14 +58,12 @@ const dummyIntroduce =
   '\n' +
   'Contact: tripamics@trimami.co.kr';
 
-// TODO Image와 이름 묶어서 컴포넌트 만들기
 function ContentAmi() {
   const dummyProfile = dummyData[0];
   return (
     <>
       <TextTitle style={styles.title}>Introduce AMI</TextTitle>
-      <Image source={{ uri: dummyProfile.imgUrl }} style={styles.image} />
-      <TextTitle style={styles.name}>{dummyProfile.name}</TextTitle>
+      <AmiProfile imgUrl={dummyProfile.imgUrl} name={dummyProfile.name} />
       {dummyAmiData.map((score) => (
         <AmiScoreTable key={score.title} scores={score} />
       ))}
@@ -83,21 +82,6 @@ const styles = StyleSheet.create({
     marginLeft: Spacing.IOS392Margin,
     marginTop: 10,
     marginBottom: 20,
-  },
-  image: {
-    width: 107,
-    height: 107,
-    alignSelf: 'center',
-    borderRadius: 100,
-    marginBottom: 8,
-  },
-  name: {
-    color: '#000000',
-    fontSize: 18,
-    fontFamily: 'Montserrat-Bold',
-    letterSpacing: -0.36,
-    alignSelf: 'center',
-    marginBottom: 12,
   },
 });
 
