@@ -59,12 +59,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 50,
     borderTopWidth: 1,
-    borderTopColor: Colors.lineGray,
+    borderTopColor: Colors.lineGray04,
     padding: 15,
   },
   buttonLeft: {
     width: '50%',
-    borderRightColor: Colors.lineGray,
+    borderRightColor: Colors.lineGray04,
     borderRightWidth: 1,
   },
 });

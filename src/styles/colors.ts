@@ -20,7 +20,7 @@ const Colors = {
   // lineGray01: '#4A4A4A', // lineGray01
   // lineGray02: '#E3E3E3', // lineGray02
   lineGray01: '#EEEEEE', // lineGray03
-  lineGray: '#ECECEC', // lineGray04
+  lineGray04: '#ECECEC', // lineGray04 (ok)
   lineGray05: '#F5F5F5', // lineGray05 (ok)
   // etc.
   likeBlank: '#CBCBCBE3',

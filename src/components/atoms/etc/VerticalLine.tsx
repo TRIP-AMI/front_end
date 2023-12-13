@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   verticalLine: {
     height: 22,
     width: 1,
-    backgroundColor: Colors.lineGray,
+    backgroundColor: Colors.lineGray04,
   },
 });
 
