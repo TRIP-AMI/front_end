@@ -10,8 +10,6 @@ import ContentScreen from '@screens/ContentScreen';
 import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderRightIcons';
 import ContentHeaderLeftIcon from '@components/molecules/Header/ContentHeaderLeftIcon';
 import { useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRecoilState } from 'recoil';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -21,22 +19,15 @@ import SearchNotificationRight from '@/components/molecules/Header/SearchNotific
 import BackLeft from '@/components/molecules/Header/BackLeft';
 import Fonts from '@/styles/typography';
 import LoginScreen from '@/screens/LoginScreen';
-import loginState from '@/utils/recoil/login';
+import useLoginHook from '@/hooks/loginHook';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
-  const getToken = async () => {
-    const token = await AsyncStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  };
+  const { isLoggedIn, getStoredToken } = useLoginHook();
 
   useEffect(() => {
-    getToken();
-    console.log('isLoggedIn', isLoggedIn);
+    getStoredToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -113,7 +104,11 @@ function Navigation() {
           <Stack.Screen
             name='Login'
             component={LoginScreen}
-            options={{ headerBackVisible: false }}
+            options={{
+              headerBackVisible: false,
+              headerTitleStyle: Fonts.header.title,
+              headerShadowVisible: false,
+            }}
           />
         )}
       </Stack.Navigator>
