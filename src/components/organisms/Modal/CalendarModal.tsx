@@ -2,41 +2,45 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import BasicFullScreenModal from '@components/atoms/Modal/BasicFullScreenModal';
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
 import Spacing from '@/styles/spacing';
 import useModalHook from '@/hooks/modalHook';
 import PickerSelectModal from './PickerSelectModal';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import CalendarPicker from '@/components/molecules/Calendar/CalendarPicker';
 
-const yList = [
-  {
-    label: '2023',
-    value: '2023',
-  },
-  {
-    label: '2024',
-    value: '2024',
-  },
-];
-const mList = [
-  {
-    label: '1',
-    value: '1',
-  },
-  {
-    label: '2',
-    value: '2',
-  },
-  {
-    label: '3',
-    value: '3',
-  },
-];
+const yList: { label: string; value: number }[] = [];
+const mList: { label: string; value: number }[] = [];
+
+const now = dayjs();
+const m3Later = now.add(3, 'M');
+
+console.log(now.get('y'), m3Later.get('y'));
+
+yList.push({
+  label: `${now.get('y')}`,
+  value: now.get('y'),
+});
+if (now.get('y') < m3Later.get('y')) {
+  yList.push({
+    label: `${m3Later.get('y')}`,
+    value: m3Later.get('y'),
+  });
+}
+
+// eslint-disable-next-line no-plusplus
+for (let i = 0; i < 3; i++) {
+  const tempDate = now.add(i, 'M');
+  mList.push({
+    label: `${tempDate.get('M') + 1}`,
+    value: tempDate.get('M') + 1,
+  });
+}
 
 export default function CalendarModal() {
-  const [dateY, setDateY] = useState('2023');
-  const [dateM, setDateM] = useState('12');
+  const [dateY, setDateY] = useState<number>(0);
+  const [dateM, setDateM] = useState<number>(0);
 
   const {
     isVisible: yVisible,
@@ -48,6 +52,11 @@ export default function CalendarModal() {
     onOpen: mOpen,
     onClose: mClose,
   } = useModalHook();
+
+  useEffect(() => {
+    setDateY(now.get('y'));
+    setDateM(now.get('M') + 1);
+  }, []);
 
   return (
     <BasicFullScreenModal modalTitle='Available Dates'>
@@ -62,7 +71,7 @@ export default function CalendarModal() {
           <SelectButton title={dateM} onPress={mOpen} />
         </View>
         {/* calendar */}
-        <CalendarPicker />
+        <CalendarPicker Y={dateY} M={dateM} />
       </View>
 
       {/* modal */}

@@ -5,9 +5,9 @@ import Dim from '@/components/atoms/Dim/Dim';
 interface PickerSelectModalProps {
   isVisible: boolean;
   onClose: () => void;
-  selectList: { label: string; value: string }[];
-  selectedValue: string;
-  setSelectedValue: (value: string) => void;
+  selectList: { label: string; value: number }[];
+  selectedValue: number;
+  setSelectedValue: (value: number) => void;
 }
 
 export default function PickerSelectModal({

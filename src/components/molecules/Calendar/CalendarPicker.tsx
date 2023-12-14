@@ -1,13 +1,11 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import useCalendar from '@/hooks/calendarHook';
+import CalendarPressDate from '@/components/atoms/Press/CalendarPressDate';
 
 const dayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-export default function CalendarPicker() {
+export default function CalendarPicker({ Y, M }: { Y: number; M: number }) {
   const { calculateDateList } = useCalendar();
-
-  const Y = 2023;
-  const M = 12;
 
   const randerDateList = calculateDateList({ Y, M });
 
@@ -26,11 +24,7 @@ export default function CalendarPicker() {
               }}
             >
               {list.map((date) => {
-                return (
-                  <Pressable key={date + Math.random()}>
-                    <Text style={styles.dateFont}>{date}</Text>
-                  </Pressable>
-                );
+                return <CalendarPressDate key={Math.random()} item={date} />;
               })}
             </View>
           </View>
@@ -44,9 +38,10 @@ const styles = StyleSheet.create({
   wrap: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 30,
+    marginTop: 20,
   },
   dayFont: {
+    marginBottom: 20,
     paddingHorizontal: 7,
     color: '#A1A5AE',
     fontFamily: 'Montserrat-Medium',
@@ -55,9 +50,13 @@ const styles = StyleSheet.create({
     letterSpacing: -0.26,
   },
   dateFont: {
+    color: '#1E1E20',
     textAlign: 'center',
     fontFamily: 'Montserrat-SemiBold',
     fontSize: 16,
     lineHeight: 40,
+  },
+  dateFontDisabled: {
+    color: '#A1A5AE',
   },
 });

@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 const beforMDateList = (beforDateEnd_D: number, start_d: number) => {
   const temp = [];
   for (let i = 0; i < start_d; i++) {
-    temp.push(beforDateEnd_D - i);
+    temp.push({ value: beforDateEnd_D - i, disabled: true });
   }
   temp.reverse();
   return temp;
@@ -15,7 +15,7 @@ const beforMDateList = (beforDateEnd_D: number, start_d: number) => {
 const nowMDateList = (end_D: number) => {
   const temp = [];
   for (let i = 1; i <= end_D; i++) {
-    temp.push(i);
+    temp.push({ value: i, disabled: false });
   }
   return temp;
 };
@@ -23,7 +23,7 @@ const nowMDateList = (end_D: number) => {
 const afterMDateList = (end_d: number) => {
   const temp = [];
   for (let i = 1; i < 7 - end_d; i++) {
-    temp.push(i);
+    temp.push({ value: i, disabled: true });
   }
   return temp;
 };

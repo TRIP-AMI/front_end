@@ -5,7 +5,7 @@ export default function SelectButton({
   title,
   onPress,
 }: {
-  title: string;
+  title: string | number;
   onPress: () => void;
 }) {
   return (
