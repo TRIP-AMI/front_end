@@ -4,9 +4,11 @@ import { Badge } from 'react-native-paper';
 import { IconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
 import modalState from '@/utils/recoil/modal';
+import useLoginHook from '@/hooks/loginHook';
 
 export default function HomeHeaderIcons() {
   const setModal = useSetRecoilState(modalState);
+  const { onLogout } = useLoginHook();
 
   const onSearchPress = () => {
     setModal({ modalName: 'SEARCH' });
@@ -21,6 +23,10 @@ export default function HomeHeaderIcons() {
 
   return (
     <View style={styles.container}>
+      {/* TODO: 임시 로그아웃 버튼 지우기 */}
+      <View>
+        <IconButton icon='close' size={24} color='red' onPress={onLogout} />
+      </View>
       <View>
         <IconButton
           icon='search'
