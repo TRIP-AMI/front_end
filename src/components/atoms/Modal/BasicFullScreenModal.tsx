@@ -27,11 +27,7 @@ function BasicFullScreenModal({
   };
 
   return (
-    <Modal
-      animationType='slide'
-      transparent={false}
-      presentationStyle='fullScreen'
-    >
+    <Modal animationType='slide' presentationStyle='fullScreen'>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.header}>
           {/* title */}
