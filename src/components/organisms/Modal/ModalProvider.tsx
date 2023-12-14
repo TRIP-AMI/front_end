@@ -10,6 +10,7 @@ import SearchModal from '@/components/organisms/Modal/SearchModal';
 import ApplyModal from '@/components/organisms/Modal/ApplyModal';
 import ApplyCheckModal from '@/components/molecules/Modal/ApplyCheckModal';
 import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal';
+import CalendarModal from './CalendarModal';
 
 export default function ModalProvider() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
@@ -33,6 +34,7 @@ export default function ModalProvider() {
     LOGIN_CHECK: <LoginModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
+    CALENDAR: <CalendarModal />,
     APPLY: <ApplyModal />,
     APPLY_CHECK: modal.applyCheck && (
       <ApplyCheckModal
@@ -55,6 +57,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    backgroundColor: '#00000080',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
 });
