@@ -6,6 +6,8 @@ import {
   SafeAreaView,
   Text,
   StyleSheet,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Spacing from '@styles/spacing';
@@ -16,9 +18,11 @@ import modalState from '@/utils/recoil/modal';
 function BasicFullScreenModal({
   children,
   modalTitle,
+  headerStyle,
 }: {
   children: ReactNode;
   modalTitle?: string;
+  headerStyle?: StyleProp<ViewStyle>;
 }) {
   const setModal = useSetRecoilState(modalState);
 
@@ -33,7 +37,7 @@ function BasicFullScreenModal({
       presentationStyle='fullScreen'
     >
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.header}>
+        <View style={[styles.header, headerStyle]}>
           {/* title */}
           {!modalTitle && <Text />}
           {modalTitle && <ModalTitle>{modalTitle}</ModalTitle>}
