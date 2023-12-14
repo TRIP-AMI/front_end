@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import TextTitle from '@components/atoms/Text/TextTitle';
 import Spacing from '@styles/spacing';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 
 function ContentTitles({ price, option }: { price: string; option: string }) {
   return (
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   subtitle: {
-    color: colors.contentLine,
+    color: Colors.fontGray05,
     fontSize: 14,
     fontFamily: 'Montserrat-Regular',
     letterSpacing: -0.28,

@@ -1,12 +1,12 @@
-import { Text, View, StyleSheet } from 'react-native';
-import colors from '@styles/colors';
+import { Text, StyleSheet, Pressable } from 'react-native';
+import Colors from '@styles/colors';
 
 function AmiScore({ score, title }: { score: number; title: string }) {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={() => console.log(title)}>
       <Text style={styles.score}>{score}</Text>
       <Text style={styles.title}>{title}</Text>
-    </View>
+    </Pressable>
   );
 }
 
@@ -16,14 +16,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   score: {
-    color: colors.main,
+    color: Colors.primary,
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,
     marginBottom: 1,
   },
   title: {
-    color: colors.contentLine,
+    color: Colors.fontGray05,
     fontSize: 12,
     fontFamily: 'Montserrat-Medium',
     letterSpacing: -0.24,

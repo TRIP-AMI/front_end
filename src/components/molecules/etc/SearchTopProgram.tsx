@@ -46,7 +46,7 @@ function SearchTopProgram() {
           >
             <Text
               style={{
-                color: Colors.main,
+                color: Colors.primary,
                 fontSize: 14,
                 fontFamily: 'Montserrat-ExtraBold',
                 lineHeight: 18,
@@ -76,7 +76,7 @@ function SearchTopProgram() {
 
 const style = StyleSheet.create({
   textTitle: {
-    color: Colors.titleBlack,
+    color: Colors.fontGray01,
     fontFamily: 'Montserrat-Bold',
     fontSize: 22,
     lineHeight: 22,

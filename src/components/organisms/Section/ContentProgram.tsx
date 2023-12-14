@@ -2,7 +2,7 @@ import TextTitle from '@components/atoms/Text/TextTitle';
 import { StyleSheet, View } from 'react-native';
 import Spacing from '@styles/spacing';
 import ContentLocation from '@components/atoms/Text/ContentLocation';
-import colors from '@styles/colors';
+import Colors from '@styles/colors';
 import ContentProgramItem from '@components/molecules/Item/ContentProgramItem';
 import Separator from '@components/atoms/etc/Separator';
 
@@ -64,7 +64,7 @@ function ContentProgram() {
           travelTime={item.travelTime}
         />
       ))}
-      <Separator color={colors.blankMoreGray} hei={8} marginVer={30} />
+      <Separator color={Colors.lineGray05} hei={8} marginVer={30} />
     </View>
   );
 }
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     marginLeft: Spacing.IOS392Margin,
   },
   location: {
-    color: colors.subtitle,
+    color: Colors.fontGray03,
     fontSize: 16,
     fontFamily: 'Montserrat-Medium',
     marginLeft: 4.87,

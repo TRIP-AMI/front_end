@@ -3,21 +3,32 @@
  */
 
 const Colors = {
-  main: '#ED6D34',
-  titleBlack: '#161616',
-  moreGray: '#77787A',
-  navIcon: '#1E1E20',
-  subtitle: '#4A4A4A',
-  blank: '#EEEEEE',
-  blankMoreGray: '#F5F5F5',
-  contentLine: '#8E8E8E',
-  skyBlue: '#EEF8FE',
+  // primary
+  primary: '#ED6D34',
+  // second
+  second: '#EEF8FE',
+  // font
+  fontGray01: '#161616',
+  fontGray02: '#1E1E20',
+  fontGray03: '#4A4A4A',
+  fontGray04: '#727272',
+  fontGray05: '#8E8E8E',
+  fontGray06: '#C1C1C1',
+  fontGray07: '#B9B9B9',
+  fontGray08: '#F2F2F2',
+  // line
+  // lineGray01: '#4A4A4A',
+  // lineGray02: '#E3E3E3',
+  lineGray03: '#EEEEEE',
+  lineGray04: '#ECECEC',
+  lineGray05: '#F5F5F5',
+  // etc.
   likeBlank: '#CBCBCBE3',
-  footerBackground: '#404040',
-  footerText: '#B9B9B9',
   footerLight: '#808080',
-  lineGray: '#ECECEC',
-  borderGray: '#C1C1C1',
+  footerBackground: '#404040',
+  // moreGray: '#77787A',
+  tabIndicator: '#2D2D2D',
+  reviewContent: '#757575',
 };
 
 export default Colors;

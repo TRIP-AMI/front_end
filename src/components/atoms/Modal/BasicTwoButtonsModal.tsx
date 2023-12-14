@@ -1,11 +1,10 @@
 import { Modal, View, StyleSheet } from 'react-native';
 import ModalButton from '@/components/atoms/Button/ModalButton';
 import Colors from '@/styles/colors';
-import BasicModalText from '@/components/atoms/Text/BasicModalText';
 import ModalBackdrop from '@/components/atoms/Modal/ModalBackdrop';
 
 type BasicTwoButtonModalProps = {
-  content: string;
+  children: React.ReactNode;
   cancelText: string;
   confirmText: string;
   onClose: () => void;
@@ -13,7 +12,7 @@ type BasicTwoButtonModalProps = {
 };
 
 export default function BasicTwoButtonModal({
-  content,
+  children,
   cancelText,
   confirmText,
   onClose,
@@ -24,9 +23,7 @@ export default function BasicTwoButtonModal({
       <Modal animationType='slide' transparent>
         <ModalBackdrop>
           <View style={styles.modalView}>
-            <View style={styles.contentContainer}>
-              <BasicModalText content={content} />
-            </View>
+            <View style={styles.contentContainer}>{children}</View>
             <View style={styles.buttonContainer}>
               <View style={styles.buttonLeft}>
                 <ModalButton content={cancelText} cancel onPress={onClose} />
@@ -62,12 +59,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 50,
     borderTopWidth: 1,
-    borderTopColor: Colors.lineGray,
+    borderTopColor: Colors.lineGray04,
     padding: 15,
   },
   buttonLeft: {
     width: '50%',
-    borderRightColor: Colors.lineGray,
+    borderRightColor: Colors.lineGray04,
     borderRightWidth: 1,
   },
 });

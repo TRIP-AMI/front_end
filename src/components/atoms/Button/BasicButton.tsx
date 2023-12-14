@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     paddingVertical: size.default.paddingVertical,
-    backgroundColor: Colors.main,
+    backgroundColor: Colors.primary,
   },
   disabled: {
-    backgroundColor: Colors.footerText,
+    backgroundColor: Colors.fontGray07,
   },
   pressed: {
     opacity: 0.5,
