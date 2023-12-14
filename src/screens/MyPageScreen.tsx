@@ -12,8 +12,7 @@ import Colors from '@styles/colors';
 const dummyProfiles = [
   {
     profileId: 1,
-    // profileType: 'ami',
-    profileType: 'tourist',
+    profileIsAmi: false,
     profileName: 'Jenny',
     profileImgUrl:
       'https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg',
@@ -88,13 +87,12 @@ export default function MyPageScreen() {
           imgUrl={dummyProfile.profileImgUrl}
           name={dummyProfile.profileName}
         />
-        {dummyProfile.profileType === 'ami' && (
+        {dummyProfile.profileIsAmi ? (
           <>
             <AmiScoreTable scores={dummyAmiData} />
             <BasicTab data={tabData} />
           </>
-        )}
-        {dummyProfile.profileType === 'tourist' && (
+        ) : (
           <>
             <AmiScoreTable scores={dummyTouristData} />
             <Text style={styles.text}>Have a great trip to Korea with AMI</Text>
