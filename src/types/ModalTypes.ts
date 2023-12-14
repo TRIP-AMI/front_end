@@ -4,7 +4,8 @@ export type ModalName =
   | 'LOGIN_CHECK'
   | 'APPLY'
   | 'APPLY_CHECK'
-  | 'APPLY_COMPLETE';
+  | 'APPLY_COMPLETE'
+  | 'REVIEW';
 
 export type ApplyCheckProps = {
   date: string;

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { View, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ReviewModal from '@components/organisms/Modal/ReviewModal';
 import modalState from '@/utils/recoil/modal';
 import LoginModal from '@/components/molecules/Modal/LoginModal';
 import loginState from '@/utils/recoil/login';
@@ -41,6 +42,7 @@ export default function ModalProvider() {
       />
     ),
     APPLY_COMPLETE: <ApplyCompleteModal />,
+    REVIEW: <ReviewModal />,
   };
 
   return (
