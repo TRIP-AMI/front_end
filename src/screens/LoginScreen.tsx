@@ -15,13 +15,18 @@ export default function LoginScreen() {
   const [isChecked, setChecked] = useState(false);
   const { onAutoLogin, onLogin } = useLoginHook();
   const setModal = useSetRecoilState(modalState);
+  const [disabled, setDisabled] = useState(true);
 
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-z]{2,4}$/;
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{10,20}$/;
 
   useEffect(() => {
-    // console.log('email: ', email);
-    // console.log('pw: ', password);
+    if (!email || !password) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+      console.log(`email: ${email}, password: ${password}`);
+    }
   }, [email, password]);
 
   const onLoginPress = () => {
@@ -40,8 +45,8 @@ export default function LoginScreen() {
         <View style={styles.inputBox}>
           <BasicInput
             style={styles.input}
-            autoComplete='email'
             value={email}
+            autoComplete='username'
             onChangeText={setEmail}
             placeholder='E-mail'
             placeholderTextColor={Colors.fontGray05}
@@ -72,7 +77,11 @@ export default function LoginScreen() {
         </View>
       </View>
       <View style={styles.button}>
-        <BasicButton onPress={onLoginPress} content='Login' round />
+        {disabled ? (
+          <BasicButton onPress={() => {}} content='Login' round disabled />
+        ) : (
+          <BasicButton onPress={onLoginPress} content='Login' round />
+        )}
       </View>
       <View style={styles.footer}>
         <Pressable
@@ -109,7 +118,7 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 14,
     fontFamily: 'Montserrat-Regular',
-    lineHeight: 20,
+    lineHeight: 18,
     letterSpacing: -0.28,
   },
   checkbox: {
