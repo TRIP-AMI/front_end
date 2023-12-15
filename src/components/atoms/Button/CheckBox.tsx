@@ -9,8 +9,6 @@ interface ICheckBoxProps {
 }
 
 export default function CheckBox({ isChecked, setChecked }: ICheckBoxProps) {
-  // const [isChecked, setChecked] = useState(false);
-
   const onPress = () => {
     setChecked(!isChecked);
   };
