@@ -42,7 +42,12 @@ export default function ModalProvider() {
       />
     ),
     APPLY_COMPLETE: <ApplyCompleteModal />,
-    REVIEW: <ReviewModal />,
+    REVIEW: modal?.applicationItem && (
+      <ReviewModal
+        imgUrl={modal.applicationItem.imgUrl}
+        title={modal.applicationItem.title}
+      />
+    ),
   };
 
   return (

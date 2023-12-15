@@ -16,7 +16,13 @@ export type ApplyCheckProps = {
   };
 };
 
+export type ApplicationItemProps = {
+  imgUrl: string;
+  title: string;
+};
+
 export type ModalState = {
   modalName: ModalName;
   applyCheck?: ApplyCheckProps;
+  applicationItem?: ApplicationItemProps;
 };
