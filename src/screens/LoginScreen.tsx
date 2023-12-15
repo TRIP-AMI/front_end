@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Pressable, Text } from 'react-native';
 import BasicInput from '@components/atoms/Input/BasicInput';
@@ -6,21 +7,29 @@ import useLoginHook from '@/hooks/loginHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import CheckBox from '@/components/atoms/Button/CheckBox';
+import modalState from '@/utils/recoil/modal';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
   const { onAutoLogin, onLogin } = useLoginHook();
+  const setModal = useSetRecoilState(modalState);
+
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-z]{2,4}$/;
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{10,20}$/;
 
   useEffect(() => {
-    console.log('email: ', email);
-    console.log('pw: ', password);
+    // console.log('email: ', email);
+    // console.log('pw: ', password);
   }, [email, password]);
 
   const onLoginPress = () => {
-    if (!email || !password)
-      return alert('Please enter your email and password');
+    if (!email.match(emailRegex) || !password.match(passwordRegex)) {
+      return setModal({
+        modalName: 'LOGIN_INVALID',
+      });
+    }
     return isChecked ? onAutoLogin() : onLogin();
   };
 
