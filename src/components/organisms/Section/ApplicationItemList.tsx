@@ -19,15 +19,18 @@ const dummyApplicationData = [
 ];
 
 function ApplicationItemList() {
+  const availableReview = true; // TODO review 가능 여부 판단해야 함
+
   return (
     <FlatList
       data={dummyApplicationData}
       renderItem={({ item, index }) => (
         <>
           <ApplicationItem
-            date={item.date}
+            date={`Application date: ${item.date}`}
             title={item.title}
             imgUrl={item.imgUrl}
+            badgeVisible={availableReview}
           />
           {index !== dummyApplicationData.length - 1 && (
             <Separator color={Colors.lineGray04} hei={1} marginVer={15.5} />

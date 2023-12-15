@@ -9,25 +9,32 @@ function ApplicationItem({
   imgUrl,
   title,
   date,
+  badgeVisible,
 }: {
   imgUrl: string;
   title: string;
   date: string;
+  badgeVisible?: boolean;
 }) {
   const setModal = useSetRecoilState(modalState);
 
-  const onSearchPress = () => {
-    setModal({ modalName: 'REVIEW' });
+  const onReviewPress = () => {
+    setModal({
+      modalName: 'REVIEW',
+      applicationItem: { imgUrl, title },
+    });
   };
   return (
     <View style={styles.container}>
       <Image resizeMode='cover' style={styles.img} source={{ uri: imgUrl }} />
       <View style={styles.subContainer}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.date}>Application date: {date}</Text>
-        <Pressable style={styles.badge} onPress={onSearchPress}>
-          <BlackBadge text='Review' />
-        </Pressable>
+        <Text style={styles.date}>{date}</Text>
+        {badgeVisible && (
+          <Pressable style={styles.badge} onPress={onReviewPress}>
+            <BlackBadge text='Review' />
+          </Pressable>
+        )}
       </View>
     </View>
   );
