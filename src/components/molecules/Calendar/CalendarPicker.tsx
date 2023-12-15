@@ -1,13 +1,35 @@
-import { View, Text, StyleSheet } from 'react-native';
-import useCalendar from '@/hooks/calendarHook';
+import { View, Text, StyleSheet, Alert } from 'react-native';
+import { useRecoilState } from 'recoil';
+import { Dayjs } from 'dayjs';
+import { calculateDateList } from '@/hooks/calendarHook';
 import CalendarPressDate from '@/components/atoms/Press/CalendarPressDate';
+import selectCalendarList from '@/utils/recoil/calendar';
 
 const dayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-export default function CalendarPicker({ Y, M }: { Y: number; M: number }) {
-  const { calculateDateList } = useCalendar();
+export default function CalendarPicker({ selectDate }: { selectDate: string }) {
+  const randerDateList = calculateDateList({ selectDate });
+  const [isList, setIsList] = useRecoilState(selectCalendarList);
 
-  const randerDateList = calculateDateList({ Y, M });
+  const isDateSelected = (list: string[], data: Dayjs): boolean => {
+    return list.findIndex((date) => date === data.format()) !== -1;
+  };
+
+  const updateItem = (dayjsForm: Dayjs) => {
+    const isSelected = isDateSelected(isList, dayjsForm);
+
+    if (isSelected) {
+      setIsList((prev) => prev.filter((date) => dayjsForm.format() !== date));
+    } else {
+      if (isList.length >= 3) {
+        Alert.alert('Alert Title', '이미 3개 선택했습니다.', [
+          { text: 'OK', onPress: () => console.log('OK Pressed') },
+        ]);
+        return;
+      }
+      setIsList((prev) => [...prev, dayjsForm.format()]);
+    }
+  };
 
   return (
     <View style={styles.wrap}>
@@ -23,8 +45,15 @@ export default function CalendarPicker({ Y, M }: { Y: number; M: number }) {
                 justifyContent: 'space-between',
               }}
             >
-              {list.map((date) => {
-                return <CalendarPressDate key={Math.random()} item={date} />;
+              {list.map((item) => {
+                return (
+                  <CalendarPressDate
+                    key={Math.random()}
+                    item={item}
+                    conPress={updateItem}
+                    active={isDateSelected(isList, item.date)}
+                  />
+                );
               })}
             </View>
           </View>

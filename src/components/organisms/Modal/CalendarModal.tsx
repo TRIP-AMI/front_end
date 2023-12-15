@@ -2,61 +2,30 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import BasicFullScreenModal from '@components/atoms/Modal/BasicFullScreenModal';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import dayjs from 'dayjs';
 import Spacing from '@/styles/spacing';
 import useModalHook from '@/hooks/modalHook';
 import PickerSelectModal from './PickerSelectModal';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import CalendarPicker from '@/components/molecules/Calendar/CalendarPicker';
+import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
+import useCalendar, { pickerDateList } from '@/hooks/calendarHook';
+import selectCalendarList from '@/utils/recoil/calendar';
 
-const yList: { label: string; value: number }[] = [];
-const mList: { label: string; value: number }[] = [];
-
-const now = dayjs();
-const m3Later = now.add(3, 'M');
-
-console.log(now.get('y'), m3Later.get('y'));
-
-yList.push({
-  label: `${now.get('y')}`,
-  value: now.get('y'),
-});
-if (now.get('y') < m3Later.get('y')) {
-  yList.push({
-    label: `${m3Later.get('y')}`,
-    value: m3Later.get('y'),
-  });
-}
-
-// eslint-disable-next-line no-plusplus
-for (let i = 0; i < 3; i++) {
-  const tempDate = now.add(i, 'M');
-  mList.push({
-    label: `${tempDate.get('M') + 1}`,
-    value: tempDate.get('M') + 1,
-  });
-}
+// TODO: 중운아 리팩토링 해야지?
 
 export default function CalendarModal() {
-  const [dateY, setDateY] = useState<number>(0);
-  const [dateM, setDateM] = useState<number>(0);
+  const { pickerSelectDate, setPickerSelectDate } = useCalendar();
+  const [selectDateList] = useRecoilState(selectCalendarList);
+
+  const pickerList = pickerDateList();
 
   const {
-    isVisible: yVisible,
-    onOpen: yOpen,
-    onClose: yClose,
+    isVisible: pickerModal,
+    onOpen: pickerModalOpen,
+    onClose: pickerModalClose,
   } = useModalHook();
-  const {
-    isVisible: mVisible,
-    onOpen: mOpen,
-    onClose: mClose,
-  } = useModalHook();
-
-  useEffect(() => {
-    setDateY(now.get('y'));
-    setDateM(now.get('M') + 1);
-  }, []);
 
   return (
     <BasicFullScreenModal modalTitle='Available Dates'>
@@ -67,27 +36,33 @@ export default function CalendarModal() {
 
         {/* select box */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <SelectButton title={dateY} onPress={yOpen} />
-          <SelectButton title={dateM} onPress={mOpen} />
+          <SelectButton
+            title={dayjs(pickerSelectDate).format('MMMM / YYYY')}
+            onPress={pickerModalOpen}
+          />
         </View>
         {/* calendar */}
-        <CalendarPicker Y={dateY} M={dateM} />
+        <CalendarPicker selectDate={pickerSelectDate} />
+      </View>
+      <SectionDividerBar style={{ marginVertical: 30 }} />
+      <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
+        {/* select list */}
+        {selectDateList.map((date) => {
+          return (
+            <Text key={dayjs(date).format()} style={styles.selectListText}>
+              {dayjs(date).format('MMMM DD, YYYY')}
+            </Text>
+          );
+        })}
       </View>
 
       {/* modal */}
       <PickerSelectModal
-        isVisible={yVisible}
-        onClose={yClose}
-        selectList={yList}
-        selectedValue={dateY}
-        setSelectedValue={setDateY}
-      />
-      <PickerSelectModal
-        isVisible={mVisible}
-        onClose={mClose}
-        selectList={mList}
-        selectedValue={dateM}
-        setSelectedValue={setDateM}
+        isVisible={pickerModal}
+        onClose={pickerModalClose}
+        selectList={pickerList}
+        selectedValue={pickerSelectDate}
+        setSelectedValue={setPickerSelectDate}
       />
     </BasicFullScreenModal>
   );
@@ -110,5 +85,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ECECEC',
     borderRadius: 5,
+  },
+  selectListText: {
+    color: '#4A4A4A',
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 16,
+    lineHeight: 22,
   },
 });

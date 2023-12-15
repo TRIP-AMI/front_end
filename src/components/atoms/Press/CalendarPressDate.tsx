@@ -1,17 +1,21 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { useState } from 'react';
+import { Dayjs } from 'dayjs';
 import Colors from '@/styles/colors';
+import { CalendarDateItem } from '@/hooks/calendarHook';
 
 export default function CalendarPressDate({
   item,
+  conPress,
+  active,
 }: {
-  item: { disabled: boolean; value: number };
+  item: CalendarDateItem;
+  conPress: (dayjsFormat: Dayjs) => void;
+  active: boolean;
 }) {
-  const [active, setActive] = useState(false);
-
   const handlePress = () => {
-    setActive((prev) => !prev);
+    conPress(item.date);
   };
+
   return (
     <Pressable
       key={Math.random()}

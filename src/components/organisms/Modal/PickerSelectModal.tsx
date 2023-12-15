@@ -1,13 +1,17 @@
-import { View, StyleSheet, Modal, Button } from 'react-native';
+import { View, StyleSheet, Modal, Pressable } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { AntDesign } from '@expo/vector-icons';
 import Dim from '@/components/atoms/Dim/Dim';
 
 interface PickerSelectModalProps {
   isVisible: boolean;
   onClose: () => void;
-  selectList: { label: string; value: number }[];
-  selectedValue: number;
-  setSelectedValue: (value: number) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  selectList: { label: string; value: any }[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  selectedValue: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setSelectedValue: (value: any) => void;
 }
 
 export default function PickerSelectModal({
@@ -24,15 +28,21 @@ export default function PickerSelectModal({
       {/* content */}
       <Modal animationType='slide' visible={isVisible} transparent>
         <View style={styles.contentLayoutView}>
-          <View style={{ width: '90%', marginBottom: 50 }}>
+          <View style={styles.contentWrap}>
+            {/* back */}
+            <View style={{ flexDirection: 'row-reverse' }}>
+              <Pressable
+                onPress={onClose}
+                style={{ marginTop: 20, marginRight: 27 }}
+              >
+                <AntDesign name='arrowright' size={24} color='black' />
+              </Pressable>
+            </View>
+            {/* picker */}
             <Picker
               mode='dropdown'
               selectedValue={selectedValue}
               onValueChange={(itemValue) => setSelectedValue(itemValue)}
-              style={{
-                borderRadius: 12,
-                backgroundColor: '#fff',
-              }}
             >
               {selectList.map((item) => (
                 <Picker.Item
@@ -42,9 +52,6 @@ export default function PickerSelectModal({
                 />
               ))}
             </Picker>
-            <View style={styles.buttonWrap}>
-              <Button title='Done' onPress={onClose} />
-            </View>
           </View>
         </View>
       </Modal>
@@ -59,10 +66,18 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
+  contentWrap: {
+    width: '100%',
+    paddingBottom: 50,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    backgroundColor: '#fff',
+  },
 
   buttonWrap: {
     backgroundColor: '#fff',
-    borderRadius: 12,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
     marginTop: 15,
     paddingVertical: 5,
   },
