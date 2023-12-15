@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
-import BasicInput from '@components/atoms/Input/BasicInput';
 import useLoginHook from '@/hooks/loginHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import modalState from '@/utils/recoil/modal';
 import TextButton from '@/components/atoms/Button/TextButton';
 import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
+import {
+  EmailInput,
+  PasswordInput,
+} from '@/components/molecules/Input/LoginInput';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -43,31 +46,8 @@ export default function LoginScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar style='auto' />
       <View style={styles.inputContainer}>
-        <View style={styles.inputBox}>
-          <BasicInput
-            style={styles.input}
-            value={email}
-            autoComplete='username'
-            onChangeText={setEmail}
-            placeholder='E-mail'
-            placeholderTextColor={Colors.fontGray05}
-            autoCorrect={false}
-            autoCapitalize='none'
-            autoFocus
-          />
-        </View>
-        <View style={styles.inputBox}>
-          <BasicInput
-            style={styles.input}
-            autoComplete='password'
-            value={password}
-            onChangeText={setPassword}
-            placeholder='Password'
-            placeholderTextColor={Colors.fontGray05}
-            secureTextEntry
-            maxLength={20}
-          />
-        </View>
+        <EmailInput email={email} setEmail={setEmail} />
+        <PasswordInput password={password} setPassword={setPassword} />
         <LabeledCheckBox
           label='Remember me'
           isChecked={isChecked}
@@ -108,27 +88,6 @@ const styles = StyleSheet.create({
     marginTop: 34,
     paddingHorizontal: 50,
   },
-  inputBox: {
-    paddingVertical: 6,
-  },
-  input: {
-    fontSize: 14,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 18,
-    letterSpacing: -0.28,
-  },
-  checkbox: {
-    marginTop: 10,
-  },
-  text: {
-    color: Colors.fontGray02,
-    fontSize: 14,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 30,
-    letterSpacing: -0.28,
-    paddingTop: 6,
-    paddingHorizontal: 8,
-  },
   button: {
     paddingHorizontal: 50,
     marginVertical: 30,
@@ -144,8 +103,5 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     letterSpacing: -0.28,
     paddingHorizontal: 8,
-  },
-  pressed: {
-    opacity: 0.5,
   },
 });
