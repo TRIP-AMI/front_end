@@ -8,9 +8,20 @@ const useLoginHook = () => {
 
   const getStoredToken = async () => {
     const token = await AsyncStorage.getItem('token');
-    console.log('getStoredToken', token);
     if (token) {
       setIsLoggedIn(true);
+    }
+  };
+
+  const onAutoLogin = async () => {
+    try {
+      // TODO: 로그인 API 연동
+      const data = await loginApi.getAccessToken();
+      console.log('onAutoLogin', data);
+      await AsyncStorage.setItem('token', JSON.stringify(data));
+      setIsLoggedIn(true);
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -19,7 +30,6 @@ const useLoginHook = () => {
       // TODO: 로그인 API 연동
       const data = await loginApi.getAccessToken();
       console.log('onLogin', data);
-      await AsyncStorage.setItem('token', JSON.stringify(data));
       setIsLoggedIn(true);
     } catch (e) {
       console.log(e);
@@ -32,7 +42,7 @@ const useLoginHook = () => {
     setIsLoggedIn(false);
   };
 
-  return { isLoggedIn, getStoredToken, onLogin, onLogout };
+  return { isLoggedIn, getStoredToken, onAutoLogin, onLogin, onLogout };
 };
 
 export default useLoginHook;

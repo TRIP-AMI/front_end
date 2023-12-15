@@ -10,13 +10,19 @@ import CheckBox from '@/components/atoms/Button/CheckBox';
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { onLogin } = useLoginHook();
   const [isChecked, setChecked] = useState(false);
+  const { onAutoLogin, onLogin } = useLoginHook();
 
   useEffect(() => {
     console.log('email: ', email);
     console.log('pw: ', password);
   }, [email, password]);
+
+  const onLoginPress = () => {
+    if (!email || !password)
+      return alert('Please enter your email and password');
+    return isChecked ? onAutoLogin() : onLogin();
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -57,7 +63,7 @@ export default function LoginScreen() {
         </View>
       </View>
       <View style={styles.button}>
-        <BasicButton onPress={onLogin} content='Login' round />
+        <BasicButton onPress={onLoginPress} content='Login' round />
       </View>
       <View style={styles.footer}>
         <Pressable
