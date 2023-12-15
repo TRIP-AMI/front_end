@@ -9,12 +9,10 @@ function ApplicationItem({
   imgUrl,
   title,
   date,
-  badgeVisible,
 }: {
   imgUrl: string;
   title: string;
   date: string;
-  badgeVisible?: boolean;
 }) {
   const setModal = useSetRecoilState(modalState);
 
@@ -30,11 +28,9 @@ function ApplicationItem({
       <View style={styles.subContainer}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.date}>{date}</Text>
-        {badgeVisible && (
-          <Pressable style={styles.badge} onPress={onReviewPress}>
-            <BlackBadge text='Review' />
-          </Pressable>
-        )}
+        <Pressable style={styles.badge} onPress={onReviewPress}>
+          <BlackBadge text='Review' />
+        </Pressable>
       </View>
     </View>
   );
