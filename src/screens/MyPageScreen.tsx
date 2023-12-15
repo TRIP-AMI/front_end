@@ -2,22 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import AmiProfile from '@components/molecules/Item/AmiProfile';
 import AmiScoreTable from '@components/molecules/Text/AmiScoreTable';
-import React from 'react';
 import HomeFooter from '@components/organisms/Section/HomeFooter';
 import PostItemList from '@components/organisms/Section/PostItemList';
 import ReviewItemList from '@components/organisms/Section/ReviewItemList';
 import BasicTab from '@components/organisms/Section/BasicTab';
 import Colors from '@styles/colors';
-
-const dummyProfiles = [
-  {
-    profileId: 1,
-    profileIsAmi: false,
-    profileName: 'Jenny',
-    profileImgUrl:
-      'https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg',
-  },
-];
+import { useRecoilValue } from 'recoil';
+import userState from '@utils/recoil/user';
 
 const dummyTouristDatas = [
   {
@@ -61,9 +52,9 @@ const dummyAmiDatas = [
 ];
 
 export default function MyPageScreen() {
-  const dummyProfile = dummyProfiles[0];
   const dummyAmiData = dummyAmiDatas[0];
   const dummyTouristData = dummyTouristDatas[0];
+  const userData = useRecoilValue(userState);
 
   const tabData = [
     {
@@ -83,11 +74,8 @@ export default function MyPageScreen() {
       <StatusBar style='auto' />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.headerMargin} />
-        <AmiProfile
-          imgUrl={dummyProfile.profileImgUrl}
-          name={dummyProfile.profileName}
-        />
-        {dummyProfile.profileIsAmi ? (
+        <AmiProfile imgUrl={userData.profileImgUrl} name={userData.name} />
+        {userData.isAmi ? (
           <>
             <AmiScoreTable scores={dummyAmiData} />
             <BasicTab data={tabData} />

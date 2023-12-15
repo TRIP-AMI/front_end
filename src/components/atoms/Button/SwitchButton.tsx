@@ -1,24 +1,21 @@
 import { Text, Pressable, StyleSheet, View } from 'react-native';
-import { useState } from 'react';
 import Spacing from '@styles/spacing';
 import Colors from '@styles/colors';
 import { Ionicons } from '@expo/vector-icons';
-// import { useNavigation } from '@react-navigation/native';
+import { useRecoilState } from 'recoil';
+import userState from '@utils/recoil/user';
 
-// TODO Ami인지 아닌지 데이터를 불러와서 처리해야 함
 function SwitchButton() {
-  const [isAmi, setIsAmi] = useState(false);
-  // const navigation = useNavigation();
+  const [userData, setUserData] = useRecoilState(userState);
 
   function changeIsAmi() {
-    setIsAmi((current) => !current);
-    // navigation.navigate('MyPage', { isAmi: isAmi });
+    setUserData({ ...userData, isAmi: !userData.isAmi });
   }
 
   return (
     <Pressable style={styles.container} onPress={() => changeIsAmi()}>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>{isAmi ? 'Tourist' : 'Ami'}</Text>
+        <Text style={styles.text}>{userData.isAmi ? 'Tourist' : 'Ami'}</Text>
         {/* TODO 나중에 Icon 바꾸기 */}
         <Ionicons
           name='swap-horizontal'
