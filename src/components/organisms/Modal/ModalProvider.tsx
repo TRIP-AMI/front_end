@@ -1,36 +1,29 @@
-import { useEffect } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+// import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
 import { View, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import modalState from '@/utils/recoil/modal';
-import LoginModal from '@/components/molecules/Modal/LoginModal';
-import loginState from '@/utils/recoil/login';
+// import LoginModal from '@/components/molecules/Modal/LoginModal';
 import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 import ApplyModal from '@/components/organisms/Modal/ApplyModal';
 import ApplyCheckModal from '@/components/molecules/Modal/ApplyCheckModal';
 import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal';
+// import useLoginHook from '@/hooks/loginHook';
 
 export default function ModalProvider() {
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
   const modal = useRecoilValue(modalState);
   const modalName = modal?.modalName;
-  const getToken = async () => {
-    const token = await AsyncStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  };
+  // const { getStoredToken, isLoggedIn } = useLoginHook();
 
-  useEffect(() => {
-    getToken();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   getStoredToken();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   if (!modalName) return null;
 
   const ModalList: { [key: string]: JSX.Element | undefined } = {
-    LOGIN_CHECK: <LoginModal />,
+    // LOGIN_CHECK: <LoginModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     APPLY: <ApplyModal />,
@@ -45,7 +38,8 @@ export default function ModalProvider() {
 
   return (
     <View style={styles.backdrop}>
-      {isLoggedIn ? ModalList[modalName] : <LoginModal />}
+      {/* {isLoggedIn ? ModalList[modalName] : <LoginModal />} */}
+      {ModalList[modalName]}
     </View>
   );
 }
