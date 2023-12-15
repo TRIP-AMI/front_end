@@ -44,6 +44,7 @@ export default function LoginScreen() {
             placeholder='Password'
             placeholderTextColor={Colors.fontGray05}
             secureTextEntry
+            maxLength={20}
           />
         </View>
         <View style={{ flexDirection: 'row' }}>

@@ -27,7 +27,7 @@ export default function BasicInput({ textarea, error, ...props }: InputProps) {
       {error && <Text style={styles.error}>{error}</Text>}
 
       {/* 최대 갯수 설정시 사용 */}
-      {props.maxLength && (
+      {props.autoComplete !== 'password' && props.maxLength && (
         <View style={{ flexDirection: 'row-reverse' }}>
           <Text style={{ color: '#B9B9B9', fontSize: 13 }}>
             {props.value?.length}/{props.maxLength}
