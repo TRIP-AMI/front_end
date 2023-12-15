@@ -19,10 +19,12 @@ function BasicFullScreenModal({
   children,
   modalTitle,
   headerStyle,
+  bodyStyle,
 }: {
   children: ReactNode;
   modalTitle?: string;
   headerStyle?: StyleProp<ViewStyle>;
+  bodyStyle?: StyleProp<ViewStyle>;
 }) {
   const setModal = useSetRecoilState(modalState);
 
@@ -47,7 +49,7 @@ function BasicFullScreenModal({
             <AntDesign name='close' size={22} color='black' />
           </Pressable>
         </View>
-        <View style={styles.body}>{children}</View>
+        <View style={[styles.body, bodyStyle]}>{children}</View>
       </SafeAreaView>
     </Modal>
   );
