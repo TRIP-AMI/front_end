@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Pressable, Text } from 'react-native';
 import BasicInput from '@components/atoms/Input/BasicInput';
-import Checkbox from 'expo-checkbox';
 import useLoginHook from '@/hooks/loginHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
+import CheckBox from '@/components/atoms/Button/CheckBox';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -48,13 +48,9 @@ export default function LoginScreen() {
           />
         </View>
         <View style={{ flexDirection: 'row' }}>
-          {/* TODO: checkbox 컴포넌트 만들기 */}
-          <Checkbox
-            style={styles.checkbox}
-            value={isChecked}
-            onValueChange={setChecked}
-            color={isChecked ? Colors.primary : Colors.lineGray04}
-          />
+          <View style={styles.checkbox}>
+            <CheckBox isChecked={isChecked} setChecked={setChecked} />
+          </View>
           <View>
             <Text style={styles.text}>Remember me</Text>
           </View>
@@ -102,7 +98,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.28,
   },
   checkbox: {
-    marginTop: 11,
+    marginTop: 10,
   },
   text: {
     color: Colors.fontGray02,
