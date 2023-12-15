@@ -7,17 +7,17 @@ import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import modalState from '@/utils/recoil/modal';
 import TextButton from '@/components/atoms/Button/TextButton';
-import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import {
   EmailInput,
   PasswordInput,
 } from '@/components/molecules/Input/LoginInput';
+import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
-  const { onAutoLogin, onLogin } = useLoginHook();
+  const { onLogin } = useLoginHook();
   const setModal = useSetRecoilState(modalState);
   const [disabled, setDisabled] = useState(true);
 
@@ -39,7 +39,7 @@ export default function LoginScreen() {
         modalName: 'LOGIN_INVALID',
       });
     }
-    return isChecked ? onAutoLogin() : onLogin();
+    return onLogin(isChecked);
   };
 
   return (
@@ -87,6 +87,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginTop: 34,
     paddingHorizontal: 50,
+    height: 150,
+    justifyContent: 'space-between',
   },
   button: {
     paddingHorizontal: 50,

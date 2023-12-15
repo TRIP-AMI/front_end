@@ -1,59 +1,56 @@
 import { Dispatch, SetStateAction } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import BasicInput from '@/components/atoms/Input/BasicInput';
 import Colors from '@/styles/colors';
 
 export function EmailInput({
   email,
   setEmail,
+  placeholder,
 }: {
   email: string;
   setEmail: Dispatch<SetStateAction<string>>;
+  placeholder?: string;
 }) {
   return (
-    <View style={styles.inputBox}>
-      <BasicInput
-        style={styles.input}
-        value={email}
-        autoComplete='username'
-        onChangeText={setEmail}
-        placeholder='E-mail'
-        placeholderTextColor={Colors.fontGray05}
-        autoCorrect={false}
-        autoCapitalize='none'
-        autoFocus
-      />
-    </View>
+    <BasicInput
+      style={styles.input}
+      value={email}
+      autoComplete='username'
+      onChangeText={setEmail}
+      placeholder={placeholder || 'E-mail'}
+      placeholderTextColor={Colors.fontGray05}
+      autoCorrect={false}
+      autoCapitalize='none'
+      autoFocus
+    />
   );
 }
 
 export function PasswordInput({
   password,
   setPassword,
+  placeholder,
 }: {
   password: string;
   setPassword: Dispatch<SetStateAction<string>>;
+  placeholder?: string;
 }) {
   return (
-    <View style={styles.inputBox}>
-      <BasicInput
-        style={styles.input}
-        autoComplete='password'
-        value={password}
-        onChangeText={setPassword}
-        placeholder='Password'
-        placeholderTextColor={Colors.fontGray05}
-        secureTextEntry
-        maxLength={20}
-      />
-    </View>
+    <BasicInput
+      style={styles.input}
+      autoComplete='password'
+      value={password}
+      onChangeText={setPassword}
+      placeholder={placeholder || 'Password'}
+      placeholderTextColor={Colors.fontGray05}
+      secureTextEntry
+      maxLength={20}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  inputBox: {
-    paddingVertical: 6,
-  },
   input: {
     fontSize: 14,
     fontFamily: 'Montserrat-Regular',

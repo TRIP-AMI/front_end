@@ -13,26 +13,17 @@ const useLoginHook = () => {
     }
   };
 
-  const onAutoLogin = async () => {
+  const onLogin = async (isAuto: boolean) => {
     try {
       // TODO: 로그인 API 연동
       const data = await loginApi.getAccessToken();
-      console.log('onAutoLogin', data);
-      await AsyncStorage.setItem('token', JSON.stringify(data));
+      if (isAuto) {
+        await AsyncStorage.setItem('token', JSON.stringify(data));
+      }
       setIsLoggedIn(true);
     } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const onLogin = async () => {
-    try {
-      // TODO: 로그인 API 연동
-      const data = await loginApi.getAccessToken();
-      console.log('onLogin', data);
-      setIsLoggedIn(true);
-    } catch (e) {
-      console.log(e);
+      // TODO: 로그인 실패시 처리
+      console.log('로그인 실패: ', e);
     }
   };
 
@@ -42,7 +33,7 @@ const useLoginHook = () => {
     setIsLoggedIn(false);
   };
 
-  return { isLoggedIn, getStoredToken, onAutoLogin, onLogin, onLogout };
+  return { isLoggedIn, getStoredToken, onLogin, onLogout };
 };
 
 export default useLoginHook;
