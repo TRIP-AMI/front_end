@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { StatusBar } from 'expo-status-bar';
-import { View, SafeAreaView, StyleSheet, Pressable, Text } from 'react-native';
+import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import BasicInput from '@components/atoms/Input/BasicInput';
 import useLoginHook from '@/hooks/loginHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
-import CheckBox from '@/components/atoms/Button/CheckBox';
 import modalState from '@/utils/recoil/modal';
+import TextButton from '@/components/atoms/Button/TextButton';
+import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -67,14 +68,11 @@ export default function LoginScreen() {
             maxLength={20}
           />
         </View>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.checkbox}>
-            <CheckBox isChecked={isChecked} setChecked={setChecked} />
-          </View>
-          <View>
-            <Text style={styles.text}>Remember me</Text>
-          </View>
-        </View>
+        <LabeledCheckBox
+          label='Remember me'
+          isChecked={isChecked}
+          setChecked={setChecked}
+        />
       </View>
       <View style={styles.button}>
         {disabled ? (
@@ -84,19 +82,17 @@ export default function LoginScreen() {
         )}
       </View>
       <View style={styles.footer}>
-        <Pressable
-          style={({ pressed }) => pressed && styles.pressed}
+        <TextButton
+          title='Forgot password?'
           onPress={() => console.log('Navigate to ForgotPasswordScreen')}
-        >
-          <Text style={styles.footerText}>Forgot password?</Text>
-        </Pressable>
+          style={styles.footerText}
+        />
         <Text style={[styles.footerText, { color: Colors.lineGray04 }]}>|</Text>
-        <Pressable
-          style={({ pressed }) => pressed && styles.pressed}
+        <TextButton
+          title='Join'
           onPress={() => console.log('Navigate to JoinScreen')}
-        >
-          <Text style={styles.footerText}>Join</Text>
-        </Pressable>
+          style={styles.footerText}
+        />
       </View>
     </SafeAreaView>
   );
