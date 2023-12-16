@@ -2,6 +2,7 @@ export type ModalName =
   | 'NOTIFICATION'
   | 'SEARCH'
   | 'LOGIN_CHECK'
+  | 'LOGIN_INVALID'
   | 'APPLY'
   | 'APPLY_CHECK'
   | 'APPLY_COMPLETE';
