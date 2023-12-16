@@ -5,10 +5,12 @@ import Colors from '@/styles/colors';
 
 export default function LabeledCheckBox({
   label,
+  textStyle,
   isChecked,
   setChecked,
 }: {
   label: string;
+  textStyle?: object;
   isChecked: boolean;
   setChecked: Dispatch<SetStateAction<boolean>>;
 }) {
@@ -18,7 +20,7 @@ export default function LabeledCheckBox({
         <CheckBox isChecked={isChecked} setChecked={setChecked} />
       </View>
       <View>
-        <Text style={styles.text}>{label}</Text>
+        <Text style={[styles.text, textStyle]}>{label}</Text>
       </View>
     </View>
   );
