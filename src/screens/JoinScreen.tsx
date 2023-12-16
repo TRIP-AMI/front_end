@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
 import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import TextButton from '@/components/atoms/Button/TextButton';
@@ -8,6 +9,7 @@ import BasicButton, {
 } from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 const data = [
   {
@@ -35,6 +37,7 @@ export default function JoinScreen() {
   const [isFullAgree, setIsFullAgree] = useState(false);
   const [isRequiredAgree, setIsRequiredAgree] = useState(false);
   const { setModalName } = useModalHook();
+  const { navigate } = useNavigation<RootStackNavigationProp>();
 
   const onFullAgree = () => {
     if (isFullAgree) return;
@@ -66,6 +69,10 @@ export default function JoinScreen() {
 
   const onCancel = () => {
     setModalName('JOIN_CANCEL');
+  };
+
+  const onNext = () => {
+    navigate('JoinAuth');
   };
 
   return (
@@ -116,7 +123,7 @@ export default function JoinScreen() {
         </View>
         <View style={{ width: '50%' }}>
           {isRequiredAgree ? (
-            <BasicButton content='Next' onPress={() => {}} />
+            <BasicButton content='Next' onPress={onNext} />
           ) : (
             <BasicButton content='Next' onPress={() => {}} disabled />
           )}

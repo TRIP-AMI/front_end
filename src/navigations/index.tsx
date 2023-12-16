@@ -20,6 +20,7 @@ import Fonts from '@/styles/typography';
 import LoginScreen from '@/screens/LoginScreen';
 import useLoginHook from '@/hooks/loginHook';
 import JoinScreen from '@/screens/JoinScreen';
+import JoinAuthScreen from '@/screens/JoinAuthScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -114,6 +115,16 @@ function Navigation() {
             name='Join'
             component={JoinScreen}
             options={{
+              headerBackVisible: false,
+              headerTitleStyle: Fonts.header.title,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='JoinAuth'
+            component={JoinAuthScreen}
+            options={{
+              title: 'Join',
               headerBackVisible: false,
               headerTitleStyle: Fonts.header.title,
               headerShadowVisible: false,
