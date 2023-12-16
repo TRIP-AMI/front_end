@@ -26,6 +26,7 @@ export default function ModalProvider() {
   const ModalList: { [key: string]: JSX.Element | undefined } = {
     // LOGIN_CHECK: <LoginModal />,
     LOGIN_INVALID: <LoginInvalidModal />,
+    JOIN_CANCEL: <LoginInvalidModal />, // TODO: change to JoinCancelModal
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     APPLY: <ApplyModal />,
