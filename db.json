@@ -166,5 +166,8 @@
       "postTitle": "Itaewon Tour",
       "postSubTitle": "Restaurant - Cafe - Photo"
     }
-  ]
+  ],
+  "login": {
+    "accessToken": "test"
+  }
 }
