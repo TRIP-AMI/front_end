@@ -1,4 +1,3 @@
-import { useSetRecoilState } from 'recoil';
 import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
@@ -8,7 +7,7 @@ import BasicButton, {
   BottomCancelButton,
 } from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
-import modalState from '@/utils/recoil/modal';
+import useModalHook from '@/hooks/modalHook';
 
 const data = [
   {
@@ -35,7 +34,7 @@ export default function JoinScreen() {
   const [items, setItems] = useState(data);
   const [isFullAgree, setIsFullAgree] = useState(false);
   const [isRequiredAgree, setIsRequiredAgree] = useState(false);
-  const setModal = useSetRecoilState(modalState);
+  const { setModalName } = useModalHook();
 
   const onFullAgree = () => {
     if (isFullAgree) return;
@@ -58,6 +57,7 @@ export default function JoinScreen() {
       items.filter((item) => item.required).every((item) => item.checked)
     ) {
       setIsRequiredAgree(true);
+      setIsFullAgree(false);
     } else {
       setIsFullAgree(false);
       setIsRequiredAgree(false);
@@ -65,9 +65,7 @@ export default function JoinScreen() {
   }, [items]);
 
   const onCancel = () => {
-    setModal({
-      modalName: 'JOIN_CANCEL',
-    });
+    setModalName('JOIN_CANCEL');
   };
 
   return (

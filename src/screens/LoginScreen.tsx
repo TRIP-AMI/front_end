@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useSetRecoilState } from 'recoil';
 import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useLoginHook from '@/hooks/loginHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
-import modalState from '@/utils/recoil/modal';
 import TextButton from '@/components/atoms/Button/TextButton';
 import {
   EmailInput,
@@ -15,6 +13,7 @@ import {
 import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useLoginInput from '@/hooks/loginInputHook';
+import useModalHook from '@/hooks/modalHook';
 
 export default function LoginScreen() {
   const { navigate } = useNavigation<RootStackNavigationProp>();
@@ -22,14 +21,10 @@ export default function LoginScreen() {
     useLoginInput();
   const [isChecked, setChecked] = useState(false);
   const { onLogin } = useLoginHook();
-  const setModal = useSetRecoilState(modalState);
+  const { setModalName } = useModalHook();
 
   const onLoginPress = () => {
-    return invalidInput
-      ? setModal({
-          modalName: 'LOGIN_INVALID',
-        })
-      : onLogin(isChecked);
+    return invalidInput ? setModalName('LOGIN_INVALID') : onLogin(isChecked);
   };
 
   return (

@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import { useSetRecoilState } from 'recoil';
-import modalState from '@/utils/recoil/modal';
+import useModalHook from '@/hooks/modalHook';
 
 export default function ModalBackdrop({ children }: { children: ReactNode }) {
-  const setModal = useSetRecoilState(modalState);
+  const { resetModal } = useModalHook();
 
   const onPress = () => {
-    setModal(null);
+    resetModal();
   };
 
   return (

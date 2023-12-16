@@ -1,16 +1,15 @@
-import { useSetRecoilState } from 'recoil';
 import { View, StyleSheet } from 'react-native';
 import LikeButtonBox from '@/components/molecules/etc/LikeButtonBox';
 import BasicButton from '@/components/atoms/Button/BasicButton';
-import modalState from '@/utils/recoil/modal';
 import Spacing from '@/styles/spacing';
+import useModalHook from '@/hooks/modalHook';
 
 // TODO: disabled 상태 확인 필요
 export default function ContentButtons() {
-  const setModal = useSetRecoilState(modalState);
+  const { setModalName } = useModalHook();
 
   const onApply = () => {
-    setModal({ modalName: 'APPLY' });
+    setModalName('APPLY');
   };
 
   return (
