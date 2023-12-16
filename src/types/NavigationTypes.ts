@@ -11,6 +11,7 @@ export type RootStackParamList = {
   Content: undefined;
   Category: { title: string };
   Login: undefined;
+  Join: undefined;
 };
 
 export type BottomTabParamList = {

@@ -20,6 +20,7 @@ import BackLeft from '@/components/molecules/Header/BackLeft';
 import Fonts from '@/styles/typography';
 import LoginScreen from '@/screens/LoginScreen';
 import useLoginHook from '@/hooks/loginHook';
+import JoinScreen from '@/screens/JoinScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -101,15 +102,26 @@ function Navigation() {
             />
           </>
         ) : (
-          <Stack.Screen
-            name='Login'
-            component={LoginScreen}
-            options={{
-              headerBackVisible: false,
-              headerTitleStyle: Fonts.header.title,
-              headerShadowVisible: false,
-            }}
-          />
+          <>
+            <Stack.Screen
+              name='Login'
+              component={LoginScreen}
+              options={{
+                headerBackVisible: false,
+                headerTitleStyle: Fonts.header.title,
+                headerShadowVisible: false,
+              }}
+            />
+            <Stack.Screen
+              name='Join'
+              component={JoinScreen}
+              options={{
+                headerBackVisible: false,
+                headerTitleStyle: Fonts.header.title,
+                headerShadowVisible: false,
+              }}
+            />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>
