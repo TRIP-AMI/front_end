@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
 import IntroductionScreen from '@screens/menu/IntroductionScreen';
 import BannerListScreen from '@screens/menu/BannerListScreen';
 import NotificationScreen from '@screens/menu/NotificationScreen';
@@ -33,98 +32,96 @@ function Navigation() {
   }, []);
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {isLoggedIn ? (
-          <>
-            <Stack.Screen
-              name='MenuBar'
-              component={BottomNavBar}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name='Service'
-              component={IntroductionScreen}
-              options={{
-                title: 'CultureX',
-              }}
-            />
-            <Stack.Screen
-              name='BannerList'
-              component={BannerListScreen}
-              options={{
-                title: 'Events',
-              }}
-            />
-            <Stack.Screen name='Notification' component={NotificationScreen} />
-            <Stack.Screen
-              name='FAQ'
-              component={FAQScreen}
-              options={{
-                headerTitleStyle: Fonts.header.title,
-                headerLeft: () => <ContentHeaderLeftIcon />,
-              }}
-            />
-            <Stack.Screen
-              name='Inquiry'
-              component={InquiryScreen}
-              options={{
-                headerTitleStyle: Fonts.header.title,
-                headerLeft: () => <ContentHeaderLeftIcon />,
-              }}
-            />
-            <Stack.Screen name='Search' component={SearchScreen} />
-            <Stack.Screen
-              name='Category'
-              component={CategoryScreen}
-              options={({ route }) => ({
-                title: route.params.title,
-                headerStyle: {
-                  backgroundColor: Colors.primary,
-                },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                  fontFamily: 'Montserrat-ExtraBold',
-                  fontSize: 20,
-                },
-                headerLeft: () => <BackLeft theme='white' />,
-                headerRight: () => <SearchNotificationRight theme='white' />,
-              })}
-            />
-            <Stack.Screen
-              name='Content'
-              component={ContentScreen}
-              options={{
-                title: '',
-                headerRight: () => <ContentHeaderRightIcons />,
-                headerLeft: () => <ContentHeaderLeftIcon />,
-              }}
-            />
-          </>
-        ) : (
-          <>
-            <Stack.Screen
-              name='Login'
-              component={LoginScreen}
-              options={{
-                headerBackVisible: false,
-                headerTitleStyle: Fonts.header.title,
-                headerShadowVisible: false,
-              }}
-            />
-            <Stack.Screen
-              name='Join'
-              component={JoinScreen}
-              options={{
-                headerBackVisible: false,
-                headerTitleStyle: Fonts.header.title,
-                headerShadowVisible: false,
-              }}
-            />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+      {isLoggedIn ? (
+        <>
+          <Stack.Screen
+            name='MenuBar'
+            component={BottomNavBar}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='Service'
+            component={IntroductionScreen}
+            options={{
+              title: 'CultureX',
+            }}
+          />
+          <Stack.Screen
+            name='BannerList'
+            component={BannerListScreen}
+            options={{
+              title: 'Events',
+            }}
+          />
+          <Stack.Screen name='Notification' component={NotificationScreen} />
+          <Stack.Screen
+            name='FAQ'
+            component={FAQScreen}
+            options={{
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <ContentHeaderLeftIcon />,
+            }}
+          />
+          <Stack.Screen
+            name='Inquiry'
+            component={InquiryScreen}
+            options={{
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <ContentHeaderLeftIcon />,
+            }}
+          />
+          <Stack.Screen name='Search' component={SearchScreen} />
+          <Stack.Screen
+            name='Category'
+            component={CategoryScreen}
+            options={({ route }) => ({
+              title: route.params.title,
+              headerStyle: {
+                backgroundColor: Colors.primary,
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontFamily: 'Montserrat-ExtraBold',
+                fontSize: 20,
+              },
+              headerLeft: () => <BackLeft theme='white' />,
+              headerRight: () => <SearchNotificationRight theme='white' />,
+            })}
+          />
+          <Stack.Screen
+            name='Content'
+            component={ContentScreen}
+            options={{
+              title: '',
+              headerRight: () => <ContentHeaderRightIcons />,
+              headerLeft: () => <ContentHeaderLeftIcon />,
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <Stack.Screen
+            name='Login'
+            component={LoginScreen}
+            options={{
+              headerBackVisible: false,
+              headerTitleStyle: Fonts.header.title,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='Join'
+            component={JoinScreen}
+            options={{
+              headerBackVisible: false,
+              headerTitleStyle: Fonts.header.title,
+              headerShadowVisible: false,
+            }}
+          />
+        </>
+      )}
+    </Stack.Navigator>
   );
 }
 
