@@ -1,7 +1,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable camelcase */
 import dayjs, { Dayjs } from 'dayjs';
-import { useState } from 'react';
 
 export interface CalendarDateItem {
   value: number;
@@ -108,11 +107,5 @@ export const pickerDateList = (): { label: string; value: Dayjs }[] => {
 };
 
 export default function useCalendar() {
-  const defaultTime = dayjs().startOf('M').format();
-  const [pickerSelectDate, setPickerSelectDate] = useState<string>(defaultTime);
-
-  return {
-    pickerSelectDate,
-    setPickerSelectDate,
-  };
+  return {};
 }

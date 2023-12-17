@@ -21,6 +21,7 @@ import LoginScreen from '@/screens/LoginScreen';
 import useLoginHook from '@/hooks/loginHook';
 import JoinScreen from '@/screens/JoinScreen';
 import JoinAuthScreen from '@/screens/JoinAuthScreen';
+import CalendarScreen from '@/screens/CalendarScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -73,6 +74,15 @@ function Navigation() {
             }}
           />
           <Stack.Screen name='Search' component={SearchScreen} />
+          <Stack.Screen
+            name='Calendar'
+            component={CalendarScreen}
+            options={{
+              title: 'Available Dates',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeft />,
+            }}
+          />
           <Stack.Screen
             name='Category'
             component={CategoryScreen}

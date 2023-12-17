@@ -13,6 +13,7 @@ export type RootStackParamList = {
   Login: undefined;
   Join: undefined;
   JoinAuth: undefined;
+  Calendar: undefined;
 };
 
 export type BottomTabParamList = {

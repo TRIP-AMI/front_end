@@ -1,14 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { useSetRecoilState } from 'recoil';
+import { useNavigation } from '@react-navigation/native';
 import Spacing from '@/styles/spacing';
-import modalState from '@/utils/recoil/modal';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 export default function UploadScreen() {
-  const setModal = useSetRecoilState(modalState);
+  const navigation = useNavigation<RootStackNavigationProp>();
 
-  const handleClick = () => {
-    setModal({ modalName: 'CALENDAR' });
+  const handleCal = () => {
+    navigation.navigate('Calendar');
   };
 
   return (
@@ -16,7 +16,7 @@ export default function UploadScreen() {
       <StatusBar style='auto' />
       <View>
         <Text>temp</Text>
-        <Button title='click' onPress={handleClick} />
+        <Button title='calendar go' onPress={handleCal} />
       </View>
     </View>
   );
