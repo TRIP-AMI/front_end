@@ -1,17 +1,12 @@
-import { useSetRecoilState } from 'recoil';
-import modalState from '@/utils/recoil/modal';
 import BasicCheckModal from '@/components/atoms/Modal/BasicCheckModal';
 import BasicModalText from '@/components/atoms/Text/BasicModalText';
+import useModalHook from '@/hooks/modalHook';
 
 export default function LoginInvalidModal() {
-  const setModal = useSetRecoilState(modalState);
-
-  const onCheck = () => {
-    setModal(null);
-  };
+  const { resetModal } = useModalHook();
 
   return (
-    <BasicCheckModal onCheck={onCheck}>
+    <BasicCheckModal onCheck={resetModal}>
       <BasicModalText content='Please check your ID or password.' />
     </BasicCheckModal>
   );

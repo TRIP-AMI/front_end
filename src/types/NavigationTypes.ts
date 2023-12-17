@@ -11,6 +11,8 @@ export type RootStackParamList = {
   Content: undefined;
   Category: { title: string };
   Login: undefined;
+  Join: undefined;
+  JoinAuth: undefined;
   ApplicationDetails: undefined;
 };
 

@@ -3,6 +3,7 @@ export type ModalName =
   | 'SEARCH'
   | 'LOGIN_CHECK'
   | 'LOGIN_INVALID'
+  | 'JOIN_CANCEL'
   | 'APPLY'
   | 'APPLY_CHECK'
   | 'APPLY_COMPLETE'

@@ -4,14 +4,15 @@ import Colors from '@/styles/colors';
 
 type OutlinedButtonProps = {
   content: string;
-  // eslint-disable-next-line react/require-default-props
   disabled?: boolean;
+  background?: boolean;
   onPress: () => void;
 };
 
 export default function OutlinedButton({
   content,
   disabled,
+  background,
   onPress,
 }: OutlinedButtonProps) {
   return (
@@ -20,6 +21,7 @@ export default function OutlinedButton({
         styles.container,
         pressed && styles.pressed,
         disabled && styles.disabled,
+        background && styles.background,
       ]}
       onPress={onPress}
     >
@@ -52,5 +54,9 @@ const styles = StyleSheet.create({
   },
   disabled: {
     borderColor: Colors.fontGray06,
+  },
+  background: {
+    backgroundColor: Colors.lineGray04,
+    borderColor: Colors.lineGray04,
   },
 });

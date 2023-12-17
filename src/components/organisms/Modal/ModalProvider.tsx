@@ -10,6 +10,7 @@ import ApplyModal from '@/components/organisms/Modal/ApplyModal';
 import ApplyCheckModal from '@/components/molecules/Modal/ApplyCheckModal';
 import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal';
 import LoginInvalidModal from '@/components/molecules/Modal/LoginInvalidModal';
+import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
 // import useLoginHook from '@/hooks/loginHook';
 
 export default function ModalProvider() {
@@ -27,6 +28,7 @@ export default function ModalProvider() {
   const ModalList: { [key: string]: JSX.Element | undefined } = {
     // LOGIN_CHECK: <LoginModal />,
     LOGIN_INVALID: <LoginInvalidModal />,
+    JOIN_CANCEL: <JoinCancelModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     APPLY: <ApplyModal />,

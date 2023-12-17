@@ -30,6 +30,26 @@ export default function BasicButton({
   );
 }
 
+type BottomButtonProps = {
+  content: string;
+  onPress: () => void;
+};
+
+export function BottomCancelButton({ content, onPress }: BottomButtonProps) {
+  return (
+    <Pressable
+      style={({ pressed }) => [
+        styles.container,
+        pressed && styles.pressed,
+        { backgroundColor: Colors.lineGray05 },
+      ]}
+      onPress={onPress}
+    >
+      <ButtonText content={content} color={Colors.fontGray05} />
+    </Pressable>
+  );
+}
+
 const size = {
   default: {
     paddingVertical: 16,
