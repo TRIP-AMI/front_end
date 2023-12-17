@@ -6,6 +6,7 @@ type OutlinedButtonProps = {
   content: string;
   disabled?: boolean;
   background?: boolean;
+  customStyle?: object;
   onPress: () => void;
 };
 
@@ -13,6 +14,7 @@ export default function OutlinedButton({
   content,
   disabled,
   background,
+  customStyle,
   onPress,
 }: OutlinedButtonProps) {
   return (
@@ -22,6 +24,7 @@ export default function OutlinedButton({
         pressed && styles.pressed,
         disabled && styles.disabled,
         background && styles.background,
+        customStyle,
       ]}
       onPress={onPress}
     >
@@ -36,6 +39,9 @@ export default function OutlinedButton({
 const size = {
   default: {
     paddingVertical: 12,
+  },
+  large: {
+    paddingVertical: 15,
   },
 };
 
