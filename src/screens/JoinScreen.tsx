@@ -4,12 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
 import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import TextButton from '@/components/atoms/Button/TextButton';
-import BasicButton, {
-  BottomCancelButton,
-} from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import BottomButtons from '@/components/atoms/Button/BottomButtons';
 
 const data = [
   {
@@ -80,20 +78,12 @@ export default function JoinScreen() {
           Please agree to the terms and conditions of the service
         </Text>
         <View style={styles.button}>
-          {checkedIds.length === data.length ? (
-            <OutlinedButton
-              content='Full Agree'
-              disabled
-              onPress={onFullAgree}
-              background
-            />
-          ) : (
-            <OutlinedButton
-              onPress={onFullAgree}
-              content='Full Agree'
-              disabled
-            />
-          )}
+          <OutlinedButton
+            onPress={onFullAgree}
+            content='Full Agree'
+            disabled
+            background={checkedIds.length === data.length}
+          />
         </View>
         <View style={styles.itemContainer}>
           {data.map((item) => (
@@ -112,18 +102,11 @@ export default function JoinScreen() {
           ))}
         </View>
       </View>
-      <View style={styles.footer}>
-        <View style={{ width: '50%' }}>
-          <BottomCancelButton content='Cancel' onPress={onCancel} />
-        </View>
-        <View style={{ width: '50%' }}>
-          <BasicButton
-            content='Next'
-            onPress={onNext}
-            disabled={!isRequiredAgree}
-          />
-        </View>
-      </View>
+      <BottomButtons
+        onCancel={onCancel}
+        onNext={onNext}
+        disabled={!isRequiredAgree}
+      />
     </View>
   );
 }
