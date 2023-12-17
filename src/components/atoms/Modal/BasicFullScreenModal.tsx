@@ -15,9 +15,11 @@ import useModalHook from '@/hooks/modalHook';
 function BasicFullScreenModal({
   children,
   modalTitle,
+  noClose,
 }: {
   children: ReactNode;
   modalTitle?: string;
+  noClose?: boolean;
 }) {
   const { resetModal } = useModalHook();
 
@@ -34,9 +36,11 @@ function BasicFullScreenModal({
           {modalTitle && <ModalTitle>{modalTitle}</ModalTitle>}
 
           {/* close icon */}
-          <Pressable onPress={resetModal}>
-            <AntDesign name='close' size={22} color='black' />
-          </Pressable>
+          {!noClose && (
+            <Pressable onPress={resetModal}>
+              <AntDesign name='close' size={22} color='black' />
+            </Pressable>
+          )}
         </View>
         <View style={styles.body}>{children}</View>
       </SafeAreaView>

@@ -8,13 +8,15 @@ export default function ApplyCompleteModal({
   title,
   detail,
   button,
+  noClose,
 }: {
   title: string;
   detail?: string;
   button?: JSX.Element;
+  noClose?: boolean;
 }) {
   return (
-    <BasicFullScreenModal>
+    <BasicFullScreenModal noClose={noClose}>
       <StatusBar style='auto' />
       <View style={styles.container}>
         <View>
@@ -28,9 +30,9 @@ export default function ApplyCompleteModal({
           <Text style={styles.title}>{title}</Text>
           {detail && <Text style={styles.detail}>{detail}</Text>}
         </View>
-        {/* 버튼 들어가는 경우 */}
-        <View>{button}</View>
       </View>
+      {/* 버튼 들어가는 경우 */}
+      <View>{button}</View>
     </BasicFullScreenModal>
   );
 }
