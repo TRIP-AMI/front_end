@@ -7,10 +7,12 @@ export default function BottomButtons({
   onCancel,
   onNext,
   disabled,
+  confirmText,
 }: {
   onCancel: () => void;
   onNext: () => void;
   disabled: boolean;
+  confirmText?: string;
 }) {
   return (
     <View style={styles.footer}>
@@ -18,7 +20,11 @@ export default function BottomButtons({
         <BottomCancelButton content='Cancel' onPress={onCancel} />
       </View>
       <View style={{ width: '50%' }}>
-        <BasicButton content='Next' onPress={onNext} disabled={disabled} />
+        <BasicButton
+          content={confirmText || 'Next'}
+          onPress={onNext}
+          disabled={disabled}
+        />
       </View>
     </View>
   );
