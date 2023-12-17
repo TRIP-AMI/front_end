@@ -29,11 +29,9 @@ function ReviewModal({ imgUrl, title }: ApplicationItemProps) {
           <Separator color={Colors.lineGray05} hei={10} marginVer={10} />
           <View style={styles.container}>
             <View style={styles.textContainer}>
-              <Text style={styles.question}>
-                Did you like AMI&rsque;s guide?
-              </Text>
+              <Text style={styles.question}>{`Did you like AMI's guide?`}</Text>
               <Text style={styles.subQuestion}>
-                Please leave a score and review for AMI!.
+                Please leave a score and review for AMI!
               </Text>
             </View>
             <StarRating />
