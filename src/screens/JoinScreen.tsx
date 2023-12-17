@@ -69,7 +69,7 @@ export default function JoinScreen() {
 
   const onNext = () => {
     if (!isRequiredAgree) return;
-    navigate('JoinAuth');
+    navigate('JoinAuth', { optionalChecked: checkedIds.includes(3) });
   };
 
   return (
