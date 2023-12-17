@@ -5,25 +5,22 @@ import Star from '@components/atoms/etc/Star';
 
 function StarRating() {
   const [starRating, setstarRating] = useState(0);
+  const rates = [
+    { id: 1, star: 1 },
+    { id: 2, star: 2 },
+    { id: 3, star: 3 },
+    { id: 4, star: 4 },
+    { id: 5, star: 5 },
+  ];
 
   return (
     <View style={styles.container}>
       <View style={styles.stars}>
-        <Pressable onPress={() => setstarRating(1)}>
-          <Star style={starRating >= 1 && styles.starSelected} />
-        </Pressable>
-        <Pressable onPress={() => setstarRating(2)}>
-          <Star style={starRating >= 2 && styles.starSelected} />
-        </Pressable>
-        <Pressable onPress={() => setstarRating(3)}>
-          <Star style={starRating >= 3 && styles.starSelected} />
-        </Pressable>
-        <Pressable onPress={() => setstarRating(4)}>
-          <Star style={starRating >= 4 && styles.starSelected} />
-        </Pressable>
-        <Pressable onPress={() => setstarRating(5)}>
-          <Star style={starRating >= 5 && styles.starSelected} />
-        </Pressable>
+        {rates.map((rate) => (
+          <Pressable key={rate.id} onPress={() => setstarRating(rate.star)}>
+            <Star style={starRating >= rate.star && styles.starSelected} />
+          </Pressable>
+        ))}
       </View>
     </View>
   );
@@ -34,11 +31,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  heading: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
   },
   stars: {
     display: 'flex',
