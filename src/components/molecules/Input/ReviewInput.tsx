@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import BasicInput from '@components/atoms/Input/BasicInput';
 import { Controller, useForm } from 'react-hook-form';
 import CheckButton from '@components/molecules/Button/CheckButton';
@@ -33,7 +34,7 @@ function ReviewInput() {
               placeholder='Good things, things to improve, etc.'
               maxLength={100}
               error={errors.content?.message}
-              style={{ height: 120 }}
+              style={styles.input}
             />
             <CheckButton disabled={value === ''} />
           </>
@@ -43,5 +44,13 @@ function ReviewInput() {
     />
   );
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 120,
+    fontSize: 14,
+    fontFamily: 'Montserrat-Regular',
+  },
+});
 
 export default ReviewInput;
