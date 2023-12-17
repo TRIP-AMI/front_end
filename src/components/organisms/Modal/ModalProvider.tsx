@@ -10,6 +10,7 @@ import ApplyCheckModal from '@/components/molecules/Modal/ApplyCheckModal';
 import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal';
 import LoginInvalidModal from '@/components/molecules/Modal/LoginInvalidModal';
 import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
+import JoinCompleteModal from '@/components/organisms/Modal/JoinCompleteModal';
 // import useLoginHook from '@/hooks/loginHook';
 
 export default function ModalProvider() {
@@ -28,6 +29,7 @@ export default function ModalProvider() {
     // LOGIN_CHECK: <LoginModal />,
     LOGIN_INVALID: <LoginInvalidModal />,
     JOIN_CANCEL: <JoinCancelModal />,
+    JOIN_COMPLETE: <JoinCompleteModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     APPLY: <ApplyModal />,
