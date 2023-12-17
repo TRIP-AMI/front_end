@@ -11,7 +11,7 @@ import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal'
 import LoginInvalidModal from '@/components/molecules/Modal/LoginInvalidModal';
 import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
 // import useLoginHook from '@/hooks/loginHook';
-import CalendarModal from './CalendarModal';
+import PickerSelectModal from './PickerSelectModal';
 
 export default function ModalProvider() {
   const modal = useRecoilValue(modalState);
@@ -31,7 +31,7 @@ export default function ModalProvider() {
     JOIN_CANCEL: <JoinCancelModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
-    CALENDAR: <CalendarModal />,
+    PICKER_SELECT: <PickerSelectModal />,
     APPLY: <ApplyModal />,
     APPLY_CHECK: modal.applyCheck && (
       <ApplyCheckModal
