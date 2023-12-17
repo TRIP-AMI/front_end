@@ -17,7 +17,7 @@ import useModalHook from '@/hooks/modalHook';
 
 export default function LoginScreen() {
   const { navigate } = useNavigation<RootStackNavigationProp>();
-  const { email, password, setEmail, setPassword, emptyInput, invalidInput } =
+  const { email, password, setEmail, setPassword, invalidInput } =
     useLoginInput();
   const [isChecked, setChecked] = useState(false);
   const { onLogin } = useLoginHook();
@@ -44,11 +44,12 @@ export default function LoginScreen() {
         />
       </View>
       <View style={styles.button}>
-        {emptyInput ? (
-          <BasicButton onPress={() => {}} content='Login' round disabled />
-        ) : (
-          <BasicButton onPress={onLoginPress} content='Login' round />
-        )}
+        <BasicButton
+          onPress={onLoginPress}
+          content='Login'
+          round
+          disabled={invalidInput}
+        />
       </View>
       <View style={styles.footer}>
         <TextButton

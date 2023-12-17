@@ -69,6 +69,7 @@ export default function JoinScreen() {
   };
 
   const onNext = () => {
+    if (!isRequiredAgree) return;
     navigate('JoinAuth');
   };
 
@@ -116,11 +117,11 @@ export default function JoinScreen() {
           <BottomCancelButton content='Cancel' onPress={onCancel} />
         </View>
         <View style={{ width: '50%' }}>
-          {isRequiredAgree ? (
-            <BasicButton content='Next' onPress={onNext} />
-          ) : (
-            <BasicButton content='Next' onPress={() => {}} disabled />
-          )}
+          <BasicButton
+            content='Next'
+            onPress={onNext}
+            disabled={!isRequiredAgree}
+          />
         </View>
       </View>
     </View>
