@@ -1,5 +1,18 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+export type CreatePasswordProps = {
+  nickname: string;
+  email: string;
+};
+
+export type CreateNameProps = {
+  email: string;
+};
+
+export type JoinAuthProps = {
+  optionalChecked: boolean;
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -12,7 +25,9 @@ export type RootStackParamList = {
   Category: { title: string };
   Login: undefined;
   Join: undefined;
-  JoinAuth: undefined;
+  JoinAuth: JoinAuthProps;
+  CreateName: CreateNameProps;
+  CreatePassword: CreatePasswordProps;
 };
 
 export type BottomTabParamList = {

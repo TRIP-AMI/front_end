@@ -23,6 +23,8 @@ import JoinScreen from '@/screens/JoinScreen';
 import JoinAuthScreen from '@/screens/JoinAuthScreen';
 import { IconButton } from '@/components/atoms/Button/IconButton';
 import useModalHook from '@/hooks/modalHook';
+import CreateNameScreen from '@/screens/CreateNameScreen';
+import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -114,33 +116,35 @@ function Navigation() {
               headerShadowVisible: false,
             }}
           />
-          <Stack.Screen
-            name='Join'
-            component={JoinScreen}
-            options={{
-              headerBackVisible: false,
-              headerTitleStyle: Fonts.header.title,
-              headerShadowVisible: false,
-            }}
-          />
-          <Stack.Screen
-            name='JoinAuth'
-            component={JoinAuthScreen}
-            options={{
+          <Stack.Group
+            screenOptions={{
               title: 'Join',
               headerBackVisible: false,
               headerTitleStyle: Fonts.header.title,
               headerShadowVisible: false,
-              headerRight: () => (
-                <IconButton
-                  icon='close'
-                  size={22}
-                  color='black'
-                  onPress={() => setModalName('JOIN_CANCEL')}
-                />
-              ),
             }}
-          />
+          >
+            <Stack.Screen name='Join' component={JoinScreen} />
+            <Stack.Screen
+              name='JoinAuth'
+              component={JoinAuthScreen}
+              options={{
+                headerRight: () => (
+                  <IconButton
+                    icon='close'
+                    size={22}
+                    color='black'
+                    onPress={() => setModalName('JOIN_CANCEL')}
+                  />
+                ),
+              }}
+            />
+            <Stack.Screen name='CreateName' component={CreateNameScreen} />
+            <Stack.Screen
+              name='CreatePassword'
+              component={CreatePasswordScreen}
+            />
+          </Stack.Group>
         </>
       )}
     </Stack.Navigator>
