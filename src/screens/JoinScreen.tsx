@@ -44,7 +44,10 @@ export default function JoinScreen() {
   };
 
   const onFullAgree = () => {
-    if (checkedIds.length === data.length) return;
+    if (checkedIds.length === data.length) {
+      setCheckedIds([]);
+      return;
+    }
     setCheckedIds(data.map((item) => item.id));
   };
 
