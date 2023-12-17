@@ -21,11 +21,14 @@ import LoginScreen from '@/screens/LoginScreen';
 import useLoginHook from '@/hooks/loginHook';
 import JoinScreen from '@/screens/JoinScreen';
 import JoinAuthScreen from '@/screens/JoinAuthScreen';
+import { IconButton } from '@/components/atoms/Button/IconButton';
+import useModalHook from '@/hooks/modalHook';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
   const { isLoggedIn, getStoredToken } = useLoginHook();
+  const { setModalName } = useModalHook();
 
   useEffect(() => {
     getStoredToken();
@@ -128,6 +131,14 @@ function Navigation() {
               headerBackVisible: false,
               headerTitleStyle: Fonts.header.title,
               headerShadowVisible: false,
+              headerRight: () => (
+                <IconButton
+                  icon='close'
+                  size={22}
+                  color='black'
+                  onPress={() => setModalName('JOIN_CANCEL')}
+                />
+              ),
             }}
           />
         </>
