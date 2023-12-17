@@ -26,8 +26,9 @@ export default function BottomButtons({
 
 const styles = StyleSheet.create({
   footer: {
+    position: 'absolute',
+    bottom: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 10,
+    alignSelf: 'center',
   },
 });
