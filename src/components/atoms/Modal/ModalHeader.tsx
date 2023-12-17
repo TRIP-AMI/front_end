@@ -1,9 +1,8 @@
-import { useSetRecoilState } from 'recoil';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { IconButton } from '@/components/atoms/Button/IconButton';
 import Colors from '@/styles/colors';
-import modalState from '@/utils/recoil/modal';
+import useModalHook from '@/hooks/modalHook';
 
 export function ModalHeaderWithTitle({
   icon,
@@ -12,16 +11,11 @@ export function ModalHeaderWithTitle({
   icon: keyof typeof Ionicons.glyphMap;
   title: string;
 }) {
-  const setModal = useSetRecoilState(modalState);
+  const { resetModal } = useModalHook();
 
   return (
     <View style={styles.container}>
-      <IconButton
-        icon={icon}
-        size={24}
-        color='black'
-        onPress={() => setModal(null)}
-      />
+      <IconButton icon={icon} size={24} color='black' onPress={resetModal} />
       <Text style={styles.title}>{title}</Text>
       <View style={styles.empty} />
     </View>
@@ -33,14 +27,14 @@ export function BasicModalHeader({
 }: {
   icon: keyof typeof Ionicons.glyphMap;
 }) {
-  const setModal = useSetRecoilState(modalState);
+  const { resetModal } = useModalHook();
   return (
     <View style={styles.iconContainer}>
       <IconButton
         icon={icon}
         size={24}
         color={Colors.fontGray05}
-        onPress={() => setModal(null)}
+        onPress={resetModal}
       />
     </View>
   );

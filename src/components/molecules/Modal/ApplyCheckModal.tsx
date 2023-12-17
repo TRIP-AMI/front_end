@@ -1,33 +1,28 @@
-import { useSetRecoilState } from 'recoil';
-import modalState from '@/utils/recoil/modal';
 import BasicTwoButtonModal from '@/components/atoms/Modal/BasicTwoButtonsModal';
 import BasicModalText from '@/components/atoms/Text/BasicModalText';
 import BasicModalDetail from '@/components/atoms/Modal/BasicModalDetail';
 import { ApplyCheckProps } from '@/types/ModalTypes';
+import useModalHook from '@/hooks/modalHook';
 
 export default function ApplyCheckModal({ date, user }: ApplyCheckProps) {
-  const setModal = useSetRecoilState(modalState);
-
-  const onClose = () => {
-    setModal(null);
-  };
-
-  // TODO: APPLY_COMPLETE 모달 띄우기
-  const onConfirm = () => {
-    setModal(null);
-    // setModal({ modalName: 'APPLY_COMPLETE' });
-  };
+  const { resetModal } = useModalHook();
 
   const data = [
     { key: `Application Date: ${date}` },
     { key: `Email: ${user?.email}` },
   ];
 
+  // TODO: APPLY_COMPLETE 모달 띄우기
+  const onConfirm = () => {
+    // setModalName('APPLY_COMPLETE');
+    resetModal();
+  };
+
   return (
     <BasicTwoButtonModal
       cancelText='Cancel'
       confirmText='Check'
-      onClose={onClose}
+      onClose={resetModal}
       onConfirm={onConfirm}
     >
       <BasicModalText content='If the information here is correct, please click Check.' />

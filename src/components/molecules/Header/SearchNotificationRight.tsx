@@ -1,23 +1,22 @@
-import { useSetRecoilState } from 'recoil';
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
 import { IconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
-import modalState from '@/utils/recoil/modal';
+import useModalHook from '@/hooks/modalHook';
 
 export default function SearchNotificationRight({
   theme = 'black',
 }: {
   theme?: 'white' | 'black';
 }) {
-  const setModal = useSetRecoilState(modalState);
+  const { setModalName } = useModalHook();
 
   const onSearchPress = () => {
-    setModal({ modalName: 'SEARCH' });
+    setModalName('SEARCH');
   };
 
   const onNotiPress = () => {
-    setModal({ modalName: 'NOTIFICATION' });
+    setModalName('NOTIFICATION');
   };
 
   const [alarmCount] = useState(1);

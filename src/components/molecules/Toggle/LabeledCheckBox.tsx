@@ -1,24 +1,25 @@
-import { Dispatch, SetStateAction } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CheckBox from '@/components/atoms/Button/CheckBox';
 import Colors from '@/styles/colors';
 
 export default function LabeledCheckBox({
   label,
+  textStyle,
   isChecked,
-  setChecked,
+  onCheck,
 }: {
   label: string;
+  textStyle?: object;
   isChecked: boolean;
-  setChecked: Dispatch<SetStateAction<boolean>>;
+  onCheck: () => void;
 }) {
   return (
     <View style={{ flexDirection: 'row' }}>
       <View style={styles.checkbox}>
-        <CheckBox isChecked={isChecked} setChecked={setChecked} />
+        <CheckBox isChecked={isChecked} onCheck={onCheck} />
       </View>
       <View>
-        <Text style={styles.text}>{label}</Text>
+        <Text style={[styles.text, textStyle]}>{label}</Text>
       </View>
     </View>
   );

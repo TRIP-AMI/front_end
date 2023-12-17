@@ -1,4 +1,3 @@
-import { useSetRecoilState } from 'recoil';
 import {
   Modal,
   View,
@@ -11,7 +10,7 @@ import { AntDesign } from '@expo/vector-icons';
 import Spacing from '@styles/spacing';
 import { ReactNode } from 'react';
 import ModalTitle from '@/components/atoms/Text/ModalTitle';
-import modalState from '@/utils/recoil/modal';
+import useModalHook from '@/hooks/modalHook';
 
 function BasicFullScreenModal({
   children,
@@ -20,11 +19,7 @@ function BasicFullScreenModal({
   children: ReactNode;
   modalTitle?: string;
 }) {
-  const setModal = useSetRecoilState(modalState);
-
-  const onClose = () => {
-    setModal(null);
-  };
+  const { resetModal } = useModalHook();
 
   return (
     <Modal
@@ -39,7 +34,7 @@ function BasicFullScreenModal({
           {modalTitle && <ModalTitle>{modalTitle}</ModalTitle>}
 
           {/* close icon */}
-          <Pressable onPress={onClose}>
+          <Pressable onPress={resetModal}>
             <AntDesign name='close' size={22} color='black' />
           </Pressable>
         </View>
