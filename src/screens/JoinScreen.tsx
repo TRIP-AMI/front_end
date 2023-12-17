@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
 import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
@@ -8,6 +8,7 @@ import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
+import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 
 const data = [
   {
@@ -72,19 +73,14 @@ export default function JoinScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>
-          Please agree to the terms and conditions of the service
-        </Text>
-        <View style={styles.button}>
-          <OutlinedButton
-            onPress={onFullAgree}
-            content='Full Agree'
-            disabled
-            background={checkedIds.length === data.length}
-          />
-        </View>
+    <>
+      <JoinLayout title='Please agree to the terms and conditions of the service'>
+        <OutlinedButton
+          onPress={onFullAgree}
+          content='Full Agree'
+          disabled
+          background={checkedIds.length === data.length}
+        />
         <View style={styles.itemContainer}>
           {data.map((item) => (
             <View key={item.id} style={styles.item}>
@@ -101,42 +97,26 @@ export default function JoinScreen() {
             </View>
           ))}
         </View>
-      </View>
+      </JoinLayout>
       <BottomButtons
         onCancel={onCancel}
         onNext={onNext}
         disabled={!isRequiredAgree}
       />
-    </View>
+    </>
   );
 }
 
 // TODO: 스타일 전체적으로 수정 필요
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 20,
-  },
-  title: {
-    fontSize: 20,
-    fontFamily: 'Montserrat-SemiBold',
-    color: 'black',
-    paddingVertical: 40,
-  },
-  button: {
-    paddingVertical: 20,
-  },
   itemContainer: {
     flexDirection: 'column',
-    paddingHorizontal: 20,
+    padding: 20,
   },
   item: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginVertical: 5,
   },
   itemText: {
     lineHeight: 20,
@@ -151,10 +131,5 @@ const styles = StyleSheet.create({
     letterSpacing: -0.28,
     textDecorationLine: 'underline',
     paddingVertical: 10,
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 10,
   },
 });
