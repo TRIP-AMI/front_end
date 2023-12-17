@@ -16,19 +16,13 @@ export default function CalendarPicker({ selectDate }: { selectDate: string }) {
   };
 
   const updateItem = (dayjsForm: Dayjs) => {
-    const isSelected = isDateSelected(isList, dayjsForm);
-
-    if (isSelected) {
-      setIsList((prev) => prev.filter((date) => dayjsForm.format() !== date));
-    } else {
-      if (isList.length >= 3) {
-        Alert.alert('Alert Title', '이미 3개 선택했습니다.', [
-          { text: 'OK', onPress: () => console.log('OK Pressed') },
-        ]);
-        return;
-      }
-      setIsList((prev) => [...prev, dayjsForm.format()]);
+    if (isList.length >= 3) {
+      Alert.alert('Alert Title', '이미 3개 선택했습니다.', [
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ]);
+      return;
     }
+    setIsList((prev) => [...prev, dayjsForm.format()]);
   };
 
   return (

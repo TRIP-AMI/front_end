@@ -19,19 +19,13 @@ export default function CalendarPressDate({
   return (
     <Pressable
       key={Math.random()}
-      disabled={item.disabled}
+      disabled={active || item.disabled}
       onPress={handlePress}
-      style={{ position: 'relative' }}
+      style={{ position: 'relative', opacity: item.opacity ? 0.4 : 1 }}
     >
       <View style={[active ? styles.activeWrap : undefined]} />
 
-      <Text
-        style={[
-          styles.dateFont,
-          item.disabled ? styles.dateFontDisabled : undefined,
-          active ? styles.activeFont : undefined,
-        ]}
-      >
+      <Text style={[styles.dateFont, active ? styles.activeFont : undefined]}>
         {item.value}
       </Text>
     </Pressable>

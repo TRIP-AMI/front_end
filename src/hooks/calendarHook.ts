@@ -4,8 +4,9 @@ import dayjs, { Dayjs } from 'dayjs';
 
 export interface CalendarDateItem {
   value: number;
-  disabled: boolean;
+  opacity: boolean;
   date: Dayjs;
+  disabled?: boolean;
 }
 
 // 지난달 날짜
@@ -19,12 +20,19 @@ const beforMDateList = ({
   designatedDate: Dayjs;
 }) => {
   const temp = [];
+  const now = dayjs();
   for (let i = 0; i < start_d; i++) {
-    temp.push({
+    const item: CalendarDateItem = {
       value: beforDateEnd_D - i,
-      disabled: true,
-      date: designatedDate.set('D', i),
-    });
+      opacity: true,
+      date: designatedDate.add(-1, 'M').set('D', beforDateEnd_D - i),
+    };
+
+    if (item.date.isBefore(now)) {
+      item.disabled = true;
+    }
+
+    temp.push(item);
   }
   temp.reverse();
   return temp;
@@ -38,8 +46,20 @@ const nowMDateList = ({
   designatedDate: Dayjs;
 }) => {
   const temp = [];
+  const now = dayjs();
   for (let i = 1; i <= end_D; i++) {
-    temp.push({ value: i, disabled: false, date: designatedDate.set('D', i) });
+    const item: CalendarDateItem = {
+      value: i,
+      opacity: false,
+      date: designatedDate.set('D', i),
+    };
+
+    if (item.date.isBefore(now)) {
+      item.disabled = true;
+      item.opacity = true;
+    }
+
+    temp.push(item);
   }
   return temp;
 };
@@ -53,7 +73,11 @@ const afterMDateList = ({
 }) => {
   const temp = [];
   for (let i = 1; i < 7 - end_d; i++) {
-    temp.push({ value: i, disabled: true, date: designatedDate.set('D', i) });
+    temp.push({
+      value: i,
+      opacity: true,
+      date: designatedDate.add(1, 'M').set('D', i),
+    });
   }
   return temp;
 };

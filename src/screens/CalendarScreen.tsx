@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import dayjs from 'dayjs';
 import { useEffect } from 'react';
+import { Octicons } from '@expo/vector-icons';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import Spacing from '@/styles/spacing';
 import { pickerDateList } from '@/hooks/calendarHook';
@@ -14,10 +15,11 @@ import useModalHook from '@/hooks/modalHook';
 
 export default function CalendarScreen() {
   const { setModalName } = useModalHook();
-  const [selectDateList] = useRecoilState(selectCalendarList);
+  const [selectDateList, setSelectDateList] =
+    useRecoilState(selectCalendarList);
+  const setPickerList = useSetRecoilState(pickerList);
   const [pickerSelectDate, setPickerSelectDate] =
     useRecoilState(pickerSelectValue);
-  const setPickerList = useSetRecoilState(pickerList);
 
   useEffect(() => {
     const defaultTime = dayjs().startOf('M').format();
@@ -28,6 +30,12 @@ export default function CalendarScreen() {
 
   const handleModalOpen = () => {
     setModalName('PICKER_SELECT');
+  };
+
+  const deleteDate = (date: string) => {
+    setSelectDateList((prev) =>
+      prev.filter((selectDate) => dayjs(date).format() !== selectDate),
+    );
   };
 
   return (
@@ -52,9 +60,26 @@ export default function CalendarScreen() {
         {/* select list */}
         {selectDateList.map((date) => {
           return (
-            <Text key={dayjs(date).format()} style={styles.selectListText}>
-              {dayjs(date).format('MMMM DD, YYYY')}
-            </Text>
+            <View
+              key={dayjs(date).format()}
+              style={{ flexDirection: 'row', alignItems: 'center' }}
+            >
+              <Text style={styles.selectListText}>
+                {dayjs(date).format('MMMM DD, YYYY')}
+              </Text>
+              <Pressable
+                onPress={() => {
+                  deleteDate(date);
+                }}
+              >
+                <Octicons
+                  name='x-circle-fill'
+                  size={18}
+                  color='#ccc'
+                  style={{ marginLeft: 20 }}
+                />
+              </Pressable>
+            </View>
           );
         })}
       </View>
@@ -73,16 +98,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     lineHeight: 22,
-  },
-  selectBoxWrap: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '48.5%',
-    padding: 14,
-    borderWidth: 1,
-    borderColor: '#ECECEC',
-    borderRadius: 5,
   },
   selectListText: {
     color: '#4A4A4A',
