@@ -1,19 +1,20 @@
-import { useSetRecoilState } from 'recoil';
 import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
 import { IconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
-import modalState from '@/utils/recoil/modal';
+import useLoginHook from '@/hooks/loginHook';
+import useModalHook from '@/hooks/modalHook';
 
 export default function HomeHeaderIcons() {
-  const setModal = useSetRecoilState(modalState);
+  const { setModalName } = useModalHook();
+  const { onLogout } = useLoginHook();
 
   const onSearchPress = () => {
-    setModal({ modalName: 'SEARCH' });
+    setModalName('SEARCH');
   };
 
   const onNotiPress = () => {
-    setModal({ modalName: 'NOTIFICATION' });
+    setModalName('NOTIFICATION');
   };
 
   const [alarmCount] = useState(1);
@@ -21,6 +22,10 @@ export default function HomeHeaderIcons() {
 
   return (
     <View style={styles.container}>
+      {/* TODO: 임시 로그아웃 버튼 지우기 */}
+      <View>
+        <IconButton icon='close' size={24} color='red' onPress={onLogout} />
+      </View>
       <View>
         <IconButton
           icon='search'

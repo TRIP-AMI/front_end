@@ -1,7 +1,6 @@
-import { useSetRecoilState } from 'recoil';
 import { Modal, View, Pressable, StyleSheet } from 'react-native';
 import { ReactNode } from 'react';
-import modalState from '@/utils/recoil/modal';
+import useModalHook from '@/hooks/modalHook';
 
 export default function BasicBottomModal({
   children,
@@ -12,12 +11,12 @@ export default function BasicBottomModal({
   onDismiss: () => void;
   header: ReactNode;
 }) {
-  const setModal = useSetRecoilState(modalState);
+  const { resetModal } = useModalHook();
 
   return (
     <Modal animationType='slide' onDismiss={onDismiss} transparent>
       <View style={styles.container}>
-        <Pressable onPress={() => setModal(null)} style={styles.container} />
+        <Pressable onPress={resetModal} style={styles.container} />
         <View style={styles.modalView}>
           <View style={styles.modalHeader}>{header}</View>
           <View style={styles.modalContent}>{children}</View>

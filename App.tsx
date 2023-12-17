@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { RecoilRoot } from 'recoil';
+import { NavigationContainer } from '@react-navigation/native';
 import Navigation from '@/navigations/';
 import ModalProvider from '@/components/organisms/Modal/ModalProvider';
 
@@ -38,8 +39,10 @@ export default function App() {
 
   return (
     <RecoilRoot>
-      <Navigation />
-      <ModalProvider />
+      <NavigationContainer>
+        <Navigation />
+        <ModalProvider />
+      </NavigationContainer>
     </RecoilRoot>
   );
 }
