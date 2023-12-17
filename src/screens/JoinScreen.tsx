@@ -16,56 +16,50 @@ const data = [
     id: 1,
     content: 'Agree to Terms and Conditions of Service (Required)',
     required: true,
-    checked: false,
   },
   {
     id: 2,
     content: `Consent to collect /\n use personal information (Required)`,
     required: true,
-    checked: false,
   },
   {
     id: 3,
     content: 'Accept receipt of marketing benefit notifications (Optional)',
     required: false,
-    checked: false,
   },
 ];
 
 export default function JoinScreen() {
-  const [items, setItems] = useState(data);
-  const [isFullAgree, setIsFullAgree] = useState(false);
+  const [checkedIds, setCheckedIds] = useState<number[]>([]);
   const [isRequiredAgree, setIsRequiredAgree] = useState(false);
   const { setModalName } = useModalHook();
   const { navigate } = useNavigation<RootStackNavigationProp>();
 
+  const onCheck = (id: number) => {
+    if (checkedIds.includes(id)) {
+      setCheckedIds(checkedIds.filter((checkedId) => checkedId !== id));
+    } else {
+      setCheckedIds([...checkedIds, id]);
+    }
+  };
+
   const onFullAgree = () => {
-    if (isFullAgree) return;
-    setIsFullAgree(true);
-    setItems(
-      items.map((item) => {
-        return {
-          ...item,
-          checked: true,
-        };
-      }),
-    );
+    if (checkedIds.length === data.length) return;
+    setCheckedIds(data.map((item) => item.id));
   };
 
   useEffect(() => {
-    if (items.every((item) => item.checked)) {
-      setIsFullAgree(true);
-      setIsRequiredAgree(true);
-    } else if (
-      items.filter((item) => item.required).every((item) => item.checked)
+    const checkedRequired = data.filter(
+      (item) => checkedIds.includes(item.id) && item.required,
+    );
+    if (
+      checkedRequired.length === data.filter((item) => item.required).length
     ) {
       setIsRequiredAgree(true);
-      setIsFullAgree(false);
     } else {
-      setIsFullAgree(false);
       setIsRequiredAgree(false);
     }
-  }, [items]);
+  }, [checkedIds]);
 
   const onCancel = () => {
     setModalName('JOIN_CANCEL');
@@ -82,7 +76,7 @@ export default function JoinScreen() {
           Please agree to the terms and conditions of the service
         </Text>
         <View style={styles.button}>
-          {isFullAgree ? (
+          {checkedIds.length === data.length ? (
             <OutlinedButton
               content='Full Agree'
               disabled
@@ -98,20 +92,17 @@ export default function JoinScreen() {
           )}
         </View>
         <View style={styles.itemContainer}>
-          {items.map((item) => (
+          {data.map((item) => (
             <View key={item.id} style={styles.item}>
               <View style={styles.checkbox}>
                 <LabeledCheckBox
                   label={item.content}
                   textStyle={styles.itemText}
-                  isChecked={item.checked}
-                  setChecked={() => {
-                    // eslint-disable-next-line no-param-reassign
-                    item.checked = !item.checked;
-                    setItems([...items]);
-                  }}
+                  isChecked={checkedIds.includes(item.id)}
+                  onCheck={() => onCheck(item.id)}
                 />
               </View>
+              {/* TODO: onPressView 정의 */}
               <TextButton title='View' style={styles.tag} onPress={() => {}} />
             </View>
           ))}

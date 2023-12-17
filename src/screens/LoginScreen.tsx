@@ -27,6 +27,10 @@ export default function LoginScreen() {
     return invalidInput ? setModalName('LOGIN_INVALID') : onLogin(isChecked);
   };
 
+  const onCheck = () => {
+    setChecked(!isChecked);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style='auto' />
@@ -36,7 +40,7 @@ export default function LoginScreen() {
         <LabeledCheckBox
           label='Remember me'
           isChecked={isChecked}
-          setChecked={setChecked}
+          onCheck={onCheck}
         />
       </View>
       <View style={styles.button}>
