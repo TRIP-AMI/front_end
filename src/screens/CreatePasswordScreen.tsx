@@ -17,7 +17,7 @@ export default function CreatePasswordScreen({
   const {
     control,
     handleSubmit,
-    getValues,
+    watch,
     formState: { errors },
   } = useForm({
     mode: 'onChange',
@@ -26,10 +26,11 @@ export default function CreatePasswordScreen({
       reentered: '',
     },
   });
-
+  const { password } = watch();
   // TODO: 멤버 생성 요청, 에러 처리
   const onNext = async (data: ICreatePasswordInputs) => {
-    if (errors.password || errors.reentered) return;
+    if (errors.password || errors.reentered || data.password !== data.reentered)
+      return;
     try {
       await console.log(
         `nickname: ${nickname} password: ${data.password}, email: ${email}`,
@@ -65,7 +66,11 @@ export default function CreatePasswordScreen({
               placeholder='Re-enter the password'
               errorText={errors.reentered?.message}
               validText={errors.reentered ? undefined : 'Password matching'}
-              compare={getValues().password}
+              rules={{
+                validate: (value: string) =>
+                  value === password || 'Password does not match',
+              }}
+              reentered
             />
           </View>
         </View>

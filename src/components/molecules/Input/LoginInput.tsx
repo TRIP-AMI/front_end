@@ -14,7 +14,9 @@ export function EmailInput({
   errorText?: string;
   placeholder?: string;
 }) {
-  const { field } = useController({
+  const {
+    field: { value, onChange },
+  } = useController({
     name: 'email',
     control,
     rules: {
@@ -27,9 +29,9 @@ export function EmailInput({
   });
   return (
     <BasicInput
-      value={field.value}
+      value={value}
       autoComplete='username'
-      onChangeText={field.onChange}
+      onChangeText={onChange}
       placeholder={placeholder || 'E-mail'}
       placeholderTextColor={Colors.fontGray05}
       autoCorrect={false}
@@ -47,7 +49,8 @@ export function PasswordInput({
   placeholder,
   autoFocus,
   validText,
-  compare,
+  rules,
+  reentered,
 }: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
@@ -55,18 +58,17 @@ export function PasswordInput({
   placeholder?: string;
   autoFocus?: boolean;
   validText?: string;
-  compare?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  rules?: Record<string, any>;
+  reentered?: boolean;
 }) {
-  const { field } = useController({
-    name: compare ? 'reentered' : 'password',
+  const {
+    field: { value, onChange },
+  } = useController({
+    name: reentered ? 'reentered' : 'password',
     control,
-    rules: compare
-      ? {
-          required: 'This is required',
-          validate: (value) => {
-            return value === compare || 'The passwords do not match';
-          },
-        }
+    rules: reentered
+      ? rules
       : {
           required: 'This is required',
           pattern: {
@@ -82,15 +84,15 @@ export function PasswordInput({
   return (
     <BasicInput
       autoComplete='password'
-      value={field.value}
-      onChangeText={field.onChange}
+      value={value}
+      onChangeText={onChange}
       placeholder={placeholder || 'Password'}
       placeholderTextColor={Colors.fontGray05}
       secureTextEntry
       maxLength={21}
       autoFocus={autoFocus}
       error={errorText}
-      valid={!errorText && field.value && validText}
+      valid={!errorText && value && validText}
     />
   );
 }
@@ -103,7 +105,9 @@ export function AuthCodeInput({
   control: Control<any>;
   errorText?: string;
 }) {
-  const { field } = useController({
+  const {
+    field: { value, onChange },
+  } = useController({
     name: 'authCode',
     control,
     rules: {
@@ -112,9 +116,9 @@ export function AuthCodeInput({
   });
   return (
     <BasicInput
-      value={field.value}
+      value={value}
       autoComplete='one-time-code'
-      onChangeText={field.onChange}
+      onChangeText={onChange}
       placeholder='Enter authentication number'
       placeholderTextColor={Colors.fontGray05}
       autoCorrect={false}
@@ -134,7 +138,9 @@ export function NameInput({
   control: Control<any>;
   errorText?: string;
 }) {
-  const { field } = useController({
+  const {
+    field: { value, onChange },
+  } = useController({
     name: 'nickname',
     control,
     rules: {
@@ -147,9 +153,9 @@ export function NameInput({
   });
   return (
     <BasicInput
-      value={field.value}
+      value={value}
       autoComplete='nickname'
-      onChangeText={field.onChange}
+      onChangeText={onChange}
       placeholder='Enter a name'
       placeholderTextColor={Colors.fontGray05}
       autoCorrect={false}
