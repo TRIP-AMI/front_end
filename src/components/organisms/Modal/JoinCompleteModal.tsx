@@ -6,16 +6,6 @@ import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useModalHook from '@/hooks/modalHook';
 
 export default function JoinCompleteModal() {
-  return (
-    <IconFullScreenModal
-      title='Membership registration has been completed!'
-      button={<LoginButton />}
-      noClose
-    />
-  );
-}
-
-function LoginButton() {
   const { navigate } = useNavigation<RootStackNavigationProp>();
   const { resetModal } = useModalHook();
 
@@ -25,14 +15,20 @@ function LoginButton() {
   };
 
   return (
-    <View style={styles.buttonContainer}>
-      <BasicButton onPress={onPress} content='Login' round />
-    </View>
+    <IconFullScreenModal
+      title={`Membership registration\nhas been completed!`}
+      button={
+        <View style={styles.buttonContainer}>
+          <BasicButton onPress={onPress} content='Login' round />
+        </View>
+      }
+      noClose
+    />
   );
 }
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    paddingHorizontal: 80,
+    paddingHorizontal: 118,
   },
 });
