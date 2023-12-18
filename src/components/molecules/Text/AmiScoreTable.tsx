@@ -1,4 +1,10 @@
-import { View, StyleSheet, Dimensions } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  ViewStyle,
+  StyleProp,
+} from 'react-native';
 import AmiScore from '@components/atoms/Text/AmiScore';
 import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
@@ -13,11 +19,12 @@ type AmiScoreTableProps = {
       title: string;
     }[];
   };
+  style?: StyleProp<ViewStyle>;
 };
 
-function AmiScoreTable({ scores }: AmiScoreTableProps) {
+function AmiScoreTable({ scores, style }: AmiScoreTableProps) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       {scores.data.map((item, index) => (
         <>
           <AmiScore
