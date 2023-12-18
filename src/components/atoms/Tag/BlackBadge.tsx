@@ -1,9 +1,15 @@
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, StyleProp, TextStyle } from 'react-native';
 
-function BlackBadge({ text }: { text: string }) {
+function BlackBadge({
+  text,
+  style,
+}: {
+  text: string;
+  style?: StyleProp<TextStyle>;
+}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[styles.text, style]}>{text}</Text>
     </View>
   );
 }
@@ -15,10 +21,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#ffffff',
-    paddingVertical: 3,
-    paddingHorizontal: 9,
     fontSize: 12,
     fontFamily: 'Montserrat-SemiBold',
+    paddingVertical: 3,
+    paddingHorizontal: 9,
   },
 });
 
