@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 14,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: 'Montserrat-Regular',
     lineHeight: 20,
     letterSpacing: -0.28,
   },

@@ -16,8 +16,10 @@ const Colors = {
   fontGray06: '#C1C1C1',
   fontGray07: '#B9B9B9',
   fontGray08: '#F2F2F2',
+  fontRed01: '#FB4646',
+  fontBlue01: '#46A6FB',
   // line
-  // lineGray01: '#4A4A4A',
+  lineGray01: '#4A4A4A',
   // lineGray02: '#E3E3E3',
   lineGray03: '#EEEEEE',
   lineGray04: '#ECECEC',
