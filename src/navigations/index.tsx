@@ -10,6 +10,8 @@ import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderR
 import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
 import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import userState from '@utils/recoil/user';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -27,6 +29,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
   const { isLoggedIn, getStoredToken } = useLoginHook();
+  const userData = useRecoilValue(userState);
 
   useEffect(() => {
     getStoredToken();
@@ -104,7 +107,9 @@ function Navigation() {
             name='ApplicationDetails'
             component={ApplicationDetailsScreen}
             options={{
-              title: 'Application details',
+              title: userData.isAmi
+                ? 'Applicant History'
+                : 'Application details',
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeftArrow />,
               headerShadowVisible: false,
