@@ -12,6 +12,7 @@ import CalendarPicker from '@/components/molecules/Calendar/CalendarPicker';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import pickerSelectValue, { pickerList } from '@/utils/recoil/picker';
 import useModalHook from '@/hooks/modalHook';
+import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
 
 export default function CalendarScreen() {
   const { setModalName } = useModalHook();
@@ -38,6 +39,12 @@ export default function CalendarScreen() {
     );
   };
 
+  const checkconfirm = () => selectDateList.length <= 0;
+
+  const confirmPress = () => {
+    console.log('선택되었다');
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style='auto' />
@@ -56,32 +63,48 @@ export default function CalendarScreen() {
         <CalendarPicker selectDate={pickerSelectDate} />
       </View>
       <SectionDividerBar style={{ marginVertical: 30 }} />
-      <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
+      <View
+        style={{
+          flex: 1,
+          paddingHorizontal: Spacing.IOS392Margin,
+          paddingBottom: 40,
+          justifyContent: 'space-between',
+        }}
+      >
         {/* select list */}
-        {selectDateList.map((date) => {
-          return (
-            <View
-              key={dayjs(date).format()}
-              style={{ flexDirection: 'row', alignItems: 'center' }}
-            >
-              <Text style={styles.selectListText}>
-                {dayjs(date).format('MMMM DD, YYYY')}
-              </Text>
-              <Pressable
-                onPress={() => {
-                  deleteDate(date);
-                }}
+        <View>
+          {selectDateList.map((date) => {
+            return (
+              <View
+                key={dayjs(date).format()}
+                style={{ flexDirection: 'row', alignItems: 'center' }}
               >
-                <Octicons
-                  name='x-circle-fill'
-                  size={18}
-                  color='#ccc'
-                  style={{ marginLeft: 20 }}
-                />
-              </Pressable>
-            </View>
-          );
-        })}
+                <Text style={styles.selectListText}>
+                  {dayjs(date).format('MMMM DD, YYYY')}
+                </Text>
+                <Pressable
+                  onPress={() => {
+                    deleteDate(date);
+                  }}
+                >
+                  <Octicons
+                    name='x-circle-fill'
+                    size={18}
+                    color='#ccc'
+                    style={{ marginLeft: 20 }}
+                  />
+                </Pressable>
+              </View>
+            );
+          })}
+        </View>
+
+        {/* Confirm */}
+        <OutlinedButton
+          content='Confirm'
+          onPress={confirmPress}
+          disabled={checkconfirm()}
+        />
       </View>
     </View>
   );
