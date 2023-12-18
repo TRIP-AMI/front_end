@@ -36,6 +36,7 @@ export function EmailInput({
       autoCapitalize='none'
       autoFocus
       error={errorText}
+      style={placeholder ? { fontFamily: 'Montserrat-Regular' } : undefined}
     />
   );
 }
@@ -114,11 +115,13 @@ export function AuthCodeInput({
       value={field.value}
       autoComplete='one-time-code'
       onChangeText={field.onChange}
-      placeholder='Enter authentication code'
+      placeholder='Enter authentication number'
       placeholderTextColor={Colors.fontGray05}
       autoCorrect={false}
       autoCapitalize='none'
       error={errorText}
+      style={{ fontFamily: 'Montserrat-Regular' }}
+      autoFocus
     />
   );
 }
@@ -138,7 +141,7 @@ export function NameInput({
       required: 'This is required',
       maxLength: {
         value: 12,
-        message: 'The name is too long (maximum 12 characters)',
+        message: 'No more than 12 characters',
       },
     },
   });
@@ -152,7 +155,9 @@ export function NameInput({
       autoCorrect={false}
       autoCapitalize='none'
       autoFocus
+      maxLength={12}
       error={errorText}
+      style={{ fontFamily: 'Montserrat-Regular' }}
     />
   );
 }

@@ -42,9 +42,7 @@ export default function JoinAuthScreen({
     try {
       await console.log(data);
       setIsEmailSent(true);
-      setTitle(
-        `To the email you entered,\nAuthentification number has been sent.`,
-      );
+      setTitle(`To the email you entered\nAuthentication number has been sent`);
     } catch (e) {
       setIsEmailSent(false);
       setTitle('Please enter your email');
@@ -84,12 +82,15 @@ export default function JoinAuthScreen({
               onPress={handleSubmit(onConfirmEmail)}
               content='Resend'
               disabled
-              customStyle={{ paddingVertical: 15 }}
+              customStyle={{
+                paddingVertical: 14,
+              }}
             />
           ) : (
             <BasicButton
               onPress={handleSubmit(onConfirmEmail)}
               content='Confirm'
+              small
               round
             />
           )}
@@ -107,6 +108,7 @@ export default function JoinAuthScreen({
             <BasicButton
               onPress={handleSubmit(onCheckAuthCode)}
               content='Confirm'
+              small
               round
             />
           </View>
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   inputBox: {
-    width: '73%',
+    width: '75%',
   },
   touched: {
     borderColor: 'black',
@@ -131,7 +133,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   button: {
-    width: '25%',
-    alignItems: 'center',
+    width: '24.3%',
+  },
+  buttonText: {
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: -0.28,
+    fontFamily: 'Montserrat-Regular',
   },
 });

@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { NameInput } from '@/components/molecules/Input/LoginInput';
 import {
   CreateNameProps,
@@ -8,6 +8,7 @@ import {
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
+import Colors from '@/styles/colors';
 
 interface ICreateNameInputs {
   nickname: string;
@@ -45,7 +46,8 @@ export default function CreateNameScreen({
       <JoinLayout title='Please enter your name'>
         <View style={styles.inputContainer}>
           <View style={styles.inputBox}>
-            <NameInput control={control} errorText={errors.nickname?.message} />
+            <NameInput control={control} />
+            <Text style={styles.text}>No more than 12 characters.</Text>
           </View>
         </View>
       </JoinLayout>
@@ -66,5 +68,13 @@ const styles = StyleSheet.create({
   },
   inputBox: {
     width: '100%',
+  },
+  text: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: -0.24,
+    color: Colors.fontGray03,
+    paddingTop: 10,
   },
 });

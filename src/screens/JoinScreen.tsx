@@ -107,28 +107,29 @@ export default function JoinScreen() {
   );
 }
 
-// TODO: 스타일 전체적으로 수정 필요
 const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'column',
-    padding: 20,
+    paddingVertical: 30,
   },
   item: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 5,
+    marginVertical: 9,
   },
   itemText: {
-    lineHeight: 20,
+    color: Colors.fontGray03,
+    lineHeight: 18,
   },
   checkbox: {
     width: '75%',
   },
   tag: {
     fontSize: 12,
-    fontFamily: 'Montserrat-Regular',
-    color: Colors.fontGray07,
-    letterSpacing: -0.28,
+    fontFamily: 'Montserrat-Medium',
+    color: Colors.fontGray05,
+    letterSpacing: -0.24,
+    lineHeight: 15,
     textDecorationLine: 'underline',
     paddingVertical: 10,
   },

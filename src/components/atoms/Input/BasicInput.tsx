@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 14,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 20,
+    fontFamily: 'Montserrat-Medium',
+    lineHeight: 18,
     letterSpacing: -0.28,
   },
   textarea: {
