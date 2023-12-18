@@ -1,7 +1,6 @@
 export interface IJoinAuthInputs {
   email: string;
   authCode: string;
-  password: string;
 }
 
 export interface ILoginInputs {

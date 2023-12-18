@@ -1,70 +1,28 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { View, StyleSheet } from 'react-native';
-import joinAuthApi from '@services/module/join/join';
-import { useNavigation } from '@react-navigation/native';
 import {
   AuthCodeInput,
   EmailInput,
 } from '@/components/molecules/Input/LoginInput';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
-import {
-  JoinAuthProps,
-  RootStackNavigationProp,
-} from '@/types/NavigationTypes';
+import { EmailAuthProps } from '@/types/NavigationTypes';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
-import { IJoinAuthInputs } from '@/types/FormTypes';
+import useAuthForm from '@/hooks/authFormHook';
 
-export default function JoinAuthScreen({
+export default function EmailAuthScreen({
   route,
 }: {
-  route: { params: JoinAuthProps };
+  route: { params: EmailAuthProps };
 }) {
-  const [isEmailSent, setIsEmailSent] = useState(false);
-  const [title, setTitle] = useState('Please enter your email');
-  const { navigate } = useNavigation<RootStackNavigationProp>();
   const {
+    isEmailSent,
+    title,
     control,
+    errors,
     handleSubmit,
-    formState: { errors },
-  } = useForm<IJoinAuthInputs>({
-    mode: 'onChange',
-    defaultValues: {
-      email: '',
-      authCode: '',
-    },
-  });
-
-  // TODO: 이메일 인증 요청, 에러 처리
-  const onConfirmEmail = async (data: IJoinAuthInputs) => {
-    if (errors.email) return;
-    try {
-      await console.log(data);
-      setIsEmailSent(true);
-      setTitle(`To the email you entered\nAuthentication number has been sent`);
-    } catch (e) {
-      setIsEmailSent(false);
-      setTitle('Please enter your email');
-      console.log(e);
-    }
-  };
-
-  // TODO: 인증 코드 확인 요청, 에러 처리
-  const onCheckAuthCode = async (data: IJoinAuthInputs) => {
-    if (errors.authCode) return;
-    try {
-      const res = await joinAuthApi.checkAuthCode(data.authCode);
-      if (res) {
-        console.log(
-          `auth success (email: ${data.email}, marketing agree: ${route.params.optionalChecked})`,
-        );
-        navigate('CreateName', { email: data.email });
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+    onConfirmEmail,
+    onCheckAuthCode,
+  } = useAuthForm({ mode: route.params.mode, params: route.params });
 
   return (
     <JoinLayout title={title}>

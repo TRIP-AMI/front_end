@@ -67,7 +67,7 @@ export default function LoginScreen() {
       <View style={styles.footer}>
         <TextButton
           title='Forgot password?'
-          onPress={() => console.log('Navigate to ForgotPasswordScreen')}
+          onPress={() => navigate('FindPassword', { mode: 'FIND_PW' })}
           style={styles.footerText}
         />
         <Text style={[styles.footerText, { color: Colors.lineGray04 }]}>|</Text>
