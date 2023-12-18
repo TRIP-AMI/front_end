@@ -36,6 +36,7 @@ export default function CreateNameScreen({
   const onNext = (data: ICreateNameInputs) => {
     if (errors.nickname) return;
     navigation.navigate('CreatePassword', {
+      mode: 'CREATE',
       nickname: data.nickname,
       email: route.params.email,
     });

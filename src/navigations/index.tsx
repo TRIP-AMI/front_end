@@ -154,7 +154,10 @@ function Navigation() {
             }}
           >
             <Stack.Screen name='FindPassword' component={EmailAuthScreen} />
-            <Stack.Screen name='ResetPassword' component={LoginScreen} />
+            <Stack.Screen
+              name='ResetPassword'
+              component={CreatePasswordScreen}
+            />
           </Stack.Group>
         </>
       )}

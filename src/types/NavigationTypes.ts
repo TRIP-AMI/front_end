@@ -2,7 +2,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // TODO: 타입 정리
 export type CreatePasswordProps = {
-  nickname: string;
+  mode: 'CREATE' | 'RESET';
+  nickname?: string;
   email: string;
 };
 
@@ -13,10 +14,6 @@ export type CreateNameProps = {
 export type EmailAuthProps = {
   mode: 'JOIN' | 'FIND_PW';
   optionalChecked?: boolean;
-};
-
-export type ResetPasswordProps = {
-  email: string;
 };
 
 export type RootStackParamList = {
@@ -35,7 +32,7 @@ export type RootStackParamList = {
   CreateName: CreateNameProps;
   CreatePassword: CreatePasswordProps;
   FindPassword: EmailAuthProps;
-  ResetPassword: ResetPasswordProps;
+  ResetPassword: CreatePasswordProps;
 };
 
 export type BottomTabParamList = {

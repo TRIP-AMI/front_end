@@ -13,7 +13,7 @@ export default function CreatePasswordScreen({
   route: { params: CreatePasswordProps };
 }) {
   const { setModalName } = useModalHook();
-  const { nickname, email } = route.params;
+  const { mode, nickname, email } = route.params;
   const {
     control,
     handleSubmit,
@@ -27,21 +27,32 @@ export default function CreatePasswordScreen({
     },
   });
   const { password } = watch();
-  // TODO: 멤버 생성 요청, 에러 처리
+  // TODO: 멤버 생성 요청, 에러 처리, 모드마다 다르게 처리
   const onNext = async (data: ICreatePasswordInputs) => {
     if (errors.password || errors.reentered || data.password !== data.reentered)
       return;
     try {
-      await console.log(
-        `nickname: ${nickname} password: ${data.password}, email: ${email}`,
-      );
-      setModalName('JOIN_COMPLETE');
+      if (mode === 'CREATE') {
+        await console.log(
+          `nickname: ${nickname} password: ${data.password}, email: ${email}`,
+        );
+        setModalName('JOIN_COMPLETE', {
+          title: `Membership registration\nhas been completed!`,
+        });
+      } else if (mode === 'RESET') {
+        setModalName('JOIN_COMPLETE', {
+          title: 'Your Password has been reset.',
+        });
+      }
     } catch (e) {
       console.log(e);
     }
   };
   const contents = {
-    title: 'Please enter your password',
+    title:
+      mode === 'CREATE'
+        ? 'Please enter your password'
+        : 'Please set a new password',
     subtitle: `At least 10 characters in combination of\na capital letter, numbers, and special characters.`,
   };
 

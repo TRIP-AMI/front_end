@@ -54,14 +54,14 @@ const useAuthForm = ({
   const onCheckAuthCode = async (data: IJoinAuthInputs) => {
     if (errors.authCode) return;
     try {
-      await joinAuthApi.checkAuthCode(data.authCode);
       if (mode === 'JOIN') {
+        await joinAuthApi.checkAuthCode(data.authCode);
         console.log(
           `auth success (email: ${data.email}, marketing agree: ${params?.optionalChecked})`,
         );
         navigate('CreateName', { email: data.email });
       } else if (mode === 'FIND_PW') {
-        navigate('ResetPassword', { email: data.email });
+        navigate('ResetPassword', { mode: 'RESET', email: data.email });
       }
     } catch (e) {
       console.log(e);
