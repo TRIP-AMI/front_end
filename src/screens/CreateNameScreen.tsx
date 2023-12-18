@@ -26,6 +26,7 @@ export default function CreateNameScreen({
     handleSubmit,
     formState: { errors },
   } = useForm({
+    mode: 'onChange',
     defaultValues: {
       nickname: '',
     },
@@ -34,7 +35,6 @@ export default function CreateNameScreen({
 
   const onNext = (data: ICreateNameInputs) => {
     if (errors.nickname) return;
-    console.log(data.nickname);
     navigation.navigate('CreatePassword', {
       nickname: data.nickname,
       email: route.params.email,
@@ -50,6 +50,10 @@ export default function CreateNameScreen({
               control={control}
               rules={{
                 required: 'This is required',
+                maxLength: {
+                  value: 12,
+                  message: 'The name is too long (maximum 12 characters)',
+                },
               }}
               render={({ field: { onChange, value } }) => (
                 <BasicInput
