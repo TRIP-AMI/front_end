@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   TextInput,
   View,
@@ -19,16 +20,25 @@ export default function BasicInput({
   valid,
   ...props
 }: InputProps) {
+  const [isTouched, setIsTouched] = useState(false);
   const textareaStyle = textarea ? styles.textarea : undefined;
+
   return (
     <View>
-      <View style={styles.container}>
+      <View
+        style={[
+          styles.container,
+          isTouched && { borderColor: Colors.lineGray01 },
+        ]}
+      >
         <TextInput
           placeholderTextColor={Colors.fontGray05}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...props}
           style={[styles.input, textareaStyle, props.style]}
           multiline={textarea}
+          onFocus={() => setIsTouched(true)}
+          onEndEditing={() => setIsTouched(false)}
         />
         {/* 최대 갯수 설정시 사용 */}
         {textarea && props.maxLength && (
