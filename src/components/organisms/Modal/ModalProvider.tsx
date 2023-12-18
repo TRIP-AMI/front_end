@@ -1,6 +1,7 @@
 // import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { View, StyleSheet } from 'react-native';
+import ReviewModal from '@components/organisms/Modal/ReviewModal';
 import modalState from '@/utils/recoil/modal';
 // import LoginModal from '@/components/molecules/Modal/LoginModal';
 import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
@@ -42,6 +43,12 @@ export default function ModalProvider() {
       />
     ),
     APPLY_COMPLETE: <ApplyCompleteModal />,
+    REVIEW: modal?.applicationItem && (
+      <ReviewModal
+        imgUrl={modal.applicationItem.imgUrl}
+        title={modal.applicationItem.title}
+      />
+    ),
   };
 
   return (

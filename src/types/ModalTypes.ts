@@ -7,7 +7,8 @@ export type ModalName =
   | 'JOIN_COMPLETE'
   | 'APPLY'
   | 'APPLY_CHECK'
-  | 'APPLY_COMPLETE';
+  | 'APPLY_COMPLETE'
+  | 'REVIEW';
 
 export type ApplyCheckProps = {
   date: string;
@@ -18,10 +19,17 @@ export type ApplyCheckProps = {
   };
 };
 
+export type ApplicationItemProps = {
+  imgUrl: string;
+  title: string;
+};
+
 export type CustomModalProps = {
   applyCheck?: ApplyCheckProps;
   title?: string;
+  applicationItem?: ApplicationItemProps;
 };
+
 export type ModalState = CustomModalProps & {
   modalName: ModalName;
 };

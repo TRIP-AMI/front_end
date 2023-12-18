@@ -33,6 +33,7 @@ export type RootStackParamList = {
   CreatePassword: CreatePasswordProps;
   FindPassword: EmailAuthProps;
   ResetPassword: CreatePasswordProps;
+  ApplicationDetails: undefined;
 };
 
 export type BottomTabParamList = {

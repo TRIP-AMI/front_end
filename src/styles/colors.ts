@@ -31,6 +31,7 @@ const Colors = {
   // moreGray: '#77787A',
   tabIndicator: '#2D2D2D',
   reviewContent: '#757575',
+  emptyStar: '#D1D1D3',
 };
 
 export default Colors;

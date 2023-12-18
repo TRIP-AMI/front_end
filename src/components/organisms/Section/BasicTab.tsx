@@ -9,7 +9,7 @@ type TabTypes = {
 };
 
 function BasicTab({ data }: { data: TabTypes[] }) {
-  const [activeTab, setActiveTab] = React.useState('Post');
+  const [activeTab, setActiveTab] = React.useState(data[0].tabName);
 
   const renderTab = (item: TabTypes) => (
     <Pressable

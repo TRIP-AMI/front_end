@@ -5,6 +5,8 @@ import {
   SafeAreaView,
   Text,
   StyleSheet,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Spacing from '@styles/spacing';
@@ -16,10 +18,14 @@ function BasicFullScreenModal({
   children,
   modalTitle,
   noClose,
+  headerStyle,
+  bodyStyle,
 }: {
   children: ReactNode;
   modalTitle?: string;
   noClose?: boolean;
+  headerStyle?: StyleProp<ViewStyle>;
+  bodyStyle?: StyleProp<ViewStyle>;
 }) {
   const { resetModal } = useModalHook();
 
@@ -30,7 +36,7 @@ function BasicFullScreenModal({
       presentationStyle='fullScreen'
     >
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.header}>
+        <View style={[styles.header, headerStyle]}>
           {/* title */}
           {!modalTitle && <Text />}
           {modalTitle && <ModalTitle>{modalTitle}</ModalTitle>}
@@ -42,7 +48,7 @@ function BasicFullScreenModal({
             </Pressable>
           )}
         </View>
-        <View style={styles.body}>{children}</View>
+        <View style={[styles.body, bodyStyle]}>{children}</View>
       </SafeAreaView>
     </Modal>
   );
