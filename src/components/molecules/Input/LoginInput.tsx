@@ -1,103 +1,158 @@
-import { Dispatch, SetStateAction } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Control, useController } from 'react-hook-form';
 import BasicInput from '@/components/atoms/Input/BasicInput';
 import Colors from '@/styles/colors';
+import Regex from '@/constants/regex';
 
+// TODO: control any 타입 수정..
 export function EmailInput({
-  email,
-  setEmail,
-  placeholder,
-  error,
+  control,
   errorText,
+  placeholder,
 }: {
-  email: string;
-  setEmail: Dispatch<SetStateAction<string>>;
-  placeholder?: string;
-  error?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any>;
   errorText?: string;
+  placeholder?: string;
 }) {
+  const { field } = useController({
+    name: 'email',
+    control,
+    rules: {
+      required: 'Please enter your email address',
+      pattern: {
+        value: Regex.email,
+        message: 'This is an invalid email address',
+      },
+    },
+  });
   return (
-    <View style={styles.container}>
-      <BasicInput
-        style={styles.input}
-        value={email}
-        autoComplete='username'
-        onChangeText={setEmail}
-        placeholder={placeholder || 'E-mail'}
-        placeholderTextColor={Colors.fontGray05}
-        autoCorrect={false}
-        autoCapitalize='none'
-        autoFocus
-      />
-      {error && <Text style={styles.error}>{errorText}</Text>}
-    </View>
+    <BasicInput
+      value={field.value}
+      autoComplete='username'
+      onChangeText={field.onChange}
+      placeholder={placeholder || 'E-mail'}
+      placeholderTextColor={Colors.fontGray05}
+      autoCorrect={false}
+      autoCapitalize='none'
+      autoFocus
+      error={errorText}
+    />
   );
 }
 
 export function PasswordInput({
-  password,
-  setPassword,
+  control,
+  errorText,
   placeholder,
   autoFocus,
-  error,
-  errorText,
-  vaildText,
+  validText,
+  compare,
 }: {
-  password: string;
-  setPassword: Dispatch<SetStateAction<string>>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any>;
+  errorText?: string;
   placeholder?: string;
   autoFocus?: boolean;
-  error?: boolean;
-  errorText?: string;
-  vaildText?: string;
+  validText?: string;
+  compare?: string;
 }) {
+  const { field } = useController({
+    name: compare ? 'reentered' : 'password',
+    control,
+    rules: compare
+      ? {
+          required: 'This is required',
+          validate: (value) => {
+            return value === compare || 'The passwords do not match';
+          },
+        }
+      : {
+          required: 'This is required',
+          pattern: {
+            value: Regex.password,
+            message: 'It does not fit the password format.',
+          },
+          maxLength: {
+            value: 20,
+            message: 'Pleas enter no more than 20 characters.',
+          },
+        },
+  });
   return (
-    <View style={styles.container}>
-      <BasicInput
-        style={styles.input}
-        autoComplete='password'
-        value={password}
-        onChangeText={setPassword}
-        placeholder={placeholder || 'Password'}
-        placeholderTextColor={Colors.fontGray05}
-        secureTextEntry
-        maxLength={20}
-        autoFocus={autoFocus}
-      />
-      {error ? (
-        <Text style={styles.error}>{errorText}</Text>
-      ) : (
-        vaildText && <Text style={styles.valid}>{vaildText}</Text>
-      )}
-    </View>
+    <BasicInput
+      autoComplete='password'
+      value={field.value}
+      onChangeText={field.onChange}
+      placeholder={placeholder || 'Password'}
+      placeholderTextColor={Colors.fontGray05}
+      secureTextEntry
+      maxLength={21}
+      autoFocus={autoFocus}
+      error={errorText}
+      valid={!errorText && field.value && validText}
+    />
   );
 }
 
-// TODO: 스타일 수정
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-  },
-  input: {
-    fontSize: 14,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 18,
-    letterSpacing: -0.28,
-  },
-  error: {
-    color: '#F22222',
-    fontSize: 12,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 18,
-    letterSpacing: -0.28,
-    paddingHorizontal: 5,
-  },
-  valid: {
-    color: 'skyblue',
-    fontSize: 12,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 18,
-    letterSpacing: -0.28,
-    paddingHorizontal: 5,
-  },
-});
+export function AuthCodeInput({
+  control,
+  errorText,
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any>;
+  errorText?: string;
+}) {
+  const { field } = useController({
+    name: 'authCode',
+    control,
+    rules: {
+      required: 'Please enter your authentication code',
+    },
+  });
+  return (
+    <BasicInput
+      value={field.value}
+      autoComplete='one-time-code'
+      onChangeText={field.onChange}
+      placeholder='Enter authentication code'
+      placeholderTextColor={Colors.fontGray05}
+      autoCorrect={false}
+      autoCapitalize='none'
+      error={errorText}
+    />
+  );
+}
+
+export function NameInput({
+  control,
+  errorText,
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any>;
+  errorText?: string;
+}) {
+  const { field } = useController({
+    name: 'nickname',
+    control,
+    rules: {
+      required: 'This is required',
+      maxLength: {
+        value: 12,
+        message: 'The name is too long (maximum 12 characters)',
+      },
+    },
+  });
+  return (
+    <BasicInput
+      value={field.value}
+      autoComplete='nickname'
+      onChangeText={field.onChange}
+      placeholder='Enter a name'
+      placeholderTextColor={Colors.fontGray05}
+      autoCorrect={false}
+      autoCapitalize='none'
+      autoFocus
+      error={errorText}
+    />
+  );
+}

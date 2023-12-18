@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
 import useLoginHook from '@/hooks/loginHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
@@ -12,19 +13,31 @@ import {
 } from '@/components/molecules/Input/LoginInput';
 import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
-import useLoginInput from '@/hooks/loginInputHook';
 import useModalHook from '@/hooks/modalHook';
+import { ILoginInputs } from '@/types/FormTypes';
 
 export default function LoginScreen() {
   const { navigate } = useNavigation<RootStackNavigationProp>();
-  const { email, password, setEmail, setPassword, invalidInput } =
-    useLoginInput();
   const [isChecked, setChecked] = useState(false);
   const { onLogin } = useLoginHook();
   const { setModalName } = useModalHook();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginInputs>({
+    mode: 'onChange',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
-  const onLoginPress = () => {
-    return invalidInput ? setModalName('LOGIN_INVALID') : onLogin(isChecked);
+  const onLoginPress = (data: ILoginInputs) => {
+    console.log(data);
+    return errors.email || errors.password
+      ? setModalName('LOGIN_INVALID')
+      : onLogin(isChecked);
   };
 
   const onCheck = () => {
@@ -35,8 +48,8 @@ export default function LoginScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar style='auto' />
       <View style={styles.inputContainer}>
-        <EmailInput email={email} setEmail={setEmail} />
-        <PasswordInput password={password} setPassword={setPassword} />
+        <EmailInput control={control} />
+        <PasswordInput control={control} autoFocus={false} />
         <LabeledCheckBox
           label='Remember me'
           isChecked={isChecked}
@@ -45,10 +58,10 @@ export default function LoginScreen() {
       </View>
       <View style={styles.button}>
         <BasicButton
-          onPress={onLoginPress}
+          onPress={handleSubmit(onLoginPress)}
           content='Login'
           round
-          disabled={invalidInput}
+          disabled={!!errors.email || !!errors.password}
         />
       </View>
       <View style={styles.footer}>

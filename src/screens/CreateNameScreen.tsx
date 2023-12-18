@@ -1,7 +1,6 @@
-import { useForm, Controller } from 'react-hook-form';
-import { Text, View, StyleSheet } from 'react-native';
-import BasicInput from '@/components/atoms/Input/BasicInput';
-import Colors from '@/styles/colors';
+import { useForm } from 'react-hook-form';
+import { View, StyleSheet } from 'react-native';
+import { NameInput } from '@/components/molecules/Input/LoginInput';
 import {
   CreateNameProps,
   RootStackNavigationProp,
@@ -46,33 +45,7 @@ export default function CreateNameScreen({
       <JoinLayout title='Please enter your name'>
         <View style={styles.inputContainer}>
           <View style={styles.inputBox}>
-            <Controller
-              control={control}
-              rules={{
-                required: 'This is required',
-                maxLength: {
-                  value: 12,
-                  message: 'The name is too long (maximum 12 characters)',
-                },
-              }}
-              render={({ field: { onChange, value } }) => (
-                <BasicInput
-                  style={styles.input}
-                  value={value}
-                  autoComplete='nickname'
-                  onChangeText={onChange}
-                  placeholder='Enter a name'
-                  placeholderTextColor={Colors.fontGray05}
-                  autoCorrect={false}
-                  autoCapitalize='none'
-                  autoFocus
-                />
-              )}
-              name='nickname'
-            />
-            {errors.nickname && (
-              <Text style={styles.error}>{errors.nickname.message}</Text>
-            )}
+            <NameInput control={control} errorText={errors.nickname?.message} />
           </View>
         </View>
       </JoinLayout>
@@ -86,12 +59,6 @@ export default function CreateNameScreen({
 }
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    fontFamily: 'Montserrat-SemiBold',
-    color: 'black',
-    paddingVertical: 40,
-  },
   inputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -99,23 +66,5 @@ const styles = StyleSheet.create({
   },
   inputBox: {
     width: '100%',
-  },
-  input: {
-    fontSize: 14,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 18,
-    letterSpacing: -0.28,
-  },
-  button: {
-    width: '25%',
-    alignItems: 'center',
-  },
-  error: {
-    color: '#F22222',
-    fontSize: 12,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 18,
-    letterSpacing: -0.28,
-    paddingHorizontal: 5,
   },
 });

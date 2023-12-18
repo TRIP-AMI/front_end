@@ -1,24 +1,20 @@
 import { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { Text, View, StyleSheet } from 'react-native';
+import { useForm } from 'react-hook-form';
+import { View, StyleSheet } from 'react-native';
 import joinAuthApi from '@services/module/join/join';
 import { useNavigation } from '@react-navigation/native';
-import { EmailInput } from '@/components/molecules/Input/LoginInput';
+import {
+  AuthCodeInput,
+  EmailInput,
+} from '@/components/molecules/Input/LoginInput';
 import BasicButton from '@/components/atoms/Button/BasicButton';
-import BasicInput from '@/components/atoms/Input/BasicInput';
-import Colors from '@/styles/colors';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
 import {
   JoinAuthProps,
   RootStackNavigationProp,
 } from '@/types/NavigationTypes';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
-import Regex from '@/constants/regex';
-
-interface IJoinAuthInputs {
-  email: string;
-  authCode: string;
-}
+import { IJoinAuthInputs } from '@/types/FormTypes';
 
 export default function JoinAuthScreen({
   route,
@@ -32,7 +28,8 @@ export default function JoinAuthScreen({
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IJoinAuthInputs>({
+    mode: 'onChange',
     defaultValues: {
       email: '',
       authCode: '',
@@ -40,7 +37,7 @@ export default function JoinAuthScreen({
   });
 
   // TODO: 이메일 인증 요청, 에러 처리
-  const onSubmit = async (data: IJoinAuthInputs) => {
+  const onConfirmEmail = async (data: IJoinAuthInputs) => {
     if (errors.email) return;
     try {
       await console.log(data);
@@ -61,8 +58,9 @@ export default function JoinAuthScreen({
     try {
       const res = await joinAuthApi.checkAuthCode(data.authCode);
       if (res) {
-        console.log('marketing agree: ', route.params.optionalChecked);
-        console.log('authentification success');
+        console.log(
+          `auth success (email: ${data.email}, marketing agree: ${route.params.optionalChecked})`,
+        );
         navigate('CreateName', { email: data.email });
       }
     } catch (e) {
@@ -74,41 +72,25 @@ export default function JoinAuthScreen({
     <JoinLayout title={title}>
       <View style={styles.inputContainer}>
         <View style={styles.inputBox}>
-          <Controller
+          <EmailInput
             control={control}
-            rules={{
-              required: 'Please enter your email address',
-              pattern: {
-                value: Regex.email,
-                message: 'This is an invalid email address',
-              },
-            }}
-            render={({ field: { onChange, value } }) => (
-              <EmailInput
-                email={value}
-                setEmail={onChange}
-                placeholder='Email Address'
-                error={!!errors.email}
-                errorText={errors.email?.message}
-              />
-            )}
-            name='email'
+            errorText={errors.email?.message}
+            placeholder='Email Address'
           />
         </View>
         <View style={styles.button}>
           {isEmailSent ? (
             <OutlinedButton
-              onPress={handleSubmit(onSubmit)}
+              onPress={handleSubmit(onConfirmEmail)}
               content='Resend'
               disabled
               customStyle={{ paddingVertical: 15 }}
             />
           ) : (
             <BasicButton
-              onPress={handleSubmit(onSubmit)}
+              onPress={handleSubmit(onConfirmEmail)}
               content='Confirm'
               round
-              disabled={!!errors.email}
             />
           )}
         </View>
@@ -116,25 +98,9 @@ export default function JoinAuthScreen({
       {isEmailSent && (
         <View style={styles.inputContainer}>
           <View style={styles.inputBox}>
-            <Controller
+            <AuthCodeInput
               control={control}
-              rules={{
-                required: 'Please enter your authentication code',
-              }}
-              render={({ field: { onChange, value } }) => (
-                <BasicInput
-                  style={styles.input}
-                  value={value}
-                  autoComplete='one-time-code'
-                  onChangeText={onChange}
-                  placeholder='Enter authentication code'
-                  placeholderTextColor={Colors.fontGray05}
-                  autoCorrect={false}
-                  autoCapitalize='none'
-                  autoFocus
-                />
-              )}
-              name='authCode'
+              errorText={errors.authCode?.message}
             />
           </View>
           <View style={styles.button}>
@@ -142,13 +108,9 @@ export default function JoinAuthScreen({
               onPress={handleSubmit(onCheckAuthCode)}
               content='Confirm'
               round
-              disabled={!!errors.authCode}
             />
           </View>
         </View>
-      )}
-      {errors.authCode && (
-        <Text style={styles.error}>{errors.authCode.message}</Text>
       )}
     </JoinLayout>
   );
@@ -163,22 +125,13 @@ const styles = StyleSheet.create({
   inputBox: {
     width: '73%',
   },
-  input: {
-    fontSize: 14,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 18,
-    letterSpacing: -0.28,
+  touched: {
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 5,
   },
   button: {
     width: '25%',
     alignItems: 'center',
-  },
-  error: {
-    color: '#F22222',
-    fontSize: 12,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 18,
-    letterSpacing: -0.28,
-    paddingHorizontal: 5,
   },
 });

@@ -1,16 +1,11 @@
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { View, StyleSheet } from 'react-native';
 import { CreatePasswordProps } from '@/types/NavigationTypes';
 import { PasswordInput } from '@/components/molecules/Input/LoginInput';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
-import Regex from '@/constants/regex';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
-
-interface ICreatePasswordInputs {
-  password: string;
-  reentered: string;
-}
+import { ICreatePasswordInputs } from '@/types/FormTypes';
 
 export default function CreatePasswordScreen({
   route,
@@ -44,58 +39,33 @@ export default function CreatePasswordScreen({
       console.log(e);
     }
   };
+  const contents = {
+    title: 'Please enter your password',
+    subtitle: `At least 10 characters in combination of\na capital letter, numbers, and special characters.`,
+  };
 
   return (
     <>
-      <JoinLayout title='Please enter your password'>
+      <JoinLayout title={contents.title} subtitle={contents.subtitle}>
         <View style={styles.inputContainer}>
           <View style={styles.inputBox}>
-            <Controller
+            <PasswordInput
               control={control}
-              rules={{
-                required: 'This is required',
-                pattern: {
-                  value: Regex.password,
-                  message: 'It does not fit the password format.',
-                },
-              }}
-              render={({ field: { onChange, value } }) => (
-                <PasswordInput
-                  password={value}
-                  setPassword={onChange}
-                  placeholder='Enter a password'
-                  error={!!errors.password}
-                  errorText={errors.password?.message}
-                  vaildText={value && 'Password Available'}
-                  autoFocus
-                />
-              )}
-              name='password'
+              errorText={errors.password?.message}
+              placeholder='Enter a password'
+              validText={errors.password ? undefined : 'Password Available'}
+              autoFocus
             />
           </View>
         </View>
         <View style={styles.inputContainer}>
           <View style={styles.inputBox}>
-            <Controller
+            <PasswordInput
               control={control}
-              rules={{
-                required: 'This is required',
-                validate: (value) => {
-                  const { password } = getValues();
-                  return value === password || `The password doesn't match.`;
-                },
-              }}
-              render={({ field: { onChange, value } }) => (
-                <PasswordInput
-                  password={value}
-                  setPassword={onChange}
-                  placeholder='Re-enter the password'
-                  error={!!errors.reentered}
-                  errorText={errors.reentered?.message}
-                  vaildText={value && 'Password matching'}
-                />
-              )}
-              name='reentered'
+              placeholder='Re-enter the password'
+              errorText={errors.reentered?.message}
+              validText={errors.reentered ? undefined : 'Password matching'}
+              compare={getValues().password}
             />
           </View>
         </View>
