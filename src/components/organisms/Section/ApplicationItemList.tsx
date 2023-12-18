@@ -9,6 +9,7 @@ const dummyApplicationData = [
     title: 'Itaewon Tour',
     subTitle: 'Restaurant - Cafe - Photo',
     price: '50,000 won',
+    date: '12.10.2023',
     imgUrl: 'https://via.placeholder.com/600x600/ECECEC',
   },
   {
@@ -16,6 +17,7 @@ const dummyApplicationData = [
     title: 'Itaewon Tour',
     subTitle: 'Restaurant - Cafe - Photo',
     price: '50,000 won',
+    date: '12.10.2023',
     imgUrl: 'https://via.placeholder.com/600x600/ECECEC',
   },
 ];
@@ -28,7 +30,7 @@ function ApplicationItemList() {
         <>
           <ApplicationItem item={item} />
           {index !== dummyApplicationData.length - 1 && (
-            <Separator color={Colors.lineGray04} hei={1} marginVer={15.5} />
+            <Separator color={Colors.lineGray03} hei={1} marginVer={20} />
           )}
         </>
       )}
