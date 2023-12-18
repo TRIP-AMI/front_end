@@ -6,14 +6,16 @@ import Colors from '@styles/colors';
 const dummyApplicationData = [
   {
     id: 1,
-    title: 'Introduce Our Service',
-    date: '07.12.2023',
+    title: 'Itaewon Tour',
+    subTitle: 'Restaurant - Cafe - Photo',
+    price: '50,000 won',
     imgUrl: 'https://via.placeholder.com/600x600/ECECEC',
   },
   {
     id: 2,
-    title: 'Introduce Our Service',
-    date: '07.12.2023',
+    title: 'Itaewon Tour',
+    subTitle: 'Restaurant - Cafe - Photo',
+    price: '50,000 won',
     imgUrl: 'https://via.placeholder.com/600x600/ECECEC',
   },
 ];
@@ -24,11 +26,7 @@ function ApplicationItemList() {
       data={dummyApplicationData}
       renderItem={({ item, index }) => (
         <>
-          <ApplicationItem
-            date={`Application date: ${item.date}`}
-            title={item.title}
-            imgUrl={item.imgUrl}
-          />
+          <ApplicationItem item={item} />
           {index !== dummyApplicationData.length - 1 && (
             <Separator color={Colors.lineGray04} hei={1} marginVer={15.5} />
           )}
