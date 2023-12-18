@@ -4,14 +4,23 @@ import Spacing from '@styles/spacing';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Badge } from 'react-native-paper';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 // TODO Badge 색상 Colors.Primary로 변경해야 함
 function ApplicantButton() {
   const [alarmCount] = useState(1);
   const alarmBadgeShow = alarmCount > 0;
 
+  const navigation = useNavigation<RootStackNavigationProp>();
+
   return (
-    <Pressable onPress={() => {}} style={styles.container}>
+    <Pressable
+      onPress={() => {
+        navigation.navigate('ApplicationDetails');
+      }}
+      style={styles.container}
+    >
       <View style={styles.subContainer}>
         <Text style={styles.text}>Applicant History</Text>
         <View style={styles.iconContainer}>
