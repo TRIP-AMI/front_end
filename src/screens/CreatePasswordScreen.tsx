@@ -90,7 +90,7 @@ export default function CreatePasswordScreen({
         onCancel={() => setModalName('JOIN_CANCEL')}
         onNext={handleSubmit(onNext)}
         disabled={!!errors.password || !!errors.reentered}
-        confirmText='Join'
+        confirmText={mode === 'CREATE' ? 'Join' : 'Submit'}
       />
     </>
   );
