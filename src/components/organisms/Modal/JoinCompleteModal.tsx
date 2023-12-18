@@ -5,7 +5,7 @@ import BasicButton from '@/components/atoms/Button/BasicButton';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useModalHook from '@/hooks/modalHook';
 
-export default function JoinCompleteModal() {
+export default function JoinCompleteModal({ title }: { title: string }) {
   const { navigate } = useNavigation<RootStackNavigationProp>();
   const { resetModal } = useModalHook();
 
@@ -16,7 +16,7 @@ export default function JoinCompleteModal() {
 
   return (
     <IconFullScreenModal
-      title={`Membership registration\nhas been completed!`}
+      title={title}
       button={
         <View style={styles.buttonContainer}>
           <BasicButton onPress={onPress} content='Login' round />

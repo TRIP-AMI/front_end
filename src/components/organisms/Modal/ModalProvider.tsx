@@ -29,7 +29,9 @@ export default function ModalProvider() {
     // LOGIN_CHECK: <LoginModal />,
     LOGIN_INVALID: <LoginInvalidModal />,
     JOIN_CANCEL: <JoinCancelModal />,
-    JOIN_COMPLETE: <JoinCompleteModal />,
+    JOIN_COMPLETE: modal.title ? (
+      <JoinCompleteModal title={modal.title} />
+    ) : undefined,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     APPLY: <ApplyModal />,

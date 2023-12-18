@@ -18,7 +18,10 @@ export type ApplyCheckProps = {
   };
 };
 
-export type ModalState = {
-  modalName: ModalName;
+export type CustomModalProps = {
   applyCheck?: ApplyCheckProps;
+  title?: string;
+};
+export type ModalState = CustomModalProps & {
+  modalName: ModalName;
 };

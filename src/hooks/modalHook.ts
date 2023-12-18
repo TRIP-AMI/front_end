@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import modalState from '@/utils/recoil/modal';
-import { ModalName } from '@/types/ModalTypes';
+import { ModalName, CustomModalProps } from '@/types/ModalTypes';
 
 const useModalHook = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -19,9 +19,10 @@ const useModalHook = () => {
     setModal(null);
   };
 
-  const setModalName = (name: ModalName) => {
+  const setModalName = (name: ModalName, props?: CustomModalProps) => {
     setModal({
       modalName: name,
+      ...props,
     });
   };
 
