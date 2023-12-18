@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import postApi from '@services/module/post/post';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import MyPostItem from '@components/molecules/Item/MyPostItem';
 import Spacing from '@styles/spacing';
+import EmptyText from '@components/atoms/Text/EmptyText';
 import BasicItem from '@/types/basicItem';
 
 // 클래스로 데이터 가공
@@ -36,15 +37,21 @@ function PostItemList() {
   }, []);
 
   return (
-    <FlatList
-      data={postList}
-      renderItem={(item) => <MyPostItem postItem={item.item} />}
-      keyExtractor={(item) => item.itemId}
-      numColumns={2}
-      columnWrapperStyle={{ justifyContent: 'space-between' }}
-      style={styles.listWrap}
-      scrollEnabled={false}
-    />
+    <View>
+      {postList.length === 0 ? (
+        <EmptyText text='Leave your first post!' />
+      ) : (
+        <FlatList
+          data={postList}
+          renderItem={(item) => <MyPostItem postItem={item.item} />}
+          keyExtractor={(item) => item.itemId}
+          numColumns={2}
+          columnWrapperStyle={{ justifyContent: 'space-between' }}
+          style={styles.listWrap}
+          scrollEnabled={false}
+        />
+      )}
+    </View>
   );
 }
 
