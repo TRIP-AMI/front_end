@@ -2,13 +2,16 @@ import { StyleSheet, View } from 'react-native';
 import AmiScore from '@components/atoms/Text/AmiScore';
 import VerticalLine from '@components/atoms/etc/VerticalLine';
 import Colors from '@styles/colors';
+import useModalHook from '@hooks/modalHook';
 
 function ApplicationTable() {
+  const { setModalName } = useModalHook();
+
   const tableData = [
     {
       id: 1,
       title: 'Cancellation',
-      onPress: () => console.log('Cancellation'),
+      onPress: () => setModalName('APPLICATION_CANCEL'),
     },
     {
       id: 2,
