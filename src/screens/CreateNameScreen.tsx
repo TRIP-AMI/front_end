@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { NameInput } from '@/components/molecules/Input/LoginInput';
 import {
   CreateNameProps,
@@ -42,13 +42,17 @@ export default function CreateNameScreen({
     });
   };
 
+  const content = {
+    title: 'Please enter your name',
+    subtitle: 'No more than 12 characters.',
+  };
+
   return (
     <>
-      <JoinLayout title='Please enter your name'>
+      <JoinLayout title={content.title} subtitle={content.subtitle}>
         <View style={styles.inputContainer}>
           <View style={styles.inputBox}>
-            <NameInput control={control} />
-            <Text style={styles.text}>No more than 12 characters.</Text>
+            <NameInput control={control} errorText={errors.nickname?.message} />
           </View>
         </View>
       </JoinLayout>
