@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
 import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import TextButton from '@/components/atoms/Button/TextButton';
-import BasicButton, {
-  BottomCancelButton,
-} from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import BottomButtons from '@/components/atoms/Button/BottomButtons';
+import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 
 const data = [
   {
@@ -44,7 +43,10 @@ export default function JoinScreen() {
   };
 
   const onFullAgree = () => {
-    if (checkedIds.length === data.length) return;
+    if (checkedIds.length === data.length) {
+      setCheckedIds([]);
+      return;
+    }
     setCheckedIds(data.map((item) => item.id));
   };
 
@@ -66,31 +68,22 @@ export default function JoinScreen() {
   };
 
   const onNext = () => {
-    navigate('JoinAuth');
+    if (!isRequiredAgree) return;
+    navigate('JoinAuth', {
+      mode: 'JOIN',
+      optionalChecked: checkedIds.includes(3),
+    });
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>
-          Please agree to the terms and conditions of the service
-        </Text>
-        <View style={styles.button}>
-          {checkedIds.length === data.length ? (
-            <OutlinedButton
-              content='Full Agree'
-              disabled
-              onPress={onFullAgree}
-              background
-            />
-          ) : (
-            <OutlinedButton
-              onPress={onFullAgree}
-              content='Full Agree'
-              disabled
-            />
-          )}
-        </View>
+    <>
+      <JoinLayout title='Please agree to the terms and conditions of the service'>
+        <OutlinedButton
+          onPress={onFullAgree}
+          content='Full Agree'
+          disabled
+          background={checkedIds.length === data.length}
+        />
         <View style={styles.itemContainer}>
           {data.map((item) => (
             <View key={item.id} style={styles.item}>
@@ -107,67 +100,40 @@ export default function JoinScreen() {
             </View>
           ))}
         </View>
-      </View>
-      <View style={styles.footer}>
-        <View style={{ width: '50%' }}>
-          <BottomCancelButton content='Cancel' onPress={onCancel} />
-        </View>
-        <View style={{ width: '50%' }}>
-          {isRequiredAgree ? (
-            <BasicButton content='Next' onPress={onNext} />
-          ) : (
-            <BasicButton content='Next' onPress={() => {}} disabled />
-          )}
-        </View>
-      </View>
-    </View>
+      </JoinLayout>
+      <BottomButtons
+        onCancel={onCancel}
+        onNext={onNext}
+        disabled={!isRequiredAgree}
+      />
+    </>
   );
 }
 
-// TODO: 스타일 전체적으로 수정 필요
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 20,
-  },
-  title: {
-    fontSize: 20,
-    fontFamily: 'Montserrat-SemiBold',
-    color: 'black',
-    paddingVertical: 40,
-  },
-  button: {
-    paddingVertical: 20,
-  },
   itemContainer: {
     flexDirection: 'column',
-    paddingHorizontal: 20,
+    paddingVertical: 30,
   },
   item: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginVertical: 9,
   },
   itemText: {
-    lineHeight: 20,
+    color: Colors.fontGray03,
+    lineHeight: 18,
   },
   checkbox: {
     width: '75%',
   },
   tag: {
     fontSize: 12,
-    fontFamily: 'Montserrat-Regular',
-    color: Colors.fontGray07,
-    letterSpacing: -0.28,
+    fontFamily: 'Montserrat-Medium',
+    color: Colors.fontGray05,
+    letterSpacing: -0.24,
+    lineHeight: 15,
     textDecorationLine: 'underline',
     paddingVertical: 10,
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 10,
   },
 });

@@ -34,14 +34,13 @@ export default function JoinCancelModal() {
   );
 }
 
-// TODO: style 수정
 const styles = StyleSheet.create({
   text: {
     fontFamily: 'Montserrat-Regular',
     fontSize: 14,
     lineHeight: 20,
     paddingHorizontal: 20,
-    paddingTop: 10,
+    paddingTop: 14,
     color: Colors.fontGray03,
   },
 });

@@ -17,22 +17,20 @@ import useModalHook from '@/hooks/modalHook';
 function BasicFullScreenModal({
   children,
   modalTitle,
+  noClose,
   headerStyle,
   bodyStyle,
 }: {
   children: ReactNode;
   modalTitle?: string;
+  noClose?: boolean;
   headerStyle?: StyleProp<ViewStyle>;
   bodyStyle?: StyleProp<ViewStyle>;
 }) {
   const { resetModal } = useModalHook();
 
   return (
-    <Modal
-      animationType='slide'
-      transparent={false}
-      presentationStyle='fullScreen'
-    >
+    <Modal animationType='slide' presentationStyle='fullScreen'>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={[styles.header, headerStyle]}>
           {/* title */}
@@ -40,9 +38,11 @@ function BasicFullScreenModal({
           {modalTitle && <ModalTitle>{modalTitle}</ModalTitle>}
 
           {/* close icon */}
-          <Pressable onPress={resetModal}>
-            <AntDesign name='close' size={22} color='black' />
-          </Pressable>
+          {!noClose && (
+            <Pressable onPress={resetModal}>
+              <AntDesign name='close' size={22} color='black' />
+            </Pressable>
+          )}
         </View>
         <View style={[styles.body, bodyStyle]}>{children}</View>
       </SafeAreaView>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: Spacing.IOS392Margin,
   },
-  body: { paddingHorizontal: Spacing.IOS392Margin },
+  body: {},
 });
 
 export default BasicFullScreenModal;

@@ -7,6 +7,7 @@ type BasicButtonProps = {
   round?: boolean;
   disabled?: boolean;
   onPress: () => void;
+  small?: boolean;
 };
 
 export default function BasicButton({
@@ -14,6 +15,7 @@ export default function BasicButton({
   round,
   disabled,
   onPress,
+  small,
 }: BasicButtonProps) {
   return (
     <Pressable
@@ -22,10 +24,11 @@ export default function BasicButton({
         pressed && styles.pressed,
         disabled && styles.disabled,
         round && { borderRadius: 5 },
+        small && { paddingVertical: 14 },
       ]}
       onPress={onPress}
     >
-      <ButtonText content={content} color='#ffffff' />
+      <ButtonText content={content} color='#ffffff' small={small} />
     </Pressable>
   );
 }
@@ -55,7 +58,7 @@ const size = {
     paddingVertical: 16,
   },
   sm: {
-    paddingVertical: 12,
+    paddingVertical: 14,
   },
 };
 

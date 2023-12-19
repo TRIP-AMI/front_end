@@ -169,5 +169,8 @@
   ],
   "login": {
     "accessToken": "test"
+  },
+  "joinAuth": {
+    "isAuth": true
   }
 }
