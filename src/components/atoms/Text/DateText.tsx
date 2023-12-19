@@ -1,8 +1,12 @@
 import { StyleSheet, Text } from 'react-native';
 import Colors from '@styles/colors';
 
-function ApplicationDateText({ date }: { date: string }) {
-  return <Text style={styles.text}>Application date {date}</Text>;
+function DateText({ message, date }: { message: string; date: string }) {
+  return (
+    <Text style={styles.text}>
+      {message} date {date}
+    </Text>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -11,7 +15,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Montserrat-Regular',
     letterSpacing: -0.24,
+    lineHeight: 18,
   },
 });
 
-export default ApplicationDateText;
+export default DateText;
