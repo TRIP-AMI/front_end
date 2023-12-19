@@ -1,6 +1,7 @@
 export type ModalName =
   | 'NOTIFICATION'
   | 'SEARCH'
+  | 'PICKER_SELECT'
   | 'LOGIN_CHECK'
   | 'LOGIN_INVALID'
   | 'JOIN_CANCEL'

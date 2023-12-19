@@ -23,6 +23,7 @@ export default function OutlinedButton({
         disabled && styles.disabled,
         background && styles.background,
       ]}
+      disabled={disabled}
       onPress={onPress}
     >
       <ButtonText

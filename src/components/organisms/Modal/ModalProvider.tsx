@@ -12,6 +12,7 @@ import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal'
 import LoginInvalidModal from '@/components/molecules/Modal/LoginInvalidModal';
 import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
 // import useLoginHook from '@/hooks/loginHook';
+import PickerSelectModal from './PickerSelectModal';
 
 export default function ModalProvider() {
   const modal = useRecoilValue(modalState);
@@ -31,6 +32,7 @@ export default function ModalProvider() {
     JOIN_CANCEL: <JoinCancelModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
+    PICKER_SELECT: <PickerSelectModal />,
     APPLY: <ApplyModal />,
     APPLY_CHECK: modal.applyCheck && (
       <ApplyCheckModal
@@ -60,6 +62,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    backgroundColor: '#00000080',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
 });
