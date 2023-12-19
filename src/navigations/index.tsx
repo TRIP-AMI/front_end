@@ -1,15 +1,14 @@
+import { useEffect } from 'react';
 import 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IntroductionScreen from '@screens/menu/IntroductionScreen';
 import BannerListScreen from '@screens/menu/BannerListScreen';
 import NotificationScreen from '@screens/menu/NotificationScreen';
 import FAQScreen from '@screens/menu/FAQScreen';
-import SearchScreen from '@screens/SearchScreen';
 import ContentScreen from '@screens/ContentScreen';
 import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderRightIcons';
 import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
-import { useEffect } from 'react';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -79,7 +78,6 @@ function Navigation() {
               headerLeft: () => <BackLeftArrow />,
             }}
           />
-          <Stack.Screen name='Search' component={SearchScreen} />
           <Stack.Screen
             name='Calendar'
             component={CalendarScreen}
