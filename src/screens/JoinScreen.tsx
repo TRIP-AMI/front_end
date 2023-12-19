@@ -43,6 +43,7 @@ export default function JoinScreen() {
   };
 
   const onFullAgree = () => {
+    console.log('full agree');
     if (checkedIds.length === data.length) {
       setCheckedIds([]);
       return;
@@ -81,7 +82,12 @@ export default function JoinScreen() {
         <OutlinedButton
           onPress={onFullAgree}
           content='Full Agree'
-          disabled
+          customStyle={{
+            borderColor:
+              checkedIds.length === data.length
+                ? Colors.lineGray04
+                : Colors.fontGray06,
+          }}
           background={checkedIds.length === data.length}
         />
         <View style={styles.itemContainer}>

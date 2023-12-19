@@ -8,6 +8,7 @@ import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
 import { EmailAuthProps } from '@/types/NavigationTypes';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import useAuthForm from '@/hooks/authFormHook';
+import Colors from '@/styles/colors';
 
 export default function EmailAuthScreen({
   route,
@@ -39,9 +40,9 @@ export default function EmailAuthScreen({
             <OutlinedButton
               onPress={handleSubmit(onConfirmEmail)}
               content='Resend'
-              disabled
               customStyle={{
                 paddingVertical: 14,
+                borderColor: Colors.fontGray06,
               }}
             />
           ) : (
