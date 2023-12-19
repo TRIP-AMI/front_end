@@ -16,8 +16,9 @@ export default function CalendarPicker({ selectDate }: { selectDate: string }) {
   };
 
   const updateItem = (dayjsForm: Dayjs) => {
-    if (isList.length >= 3) {
-      Alert.alert('Alert Title', '이미 3개 선택했습니다.', [
+    if (isList.length >= 5) {
+      // TODO: toast 추후 변경필요
+      Alert.alert('', 'You have selected all the dates. (max 5)', [
         { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
       return;

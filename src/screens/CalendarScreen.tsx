@@ -39,7 +39,7 @@ export default function CalendarScreen() {
     );
   };
 
-  const checkconfirm = () => selectDateList.length <= 0;
+  const checkConfirm = () => selectDateList.length <= 0;
 
   const confirmPress = () => {
     console.log('선택되었다');
@@ -103,7 +103,7 @@ export default function CalendarScreen() {
         <OutlinedButton
           content='Confirm'
           onPress={confirmPress}
-          disabled={checkconfirm()}
+          disabled={checkConfirm()}
         />
       </View>
     </View>

@@ -4,9 +4,8 @@ import dayjs, { Dayjs } from 'dayjs';
 
 export interface CalendarDateItem {
   value: number;
-  opacity: boolean;
   date: Dayjs;
-  disabled?: boolean;
+  disabled: boolean;
 }
 
 // 지난달 날짜
@@ -20,17 +19,12 @@ const beforMDateList = ({
   designatedDate: Dayjs;
 }) => {
   const temp = [];
-  const now = dayjs();
   for (let i = 0; i < start_d; i++) {
     const item: CalendarDateItem = {
       value: beforDateEnd_D - i,
-      opacity: true,
+      disabled: true,
       date: designatedDate.add(-1, 'M').set('D', beforDateEnd_D - i),
     };
-
-    if (item.date.isBefore(now)) {
-      item.disabled = true;
-    }
 
     temp.push(item);
   }
@@ -50,13 +44,12 @@ const nowMDateList = ({
   for (let i = 1; i <= end_D; i++) {
     const item: CalendarDateItem = {
       value: i,
-      opacity: false,
+      disabled: false,
       date: designatedDate.set('D', i),
     };
 
     if (item.date.isBefore(now)) {
       item.disabled = true;
-      item.opacity = true;
     }
 
     temp.push(item);
@@ -75,7 +68,7 @@ const afterMDateList = ({
   for (let i = 1; i < 7 - end_d; i++) {
     temp.push({
       value: i,
-      opacity: true,
+      disabled: true,
       date: designatedDate.add(1, 'M').set('D', i),
     });
   }

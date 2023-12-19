@@ -18,10 +18,10 @@ export default function CalendarPressDate({
 
   return (
     <Pressable
-      key={Math.random()}
+      key={item.date.format()}
       disabled={active || item.disabled}
       onPress={handlePress}
-      style={{ position: 'relative', opacity: item.opacity ? 0.4 : 1 }}
+      style={{ position: 'relative', opacity: item.disabled ? 0.4 : 1 }}
     >
       <View style={[active ? styles.activeWrap : undefined]} />
 
