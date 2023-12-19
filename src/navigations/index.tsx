@@ -26,6 +26,7 @@ import { IconButton } from '@/components/atoms/Button/IconButton';
 import useModalHook from '@/hooks/modalHook';
 import CreateNameScreen from '@/screens/CreateNameScreen';
 import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
+import CalendarScreen from '@/screens/CalendarScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -79,6 +80,15 @@ function Navigation() {
             }}
           />
           <Stack.Screen name='Search' component={SearchScreen} />
+          <Stack.Screen
+            name='Calendar'
+            component={CalendarScreen}
+            options={{
+              title: 'Available Dates',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeft />,
+            }}
+          />
           <Stack.Screen
             name='Category'
             component={CategoryScreen}

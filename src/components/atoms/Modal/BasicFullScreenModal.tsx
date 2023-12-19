@@ -30,11 +30,7 @@ function BasicFullScreenModal({
   const { resetModal } = useModalHook();
 
   return (
-    <Modal
-      animationType='slide'
-      transparent={false}
-      presentationStyle='fullScreen'
-    >
+    <Modal animationType='slide' presentationStyle='fullScreen'>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={[styles.header, headerStyle]}>
           {/* title */}
@@ -62,7 +58,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: Spacing.IOS392Margin,
   },
-  body: { paddingHorizontal: Spacing.IOS392Margin },
+  body: {},
 });
 
 export default BasicFullScreenModal;
