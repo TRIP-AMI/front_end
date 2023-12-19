@@ -5,7 +5,7 @@ import Colors from '@styles/colors';
 
 const dummyApplicationData = [
   {
-    id: 1,
+    id: 3,
     title: 'Itaewon Tour',
     subTitle: 'Restaurant - Cafe - Photo',
     price: '50,000 won',
@@ -13,8 +13,8 @@ const dummyApplicationData = [
     imgUrl: 'https://via.placeholder.com/600x600/ECECEC',
   },
   {
-    id: 2,
-    title: 'Itaewon Tour',
+    id: 4,
+    title: 'Seoul Tour',
     subTitle: 'Restaurant - Cafe - Photo',
     price: '50,000 won',
     date: '12.10.2023',
@@ -34,7 +34,7 @@ function ApplicationItemList() {
           )}
         </>
       )}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => item.id.toString() + item.title}
     />
   );
 }
