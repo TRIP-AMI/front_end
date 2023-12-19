@@ -1,5 +1,21 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+// TODO: 타입 정리
+export type CreatePasswordProps = {
+  mode: 'CREATE' | 'RESET';
+  nickname?: string;
+  email: string;
+};
+
+export type CreateNameProps = {
+  email: string;
+};
+
+export type EmailAuthProps = {
+  mode: 'JOIN' | 'FIND_PW';
+  optionalChecked?: boolean;
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -12,7 +28,11 @@ export type RootStackParamList = {
   Category: { title: string };
   Login: undefined;
   Join: undefined;
-  JoinAuth: undefined;
+  JoinAuth: EmailAuthProps;
+  CreateName: CreateNameProps;
+  CreatePassword: CreatePasswordProps;
+  FindPassword: EmailAuthProps;
+  ResetPassword: CreatePasswordProps;
   Calendar: undefined;
   ApplicationDetails: undefined;
 };

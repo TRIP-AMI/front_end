@@ -5,6 +5,7 @@ export type ModalName =
   | 'LOGIN_CHECK'
   | 'LOGIN_INVALID'
   | 'JOIN_CANCEL'
+  | 'JOIN_COMPLETE'
   | 'APPLY'
   | 'APPLY_CHECK'
   | 'APPLY_COMPLETE'
@@ -24,8 +25,12 @@ export type ApplicationItemProps = {
   title: string;
 };
 
-export type ModalState = {
-  modalName: ModalName;
+export type CustomModalProps = {
   applyCheck?: ApplyCheckProps;
+  title?: string;
   applicationItem?: ApplicationItemProps;
+};
+
+export type ModalState = CustomModalProps & {
+  modalName: ModalName;
 };

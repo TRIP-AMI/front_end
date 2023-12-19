@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import ButtonText from '@/components/atoms/Text/ButtonText';
 import Colors from '@/styles/colors';
 
@@ -6,6 +6,7 @@ type OutlinedButtonProps = {
   content: string;
   disabled?: boolean;
   background?: boolean;
+  customStyle?: StyleProp<ViewStyle>;
   onPress: () => void;
 };
 
@@ -13,6 +14,7 @@ export default function OutlinedButton({
   content,
   disabled,
   background,
+  customStyle,
   onPress,
 }: OutlinedButtonProps) {
   return (
@@ -22,6 +24,7 @@ export default function OutlinedButton({
         pressed && styles.pressed,
         disabled && styles.disabled,
         background && styles.background,
+        customStyle,
       ]}
       disabled={disabled}
       onPress={onPress}
@@ -29,6 +32,7 @@ export default function OutlinedButton({
       <ButtonText
         content={content}
         color={disabled ? Colors.fontGray05 : Colors.primary}
+        small={!!customStyle}
       />
     </Pressable>
   );
@@ -37,6 +41,9 @@ export default function OutlinedButton({
 const size = {
   default: {
     paddingVertical: 12,
+  },
+  large: {
+    paddingVertical: 15,
   },
 };
 

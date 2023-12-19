@@ -21,13 +21,18 @@ import Fonts from '@/styles/typography';
 import LoginScreen from '@/screens/LoginScreen';
 import useLoginHook from '@/hooks/loginHook';
 import JoinScreen from '@/screens/JoinScreen';
-import JoinAuthScreen from '@/screens/JoinAuthScreen';
+import EmailAuthScreen from '@/screens/EmailAuthScreen';
+import { IconButton } from '@/components/atoms/Button/IconButton';
+import useModalHook from '@/hooks/modalHook';
+import CreateNameScreen from '@/screens/CreateNameScreen';
+import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
   const { isLoggedIn, getStoredToken } = useLoginHook();
+  const { setModalName } = useModalHook();
 
   useEffect(() => {
     getStoredToken();
@@ -132,25 +137,49 @@ function Navigation() {
               headerShadowVisible: false,
             }}
           />
-          <Stack.Screen
-            name='Join'
-            component={JoinScreen}
-            options={{
-              headerBackVisible: false,
-              headerTitleStyle: Fonts.header.title,
-              headerShadowVisible: false,
-            }}
-          />
-          <Stack.Screen
-            name='JoinAuth'
-            component={JoinAuthScreen}
-            options={{
+          <Stack.Group
+            screenOptions={{
               title: 'Join',
               headerBackVisible: false,
               headerTitleStyle: Fonts.header.title,
               headerShadowVisible: false,
             }}
-          />
+          >
+            <Stack.Screen name='Join' component={JoinScreen} />
+            <Stack.Screen
+              name='JoinAuth'
+              component={EmailAuthScreen}
+              options={{
+                headerRight: () => (
+                  <IconButton
+                    icon='close'
+                    size={22}
+                    color='black'
+                    onPress={() => setModalName('JOIN_CANCEL')}
+                  />
+                ),
+              }}
+            />
+            <Stack.Screen name='CreateName' component={CreateNameScreen} />
+            <Stack.Screen
+              name='CreatePassword'
+              component={CreatePasswordScreen}
+            />
+          </Stack.Group>
+          <Stack.Group
+            screenOptions={{
+              title: 'Find Password',
+              headerBackVisible: false,
+              headerTitleStyle: Fonts.header.title,
+              headerShadowVisible: false,
+            }}
+          >
+            <Stack.Screen name='FindPassword' component={EmailAuthScreen} />
+            <Stack.Screen
+              name='ResetPassword'
+              component={CreatePasswordScreen}
+            />
+          </Stack.Group>
         </>
       )}
     </Stack.Navigator>
