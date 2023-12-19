@@ -7,7 +7,8 @@ import FAQScreen from '@screens/menu/FAQScreen';
 import SearchScreen from '@screens/SearchScreen';
 import ContentScreen from '@screens/ContentScreen';
 import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderRightIcons';
-import ContentHeaderLeftIcon from '@components/molecules/Header/ContentHeaderLeftIcon';
+import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
+import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
 import { useEffect } from 'react';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
@@ -62,7 +63,7 @@ function Navigation() {
             component={FAQScreen}
             options={{
               headerTitleStyle: Fonts.header.title,
-              headerLeft: () => <ContentHeaderLeftIcon />,
+              headerLeft: () => <BackLeftArrow />,
             }}
           />
           <Stack.Screen
@@ -70,7 +71,7 @@ function Navigation() {
             component={InquiryScreen}
             options={{
               headerTitleStyle: Fonts.header.title,
-              headerLeft: () => <ContentHeaderLeftIcon />,
+              headerLeft: () => <BackLeftArrow />,
             }}
           />
           <Stack.Screen name='Search' component={SearchScreen} />
@@ -106,7 +107,17 @@ function Navigation() {
             options={{
               title: '',
               headerRight: () => <ContentHeaderRightIcons />,
-              headerLeft: () => <ContentHeaderLeftIcon />,
+              headerLeft: () => <BackLeftArrow />,
+            }}
+          />
+          <Stack.Screen
+            name='ApplicationDetails'
+            component={ApplicationDetailsScreen}
+            options={{
+              title: 'Application details',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
             }}
           />
         </>

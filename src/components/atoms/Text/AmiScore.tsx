@@ -1,9 +1,22 @@
 import { Text, StyleSheet, Pressable } from 'react-native';
 import Colors from '@styles/colors';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function AmiScore({ score, title }: { score: number; title: string }) {
+  const navigation = useNavigation<RootStackNavigationProp>();
+
+  const pressHandler = () => {
+    switch (title) {
+      case 'Application details':
+        return navigation.navigate('ApplicationDetails');
+      default:
+        return null;
+    }
+  };
+
   return (
-    <Pressable style={styles.container} onPress={() => console.log(title)}>
+    <Pressable style={styles.container} onPress={pressHandler}>
       <Text style={styles.score}>{score}</Text>
       <Text style={styles.title}>{title}</Text>
     </Pressable>

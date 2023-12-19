@@ -1,4 +1,3 @@
-import { Text } from 'react-native';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '@screens/HomeScreen';
@@ -9,6 +8,7 @@ import Colors from '@styles/colors';
 import HomeHeaderIcons from '@components/molecules/Header/HomeHeaderIcons';
 import UploadScreen from '@screens/UploadScreen';
 import SettingIcon from '@components/molecules/etc/SettingIcon';
+import SwitchButton from '@components/atoms/Button/SwitchButton';
 import { BottomTabParamList } from '@/types/NavigationTypes';
 import Fonts from '@/styles/typography';
 
@@ -76,8 +76,7 @@ export default function BottomNavBar() {
             <Ionicons name='person' color={color} size={26} />
           ),
           headerRight: () => <SettingIcon />,
-          // TODO 전환버튼 추가
-          headerLeft: () => <Text>{'Tourist <=> Ami 전환 버튼'}</Text>,
+          headerLeft: () => <SwitchButton />,
           headerTitle: '',
           headerStyle: {
             shadowColor: 'transparent',

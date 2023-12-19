@@ -14,6 +14,7 @@ export type RootStackParamList = {
   Join: undefined;
   JoinAuth: undefined;
   Calendar: undefined;
+  ApplicationDetails: undefined;
 };
 
 export type BottomTabParamList = {
