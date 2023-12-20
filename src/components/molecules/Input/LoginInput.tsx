@@ -39,6 +39,7 @@ export function EmailInput({
       autoFocus
       error={errorText}
       style={placeholder ? { fontFamily: 'Montserrat-Regular' } : undefined}
+      keyboardType='email-address'
     />
   );
 }
@@ -126,6 +127,7 @@ export function AuthCodeInput({
       error={errorText}
       style={{ fontFamily: 'Montserrat-Regular' }}
       autoFocus
+      keyboardType='number-pad'
     />
   );
 }
