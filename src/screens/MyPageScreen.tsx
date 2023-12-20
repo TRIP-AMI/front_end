@@ -10,7 +10,6 @@ import Colors from '@styles/colors';
 import { useRecoilValue } from 'recoil';
 import userState from '@utils/recoil/user';
 import ApplicantButton from '@components/atoms/Button/ApplicantButton';
-import { useState } from 'react';
 import EmptyText from '@components/atoms/Text/EmptyText';
 
 const dummyTouristDatas = [
@@ -56,7 +55,6 @@ const dummyAmiDatas = [
 
 // TODO post의 개수를 받아아서 렌더링
 export default function MyPageScreen() {
-  const [postNum] = useState(1);
   const dummyAmiData = dummyAmiDatas[0];
   const dummyTouristData = dummyTouristDatas[0];
   const userData = useRecoilValue(userState);
@@ -82,17 +80,8 @@ export default function MyPageScreen() {
         <AmiProfile imgUrl={userData.profileImgUrl} name={userData.name} />
         {userData.isAmi ? (
           <>
-            {postNum > 0 ? (
-              <>
-                <AmiScoreTable
-                  scores={dummyAmiData}
-                  style={{ marginBottom: 8 }}
-                />
-                <ApplicantButton />
-              </>
-            ) : (
-              <AmiScoreTable scores={dummyAmiData} />
-            )}
+            <AmiScoreTable scores={dummyAmiData} style={{ marginBottom: 8 }} />
+            <ApplicantButton />
             <BasicTab data={tabData} />
           </>
         ) : (
