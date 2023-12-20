@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import useLoginHook from '@/hooks/loginHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import TextButton from '@/components/atoms/Button/TextButton';
@@ -19,7 +18,6 @@ import { ILoginInputs } from '@/types/FormTypes';
 export default function LoginScreen() {
   const { navigate } = useNavigation<RootStackNavigationProp>();
   const [isChecked, setChecked] = useState(false);
-  const { onLogin } = useLoginHook();
   const { setModalName } = useModalHook();
   const {
     control,
@@ -37,7 +35,7 @@ export default function LoginScreen() {
     console.log(data);
     return errors.email || errors.password
       ? setModalName('LOGIN_INVALID')
-      : onLogin(isChecked);
+      : navigate('SelectProfile');
   };
 
   const onCheck = () => {

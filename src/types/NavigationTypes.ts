@@ -16,6 +16,10 @@ export type EmailAuthProps = {
   optionalChecked?: boolean;
 };
 
+export type SelectProfileProps = {
+  email: string;
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -35,6 +39,7 @@ export type RootStackParamList = {
   ResetPassword: CreatePasswordProps;
   Calendar: undefined;
   ApplicationDetails: undefined;
+  SelectProfile: undefined;
 };
 
 export type BottomTabParamList = {

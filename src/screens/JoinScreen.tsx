@@ -10,6 +10,7 @@ import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 
+// TODO: 약관 데이터 수정
 const data = [
   {
     id: 1,
