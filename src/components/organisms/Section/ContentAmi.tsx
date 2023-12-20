@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import TextTitle from '@components/atoms/Text/TextTitle';
 import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
@@ -63,7 +63,9 @@ function ContentAmi() {
   return (
     <>
       <TextTitle style={styles.title}>Introduce AMI</TextTitle>
-      <AmiProfile imgUrl={dummyProfile.imgUrl} name={dummyProfile.name} />
+      <View style={{ paddingBottom: 12 }}>
+        <AmiProfile imgUrl={dummyProfile.imgUrl} name={dummyProfile.name} />
+      </View>
       {dummyAmiData.map((score) => (
         <AmiScoreTable key={score.title} scores={score} />
       ))}

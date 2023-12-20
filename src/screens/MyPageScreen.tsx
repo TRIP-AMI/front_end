@@ -74,7 +74,9 @@ export default function MyPageScreen() {
       <StatusBar style='auto' />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.headerMargin} />
-        <AmiProfile imgUrl={userData.profileImgUrl} name={userData.name} />
+        <View style={{ paddingBottom: 12 }}>
+          <AmiProfile imgUrl={userData.profileImgUrl} name={userData.name} />
+        </View>
         {userData.isAmi ? (
           <>
             <AmiScoreTable scores={dummyAmiData} />
