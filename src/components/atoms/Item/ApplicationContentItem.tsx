@@ -36,7 +36,7 @@ function ApplicationContentItem({
         <Image resizeMode='cover' style={styles.img} source={{ uri: imgUrl }} />
       </Pressable>
       <View style={styles.subContainer}>
-        <Pressable onPress={() => console.log('예약 페이지로 이동 예정')}>
+        <Pressable onPress={() => navigation.navigate('BookDetails')}>
           <Text style={styles.title}>{title}</Text>
         </Pressable>
         <Text style={styles.subTitle}>{subTitle}</Text>

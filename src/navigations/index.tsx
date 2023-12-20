@@ -12,6 +12,7 @@ import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
 import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import userState from '@utils/recoil/user';
+import BookDetailsScreen from '@screens/BookDetailsScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -125,6 +126,16 @@ function Navigation() {
               title: userData.isAmi
                 ? 'Applicant History'
                 : 'Application details',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='BookDetails'
+            component={BookDetailsScreen}
+            options={{
+              title: 'Application details',
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeftArrow />,
               headerShadowVisible: false,
