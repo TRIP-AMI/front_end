@@ -2,28 +2,24 @@ import BasicCheckModal from '@components/atoms/Modal/BasicCheckModal';
 import BasicModalText from '@components/atoms/Text/BasicModalText';
 import { useRecoilValue } from 'recoil';
 import userState from '@utils/recoil/user';
-import { Text, Pressable, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import Colors from '@styles/colors';
-import * as Clipboard from 'expo-clipboard';
+import ClipboardText from '@components/atoms/Text/ClipboardText';
+import useModalHook from '@hooks/modalHook';
 
 function ApplicantInfoModal() {
   // TODO Ami: 신청한 ourist 정보 출력 | tourist: 신청한 프로그램의 AMI 정보 출력
   const userData = useRecoilValue(userState);
-
-  const copyToClipboard = async () => {
-    await Clipboard.setStringAsync(userData.email);
-  };
+  const { resetModal } = useModalHook();
 
   return (
-    <BasicCheckModal onCheck={() => {}} buttonText='Cancel'>
+    <BasicCheckModal onCheck={resetModal} buttonText='Cancel'>
       <BasicModalText content='Applicant Information' />
       <View style={styles.container}>
         <Text style={styles.name}>{`• Name: ${userData.name}`}</Text>
         <View style={styles.subContainer}>
           <Text style={styles.email}>• E-mail: </Text>
-          <Pressable onPress={copyToClipboard}>
-            <Text style={styles.clipboard}>{userData.email}</Text>
-          </Pressable>
+          <ClipboardText text={userData.email} />
         </View>
       </View>
     </BasicCheckModal>
@@ -46,12 +42,6 @@ const styles = StyleSheet.create({
   },
   email: {
     color: Colors.fontGray03,
-    fontSize: 14,
-    fontFamily: 'Montserrat-Regular',
-    lineHeight: 20,
-  },
-  clipboard: {
-    color: '#3E9FDF',
     fontSize: 14,
     fontFamily: 'Montserrat-Regular',
     lineHeight: 20,
