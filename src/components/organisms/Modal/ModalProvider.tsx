@@ -3,6 +3,7 @@ import { useRecoilValue } from 'recoil';
 import { View, StyleSheet } from 'react-native';
 import ReviewModal from '@components/organisms/Modal/ReviewModal';
 import ApplicationCancel from '@components/molecules/Modal/ApplicationCancel';
+import ApplicantInfoModal from '@components/molecules/Modal/ApplicantInfoModal';
 import modalState from '@/utils/recoil/modal';
 // import LoginModal from '@/components/molecules/Modal/LoginModal';
 import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
@@ -53,6 +54,7 @@ export default function ModalProvider() {
       />
     ),
     APPLICATION_CANCEL: <ApplicationCancel />,
+    APPLICANT_INFO: <ApplicantInfoModal />,
   };
 
   return (

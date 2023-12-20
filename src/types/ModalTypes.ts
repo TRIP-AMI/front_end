@@ -10,7 +10,8 @@ export type ModalName =
   | 'APPLY_CHECK'
   | 'APPLY_COMPLETE'
   | 'REVIEW'
-  | 'APPLICATION_CANCEL';
+  | 'APPLICATION_CANCEL'
+  | 'APPLICANT_INFO';
 
 export type ApplyCheckProps = {
   date: string;

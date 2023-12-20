@@ -18,7 +18,7 @@ function ApplicationTable() {
       title: 'Mail to Applicant',
       onPress: () => console.log('Mail to Applicant'),
     },
-    { id: 3, title: 'Details', onPress: () => console.log('Details') },
+    { id: 3, title: 'Details', onPress: () => setModalName('APPLICANT_INFO') },
   ];
   return (
     <View style={styles.container}>
