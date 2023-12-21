@@ -4,7 +4,7 @@ import Colors from '@styles/colors';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import modalState from '@utils/recoil/modal';
 import { useNavigation } from '@react-navigation/native';
-import userState from '@utils/recoil/user';
+import profileType from '@utils/recoil/profile';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function ApplicationContentItem({
@@ -18,7 +18,7 @@ function ApplicationContentItem({
   subTitle: string;
   price: string;
 }) {
-  const userData = useRecoilValue(userState);
+  const profile = useRecoilValue(profileType);
   const setModal = useSetRecoilState(modalState);
   const navigation = useNavigation<RootStackNavigationProp>();
 
@@ -42,7 +42,7 @@ function ApplicationContentItem({
         <Text style={styles.subTitle}>{subTitle}</Text>
         <View style={styles.bottomContainer}>
           <Text style={styles.price}>{price}</Text>
-          {!userData.isAmi && (
+          {profile === 'TOURIST' && (
             <Pressable style={styles.badge} onPress={onReviewPress}>
               <BlackBadge style={styles.badgeText} text='Review' />
             </Pressable>

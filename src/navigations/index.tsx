@@ -11,7 +11,7 @@ import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
 import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import userState from '@utils/recoil/user';
+import profileType from '@utils/recoil/profile';
 import BookDetailsScreen from '@screens/BookDetailsScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
@@ -35,7 +35,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
   const { isLoggedIn, getStoredToken } = useLoginHook();
-  const userData = useRecoilValue(userState);
+  const profile = useRecoilValue(profileType);
   const { setModalName } = useModalHook();
 
   useEffect(() => {
@@ -123,9 +123,8 @@ function Navigation() {
             name='ApplicationDetails'
             component={ApplicationDetailsScreen}
             options={{
-              title: userData.isAmi
-                ? 'Applicant History'
-                : 'Application details',
+              title:
+                profile === 'AMI' ? 'Applicant History' : 'Application details',
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeftArrow />,
               headerShadowVisible: false,

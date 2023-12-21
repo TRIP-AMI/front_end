@@ -9,6 +9,7 @@ import BasicTab from '@components/organisms/Section/BasicTab';
 import Colors from '@styles/colors';
 import { useRecoilValue } from 'recoil';
 import userState from '@utils/recoil/user';
+import profileType from '@utils/recoil/profile';
 import ApplicantButton from '@components/atoms/Button/ApplicantButton';
 import EmptyText from '@components/atoms/Text/EmptyText';
 
@@ -58,6 +59,7 @@ export default function MyPageScreen() {
   const dummyAmiData = dummyAmiDatas[0];
   const dummyTouristData = dummyTouristDatas[0];
   const userData = useRecoilValue(userState);
+  const profile = useRecoilValue(profileType);
 
   const tabData = [
     {
@@ -78,7 +80,7 @@ export default function MyPageScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.headerMargin} />
         <AmiProfile imgUrl={userData.profileImgUrl} name={userData.name} />
-        {userData.isAmi ? (
+        {profile === 'AMI' ? (
           <>
             <AmiScoreTable scores={dummyAmiData} style={{ marginBottom: 8 }} />
             <ApplicantButton />
