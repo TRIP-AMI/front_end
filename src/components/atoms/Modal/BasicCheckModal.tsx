@@ -5,13 +5,16 @@ import ModalBackdrop from '@/components/atoms/Modal/ModalBackdrop';
 
 type BasicCheckModalProps = {
   children: React.ReactNode;
+  buttonText?: string;
   onCheck: () => void;
 };
 
 export default function BasicCheckModal({
   children,
+  buttonText,
   onCheck,
 }: BasicCheckModalProps) {
+  const text = buttonText === undefined ? 'Check' : buttonText;
   return (
     <View style={styles.centeredView}>
       <Modal animationType='slide' transparent>
@@ -20,7 +23,7 @@ export default function BasicCheckModal({
             <View style={styles.contentContainer}>{children}</View>
             <View style={styles.buttonContainer}>
               <View style={{ width: '100%' }}>
-                <ModalButton content='Check' onPress={onCheck} />
+                <ModalButton content={text} onPress={onCheck} />
               </View>
             </View>
           </View>

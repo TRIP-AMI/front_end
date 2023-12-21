@@ -35,6 +35,7 @@ export type RootStackParamList = {
   ResetPassword: CreatePasswordProps;
   Calendar: undefined;
   ApplicationDetails: undefined;
+  BookDetails: undefined;
 };
 
 export type BottomTabParamList = {
