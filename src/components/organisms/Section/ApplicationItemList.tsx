@@ -1,7 +1,8 @@
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import ApplicationItem from '@components/molecules/Item/ApplicationItem';
 import Separator from '@components/atoms/etc/Separator';
 import Colors from '@styles/colors';
+import EmptyText from '@components/atoms/Text/EmptyText';
 
 const dummyApplicationData = [
   {
@@ -23,19 +24,27 @@ const dummyApplicationData = [
 ];
 
 function ApplicationItemList() {
+  const applicationData = dummyApplicationData;
+
   return (
-    <FlatList
-      data={dummyApplicationData}
-      renderItem={({ item, index }) => (
-        <>
-          <ApplicationItem item={item} />
-          {index !== dummyApplicationData.length - 1 && (
-            <Separator color={Colors.lineGray03} hei={1} marginVer={20} />
+    <View>
+      {applicationData ? (
+        <FlatList
+          data={applicationData}
+          renderItem={({ item, index }) => (
+            <>
+              <ApplicationItem item={item} />
+              {index !== applicationData.length - 1 && (
+                <Separator color={Colors.lineGray03} hei={1} marginVer={20} />
+              )}
+            </>
           )}
-        </>
+          keyExtractor={(item) => item.id.toString() + item.title}
+        />
+      ) : (
+        <EmptyText text='There is no Application details.' fullScreen />
       )}
-      keyExtractor={(item) => item.id.toString() + item.title}
-    />
+    </View>
   );
 }
 

@@ -1,7 +1,8 @@
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import Separator from '@components/atoms/etc/Separator';
 import Colors from '@styles/colors';
 import CancellationItem from '@components/molecules/Item/CancellationItem';
+import EmptyText from '@components/atoms/Text/EmptyText';
 
 const dummyCancellationData = [
   {
@@ -23,19 +24,27 @@ const dummyCancellationData = [
 ];
 
 function CancellationItemList() {
+  const cancellationData = dummyCancellationData;
+
   return (
-    <FlatList
-      data={dummyCancellationData}
-      renderItem={({ item, index }) => (
-        <>
-          <CancellationItem item={item} />
-          {index !== dummyCancellationData.length - 1 && (
-            <Separator color={Colors.lineGray03} hei={1} marginVer={20} />
+    <View>
+      {cancellationData ? (
+        <FlatList
+          data={cancellationData}
+          renderItem={({ item, index }) => (
+            <>
+              <CancellationItem item={item} />
+              {index !== cancellationData.length - 1 && (
+                <Separator color={Colors.lineGray03} hei={1} marginVer={20} />
+              )}
+            </>
           )}
-        </>
+          keyExtractor={(item) => item.id.toString() + item.title}
+        />
+      ) : (
+        <EmptyText text='There is no Cancellation details.' fullScreen />
       )}
-      keyExtractor={(item) => item.id.toString() + item.title}
-    />
+    </View>
   );
 }
 
