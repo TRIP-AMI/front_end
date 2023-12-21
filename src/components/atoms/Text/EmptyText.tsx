@@ -1,8 +1,18 @@
 import { StyleSheet, Text } from 'react-native';
 import Colors from '@styles/colors';
 
-function EmptyText({ text }: { text: string }) {
-  return <Text style={styles.text}>{text}</Text>;
+function EmptyText({
+  text,
+  fullScreen,
+}: {
+  text: string;
+  fullScreen?: boolean;
+}) {
+  return (
+    <Text style={[styles.text, fullScreen && styles.fullScreenText]}>
+      {text}
+    </Text>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -15,6 +25,11 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 140,
     alignSelf: 'center',
+  },
+  fullScreenText: {
+    color: '#000000',
+    fontFamily: 'Montserrat-SemiBold',
+    marginTop: 100,
   },
 });
 
