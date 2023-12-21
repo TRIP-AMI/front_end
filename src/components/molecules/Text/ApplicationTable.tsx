@@ -3,9 +3,12 @@ import AmiScore from '@components/atoms/Text/AmiScore';
 import VerticalLine from '@components/atoms/etc/VerticalLine';
 import Colors from '@styles/colors';
 import useModalHook from '@hooks/modalHook';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function ApplicationTable() {
   const { setModalName } = useModalHook();
+  const navigation = useNavigation<RootStackNavigationProp>();
 
   const tableData = [
     {
@@ -16,9 +19,13 @@ function ApplicationTable() {
     {
       id: 2,
       title: 'Mail to Applicant',
-      onPress: () => console.log('Mail to Applicant'),
+      onPress: () => setModalName('APPLICANT_INFO'),
     },
-    { id: 3, title: 'Details', onPress: () => setModalName('APPLICANT_INFO') },
+    {
+      id: 3,
+      title: 'Details',
+      onPress: () => navigation.navigate('BookDetails'),
+    },
   ];
   return (
     <View style={styles.container}>
@@ -30,7 +37,7 @@ function ApplicationTable() {
             onPress={item.onPress}
             style={styles.text}
           />
-          {index !== tableData.length - 1 && <VerticalLine />}
+          {index !== tableData.length - 1 && <VerticalLine hei={15} />}
         </>
       ))}
     </View>
