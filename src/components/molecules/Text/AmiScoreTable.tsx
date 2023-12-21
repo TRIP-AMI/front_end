@@ -32,7 +32,7 @@ function AmiScoreTable({ scores, style }: AmiScoreTableProps) {
             score={item.score}
             title={item.title}
           />
-          {index !== scores.data.length - 1 && <VerticalLine />}
+          {index !== scores.data.length - 1 && <VerticalLine hei={22} />}
         </>
       ))}
     </View>
