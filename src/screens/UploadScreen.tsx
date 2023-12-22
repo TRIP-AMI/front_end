@@ -22,6 +22,8 @@ import useUpload, { CreateContentBasicForm } from '@/hooks/uploadHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import { CategoryList } from '@/constants/category';
 import SelectButton from '@/components/atoms/Button/SelectButton';
+import ProgramCourseWrap from '@/components/organisms/Section/createContent/ProgramCourseWrap';
+import ProgramCostWrap from '@/components/organisms/Section/createContent/ProgramCostWrap';
 
 export default function UploadScreen() {
   const navigation = useNavigation<RootStackNavigationProp>();
@@ -33,6 +35,9 @@ export default function UploadScreen() {
   const {
     field: { value: hashtagValues, onChange: hashtagChange },
   } = useController({ control, name: 'hashtagList' });
+  const {
+    field: { onChange: recruitedPersonsChange },
+  } = useController({ control, name: 'recruitedPersons' });
 
   const handleCal = () => {
     navigation.navigate('Calendar');
@@ -56,7 +61,8 @@ export default function UploadScreen() {
   };
 
   const onSubmitEditingHashtag = (value: string) => {
-    if (hashtagValues.includes(value)) {
+    const trimValue = value.trim();
+    if (hashtagValues.includes(trimValue)) {
       console.log('중복 되었습니다');
       return;
     }
@@ -66,7 +72,7 @@ export default function UploadScreen() {
       return;
     }
 
-    hashtagChange([...hashtagValues, value]);
+    hashtagChange([...hashtagValues, trimValue]);
   };
 
   const onSubmit = (data: CreateContentBasicForm) => {
@@ -214,9 +220,24 @@ export default function UploadScreen() {
           <ContentInputWrap
             title='Meeting Point'
             subTitle='EX) In front of Lotte Tower in Jamsil-dong, Songpa-gu, Seoul'
-            content={<BasicInput placeholder='Please enter a location.' />}
+            content={
+              <Controller
+                control={control}
+                name='meetingPoint'
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <BasicInput
+                      value={value}
+                      onChangeText={onChange}
+                      placeholder='Please enter a location.'
+                    />
+                  );
+                }}
+              />
+            }
           />
 
+          {/* TODO: data 매핑 해야함 */}
           {/* Time to meet */}
           <ContentInputWrap
             title='Time to meet'
@@ -227,6 +248,7 @@ export default function UploadScreen() {
             }
           />
 
+          {/* TODO: data 매핑 해야함 */}
           {/* Available Dates */}
           <ContentInputWrap
             title='Available Dates'
@@ -253,26 +275,40 @@ export default function UploadScreen() {
           {/* Recruited Persons */}
           <ContentInputWrap
             title='Recruited Persons'
-            content={<Counter min={1} max={10} />}
+            content={
+              <View>
+                <Counter min={1} max={10} onChange={recruitedPersonsChange} />
+              </View>
+            }
           />
 
           {/* E-mail */}
           <ContentInputWrap
             title='E-mail'
             subTitle='Please enter an email to communicate with.'
-            content={<View />}
+            content={
+              <Controller
+                control={control}
+                name='email'
+                render={({ field: { onChange, value } }) => {
+                  return <BasicInput value={value} onChangeText={onChange} />;
+                }}
+              />
+            }
           />
         </View>
 
         {/* Program Course */}
         <SectionDividerBar />
         <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
-          {/* temp */}
+          <ProgramCourseWrap control={control} />
         </View>
         {/* Program Cost */}
         <SectionDividerBar />
-        <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
-          {/* temp */}
+        <View
+          style={{ marginTop: 25, paddingHorizontal: Spacing.IOS392Margin }}
+        >
+          <ProgramCostWrap control={control} />
         </View>
 
         {/* submit */}

@@ -6,9 +6,10 @@ import { AntDesign } from '@expo/vector-icons';
 type CounterProps = {
   min?: number;
   max?: number;
+  onChange?: (value: number) => void;
 };
 
-export default function Counter({ min, max }: CounterProps) {
+export default function Counter({ min, max, onChange }: CounterProps) {
   const [count, setCount] = useState(0);
 
   const pressMinus = () => {
@@ -25,6 +26,12 @@ export default function Counter({ min, max }: CounterProps) {
     }
     setCount((prev) => prev + 1);
   };
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(count);
+    }
+  }, [count, onChange]);
 
   useEffect(() => {
     if (min) {
