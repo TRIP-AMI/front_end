@@ -1,5 +1,13 @@
 import { useForm } from 'react-hook-form';
 
+export type ProgramCostType = 'GUIDE' | 'ALL';
+
+type ProgramCourseImg = {
+  imgUrl: string;
+  title: string;
+  subTitle: string;
+};
+
 export interface CreateContentBasicForm {
   title: string;
   explanation: string;
@@ -14,6 +22,26 @@ export interface CreateContentBasicForm {
   };
   recruitedPersons: number;
   email: string;
+  programCourse: ProgramCourse[];
+  programCost: number;
+  programCostType: ProgramCostType;
+}
+
+export class ProgramCourse {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(
+    public id: string,
+    public time: number = 0,
+    public distance: number = 0,
+    public walkingTime: number = 0,
+    public carTime: number = 0,
+    public imgInfo: ProgramCourseImg = {
+      imgUrl: '',
+      title: '',
+      subTitle: '',
+    },
+    // eslint-disable-next-line no-empty-function
+  ) {}
 }
 
 const useUpload = () => {
@@ -38,7 +66,10 @@ const useUpload = () => {
       recruitedPersons: 1,
       email: '',
       // Program Course Info
+      programCourse: [new ProgramCourse('0')],
       // Program Cost
+      programCost: 0,
+      programCostType: 'GUIDE',
     },
   });
 
