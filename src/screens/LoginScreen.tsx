@@ -1,3 +1,4 @@
+import Toast from 'react-native-toast-message';
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
@@ -15,6 +16,7 @@ import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useModalHook from '@/hooks/modalHook';
 import { ILoginInputs } from '@/types/FormTypes';
+import Spacing from '@/styles/spacing';
 
 export default function LoginScreen() {
   const { navigate } = useNavigation<RootStackNavigationProp>();
@@ -42,6 +44,15 @@ export default function LoginScreen() {
 
   const onCheck = () => {
     setChecked(!isChecked);
+  };
+
+  // 테스트용 토스트
+  const testToast = () => {
+    Toast.show({
+      type: 'basic',
+      text1: 'This is a test',
+      bottomOffset: Spacing.ToastWithButtons,
+    });
   };
 
   return (
@@ -76,6 +87,10 @@ export default function LoginScreen() {
           onPress={() => navigate('Join')}
           style={styles.footerText}
         />
+      </View>
+      {/* 토스트 테스트용 임시버튼 */}
+      <View style={{ position: 'absolute', bottom: 10, width: '100%' }}>
+        <BasicButton onPress={testToast} content='토스트 테스트' />
       </View>
     </SafeAreaView>
   );
