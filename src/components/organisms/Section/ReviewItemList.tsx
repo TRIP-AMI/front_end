@@ -12,12 +12,12 @@ type ReviewItemType = {
 };
 
 function ReviewItemList() {
-  const [dummyReviwe, setDummyReviwe] = useState<ReviewItemType[]>([]);
+  const [dummyReview, setDummyReview] = useState<ReviewItemType[]>([]);
 
   const getData = async () => {
     try {
       const data = await reviewApi.getReviewList();
-      setDummyReviwe(data);
+      setDummyReview(data);
     } catch (error) {
       console.error('배너 목록 호출에 실패하였습니다.', error);
     }
@@ -29,11 +29,11 @@ function ReviewItemList() {
 
   return (
     <View>
-      {dummyReviwe.length === 0 ? (
+      {dummyReview.length === 0 ? (
         <EmptyText text='There are no reviews.' />
       ) : (
         <FlatList
-          data={dummyReviwe}
+          data={dummyReview}
           renderItem={({ item }) => <ReviewItem item={item} />}
           keyExtractor={(item) => item.reviewId.toString()}
           scrollEnabled={false}
