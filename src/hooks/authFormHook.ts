@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Toast from 'react-native-toast-message';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import joinAuthApi from '@services/module/join/join';
@@ -39,16 +40,18 @@ const useAuthForm = ({
 
   // TODO: 이메일 인증 요청, 에러 처리
   const onConfirmEmail = async (data: IJoinAuthInputs) => {
-    console.log(data);
     if (errors.email) return;
     try {
       await instance.post(`${BASE_API_URL}/email`, { email: data.email });
       setIsEmailSent(true);
       setTitle(`To the email you entered\nAuthentication number has been sent`);
     } catch (e) {
+      Toast.show({
+        type: 'basic',
+        text1: 'This account is already registered.',
+      });
       setIsEmailSent(false);
       setTitle(TITLE);
-      console.log(e);
     }
   };
 
