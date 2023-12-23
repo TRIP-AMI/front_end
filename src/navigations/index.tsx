@@ -11,6 +11,7 @@ import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
 import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import BookDetailsScreen from '@screens/BookDetailsScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -33,7 +34,7 @@ import CloseButton from '@/components/atoms/Button/CloseButton';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
-  const { isLoggedIn, getStoredToken } = useLoginHook();
+  const { isLoggedIn, profileState, getStoredToken } = useLoginHook();
   const { setModalName } = useModalHook();
   const navigation = useNavigation();
 
@@ -121,6 +122,19 @@ function Navigation() {
           <Stack.Screen
             name='ApplicationDetails'
             component={ApplicationDetailsScreen}
+            options={{
+              title:
+                profileState === 'AMI'
+                  ? 'Applicant History'
+                  : 'Application details',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='BookDetails'
+            component={BookDetailsScreen}
             options={{
               title: 'Application details',
               headerTitleStyle: Fonts.header.title,

@@ -1,12 +1,12 @@
 import { FlatList, View } from 'react-native';
-import ApplicationItem from '@components/molecules/Item/ApplicationItem';
 import Separator from '@components/atoms/etc/Separator';
 import Colors from '@styles/colors';
+import CancellationItem from '@components/molecules/Item/CancellationItem';
 import EmptyText from '@components/atoms/Text/EmptyText';
 
-const dummyApplicationData = [
+const dummyCancellationData = [
   {
-    id: 3,
+    id: 5,
     title: 'Itaewon Tour',
     subTitle: 'Restaurant - Cafe - Photo',
     price: '50,000 won',
@@ -14,7 +14,7 @@ const dummyApplicationData = [
     imgUrl: 'https://via.placeholder.com/600x600/ECECEC',
   },
   {
-    id: 4,
+    id: 6,
     title: 'Seoul Tour',
     subTitle: 'Restaurant - Cafe - Photo',
     price: '50,000 won',
@@ -23,18 +23,18 @@ const dummyApplicationData = [
   },
 ];
 
-function ApplicationItemList() {
-  const applicationData = dummyApplicationData;
+function CancellationItemList() {
+  const cancellationData = dummyCancellationData;
 
   return (
     <View>
-      {applicationData ? (
+      {cancellationData ? (
         <FlatList
-          data={applicationData}
+          data={cancellationData}
           renderItem={({ item, index }) => (
             <>
-              <ApplicationItem item={item} />
-              {index !== applicationData.length - 1 && (
+              <CancellationItem item={item} />
+              {index !== cancellationData.length - 1 && (
                 <Separator color={Colors.lineGray03} hei={1} marginVer={20} />
               )}
             </>
@@ -42,10 +42,10 @@ function ApplicationItemList() {
           keyExtractor={(item) => item.id.toString() + item.title}
         />
       ) : (
-        <EmptyText text='There is no Application details.' fullScreen />
+        <EmptyText text='There is no Cancellation details.' fullScreen />
       )}
     </View>
   );
 }
 
-export default ApplicationItemList;
+export default CancellationItemList;

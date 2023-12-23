@@ -42,6 +42,7 @@ export type RootStackParamList = {
   Calendar: undefined;
   ApplicationDetails: undefined;
   SelectProfile: SelectProfileProps;
+  BookDetails: undefined;
 };
 
 export type BottomTabParamList = {

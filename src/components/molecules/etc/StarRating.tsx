@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginVertical: 25,
   },
   stars: {
     display: 'flex',

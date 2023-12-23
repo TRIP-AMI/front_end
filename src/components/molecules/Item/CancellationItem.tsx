@@ -3,10 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import CompleteText from '@components/atoms/Text/CompleteText';
 import Spacing from '@styles/spacing';
 import DateText from '@components/atoms/Text/DateText';
-import ApplicationTable from '@components/molecules/Text/ApplicationTable';
-import { Badge } from 'react-native-paper';
 
-type ApplicationItemProps = {
+type CancellationItemProps = {
   id: number;
   imgUrl: string;
   title: string;
@@ -15,17 +13,12 @@ type ApplicationItemProps = {
   date: string;
 };
 
-// TODO Badge 색상 Colors.Primary로 변경해야 함
-function ApplicationItem({ item }: { item: ApplicationItemProps }) {
-  // TODO 프로그램 날짜와 현재 날짜를 비교하여 true, false를 반환해야 함
-  const applicationEnd = false;
-
+function CancellationItem({ item }: { item: CancellationItemProps }) {
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
-        <Badge size={7} visible={!applicationEnd} style={styles.badge} />
-        <CompleteText message='Application' color='#46A6FB' />
-        <DateText message='Application' date={item.date} />
+        <CompleteText message='Cancellation' color='#FB4646' />
+        <DateText message='Cancellation' date={item.date} />
       </View>
       <ApplicationContentItem
         key={item.id.toString() + item.title + item.subTitle}
@@ -34,7 +27,6 @@ function ApplicationItem({ item }: { item: ApplicationItemProps }) {
         subTitle={item.subTitle}
         price={item.price}
       />
-      <ApplicationTable key={item.id.toString() + item.title + item.date} />
     </View>
   );
 }
@@ -49,11 +41,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 15,
   },
-  badge: {
-    position: 'absolute',
-    top: 0,
-    left: -8,
-  },
 });
 
-export default ApplicationItem;
+export default CancellationItem;

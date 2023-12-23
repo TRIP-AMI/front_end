@@ -1,6 +1,7 @@
 import ReviewItem from '@components/molecules/Item/ReviewItem';
 import { useEffect, useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+import EmptyText from '@components/atoms/Text/EmptyText';
 import reviewApi from '@/services/module/review/review';
 
 type ReviewItemType = {
@@ -27,13 +28,19 @@ function ReviewItemList() {
   }, []);
 
   return (
-    <FlatList
-      data={dummyReviwe}
-      renderItem={({ item }) => <ReviewItem item={item} />}
-      keyExtractor={(item) => item.reviewId.toString()}
-      scrollEnabled={false}
-      style={styles.listWrap}
-    />
+    <View>
+      {dummyReviwe.length === 0 ? (
+        <EmptyText text='There are no reviews.' />
+      ) : (
+        <FlatList
+          data={dummyReviwe}
+          renderItem={({ item }) => <ReviewItem item={item} />}
+          keyExtractor={(item) => item.reviewId.toString()}
+          scrollEnabled={false}
+          style={styles.listWrap}
+        />
+      )}
+    </View>
   );
 }
 
