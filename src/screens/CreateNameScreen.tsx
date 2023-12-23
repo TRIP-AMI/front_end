@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Text, View, StyleSheet } from 'react-native';
+import Toast from 'react-native-toast-message';
 import { NameInput } from '@/components/molecules/Input/LoginInput';
 import {
   CreateNameProps,
@@ -9,6 +10,8 @@ import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
 import Colors from '@/styles/colors';
+import instance, { BASE_API_URL } from '@/services/config/axios';
+import Spacing from '@/styles/spacing';
 
 interface ICreateNameInputs {
   nickname: string;
@@ -33,13 +36,25 @@ export default function CreateNameScreen({
   });
   const { setModalName } = useModalHook();
 
-  const onNext = (data: ICreateNameInputs) => {
+  // TODO: API 연결, 에러 처리
+  const onNext = async (data: ICreateNameInputs) => {
     if (errors.nickname) return;
-    navigation.navigate('CreatePassword', {
-      mode: 'CREATE',
-      nickname: data.nickname,
-      email: route.params.email,
-    });
+    try {
+      await instance.post(`${BASE_API_URL}/nickname`, {
+        nickName: data.nickname,
+      });
+      navigation.navigate('CreatePassword', {
+        mode: 'CREATE',
+        nickname: data.nickname,
+        email: route.params.email,
+      });
+    } catch (error) {
+      Toast.show({
+        type: 'basic',
+        text1: 'The name is already in use.',
+        bottomOffset: Spacing.ToastWithButtons,
+      });
+    }
   };
 
   return (
