@@ -14,8 +14,10 @@ import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useModalHook from '@/hooks/modalHook';
 import { ILoginInputs } from '@/types/FormTypes';
+// import useLoginHook from '@/hooks/loginHook';
 
 export default function LoginScreen() {
+  // const { onLogin } = useLoginHook();
   const { navigate } = useNavigation<RootStackNavigationProp>();
   const [isChecked, setChecked] = useState(false);
   const { setModalName } = useModalHook();
@@ -31,11 +33,15 @@ export default function LoginScreen() {
     },
   });
 
+  const dummyUser = {
+    username: 'Jenny',
+  };
+
   const onLoginPress = (data: ILoginInputs) => {
     console.log(data);
     return errors.email || errors.password
       ? setModalName('LOGIN_INVALID')
-      : navigate('SelectProfile');
+      : navigate('SelectProfile', { username: dummyUser.username });
   };
 
   const onCheck = () => {

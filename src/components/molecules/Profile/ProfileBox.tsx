@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import AmiProfile from '@components/molecules/Item/AmiProfile';
 import Colors from '@/styles/colors';
 import { Profile } from '@/types/UserTypes';
@@ -30,10 +30,12 @@ export default function ProfileBox({
     >
       <Text style={styles.profile}>{title}</Text>
       <Text style={styles.detail}>{detail}</Text>
-      <AmiProfile
-        imgUrl='https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg'
-        name={username}
-      />
+      <View style={styles.image}>
+        <AmiProfile
+          imgUrl='https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg'
+          name={username}
+        />
+      </View>
     </Pressable>
   );
 }
@@ -59,13 +61,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   detail: {
-    fontSize: 12,
+    fontSize: 14,
     fontFamily: 'Montserrat-Medium',
     color: Colors.fontGray05,
     textAlign: 'center',
-    paddingBottom: 15,
   },
   pressed: {
     opacity: 0.5,
+  },
+  image: {
+    paddingTop: 15,
   },
 });
