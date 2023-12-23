@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet, View } from 'react-native';
 import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import AmiImg from '@components/atoms/Image/AmiImg';
-import ReviewSummary from '@components/atoms/Text/ReviewSummary';
+import ReviewText from '@components/atoms/Text/ReviewText';
 
 type ReviewItemType = {
   reviewId: number;
@@ -15,7 +15,7 @@ function ReviewItem({ item }: { item: ReviewItemType }) {
   return (
     <View style={styles.container}>
       <AmiImg imgUrl={item.reviewImg} style={styles.img} />
-      <ReviewSummary name={item.reviewName} content={item.reviewContent} />
+      <ReviewText name={item.reviewName} content={item.reviewContent} />
     </View>
   );
 }
