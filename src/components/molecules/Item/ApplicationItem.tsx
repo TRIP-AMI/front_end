@@ -33,6 +33,7 @@ function ApplicationItem({ item }: { item: ApplicationItemProps }) {
         title={item.title}
         subTitle={item.subTitle}
         price={item.price}
+        review
       />
       <ApplicationTable key={item.id.toString() + item.title + item.date} />
     </View>

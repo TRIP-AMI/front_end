@@ -12,11 +12,13 @@ function ApplicationContentItem({
   title,
   subTitle,
   price,
+  review,
 }: {
   imgUrl: string;
   title: string;
   subTitle: string;
   price: string;
+  review?: boolean;
 }) {
   const profile = useRecoilValue(profileType);
   const setModal = useSetRecoilState(modalState);
@@ -42,7 +44,7 @@ function ApplicationContentItem({
         <Text style={styles.subTitle}>{subTitle}</Text>
         <View style={styles.bottomContainer}>
           <Text style={styles.price}>{price}</Text>
-          {profile === 'TOURIST' && (
+          {review && profile === 'TOURIST' && (
             <Pressable style={styles.badge} onPress={onReviewPress}>
               <BlackBadge style={styles.badgeText} text='Review' />
             </Pressable>
