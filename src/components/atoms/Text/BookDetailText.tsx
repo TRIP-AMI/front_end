@@ -2,14 +2,21 @@ import { StyleSheet, Text, View } from 'react-native';
 import Separator from '@components/atoms/etc/Separator';
 import Colors from '@styles/colors';
 
-function BookDetailText() {
+// TODO applicantName으로 Jenny -> Jennie's 변환하는 법
+function BookDetailText({
+  applicantName,
+  title,
+}: {
+  applicantName: string;
+  title: string;
+}) {
   return (
     <>
       <Text style={styles.title}>Application complete</Text>
       <Separator color={Colors.fontGray03} hei={1} marginVer={15} />
       <View style={{ width: 296 }}>
         <Text style={[styles.text, styles.textPrimary]}>
-          Jennie’s Itaewon program application has been completed!
+          {applicantName}’s {title} program application has been completed!
         </Text>
         <Text style={styles.text}>
           Please check the information you booked below.
