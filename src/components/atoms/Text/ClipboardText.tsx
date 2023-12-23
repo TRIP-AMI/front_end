@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 
+// TODO clipboard 클릭 시 토스트 메세지 추가
 function ClipboardText({ text }: { text: string }) {
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(text);
