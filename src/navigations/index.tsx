@@ -10,6 +10,9 @@ import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderR
 import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
 import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import profileType from '@utils/recoil/profile';
+import BookDetailsScreen from '@screens/BookDetailsScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -32,6 +35,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
   const { isLoggedIn, getStoredToken } = useLoginHook();
+  const profile = useRecoilValue(profileType);
   const { setModalName } = useModalHook();
 
   useEffect(() => {
@@ -118,6 +122,17 @@ function Navigation() {
           <Stack.Screen
             name='ApplicationDetails'
             component={ApplicationDetailsScreen}
+            options={{
+              title:
+                profile === 'AMI' ? 'Applicant History' : 'Application details',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='BookDetails'
+            component={BookDetailsScreen}
             options={{
               title: 'Application details',
               headerTitleStyle: Fonts.header.title,

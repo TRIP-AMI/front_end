@@ -1,6 +1,7 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
 import BasicTab from '@components/organisms/Section/BasicTab';
 import ApplicationItemList from '@components/organisms/Section/ApplicationItemList';
+import CancellationItemList from '@components/organisms/Section/CancellationItemList';
 
 function ApplicationDetailsScreen() {
   const tabData = [
@@ -12,7 +13,7 @@ function ApplicationDetailsScreen() {
     {
       id: 2,
       tabName: 'Cancellation',
-      tabComponent: null,
+      tabComponent: <CancellationItemList />,
     },
   ];
 
