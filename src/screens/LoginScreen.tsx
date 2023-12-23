@@ -1,4 +1,3 @@
-import Toast from 'react-native-toast-message';
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
@@ -17,6 +16,7 @@ import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useModalHook from '@/hooks/modalHook';
 import { ILoginInputs } from '@/types/FormTypes';
 import Spacing from '@/styles/spacing';
+import showToast from '@/utils/toast/toast';
 
 export default function LoginScreen() {
   const { navigate } = useNavigation<RootStackNavigationProp>();
@@ -48,11 +48,7 @@ export default function LoginScreen() {
 
   // 테스트용 토스트
   const testToast = () => {
-    Toast.show({
-      type: 'basic',
-      text1: 'This is a test',
-      bottomOffset: Spacing.ToastWithButtons,
-    });
+    showToast('This is a test', Spacing.ToastWithButtons);
   };
 
   return (

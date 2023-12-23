@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Toast from 'react-native-toast-message';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import joinAuthApi from '@services/module/join/join';
@@ -9,6 +8,7 @@ import {
 } from '@/types/NavigationTypes';
 import { IJoinAuthInputs } from '@/types/FormTypes';
 import instance, { BASE_API_URL } from '@/services/config/axios';
+import showToast from '@/utils/toast/toast';
 
 const useAuthForm = ({
   mode,
@@ -46,10 +46,7 @@ const useAuthForm = ({
       setIsEmailSent(true);
       setTitle(`To the email you entered\nAuthentication number has been sent`);
     } catch (e) {
-      Toast.show({
-        type: 'basic',
-        text1: 'This account is already registered.',
-      });
+      showToast('This account is already registered.');
       setIsEmailSent(false);
       setTitle(TITLE);
     }

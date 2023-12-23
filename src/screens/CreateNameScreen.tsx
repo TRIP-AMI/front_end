@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { Text, View, StyleSheet } from 'react-native';
-import Toast from 'react-native-toast-message';
 import { NameInput } from '@/components/molecules/Input/LoginInput';
 import {
   CreateNameProps,
@@ -12,6 +11,7 @@ import useModalHook from '@/hooks/modalHook';
 import Colors from '@/styles/colors';
 import instance, { BASE_API_URL } from '@/services/config/axios';
 import Spacing from '@/styles/spacing';
+import showToast from '@/utils/toast/toast';
 
 interface ICreateNameInputs {
   nickname: string;
@@ -49,11 +49,7 @@ export default function CreateNameScreen({
         email: route.params.email,
       });
     } catch (error) {
-      Toast.show({
-        type: 'basic',
-        text1: 'The name is already in use.',
-        bottomOffset: Spacing.ToastWithButtons,
-      });
+      showToast('The name is already in use.', Spacing.ToastWithButtons);
     }
   };
 
