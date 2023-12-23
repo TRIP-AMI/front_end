@@ -7,6 +7,7 @@ import {
   RootStackNavigationProp,
 } from '@/types/NavigationTypes';
 import { IJoinAuthInputs } from '@/types/FormTypes';
+import instance, { BASE_API_URL } from '@/services/config/axios';
 
 const useAuthForm = ({
   mode,
@@ -38,9 +39,10 @@ const useAuthForm = ({
 
   // TODO: 이메일 인증 요청, 에러 처리
   const onConfirmEmail = async (data: IJoinAuthInputs) => {
+    console.log(data);
     if (errors.email) return;
     try {
-      await console.log(data);
+      await instance.post(`${BASE_API_URL}/email`, { email: data.email });
       setIsEmailSent(true);
       setTitle(`To the email you entered\nAuthentication number has been sent`);
     } catch (e) {

@@ -170,7 +170,6 @@
   "login": {
     "accessToken": "test"
   },
-  "joinAuth": {
-    "isAuth": true
-  }
+  "joinAuth": {},
+  "email": {}
 }
