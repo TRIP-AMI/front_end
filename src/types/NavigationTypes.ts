@@ -18,7 +18,8 @@ export type EmailAuthProps = {
 
 // 유저 정보 prop으로 받기
 export type SelectProfileProps = {
-  username: string;
+  nickname: string;
+  imgUrl: string;
 };
 
 export type RootStackParamList = {

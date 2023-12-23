@@ -7,13 +7,15 @@ import { Profile } from '@/types/UserTypes';
 type ProfileBoxProps = {
   title: Profile;
   username: string;
-  profile: Profile | undefined;
-  setProfile: Dispatch<SetStateAction<Profile | undefined>>;
+  imgUrl: string;
+  profile: Profile | '';
+  setProfile: Dispatch<SetStateAction<Profile | ''>>;
 };
 
 export default function ProfileBox({
   title,
   username,
+  imgUrl,
   profile,
   setProfile,
 }: ProfileBoxProps) {
@@ -31,10 +33,7 @@ export default function ProfileBox({
       <Text style={styles.profile}>{title}</Text>
       <Text style={styles.detail}>{detail}</Text>
       <View style={styles.image}>
-        <AmiProfile
-          imgUrl='https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg'
-          name={username}
-        />
+        <AmiProfile imgUrl={imgUrl} name={username} />
       </View>
     </Pressable>
   );

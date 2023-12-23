@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSetRecoilState } from 'recoil';
 import Fonts from '@/styles/typography';
 import Spacing from '@/styles/spacing';
 import ProfileBox from '@/components/molecules/Profile/ProfileBox';
@@ -7,14 +9,16 @@ import { SelectProfileProps } from '@/types/NavigationTypes';
 import { Profile } from '@/types/UserTypes';
 import BulletListItem from '@/components/atoms/Text/BulletListItem';
 import FooterButton from '@/components/molecules/Button/FooterButton';
+import loginState from '@/utils/recoil/login';
 
 export default function SelectProfileScreen({
   route,
 }: {
   route: { params: SelectProfileProps };
 }) {
-  const { username } = route.params;
-  const [profile, setProfile] = useState<Profile | undefined>();
+  const { nickname, imgUrl } = route.params;
+  const [profile, setProfile] = useState<Profile | ''>('');
+  const setIsLoggedIn = useSetRecoilState<boolean>(loginState);
 
   const descriptions = [
     {
@@ -27,7 +31,11 @@ export default function SelectProfileScreen({
     },
   ];
 
-  const onLoginCompleted = () => {};
+  const onLoginCompleted = async () => {
+    if (!profile) return;
+    await AsyncStorage.setItem('profile', profile);
+    setIsLoggedIn(true);
+  };
 
   return (
     <>
@@ -38,13 +46,15 @@ export default function SelectProfileScreen({
         <View style={styles.profiles}>
           <ProfileBox
             title='AMI'
-            username={username}
+            username={nickname}
+            imgUrl={imgUrl}
             profile={profile}
             setProfile={setProfile}
           />
           <ProfileBox
-            title='Traveler'
-            username={username}
+            title='Tourist'
+            username={nickname}
+            imgUrl={imgUrl}
             profile={profile}
             setProfile={setProfile}
           />
