@@ -5,7 +5,7 @@ import Spacing from '@styles/spacing';
 function ReviewSummary({ name, content }: { name: string; content: string }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.content} numberOfLines={2} ellipsizeMode='tail'>
+      <Text style={styles.content}>
         <Text style={styles.name}>{name}</Text> {content}
       </Text>
     </View>

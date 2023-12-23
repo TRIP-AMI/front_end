@@ -24,7 +24,6 @@ const screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
-    height: screenHeight * 0.071,
     borderRadius: 5,
     flexDirection: 'row',
     backgroundColor: Colors.fontGray08,
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
     width: screenHeight * 0.038,
     height: screenHeight * 0.038,
     marginRight: Dimensions.get('window').width * 0.025,
-    alignSelf: 'flex-start',
+    marginBottom: 0,
   },
 });
 
