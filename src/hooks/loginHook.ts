@@ -5,9 +5,12 @@ import loginState from '@/utils/recoil/login';
 import loginApi from '@/services/module/login/login';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import { ILoginInputs } from '@/types/FormTypes';
+import profileType from '@/utils/recoil/profile';
+import { Profile } from '@/types/UserTypes';
 
 const useLoginHook = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
+  const [profileState, setProfileState] = useRecoilState<Profile>(profileType);
   const { navigate } = useNavigation<RootStackNavigationProp>();
 
   const getStoredToken = async () => {
@@ -15,6 +18,7 @@ const useLoginHook = () => {
     const profile = await AsyncStorage.getItem('profile');
     if (token && profile) {
       setIsLoggedIn(true);
+      setProfileState(profile as Profile);
     }
   };
 
@@ -42,7 +46,7 @@ const useLoginHook = () => {
     setIsLoggedIn(false);
   };
 
-  return { isLoggedIn, getStoredToken, onLogin, onLogout };
+  return { isLoggedIn, profileState, getStoredToken, onLogin, onLogout };
 };
 
 export default useLoginHook;

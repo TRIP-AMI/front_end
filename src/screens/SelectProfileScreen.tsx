@@ -10,6 +10,7 @@ import { Profile } from '@/types/UserTypes';
 import BulletListItem from '@/components/atoms/Text/BulletListItem';
 import FooterButton from '@/components/molecules/Button/FooterButton';
 import loginState from '@/utils/recoil/login';
+import profileType from '@/utils/recoil/profile';
 
 export default function SelectProfileScreen({
   route,
@@ -18,6 +19,7 @@ export default function SelectProfileScreen({
 }) {
   const { nickname, imgUrl } = route.params;
   const [profile, setProfile] = useState<Profile | ''>('');
+  const setProfileState = useSetRecoilState<Profile>(profileType);
   const setIsLoggedIn = useSetRecoilState<boolean>(loginState);
 
   const descriptions = [
@@ -35,6 +37,7 @@ export default function SelectProfileScreen({
     if (!profile) return;
     await AsyncStorage.setItem('profile', profile);
     setIsLoggedIn(true);
+    setProfileState(profile);
   };
 
   return (
@@ -52,7 +55,7 @@ export default function SelectProfileScreen({
             setProfile={setProfile}
           />
           <ProfileBox
-            title='Tourist'
+            title='TOURIST'
             username={nickname}
             imgUrl={imgUrl}
             profile={profile}

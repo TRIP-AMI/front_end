@@ -19,6 +19,7 @@ export default function ProfileBox({
   profile,
   setProfile,
 }: ProfileBoxProps) {
+  const titleText = title === 'AMI' ? title : 'Tourist';
   const detail = title === 'AMI' ? 'Guiding' : 'Look around';
 
   return (
@@ -30,7 +31,7 @@ export default function ProfileBox({
         profile === title && styles.pressedBorder,
       ]}
     >
-      <Text style={styles.profile}>{title}</Text>
+      <Text style={styles.profile}>{titleText}</Text>
       <Text style={styles.detail}>{detail}</Text>
       <View style={styles.image}>
         <AmiProfile imgUrl={imgUrl} name={username} />

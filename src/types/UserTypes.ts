@@ -8,4 +8,4 @@ export type User = {
   token: string;
 };
 
-export type Profile = 'AMI' | 'Tourist';
+export type Profile = 'AMI' | 'TOURIST';
