@@ -6,10 +6,16 @@ import CheckButton from '@components/molecules/Button/CheckButton';
 function ReviewInput() {
   const {
     control,
+    handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: { content: '' },
   });
+
+  const onSubmit = (data: unknown) => {
+    console.log('data::::', data);
+  };
+
   return (
     <Controller
       control={control}
@@ -36,7 +42,10 @@ function ReviewInput() {
               error={errors.content?.message}
               style={styles.input}
             />
-            <CheckButton disabled={value === ''} />
+            <CheckButton
+              disabled={value === ''}
+              onPress={handleSubmit(onSubmit)}
+            />
           </>
         );
       }}
