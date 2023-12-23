@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { RecoilRoot } from 'recoil';
+import Toast, { ToastConfig } from 'react-native-toast-message';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from '@/navigations/';
 import ModalProvider from '@/components/organisms/Modal/ModalProvider';
+import CustomToast from '@/components/atoms/Toast/CustomToast';
+import Spacing from '@/styles/spacing';
 
 const fetchFonts = async () => {
   await Font.loadAsync({
@@ -43,6 +46,11 @@ export default function App() {
         <Navigation />
         <ModalProvider />
       </NavigationContainer>
+      <Toast
+        config={CustomToast as ToastConfig}
+        position='bottom'
+        bottomOffset={Spacing.ToastBasic}
+      />
     </RecoilRoot>
   );
 }
