@@ -7,7 +7,7 @@ function Star({ style }: { style?: StyleProp<TextStyle> | undefined }) {
   return (
     <MaterialIcons
       name='star'
-      size={32}
+      size={35}
       style={[styles.starUnselected, style]}
     />
   );

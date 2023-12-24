@@ -3,19 +3,26 @@ import Spacing from '@styles/spacing';
 import Colors from '@styles/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useRecoilState } from 'recoil';
-import userState from '@utils/recoil/user';
+import profileType from '@utils/recoil/profile';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function SwitchButton() {
-  const [userData, setUserData] = useRecoilState(userState);
+  const [profile, setProfileType] = useRecoilState(profileType);
 
-  function changeIsAmi() {
-    setUserData({ ...userData, isAmi: !userData.isAmi });
-  }
+  const changeProfileType = async () => {
+    if (profile === 'AMI') {
+      await AsyncStorage.setItem('profile', 'TOURIST');
+      setProfileType('TOURIST');
+    } else {
+      await AsyncStorage.setItem('profile', 'AMI');
+      setProfileType('AMI');
+    }
+  };
 
   return (
-    <Pressable style={styles.container} onPress={() => changeIsAmi()}>
+    <Pressable style={styles.container} onPress={() => changeProfileType()}>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>{userData.isAmi ? 'Tourist' : 'Ami'}</Text>
+        <Text style={styles.text}>{profile === 'AMI' ? 'Tourist' : 'Ami'}</Text>
         {/* TODO 나중에 Icon 바꾸기 */}
         <Ionicons
           name='swap-horizontal'

@@ -15,7 +15,6 @@ import ReviewContentItem from '@components/atoms/Item/ReviewContentItem';
 import ReviewInput from '@components/molecules/Input/ReviewInput';
 import { ApplicationItemProps } from '@/types/ModalTypes';
 
-// TODO style 다시 체크하기
 function ReviewModal({ imgUrl, title }: ApplicationItemProps) {
   return (
     <BasicFullScreenModal
@@ -26,7 +25,7 @@ function ReviewModal({ imgUrl, title }: ApplicationItemProps) {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
           <ReviewContentItem imgUrl={imgUrl} title={title} />
-          <Separator color={Colors.lineGray05} hei={10} marginVer={10} />
+          <Separator color={Colors.lineGray05} hei={8} marginVer={25} />
           <View style={styles.container}>
             <View style={styles.textContainer}>
               <Text style={styles.question}>{`Did you like AMI's guide?`}</Text>
@@ -43,7 +42,6 @@ function ReviewModal({ imgUrl, title }: ApplicationItemProps) {
   );
 }
 
-// TODO headerStyle을 좀 더 유동적으로 할 수 있는 방법을...
 const styles = StyleSheet.create({
   headerStyle: {
     paddingLeft: Dimensions.get('window').width / 2 - 36,
@@ -59,14 +57,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   question: {
+    color: '#000000',
     fontSize: 16,
     fontFamily: 'Montserrat-SemiBold',
-    color: '#000000',
+    letterSpacing: -0.32,
+    lineHeight: 22,
+    marginBottom: 5,
   },
   subQuestion: {
-    fontSize: 12,
+    color: Colors.fontGray05,
+    fontSize: 14,
     fontFamily: 'Montserrat-Regular',
-    color: Colors.fontGray07,
+    letterSpacing: -0.28,
+    lineHeight: 18,
   },
 });
 

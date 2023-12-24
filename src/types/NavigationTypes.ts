@@ -16,6 +16,12 @@ export type EmailAuthProps = {
   optionalChecked?: boolean;
 };
 
+// 유저 정보 prop으로 받기
+export type SelectProfileProps = {
+  nickname: string;
+  imgUrl: string;
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -35,6 +41,8 @@ export type RootStackParamList = {
   ResetPassword: CreatePasswordProps;
   Calendar: undefined;
   ApplicationDetails: undefined;
+  SelectProfile: SelectProfileProps;
+  BookDetails: undefined;
 };
 
 export type BottomTabParamList = {

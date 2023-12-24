@@ -47,9 +47,10 @@ function ReviewInput() {
 
 const styles = StyleSheet.create({
   input: {
-    height: 120,
-    fontSize: 14,
+    height: 130,
+    fontSize: 12,
     fontFamily: 'Montserrat-Regular',
+    lineHeight: 15,
   },
 });
 

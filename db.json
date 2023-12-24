@@ -167,10 +167,18 @@
       "postSubTitle": "Restaurant - Cafe - Photo"
     }
   ],
-  "login": {
-    "accessToken": "test"
-  },
+  "email": {},
+  "nickname": {}
   "joinAuth": {
     "isAuth": true
+  },
+  "login": {
+    "memberId": 123,
+    "email": "tripami@gmail.com",
+    "nickname": "Jenny",
+    "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg",
+    "role": null,
+    "agreedMarketing": true,
+    "token": "token"
   }
 }

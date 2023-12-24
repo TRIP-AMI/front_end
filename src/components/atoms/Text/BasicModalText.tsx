@@ -1,8 +1,14 @@
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, StyleProp, TextStyle } from 'react-native';
 import Colors from '@/styles/colors';
 
-export default function BasicModalText({ content }: { content: string }) {
-  return <Text style={styles.text}>{content}</Text>;
+export default function BasicModalText({
+  content,
+  style,
+}: {
+  content: string;
+  style?: StyleProp<TextStyle>;
+}) {
+  return <Text style={[styles.text, style]}>{content}</Text>;
 }
 
 const styles = StyleSheet.create({

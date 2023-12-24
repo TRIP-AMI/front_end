@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import AmiProfile from '@components/molecules/Item/AmiProfile';
 import AmiScoreTable from '@components/molecules/Text/AmiScoreTable';
 import HomeFooter from '@components/organisms/Section/HomeFooter';
@@ -9,6 +9,9 @@ import BasicTab from '@components/organisms/Section/BasicTab';
 import Colors from '@styles/colors';
 import { useRecoilValue } from 'recoil';
 import userState from '@utils/recoil/user';
+import profileType from '@utils/recoil/profile';
+import ApplicantButton from '@components/atoms/Button/ApplicantButton';
+import EmptyText from '@components/atoms/Text/EmptyText';
 
 const dummyTouristDatas = [
   {
@@ -51,10 +54,12 @@ const dummyAmiDatas = [
   },
 ];
 
+// TODO post의 개수를 받아아서 렌더링
 export default function MyPageScreen() {
   const dummyAmiData = dummyAmiDatas[0];
   const dummyTouristData = dummyTouristDatas[0];
   const userData = useRecoilValue(userState);
+  const profile = useRecoilValue(profileType);
 
   const tabData = [
     {
@@ -74,16 +79,19 @@ export default function MyPageScreen() {
       <StatusBar style='auto' />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.headerMargin} />
-        <AmiProfile imgUrl={userData.profileImgUrl} name={userData.name} />
-        {userData.isAmi ? (
+        <View style={{ paddingBottom: 12 }}>
+          <AmiProfile imgUrl={userData.profileImgUrl} name={userData.name} />
+        </View>
+        {profile === 'AMI' ? (
           <>
-            <AmiScoreTable scores={dummyAmiData} />
+            <AmiScoreTable scores={dummyAmiData} style={{ marginBottom: 8 }} />
+            <ApplicantButton />
             <BasicTab data={tabData} />
           </>
         ) : (
           <>
             <AmiScoreTable scores={dummyTouristData} />
-            <Text style={styles.text}>Have a great trip to Korea with AMI</Text>
+            <EmptyText text='Have a great trip to Korea with AMI' />
           </>
         )}
         <HomeFooter />

@@ -1,85 +1,58 @@
-import { StyleSheet, View, Image, Text, Pressable } from 'react-native';
+import ApplicationContentItem from '@components/atoms/Item/ApplicationContentItem';
+import { StyleSheet, View } from 'react-native';
+import CompleteText from '@components/atoms/Text/CompleteText';
 import Spacing from '@styles/spacing';
-import Colors from '@styles/colors';
-import BlackBadge from '@components/atoms/Tag/BlackBadge';
-import { useSetRecoilState } from 'recoil';
-import modalState from '@utils/recoil/modal';
-import { useNavigation } from '@react-navigation/native';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import DateText from '@components/atoms/Text/DateText';
+import ApplicationTable from '@components/molecules/Text/ApplicationTable';
+import { Badge } from 'react-native-paper';
 
-function ApplicationItem({
-  imgUrl,
-  title,
-  date,
-}: {
+type ApplicationItemProps = {
+  id: number;
   imgUrl: string;
   title: string;
+  subTitle: string;
+  price: string;
   date: string;
-}) {
-  const setModal = useSetRecoilState(modalState);
-  const navigation = useNavigation<RootStackNavigationProp>();
+};
 
-  const onReviewPress = () => {
-    setModal({
-      modalName: 'REVIEW',
-      applicationItem: { imgUrl, title },
-    });
-  };
+// TODO Badge 색상 Colors.Primary로 변경해야 함
+function ApplicationItem({ item }: { item: ApplicationItemProps }) {
+  // TODO 프로그램 날짜와 현재 날짜를 비교하여 true, false를 반환해야 함
+  const applicationEnd = false;
 
-  // TODO 알맞는 컨텐츠로 이동해야 함
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate('Content')}>
-        <Image resizeMode='cover' style={styles.img} source={{ uri: imgUrl }} />
-      </Pressable>
       <View style={styles.subContainer}>
-        <Pressable onPress={() => console.log('예약 페이지로 이동 예정')}>
-          <Text style={styles.title}>{title}</Text>
-        </Pressable>
-        <Text style={styles.date}>{date}</Text>
-        <Pressable style={styles.badge} onPress={onReviewPress}>
-          <BlackBadge text='Review' />
-        </Pressable>
+        <Badge size={7} visible={!applicationEnd} style={styles.badge} />
+        <CompleteText message='Application' color='#46A6FB' />
+        <DateText message='Application' date={item.date} />
       </View>
+      <ApplicationContentItem
+        key={item.id.toString() + item.title + item.subTitle}
+        imgUrl={item.imgUrl}
+        title={item.title}
+        subTitle={item.subTitle}
+        price={item.price}
+      />
+      <ApplicationTable key={item.id.toString() + item.title + item.date} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'white',
     marginHorizontal: Spacing.IOS392Margin,
   },
-  img: {
-    width: 104,
-    height: 100,
-    borderRadius: 5,
-  },
   subContainer: {
-    flex: 1,
-    marginLeft: 15,
-  },
-  title: {
-    fontSize: 16,
-    fontFamily: 'Montserrat-SemiBold',
-    color: '#000000',
-    letterSpacing: -0.32,
-    lineHeight: 19,
-    marginVertical: 5,
-  },
-  date: {
-    fontSize: 12,
-    fontFamily: 'Montserrat-Regular',
-    color: Colors.fontGray07,
-    letterSpacing: -0.24,
-    lineHeight: 15,
-    marginBottom: 35,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 15,
   },
   badge: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    position: 'absolute',
+    top: 0,
+    left: -8,
   },
 });
 

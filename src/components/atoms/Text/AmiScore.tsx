@@ -1,9 +1,25 @@
-import { Text, StyleSheet, Pressable } from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  Pressable,
+  StyleProp,
+  TextStyle,
+} from 'react-native';
 import Colors from '@styles/colors';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
-function AmiScore({ score, title }: { score: number; title: string }) {
+function AmiScore({
+  score,
+  title,
+  onPress,
+  style,
+}: {
+  score?: number | undefined;
+  title: string;
+  onPress?: () => void;
+  style?: StyleProp<TextStyle>;
+}) {
   const navigation = useNavigation<RootStackNavigationProp>();
 
   const pressHandler = () => {
@@ -16,9 +32,12 @@ function AmiScore({ score, title }: { score: number; title: string }) {
   };
 
   return (
-    <Pressable style={styles.container} onPress={pressHandler}>
-      <Text style={styles.score}>{score}</Text>
-      <Text style={styles.title}>{title}</Text>
+    <Pressable
+      style={styles.container}
+      onPress={onPress === undefined ? pressHandler : onPress}
+    >
+      {typeof score === 'number' && <Text style={styles.score}>{score}</Text>}
+      <Text style={[styles.title, style]}>{title}</Text>
     </Pressable>
   );
 }

@@ -31,7 +31,7 @@ export default function OutlinedButton({
     >
       <ButtonText
         content={content}
-        color={disabled ? Colors.fontGray05 : Colors.primary}
+        color={disabled || customStyle ? Colors.fontGray05 : Colors.primary}
         small={!!customStyle}
       />
     </Pressable>

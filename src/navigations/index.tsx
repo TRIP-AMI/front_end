@@ -9,6 +9,8 @@ import ContentScreen from '@screens/ContentScreen';
 import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderRightIcons';
 import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
+import { useNavigation } from '@react-navigation/native';
+import BookDetailsScreen from '@screens/BookDetailsScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -21,17 +23,19 @@ import LoginScreen from '@/screens/LoginScreen';
 import useLoginHook from '@/hooks/loginHook';
 import JoinScreen from '@/screens/JoinScreen';
 import EmailAuthScreen from '@/screens/EmailAuthScreen';
-import { IconButton } from '@/components/atoms/Button/IconButton';
 import useModalHook from '@/hooks/modalHook';
 import CreateNameScreen from '@/screens/CreateNameScreen';
 import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
+import SelectProfileScreen from '@/screens/SelectProfileScreen';
+import CloseButton from '@/components/atoms/Button/CloseButton';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
-  const { isLoggedIn, getStoredToken } = useLoginHook();
+  const { isLoggedIn, profileState, getStoredToken } = useLoginHook();
   const { setModalName } = useModalHook();
+  const navigation = useNavigation();
 
   useEffect(() => {
     getStoredToken();
@@ -117,6 +121,19 @@ function Navigation() {
             name='ApplicationDetails'
             component={ApplicationDetailsScreen}
             options={{
+              title:
+                profileState === 'AMI'
+                  ? 'Applicant History'
+                  : 'Application details',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='BookDetails'
+            component={BookDetailsScreen}
+            options={{
               title: 'Application details',
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeftArrow />,
@@ -126,15 +143,22 @@ function Navigation() {
         </>
       ) : (
         <>
-          <Stack.Screen
-            name='Login'
-            component={LoginScreen}
-            options={{
+          <Stack.Group
+            screenOptions={{
               headerBackVisible: false,
               headerTitleStyle: Fonts.header.title,
               headerShadowVisible: false,
             }}
-          />
+          >
+            <Stack.Screen name='Login' component={LoginScreen} />
+            <Stack.Screen
+              name='SelectProfile'
+              component={SelectProfileScreen}
+              options={{
+                title: 'Select Profile',
+              }}
+            />
+          </Stack.Group>
           <Stack.Group
             screenOptions={{
               title: 'Join',
@@ -149,12 +173,7 @@ function Navigation() {
               component={EmailAuthScreen}
               options={{
                 headerRight: () => (
-                  <IconButton
-                    icon='close'
-                    size={22}
-                    color='black'
-                    onPress={() => setModalName('JOIN_CANCEL')}
-                  />
+                  <CloseButton onPress={() => setModalName('JOIN_CANCEL')} />
                 ),
               }}
             />
@@ -172,7 +191,15 @@ function Navigation() {
               headerShadowVisible: false,
             }}
           >
-            <Stack.Screen name='FindPassword' component={EmailAuthScreen} />
+            <Stack.Screen
+              name='FindPassword'
+              component={EmailAuthScreen}
+              options={{
+                headerRight: () => (
+                  <CloseButton onPress={() => navigation.goBack()} />
+                ),
+              }}
+            />
             <Stack.Screen
               name='ResetPassword'
               component={CreatePasswordScreen}
