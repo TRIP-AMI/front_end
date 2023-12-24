@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
+import { Category } from '@/constants/category';
 
 export type ProgramCostType = 'GUIDE' | 'ALL';
 
-type ProgramCourseImg = {
+export type ProgramCourseImg = {
   imgUrl: string;
   title: string;
   subTitle: string;
@@ -11,7 +12,7 @@ type ProgramCourseImg = {
 export interface CreateContentBasicForm {
   title: string;
   explanation: string;
-  category: string[];
+  category: Category[];
   hashtag: string;
   hashtagList: string[];
   meetingPoint: string;
