@@ -1,16 +1,17 @@
 import { Text, StyleSheet } from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import BasicModal from '@/components/atoms/Modal/BasicModal';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 export default function SurveyModal() {
-  // const { navigate } = useNavigation();
+  const { navigate } = useNavigation<RootStackNavigationProp>();
   const { resetModal } = useModalHook();
 
   const onCheck = () => {
-    // navigate('Survey');
     resetModal();
+    navigate('Survey', { surveyId: 1 });
   };
 
   return (

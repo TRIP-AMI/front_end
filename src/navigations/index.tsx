@@ -13,7 +13,10 @@ import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import BookDetailsScreen from '@screens/BookDetailsScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
-import { RootStackParamList } from '@/types/NavigationTypes';
+import {
+  RootStackNavigationProp,
+  RootStackParamList,
+} from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
 import CategoryScreen from '@/screens/CategoryScreen';
 import Colors from '@/styles/colors';
@@ -30,13 +33,15 @@ import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import SelectProfileScreen from '@/screens/SelectProfileScreen';
 import CloseButton from '@/components/atoms/Button/CloseButton';
+import SurveyScreen from '@/screens/survey/SurveyScreen';
+import TitleLogo from '@/components/atoms/Text/TitleLogo';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
   const { isLoggedIn, profileState, getStoredToken } = useLoginHook();
   const { setModalName } = useModalHook();
-  const navigation = useNavigation();
+  const { goBack, navigate } = useNavigation<RootStackNavigationProp>();
 
   useEffect(() => {
     getStoredToken();
@@ -142,6 +147,19 @@ function Navigation() {
               headerShadowVisible: false,
             }}
           />
+          <Stack.Screen
+            name='Survey'
+            component={SurveyScreen}
+            options={{
+              headerLeft: () => <TitleLogo />,
+              headerRight: () => (
+                <CloseButton onPress={() => navigate('MenuBar')} />
+              ),
+              headerTitle: '',
+              headerBackVisible: false,
+              headerShadowVisible: false,
+            }}
+          />
         </>
       ) : (
         <>
@@ -197,9 +215,7 @@ function Navigation() {
               name='FindPassword'
               component={EmailAuthScreen}
               options={{
-                headerRight: () => (
-                  <CloseButton onPress={() => navigation.goBack()} />
-                ),
+                headerRight: () => <CloseButton onPress={() => goBack()} />,
               }}
             />
             <Stack.Screen

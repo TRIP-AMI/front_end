@@ -22,6 +22,10 @@ export type SelectProfileProps = {
   imgUrl: string;
 };
 
+export type SurveyProps = {
+  surveyId: number;
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -43,6 +47,7 @@ export type RootStackParamList = {
   ApplicationDetails: undefined;
   SelectProfile: SelectProfileProps;
   BookDetails: undefined;
+  Survey: SurveyProps;
 };
 
 export type BottomTabParamList = {
