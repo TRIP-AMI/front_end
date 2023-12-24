@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import useLoginHook from '@/hooks/loginHook';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import TextButton from '@/components/atoms/Button/TextButton';
@@ -15,13 +14,12 @@ import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useModalHook from '@/hooks/modalHook';
 import { ILoginInputs } from '@/types/FormTypes';
-import Spacing from '@/styles/spacing';
-import showToast from '@/utils/toast/toast';
+import useLoginHook from '@/hooks/loginHook';
 
 export default function LoginScreen() {
+  const { onLogin } = useLoginHook();
   const { navigate } = useNavigation<RootStackNavigationProp>();
   const [isChecked, setChecked] = useState(false);
-  const { onLogin } = useLoginHook();
   const { setModalName } = useModalHook();
   const {
     control,
@@ -36,19 +34,13 @@ export default function LoginScreen() {
   });
 
   const onLoginPress = (data: ILoginInputs) => {
-    console.log(data);
     return errors.email || errors.password
       ? setModalName('LOGIN_INVALID')
-      : onLogin(isChecked);
+      : onLogin(isChecked, data);
   };
 
   const onCheck = () => {
     setChecked(!isChecked);
-  };
-
-  // 테스트용 토스트
-  const testToast = () => {
-    showToast('This is a test', Spacing.ToastWithButtons);
   };
 
   return (
@@ -83,10 +75,6 @@ export default function LoginScreen() {
           onPress={() => navigate('Join')}
           style={styles.footerText}
         />
-      </View>
-      {/* 토스트 테스트용 임시버튼 */}
-      <View style={{ position: 'absolute', bottom: 10, width: '100%' }}>
-        <BasicButton onPress={testToast} content='토스트 테스트' />
       </View>
     </SafeAreaView>
   );

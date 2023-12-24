@@ -29,6 +29,7 @@ const useAuthForm = ({
   const {
     control,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<IJoinAuthInputs>({
     mode: 'onChange',
@@ -66,7 +67,9 @@ const useAuthForm = ({
         navigate('ResetPassword', { mode: 'RESET', email: data.email });
       }
     } catch (e) {
-      console.log(e);
+      setError('authCode', {
+        message: 'The authentication number is invalid.',
+      });
     }
   };
 
