@@ -4,6 +4,8 @@ import Checkbox from 'expo-checkbox';
 import BasicInput from '@/components/atoms/Input/BasicInput';
 import ContentInputWrap from '@/components/molecules/Input/ContentInputWrap';
 import { ProgramCostType } from '@/hooks/uploadHook';
+import Colors from '@/styles/colors';
+import { extractNumbers } from '@/utils/functions';
 
 const costTypeList: {
   id: ProgramCostType;
@@ -26,11 +28,15 @@ export default function ProgramCostWrap({
   control: Control<any>;
 }) {
   const {
-    field: { onChange: costTextChange },
+    field: { value: costValue, onChange: costTextChange },
   } = useController({ control, name: 'programCost' });
   const {
     field: { value: costTypeValue, onChange: costTypeChange },
   } = useController({ control, name: 'programCostType' });
+
+  const handleCostChange = (str: string) => {
+    costTextChange(extractNumbers(str));
+  };
 
   return (
     <ContentInputWrap
@@ -38,27 +44,24 @@ export default function ProgramCostWrap({
       content={
         <View>
           <BasicInput
-            onChangeText={costTextChange}
+            value={`${costValue}`}
+            onChangeText={handleCostChange}
             placeholder='Enter only numbers.'
+            keyboardType='numeric'
           />
           <View style={styles.checkboxListViewWrap}>
             {costTypeList.map((item) => {
               return (
-                <View
-                  key={item.id}
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginRight: 25,
-                  }}
-                >
+                <View key={item.id} style={styles.checkboxWrap}>
                   <Checkbox
                     value={costTypeValue === item.id}
                     onValueChange={() => {
                       costTypeChange(item.id);
                     }}
+                    color={Colors.primary}
+                    style={{ borderWidth: 1 }}
                   />
-                  <Text style={{ marginLeft: 8 }}>{item.label}</Text>
+                  <Text style={styles.checkboxLabel}>{item.label}</Text>
                 </View>
               );
             })}
@@ -73,5 +76,15 @@ const styles = StyleSheet.create({
   checkboxListViewWrap: {
     flexDirection: 'row',
     marginTop: 15,
+  },
+  checkboxWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 25,
+  },
+  checkboxLabel: {
+    marginLeft: 8,
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 14,
   },
 });
