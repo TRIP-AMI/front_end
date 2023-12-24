@@ -1,4 +1,4 @@
-import { Modal, View, StyleSheet } from 'react-native';
+import { Modal, View, StyleSheet, Pressable } from 'react-native';
 import ModalButton from '@/components/atoms/Button/ModalButton';
 import Colors from '@/styles/colors';
 import ModalBackdrop from '@/components/atoms/Modal/ModalBackdrop';
@@ -20,12 +20,14 @@ export default function BasicCheckModal({
       <Modal animationType='slide' transparent>
         <ModalBackdrop>
           <View style={styles.modalView}>
-            <View style={styles.contentContainer}>{children}</View>
-            <View style={styles.buttonContainer}>
-              <View style={{ width: '100%' }}>
-                <ModalButton content={text} onPress={onCheck} />
+            <Pressable>
+              <View style={styles.contentContainer}>{children}</View>
+              <View style={styles.buttonContainer}>
+                <View style={{ width: '100%' }}>
+                  <ModalButton content={text} onPress={onCheck} />
+                </View>
               </View>
-            </View>
+            </Pressable>
           </View>
         </ModalBackdrop>
       </Modal>

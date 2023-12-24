@@ -13,6 +13,7 @@ import LoginInvalidModal from '@/components/molecules/Modal/LoginInvalidModal';
 import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
 import JoinCompleteModal from '@/components/organisms/Modal/JoinCompleteModal';
 import PickerSelectModal from './PickerSelectModal';
+import SurveyModal from '@/components/molecules/Modal/SurveyModal';
 
 export default function ModalProvider() {
   const modal = useRecoilValue(modalState);
@@ -45,6 +46,7 @@ export default function ModalProvider() {
     ),
     APPLICATION_CANCEL: <ApplicationCancel />,
     APPLICANT_INFO: <ApplicantInfoModal />,
+    SURVEY: <SurveyModal />,
   };
 
   return <View style={styles.backdrop}>{ModalList[modalName]}</View>;

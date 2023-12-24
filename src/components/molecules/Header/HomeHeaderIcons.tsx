@@ -17,11 +17,23 @@ export default function HomeHeaderIcons() {
     setModalName('NOTIFICATION');
   };
 
+  const onSurveyPress = () => {
+    setModalName('SURVEY');
+  };
+
   const [alarmCount] = useState(1);
   const alarmBadgeShow = alarmCount > 0;
 
   return (
     <View style={styles.container}>
+      <View>
+        <IconButton
+          icon='person'
+          size={24}
+          color='blue'
+          onPress={onSurveyPress}
+        />
+      </View>
       {/* TODO: 임시 로그아웃 버튼 지우기 */}
       <View>
         <IconButton icon='close' size={24} color='red' onPress={onLogout} />
