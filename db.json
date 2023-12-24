@@ -168,7 +168,7 @@
     }
   ],
   "email": {},
-  "nickname": {}
+  "nickname": {},
   "joinAuth": {
     "isAuth": true
   },
