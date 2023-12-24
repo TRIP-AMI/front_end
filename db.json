@@ -167,6 +167,8 @@
       "postSubTitle": "Restaurant - Cafe - Photo"
     }
   ],
+  "email": {},
+  "nickname": {}
   "joinAuth": {
     "isAuth": true
   },

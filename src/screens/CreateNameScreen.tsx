@@ -9,6 +9,9 @@ import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
 import Colors from '@/styles/colors';
+import instance, { BASE_API_URL } from '@/services/config/axios';
+import Spacing from '@/styles/spacing';
+import showToast from '@/utils/toast/toast';
 
 interface ICreateNameInputs {
   nickname: string;
@@ -33,13 +36,21 @@ export default function CreateNameScreen({
   });
   const { setModalName } = useModalHook();
 
-  const onNext = (data: ICreateNameInputs) => {
+  // TODO: API 연결, 에러 처리
+  const onNext = async (data: ICreateNameInputs) => {
     if (errors.nickname) return;
-    navigation.navigate('CreatePassword', {
-      mode: 'CREATE',
-      nickname: data.nickname,
-      email: route.params.email,
-    });
+    try {
+      await instance.post(`${BASE_API_URL}/nickname`, {
+        nickName: data.nickname,
+      });
+      navigation.navigate('CreatePassword', {
+        mode: 'CREATE',
+        nickname: data.nickname,
+        email: route.params.email,
+      });
+    } catch (error) {
+      showToast('The name is already in use.', Spacing.ToastWithButtons);
+    }
   };
 
   const content = {
