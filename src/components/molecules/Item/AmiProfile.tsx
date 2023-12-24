@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,
     alignSelf: 'center',
-    marginBottom: 12,
   },
 });
 

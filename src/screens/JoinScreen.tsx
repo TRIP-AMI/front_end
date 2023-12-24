@@ -10,6 +10,7 @@ import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 
+// TODO: 약관 데이터 수정
 const data = [
   {
     id: 1,
@@ -43,6 +44,7 @@ export default function JoinScreen() {
   };
 
   const onFullAgree = () => {
+    console.log('full agree');
     if (checkedIds.length === data.length) {
       setCheckedIds([]);
       return;
@@ -81,7 +83,12 @@ export default function JoinScreen() {
         <OutlinedButton
           onPress={onFullAgree}
           content='Full Agree'
-          disabled
+          customStyle={{
+            borderColor:
+              checkedIds.length === data.length
+                ? Colors.lineGray04
+                : Colors.fontGray06,
+          }}
           background={checkedIds.length === data.length}
         />
         <View style={styles.itemContainer}>
