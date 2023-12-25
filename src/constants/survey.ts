@@ -1,17 +1,17 @@
 import { SurveyData, SurveyId } from '@/types/surveyData';
 
-const surveyData = new Map<SurveyId, SurveyData>([
+const SURVEY_DATA = new Map<SurveyId, SurveyData>([
   [
     1,
     {
       id: 1,
-      question: `How did you get to know TRIPAMI?`,
-      description: `(Single selection)`,
+      question: `How did you get\nto know TRIPAMI?`,
+      description: `(Single seletion)`,
       choices: [
-        `Google Recommendation of acquaintances`,
-        `A different routine`,
-        `Advertising/Social Media`,
-        `App Store`,
+        { id: 1, content: `Recommendation of\nacquaintances` },
+        { id: 2, content: `Advertising / Social Media` },
+        { id: 3, content: `App Store` },
+        { id: 4, content: `A different routine` },
       ],
       type: 'SINGLE',
     },
@@ -20,13 +20,13 @@ const surveyData = new Map<SurveyId, SurveyData>([
     2,
     {
       id: 2,
-      question: `Which part of TRIPAMI were you most satisfied with?`,
+      question: `Which part of TRIPAMI\nwere you most satisfied with?`,
       description: `(Multiple selections)`,
       choices: [
-        `There's a variety of programs.`,
-        `The desired program search works well.`,
-        `Have detailed information about the program.`,
-        `I don't know.`,
+        { id: 1, content: `There's a variety of programs.` },
+        { id: 2, content: `The desired program search\nworks well.` },
+        { id: 3, content: `Have detailed information\nabout the program.` },
+        { id: 4, content: `I don't know.` },
       ],
       type: 'MULTIPLE',
     },
@@ -35,13 +35,13 @@ const surveyData = new Map<SurveyId, SurveyData>([
     3,
     {
       id: 3,
-      question: `Which part of TRIPAMI were you most dissatisfied with?`,
+      question: `Which part of TRIPAMI\nwere you most dissatisfied with?`,
       description: `(Multiple selections)`,
       choices: [
-        `The programs don't vary.`,
-        `I can't search for the program I want.`,
-        `I don't have enough program information.`,
-        `I don't know.`,
+        { id: 1, content: `The programs don't vary.` },
+        { id: 2, content: `I can't search for the program\nI want.` },
+        { id: 3, content: `I don't have enough program\ninformation.` },
+        { id: 4, content: `I don't know.` },
       ],
       type: 'MULTIPLE',
     },
@@ -50,14 +50,14 @@ const surveyData = new Map<SurveyId, SurveyData>([
     4,
     {
       id: 4,
-      question: `Did TRIPAMI help you plan your trip?`,
+      question: `Did TRIPAMI help you\nplan your trip?`,
       description: `(Single selection)`,
       choices: [
-        `It helped me a lot.`,
-        `It helped me a little bit.`,
-        `I'm not sure.`,
-        `It wasn't good.`,
-        `It wasn't that good.`,
+        { id: 1, content: `It helped me a lot.` },
+        { id: 2, content: `It helped me a little bit.` },
+        { id: 3, content: `I'm not sure.` },
+        { id: 4, content: `It wasn't good.` },
+        { id: 5, content: `It wasn't that good.` },
       ],
       type: 'SINGLE',
     },
@@ -66,7 +66,7 @@ const surveyData = new Map<SurveyId, SurveyData>([
     5,
     {
       id: 5,
-      question: `Please let me know what we can improve on TRIPAMI!`,
+      question: `Please let me know what we can\nimprove on TRIPAMI!`,
       description: '',
       choices: [],
       type: 'TEXT',
@@ -84,4 +84,4 @@ const surveyData = new Map<SurveyId, SurveyData>([
   ],
 ]);
 
-export default surveyData;
+export default SURVEY_DATA;

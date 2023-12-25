@@ -4,7 +4,7 @@ import BasicModal from '@/components/atoms/Modal/BasicModal';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
-import surveyData from '@/constants/survey';
+import SURVEY_DATA from '@/constants/survey';
 
 export default function SurveyModal() {
   const { navigate } = useNavigation<RootStackNavigationProp>();
@@ -12,7 +12,7 @@ export default function SurveyModal() {
 
   const onCheck = () => {
     resetModal();
-    navigate('Survey', { surveyId: 1, surveyData: surveyData.get(1)! });
+    navigate('Survey', { surveyId: 1, surveyData: SURVEY_DATA.get(1)! });
   };
 
   return (
