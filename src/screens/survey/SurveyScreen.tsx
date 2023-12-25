@@ -52,6 +52,7 @@ export default function SurveyScreen({
         showToast('Please select at least one option');
         return;
       }
+      setCheckedIds([]);
     }
     // setSurveyResult(someData);
     navigate('Survey', {
