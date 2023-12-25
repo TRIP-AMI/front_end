@@ -3,6 +3,8 @@ import Colors from '@/styles/colors';
 import NextButton from '@/components/atoms/Button/NextButton';
 import { RootStackNavigationProp, SurveyProps } from '@/types/NavigationTypes';
 import FooterButton from '@/components/molecules/Button/FooterButton';
+import { SurveyId } from '@/types/surveyData';
+import surveyData from '@/constants/survey';
 
 export default function SurveyScreen({
   route,
@@ -13,6 +15,8 @@ export default function SurveyScreen({
 }) {
   const { surveyId } = route.params;
   const { navigate } = navigation;
+  const nextSurveyData =
+    surveyId < 6 ? surveyData.get((surveyId + 1) as SurveyId) : undefined;
 
   return (
     <View style={styles.container}>
@@ -39,7 +43,12 @@ export default function SurveyScreen({
       </View>
       {surveyId < 6 ? (
         <NextButton
-          onPress={() => navigate('Survey', { surveyId: surveyId + 1 })}
+          onPress={() =>
+            navigate('Survey', {
+              surveyId: nextSurveyData!.id,
+              surveyData: nextSurveyData!,
+            })
+          }
         />
       ) : (
         <FooterButton content='Submit' onPress={() => {}} disabled={false} />

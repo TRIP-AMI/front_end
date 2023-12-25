@@ -1,4 +1,5 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { SurveyData, SurveyId } from '@/types/surveyData';
 
 // TODO: 타입 정리
 export type CreatePasswordProps = {
@@ -23,7 +24,8 @@ export type SelectProfileProps = {
 };
 
 export type SurveyProps = {
-  surveyId: number;
+  surveyId: SurveyId;
+  surveyData: SurveyData;
 };
 
 export type RootStackParamList = {
