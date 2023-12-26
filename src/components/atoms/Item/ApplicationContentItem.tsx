@@ -32,6 +32,7 @@ function ApplicationContentItem({
   };
 
   // TODO 알맞는 컨텐츠로 이동해야 함
+  // TODO Review 한 후에 Review 버튼 숨기기
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.navigate('Content')}>
