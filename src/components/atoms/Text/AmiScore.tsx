@@ -26,6 +26,8 @@ function AmiScore({
     switch (title) {
       case 'Application details':
         return navigation.navigate('ApplicationDetails');
+      case 'Review details':
+        return navigation.navigate('ReviewDetails');
       default:
         return null;
     }
