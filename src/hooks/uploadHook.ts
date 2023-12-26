@@ -24,7 +24,7 @@ export interface CreateContentBasicForm {
   recruitedPersons: number;
   email: string;
   programCourse: ProgramCourse[];
-  programCost: number;
+  programCost: string;
   programCostType: ProgramCostType;
 }
 
@@ -32,10 +32,10 @@ export class ProgramCourse {
   // eslint-disable-next-line no-useless-constructor
   constructor(
     public id: string,
-    public time: number = 0,
-    public distance: number = 0,
-    public walkingTime: number = 0,
-    public carTime: number = 0,
+    public time: string = '',
+    public distance: string = '',
+    public walkingTime: string = '',
+    public carTime: string = '',
     public imgInfo: ProgramCourseImg = {
       imgUrl: '',
       title: '',
@@ -61,15 +61,15 @@ const useUpload = () => {
       meetingPoint: '',
       availableDates: [],
       timeToMeet: {
-        h: '12',
-        m: '30',
+        h: '',
+        m: '',
       },
       recruitedPersons: 1,
       email: '',
       // Program Course Info
       programCourse: [new ProgramCourse('0')],
       // Program Cost
-      programCost: 0,
+      programCost: '',
       programCostType: 'GUIDE',
     },
   });

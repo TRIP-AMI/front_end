@@ -1,13 +1,22 @@
 import { Pressable, Text, StyleSheet, Image } from 'react-native';
+import { useEffect } from 'react';
 import Colors from '@/styles/colors';
 import useImgPicker from '@/hooks/imgPickerHook';
 
 export default function ProgramImgUpload({
   initialState,
+  urlChange,
 }: {
   initialState: string;
+  urlChange: (url: string) => void;
 }) {
   const { imgUri, pickImage } = useImgPicker(initialState);
+
+  useEffect(() => {
+    urlChange(imgUri);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imgUri]);
+
   return (
     <Pressable style={styles.container} onPress={pickImage}>
       {!imgUri && <Text style={styles.textStyle}>Upload {'\n'} Image</Text>}

@@ -20,25 +20,18 @@ export default function UploadScreen() {
       <StatusBar style='auto' />
       <ScrollView style={styles.container}>
         {/* basic info */}
-        <View
-          style={{
-            marginTop: 15,
-            paddingHorizontal: Spacing.IOS392Margin,
-          }}
-        >
+        <View style={styles.basicInfoWrap}>
           <ProgramBasicInfoWrap control={control} />
         </View>
 
         {/* Program Course */}
         <SectionDividerBar />
-        <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
+        <View style={styles.courseWrap}>
           <ProgramCourseWrap control={control} />
         </View>
         {/* Program Cost */}
         <SectionDividerBar />
-        <View
-          style={{ marginTop: 25, paddingHorizontal: Spacing.IOS392Margin }}
-        >
+        <View style={styles.costWrap}>
           <ProgramCostWrap control={control} />
         </View>
 
@@ -54,4 +47,10 @@ const styles = StyleSheet.create({
     // paddingTop: 15,
     backgroundColor: '#ffffff',
   },
+  basicInfoWrap: {
+    marginTop: 15,
+    paddingHorizontal: Spacing.IOS392Margin,
+  },
+  courseWrap: { paddingHorizontal: Spacing.IOS392Margin },
+  costWrap: { marginTop: 25, paddingHorizontal: Spacing.IOS392Margin },
 });

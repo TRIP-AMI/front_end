@@ -44,7 +44,7 @@ export default function ProgramCostWrap({
       content={
         <View>
           <BasicInput
-            value={`${costValue}`}
+            value={costValue}
             onChangeText={handleCostChange}
             placeholder='Enter only numbers.'
             keyboardType='numeric'

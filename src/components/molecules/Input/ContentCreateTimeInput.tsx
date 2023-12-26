@@ -1,14 +1,23 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TextInputProps,
+} from 'react-native';
 import { ReactNode } from 'react';
 import Colors from '@/styles/colors';
+
+interface ContentCreateTimeInputProps extends TextInputProps {
+  text: string;
+  icon?: ReactNode;
+}
 
 export default function ContentCreateTimeInput({
   text,
   icon,
-}: {
-  text: string;
-  icon?: ReactNode;
-}) {
+  ...props
+}: ContentCreateTimeInputProps) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       {/* icon */}
@@ -19,6 +28,8 @@ export default function ContentCreateTimeInput({
         keyboardType='numeric'
         maxLength={2}
         placeholder='00'
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
       />
       {/* description */}
       <Text style={{ marginLeft: 3, color: '#757575', fontSize: 12 }}>
