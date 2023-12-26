@@ -70,7 +70,12 @@ export default function MyPageScreen() {
     {
       id: 2,
       tabName: 'Review',
-      tabComponent: <ReviewItemList />,
+      tabComponent: (
+        <ReviewItemList
+          scrollEnabled={false}
+          emptyText='There are no reviews.'
+        />
+      ),
     },
   ];
 

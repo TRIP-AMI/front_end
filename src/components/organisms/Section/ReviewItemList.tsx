@@ -2,6 +2,8 @@ import ReviewItem from '@components/molecules/Item/ReviewItem';
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import EmptyText from '@components/atoms/Text/EmptyText';
+import TotalText from '@components/atoms/Text/TotalText';
+import Spacing from '@styles/spacing';
 import reviewApi from '@/services/module/review/review';
 
 type ReviewItemType = {
@@ -11,7 +13,15 @@ type ReviewItemType = {
   reviewContent: string;
 };
 
-function ReviewItemList() {
+function ReviewItemList({
+  scrollEnabled,
+  emptyText,
+  totalVisible,
+}: {
+  scrollEnabled: boolean;
+  emptyText: string;
+  totalVisible?: boolean;
+}) {
   const [dummyReview, setDummyReview] = useState<ReviewItemType[]>([]);
 
   const getData = async () => {
@@ -30,15 +40,22 @@ function ReviewItemList() {
   return (
     <View>
       {dummyReview.length === 0 ? (
-        <EmptyText text='There are no reviews.' />
+        <EmptyText text={emptyText} />
       ) : (
-        <FlatList
-          data={dummyReview}
-          renderItem={({ item }) => <ReviewItem item={item} />}
-          keyExtractor={(item) => item.reviewId.toString()}
-          scrollEnabled={false}
-          style={styles.listWrap}
-        />
+        <>
+          {totalVisible && (
+            <View style={styles.textContainer}>
+              <TotalText total={dummyReview.length} />
+            </View>
+          )}
+          <FlatList
+            data={dummyReview}
+            renderItem={({ item }) => <ReviewItem item={item} />}
+            keyExtractor={(item) => item.reviewId.toString()}
+            scrollEnabled={scrollEnabled}
+            style={styles.listWrap}
+          />
+        </>
       )}
     </View>
   );
@@ -47,6 +64,12 @@ function ReviewItemList() {
 const styles = StyleSheet.create({
   listWrap: {
     marginBottom: 52,
+  },
+  textContainer: {
+    marginTop: 10,
+    marginBottom: 20,
+    alignSelf: 'flex-start',
+    marginHorizontal: Spacing.IOS392Margin,
   },
 });
 
