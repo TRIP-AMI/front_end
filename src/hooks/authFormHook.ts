@@ -7,6 +7,8 @@ import {
   RootStackNavigationProp,
 } from '@/types/NavigationTypes';
 import { IJoinAuthInputs } from '@/types/FormTypes';
+import instance, { BASE_API_URL } from '@/services/config/axios';
+import showToast from '@/utils/toast/toast';
 
 const useAuthForm = ({
   mode,
@@ -27,6 +29,7 @@ const useAuthForm = ({
   const {
     control,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<IJoinAuthInputs>({
     mode: 'onChange',
@@ -40,13 +43,13 @@ const useAuthForm = ({
   const onConfirmEmail = async (data: IJoinAuthInputs) => {
     if (errors.email) return;
     try {
-      await console.log(data);
+      await instance.post(`${BASE_API_URL}/email`, { email: data.email });
       setIsEmailSent(true);
       setTitle(`To the email you entered\nAuthentication number has been sent`);
     } catch (e) {
+      showToast('This account is already registered.');
       setIsEmailSent(false);
       setTitle(TITLE);
-      console.log(e);
     }
   };
 
@@ -64,7 +67,9 @@ const useAuthForm = ({
         navigate('ResetPassword', { mode: 'RESET', email: data.email });
       }
     } catch (e) {
-      console.log(e);
+      setError('authCode', {
+        message: 'The authentication number is invalid.',
+      });
     }
   };
 

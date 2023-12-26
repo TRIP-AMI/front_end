@@ -1,5 +1,5 @@
-import { FlatList, View, Text, StyleSheet } from 'react-native';
-import Colors from '@/styles/colors';
+import { FlatList, View, StyleSheet } from 'react-native';
+import BulletListItem from '../Text/BulletListItem';
 
 export default function BasicModalDetail({
   data,
@@ -12,8 +12,8 @@ export default function BasicModalDetail({
         data={data}
         renderItem={({ item }) => {
           return (
-            <View style={{}}>
-              <Text style={styles.text}>{`\u2022 ${item.key}`}</Text>
+            <View>
+              <BulletListItem content={item.key} />
             </View>
           );
         }}
@@ -26,12 +26,5 @@ const styles = StyleSheet.create({
   listContainer: {
     flexDirection: 'row',
     marginTop: 14,
-  },
-  text: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 14,
-    lineHeight: 20,
-    paddingHorizontal: 20,
-    color: Colors.fontGray03,
   },
 });

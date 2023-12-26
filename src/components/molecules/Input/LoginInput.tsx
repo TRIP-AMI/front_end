@@ -20,10 +20,10 @@ export function EmailInput({
     name: 'email',
     control,
     rules: {
-      required: 'Please enter your email address',
+      required: true,
       pattern: {
         value: Regex.email,
-        message: 'This is an invalid email address',
+        message: 'It does not fit the email format.',
       },
     },
   });
@@ -39,6 +39,7 @@ export function EmailInput({
       autoFocus
       error={errorText}
       style={placeholder ? { fontFamily: 'Montserrat-Regular' } : undefined}
+      keyboardType='email-address'
     />
   );
 }
@@ -111,7 +112,7 @@ export function AuthCodeInput({
     name: 'authCode',
     control,
     rules: {
-      required: 'Please enter your authentication code',
+      required: true,
     },
   });
   return (
@@ -126,6 +127,7 @@ export function AuthCodeInput({
       error={errorText}
       style={{ fontFamily: 'Montserrat-Regular' }}
       autoFocus
+      keyboardType='number-pad'
     />
   );
 }
@@ -144,10 +146,10 @@ export function NameInput({
     name: 'nickname',
     control,
     rules: {
-      required: 'This is required',
+      required: true,
       maxLength: {
         value: 12,
-        message: 'No more than 12 characters',
+        message: 'It does not fit the name format.',
       },
     },
   });
@@ -161,7 +163,6 @@ export function NameInput({
       autoCorrect={false}
       autoCapitalize='none'
       autoFocus
-      maxLength={12}
       error={errorText}
       style={{ fontFamily: 'Montserrat-Regular' }}
     />

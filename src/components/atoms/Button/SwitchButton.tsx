@@ -4,17 +4,20 @@ import Colors from '@styles/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useRecoilState } from 'recoil';
 import profileType from '@utils/recoil/profile';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function SwitchButton() {
   const [profile, setProfileType] = useRecoilState(profileType);
 
-  function changeProfileType() {
+  const changeProfileType = async () => {
     if (profile === 'AMI') {
+      await AsyncStorage.setItem('profile', 'TOURIST');
       setProfileType('TOURIST');
     } else {
+      await AsyncStorage.setItem('profile', 'AMI');
       setProfileType('AMI');
     }
-  }
+  };
 
   return (
     <Pressable style={styles.container} onPress={() => changeProfileType()}>

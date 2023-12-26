@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
+import { Profile } from '@/types/UserTypes';
 
-const profileType = atom<'AMI' | 'TOURIST'>({
+const profileType = atom<Profile>({
   key: 'profileType',
   default: 'AMI',
 });

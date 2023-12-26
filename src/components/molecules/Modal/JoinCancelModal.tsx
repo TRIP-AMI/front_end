@@ -18,7 +18,7 @@ export default function JoinCancelModal() {
   const data = {
     title: 'Do you want to cancel join?',
     content:
-      'The information you entered will not be saved, and you won’t be able to use the service',
+      'The information you enter is not saved. If you do not sign up, you will be restricted from using TRIPAMI.',
   };
 
   return (
