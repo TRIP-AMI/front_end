@@ -1,13 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Category } from '@/constants/category';
-
-export type ProgramCostType = 'GUIDE' | 'ALL';
-
-export type ProgramCourseImg = {
-  imgUrl: string;
-  title: string;
-  subTitle: string;
-};
+import { ProgramCourse } from '@/types/program/ProgramCourse';
+import { ProgramCostType } from '@/types/program/ProgramCost';
 
 export interface CreateContentBasicForm {
   title: string;
@@ -26,23 +20,6 @@ export interface CreateContentBasicForm {
   programCourse: ProgramCourse[];
   programCost: string;
   programCostType: ProgramCostType;
-}
-
-export class ProgramCourse {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(
-    public id: string,
-    public time: string = '',
-    public distance: string = '',
-    public walkingTime: string = '',
-    public carTime: string = '',
-    public imgInfo: ProgramCourseImg = {
-      imgUrl: '',
-      title: '',
-      subTitle: '',
-    },
-    // eslint-disable-next-line no-empty-function
-  ) {}
 }
 
 const useUpload = () => {

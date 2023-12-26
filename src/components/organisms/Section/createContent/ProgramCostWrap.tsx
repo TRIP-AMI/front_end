@@ -3,7 +3,7 @@ import { Control, useController } from 'react-hook-form';
 import Checkbox from 'expo-checkbox';
 import BasicInput from '@/components/atoms/Input/BasicInput';
 import ContentInputWrap from '@/components/molecules/Input/ContentInputWrap';
-import { ProgramCostType } from '@/hooks/uploadHook';
+import { ProgramCostType } from '@/types/program/ProgramCost';
 import Colors from '@/styles/colors';
 import { extractNumbers } from '@/utils/functions';
 
