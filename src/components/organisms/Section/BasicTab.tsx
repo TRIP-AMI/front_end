@@ -8,7 +8,13 @@ type TabTypes = {
   tabComponent: React.ReactNode;
 };
 
-function BasicTab({ data }: { data: TabTypes[] }) {
+function BasicTab({
+  data,
+  fullScreen,
+}: {
+  data: TabTypes[];
+  fullScreen?: boolean;
+}) {
   const [activeTab, setActiveTab] = React.useState(data[0].tabName);
 
   const renderTab = (item: TabTypes) => (
@@ -34,7 +40,12 @@ function BasicTab({ data }: { data: TabTypes[] }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.tabContainer}>
+      <View
+        style={[
+          styles.tabContainer,
+          fullScreen && styles.tabContainerFullScreen,
+        ]}
+      >
         {data.map((item) => renderTab(item))}
       </View>
       {data.map((item) => activeTab === item.tabName && item.tabComponent)}
@@ -50,6 +61,9 @@ const styles = StyleSheet.create({
     height: 45,
     flexDirection: 'row',
     marginBottom: 25,
+  },
+  tabContainerFullScreen: {
+    marginBottom: 20,
   },
   tabTouch: {
     flex: 1,
