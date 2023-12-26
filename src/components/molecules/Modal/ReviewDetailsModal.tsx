@@ -1,13 +1,16 @@
 import useModalHook from '@hooks/modalHook';
 import BasicTwoButtonModal from '@components/atoms/Modal/BasicTwoButtonsModal';
 import BasicModalText from '@components/atoms/Text/BasicModalText';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function ReviewDetailsModal() {
   const { resetModal } = useModalHook();
+  const navigation = useNavigation<RootStackNavigationProp>();
 
   const onConfirm = () => {
     resetModal();
-    console.log('Review Details');
+    navigation.navigate('ReviewDetails');
   };
 
   return (
