@@ -5,6 +5,8 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import modalState from '@utils/recoil/modal';
 import { useNavigation } from '@react-navigation/native';
 import profileType from '@utils/recoil/profile';
+import showToast from '@utils/toast/toast';
+import Spacing from '@styles/spacing';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function ApplicationContentItem({
@@ -12,23 +14,33 @@ function ApplicationContentItem({
   title,
   subTitle,
   price,
+  date,
   review,
 }: {
   imgUrl: string;
   title: string;
   subTitle: string;
   price: string;
+  date: string;
   review?: boolean;
 }) {
   const profile = useRecoilValue(profileType);
   const setModal = useSetRecoilState(modalState);
   const navigation = useNavigation<RootStackNavigationProp>();
+  const today = new Date();
+  const contentDate = new Date(
+    Number(date.slice(6)),
+    Number(date.slice(0, 2)) - 1,
+    Number(date.slice(3, 5)),
+  );
 
   const onReviewPress = () => {
-    setModal({
-      modalName: 'REVIEW',
-      applicationItem: { imgUrl, title },
-    });
+    if (contentDate < today) {
+      setModal({
+        modalName: 'REVIEW',
+        applicationItem: { imgUrl, title },
+      });
+    } else showToast('This is not a review period.', Spacing.ToastBasic);
   };
 
   // TODO 알맞는 컨텐츠로 이동해야 함

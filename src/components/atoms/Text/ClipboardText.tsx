@@ -1,10 +1,12 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
+import showToast from '@utils/toast/toast';
+import Spacing from '@styles/spacing';
 
-// TODO clipboard 클릭 시 토스트 메세지 추가
 function ClipboardText({ text }: { text: string }) {
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(text);
+    showToast('Copy ro clipboard', Spacing.ToastBasic);
   };
 
   return (

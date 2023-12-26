@@ -4,17 +4,29 @@ import VerticalLine from '@components/atoms/etc/VerticalLine';
 import Colors from '@styles/colors';
 import useModalHook from '@hooks/modalHook';
 import { useNavigation } from '@react-navigation/native';
+import showToast from '@utils/toast/toast';
+import Spacing from '@styles/spacing';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
-function ApplicationTable() {
+function ApplicationTable({ date }: { date: string }) {
   const { setModalName } = useModalHook();
   const navigation = useNavigation<RootStackNavigationProp>();
+  const today = new Date();
+  const contentDate = new Date(
+    Number(date.slice(6)),
+    Number(date.slice(0, 2)) - 1,
+    Number(date.slice(3, 5)),
+  );
 
   const tableData = [
     {
       id: 1,
       title: 'Cancellation',
-      onPress: () => setModalName('APPLICATION_CANCEL'),
+      onPress: () => {
+        if (contentDate < today) setModalName('APPLICATION_CANCEL');
+        else
+          showToast('This is not a cancellation period.', Spacing.ToastBasic);
+      },
     },
     {
       id: 2,
