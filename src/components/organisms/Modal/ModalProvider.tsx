@@ -56,7 +56,7 @@ export default function ModalProvider() {
     ),
     APPLICATION_CANCEL: <ApplicationCancel />,
     APPLICANT_INFO: <ApplicantInfoModal />,
-    REVIEW_DETAILS: <ReviewDetailsModal />,
+    REVIEW_DETAIL: <ReviewDetailsModal />,
   };
 
   return (
