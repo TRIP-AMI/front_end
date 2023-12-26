@@ -14,28 +14,22 @@ function ApplicationContentItem({
   title,
   subTitle,
   price,
-  date,
+  applicationEnd,
   review,
 }: {
   imgUrl: string;
   title: string;
   subTitle: string;
   price: string;
-  date: string;
+  applicationEnd?: boolean;
   review?: boolean;
 }) {
   const profile = useRecoilValue(profileType);
   const setModal = useSetRecoilState(modalState);
   const navigation = useNavigation<RootStackNavigationProp>();
-  const today = new Date();
-  const contentDate = new Date(
-    Number(date.slice(6)),
-    Number(date.slice(0, 2)) - 1,
-    Number(date.slice(3, 5)),
-  );
 
   const onReviewPress = () => {
-    if (contentDate < today) {
+    if (applicationEnd) {
       setModal({
         modalName: 'REVIEW',
         applicationItem: { imgUrl, title },
@@ -72,7 +66,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'white',
   },
   subContainer: {
     flex: 1,

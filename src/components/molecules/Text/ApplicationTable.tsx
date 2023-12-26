@@ -8,22 +8,22 @@ import showToast from '@utils/toast/toast';
 import Spacing from '@styles/spacing';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
-function ApplicationTable({ date }: { date: string }) {
+function ApplicationTable({
+  applicationEnd,
+  noBroder,
+}: {
+  applicationEnd: boolean;
+  noBroder?: boolean;
+}) {
   const { setModalName } = useModalHook();
   const navigation = useNavigation<RootStackNavigationProp>();
-  const today = new Date();
-  const contentDate = new Date(
-    Number(date.slice(6)),
-    Number(date.slice(0, 2)) - 1,
-    Number(date.slice(3, 5)),
-  );
 
   const tableData = [
     {
       id: 1,
       title: 'Cancellation',
       onPress: () => {
-        if (contentDate < today) setModalName('APPLICATION_CANCEL');
+        if (!applicationEnd) setModalName('APPLICATION_CANCEL');
         else
           showToast('This is not a cancellation period.', Spacing.ToastBasic);
       },
@@ -40,7 +40,7 @@ function ApplicationTable({ date }: { date: string }) {
     },
   ];
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, noBroder && styles.noBorder]}>
       {tableData.map((item, index) => (
         <>
           <AmiScore
@@ -49,7 +49,9 @@ function ApplicationTable({ date }: { date: string }) {
             onPress={item.onPress}
             style={styles.text}
           />
-          {index !== tableData.length - 1 && <VerticalLine hei={15} />}
+          {!noBroder && index !== tableData.length - 1 && (
+            <VerticalLine hei={15} />
+          )}
         </>
       ))}
     </View>
@@ -65,6 +67,12 @@ const styles = StyleSheet.create({
     borderColor: Colors.lineGray04,
     borderWidth: 1,
     marginTop: 15,
+  },
+  noBorder: {
+    borderWidth: 0,
+    backgroundColor: '#FFFFFF',
+    marginTop: 2,
+    marginBottom: 20,
   },
   text: {
     color: Colors.fontGray03,
