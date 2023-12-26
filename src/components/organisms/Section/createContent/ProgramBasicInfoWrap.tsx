@@ -2,6 +2,9 @@ import { Button, Pressable, View, Text } from 'react-native';
 import { Control, useController } from 'react-hook-form';
 import { Octicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+
+import { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
 import ContentInputWrap from '@/components/molecules/Input/ContentInputWrap';
 import BasicInput from '@/components/atoms/Input/BasicInput';
 import PressHashTag from '@/components/atoms/Tag/PressHashTag';
@@ -9,6 +12,8 @@ import { Category, CategoryList } from '@/constants/category';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import Counter from '@/components/molecules/Controller/Counter';
+import useModalHook from '@/hooks/modalHook';
+import TimePickerModal from '../../Modal/TimePickerModal';
 
 // input =======================================================================================================================================
 function Title({
@@ -190,8 +195,17 @@ function TimeToMeet({
   control: Control<any>;
 }) {
   const {
-    field: { value },
+    field: { value, onChange },
   } = useController({ control, name: 'timeToMeet' });
+
+  const { isVisible, onOpen, onClose } = useModalHook();
+  const [date, setDate] = useState<Date>(new Date());
+
+  useEffect(() => {
+    const temp = dayjs(date);
+    onChange({ h: temp.format('HH'), m: temp.format('mm') });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [date]);
 
   let labelText = 'hours / minutes';
 
@@ -201,7 +215,19 @@ function TimeToMeet({
 
   return (
     <View>
-      <SelectButton title={labelText} onPress={() => {}} />
+      <SelectButton
+        title={labelText}
+        onPress={() => {
+          onOpen();
+        }}
+      />
+      {/* modal */}
+      <TimePickerModal
+        isVisible={isVisible}
+        onClose={onClose}
+        date={date}
+        setDate={setDate}
+      />
     </View>
   );
 }
