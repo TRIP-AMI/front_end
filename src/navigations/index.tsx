@@ -12,6 +12,7 @@ import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
 import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import BookDetailsScreen from '@screens/BookDetailsScreen';
+import SettingScreen from '@screens/SettingScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -137,6 +138,16 @@ function Navigation() {
             component={BookDetailsScreen}
             options={{
               title: 'Application details',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='Setting'
+            component={SettingScreen}
+            options={{
+              title: 'Settings',
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeftArrow />,
               headerShadowVisible: false,

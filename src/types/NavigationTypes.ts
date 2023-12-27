@@ -43,6 +43,7 @@ export type RootStackParamList = {
   ApplicationDetails: undefined;
   SelectProfile: SelectProfileProps;
   BookDetails: undefined;
+  Setting: undefined;
 };
 
 export type BottomTabParamList = {

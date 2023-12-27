@@ -1,18 +1,13 @@
 import { View, StyleSheet } from 'react-native';
 import { FeatherIconButton } from '@components/atoms/Button/IconButton';
-import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 export default function HomeHeaderIcons() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  console.log(isVisible);
-
+  const navigation = useNavigation<RootStackNavigationProp>();
   const onOpen = () => {
-    setIsVisible(true);
+    navigation.navigate('Setting');
   };
-  // const onClose = () => {
-  //   setIsVisible(false);
-  // };
 
   return (
     <View style={styles.container}>
