@@ -38,7 +38,12 @@ export default function BasicInput({
           placeholderTextColor={Colors.fontGray05}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...props}
-          style={[styles.input, textareaStyle, props.style]}
+          style={[
+            styles.input,
+            textareaStyle,
+            props.style,
+            timer && { flex: 1 },
+          ]}
           multiline={textarea}
           onFocus={() => setIsTouched(true)}
           onEndEditing={() => setIsTouched(false)}

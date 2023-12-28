@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import joinAuthApi from '@services/module/join/join';
 import {
   EmailAuthProps,
   RootStackNavigationProp,
@@ -46,7 +45,6 @@ const useAuthForm = ({
 
   // TODO: 이메일 인증 요청
   const onConfirmEmail = async (data: IJoinAuthInputs) => {
-    console.log(data);
     if (errors.email) return;
     try {
       await instance.post(`${BASE_API_URL}/email`, { email: data.email });
@@ -66,21 +64,17 @@ const useAuthForm = ({
 
   // TODO: 인증 코드 확인 요청
   const onCheckAuthCode = async (data: IJoinAuthInputs) => {
-    if (errors.authCode || !data.authCode) return;
-    // TODO: 인증 코드 유효시간 만료 시 에러 처리 수정
-    if (timer === 0) {
-      setError('authCode', {
-        message: 'The authentication number has expired.',
-      });
-      return;
-    }
+    if (errors.authCode || !data.authCode || timer === 0) return;
     try {
       if (mode === 'JOIN') {
-        await joinAuthApi.checkAuthCode(data.authCode);
-        console.log(
-          `auth success (email: ${email}, marketing agree: ${params?.optionalChecked})`,
-        );
-        navigate('CreateName', { email });
+        await instance.post(`${BASE_API_URL}/confirm`, {
+          email,
+          authCode: data.authCode,
+        });
+        navigate('CreateName', {
+          email,
+          agreedMarketing: params?.optionalChecked || false,
+        });
       } else if (mode === 'FIND_PW') {
         navigate('ResetPassword', { mode: 'RESET', email });
       }

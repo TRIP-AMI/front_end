@@ -9,6 +9,7 @@ export type CreatePasswordProps = {
 
 export type CreateNameProps = {
   email: string;
+  agreedMarketing: boolean;
 };
 
 export type EmailAuthProps = {
