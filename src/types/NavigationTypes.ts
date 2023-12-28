@@ -22,6 +22,13 @@ export type SelectProfileProps = {
   imgUrl: string;
 };
 
+export type JoinTemsScreen = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
+
+export type JoinTermsProps = {
+  en: string;
+  ko: string;
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -34,6 +41,10 @@ export type RootStackParamList = {
   Category: { title: string };
   Login: undefined;
   Join: undefined;
+  Age: JoinTermsProps;
+  Privacy: JoinTermsProps;
+  Terms: JoinTermsProps;
+  Marketing: JoinTermsProps;
   JoinAuth: EmailAuthProps;
   CreateName: CreateNameProps;
   CreatePassword: CreatePasswordProps;
