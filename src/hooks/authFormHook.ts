@@ -9,6 +9,7 @@ import {
 import { IJoinAuthInputs } from '@/types/FormTypes';
 import instance, { BASE_API_URL } from '@/services/config/axios';
 import showToast from '@/utils/toast/toast';
+import useModalHook from './modalHook';
 
 const useAuthForm = ({
   mode,
@@ -25,6 +26,7 @@ const useAuthForm = ({
   const { navigate } = useNavigation<RootStackNavigationProp>();
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [title, setTitle] = useState(TITLE);
+  const { setModalName } = useModalHook();
 
   const {
     control,
@@ -47,7 +49,8 @@ const useAuthForm = ({
       setIsEmailSent(true);
       setTitle(`To the email you entered\nAuthentication number has been sent`);
     } catch (e) {
-      showToast('This account is already registered.');
+      if (mode === 'JOIN') showToast('This account is already registered.');
+      else if (mode === 'FIND_PW') setModalName('AUTH_ALERT');
       setIsEmailSent(false);
       setTitle(TITLE);
     }
