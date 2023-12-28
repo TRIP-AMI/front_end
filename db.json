@@ -170,6 +170,9 @@
   "email": {},
   "nickname": {},
   "confirm": {},
+  "password": {},
+  "join": {},
+  "resetPassword": {},
   "login": {
     "memberId": 123,
     "email": "tripami@gmail.com",

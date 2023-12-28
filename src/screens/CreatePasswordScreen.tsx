@@ -6,6 +6,7 @@ import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
 import { ICreatePasswordInputs } from '@/types/FormTypes';
+import instance, { BASE_API_URL } from '@/services/config/axios';
 
 export default function CreatePasswordScreen({
   route,
@@ -13,7 +14,7 @@ export default function CreatePasswordScreen({
   route: { params: CreatePasswordProps };
 }) {
   const { setModalName } = useModalHook();
-  const { mode, nickname, email } = route.params;
+  const { mode, nickname, email, agreedMarketing } = route.params;
   const {
     control,
     handleSubmit,
@@ -32,14 +33,23 @@ export default function CreatePasswordScreen({
     if (errors.password || errors.reentered || data.password !== data.reentered)
       return;
     try {
+      await instance.post(`${BASE_API_URL}/password`, {
+        password: data.password,
+      });
       if (mode === 'CREATE') {
-        await console.log(
-          `nickname: ${nickname} password: ${data.password}, email: ${email}`,
-        );
+        await instance.post(`${BASE_API_URL}/join`, {
+          email,
+          nickName: nickname,
+          password: data.password,
+          agreedMarketing,
+        });
         setModalName('JOIN_COMPLETE', {
           title: `Membership registration\nhas been completed!`,
         });
       } else if (mode === 'RESET') {
+        await instance.post(`${BASE_API_URL}/resetPassword`, {
+          password: data.password,
+        });
         setModalName('JOIN_COMPLETE', {
           title: 'Your Password has been reset.',
         });
