@@ -22,6 +22,10 @@ export type SelectProfileProps = {
   imgUrl: string;
 };
 
+export type CalendarProps = {
+  availableDates: string[];
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -39,7 +43,7 @@ export type RootStackParamList = {
   CreatePassword: CreatePasswordProps;
   FindPassword: EmailAuthProps;
   ResetPassword: CreatePasswordProps;
-  Calendar: undefined;
+  Calendar: CalendarProps;
   ApplicationDetails: undefined;
   SelectProfile: SelectProfileProps;
   BookDetails: undefined;
@@ -49,9 +53,12 @@ export type BottomTabParamList = {
   Menu: undefined;
   Like: undefined;
   Home: undefined;
-  Upload: undefined;
+  Upload: CalendarProps;
   MyPage: undefined;
 };
 
 export type RootStackNavigationProp =
   NativeStackNavigationProp<RootStackParamList>;
+
+export type BottomTabNavigationProp =
+  NativeStackNavigationProp<BottomTabParamList>;

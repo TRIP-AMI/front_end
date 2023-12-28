@@ -2,22 +2,33 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import dayjs from 'dayjs';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Octicons } from '@expo/vector-icons';
+import { StackScreenProps } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import Spacing from '@/styles/spacing';
 import { pickerDateList } from '@/hooks/calendarHook';
-import selectCalendarList from '@/utils/recoil/calendar';
 import CalendarPicker from '@/components/molecules/Calendar/CalendarPicker';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import pickerSelectValue, { pickerList } from '@/utils/recoil/picker';
 import useModalHook from '@/hooks/modalHook';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
+import {
+  BottomTabNavigationProp,
+  RootStackParamList,
+} from '@/types/NavigationTypes';
 
-export default function CalendarScreen() {
+export type CalendarScreenProps = StackScreenProps<
+  RootStackParamList,
+  'Calendar'
+>;
+
+export default function CalendarScreen({ route }: CalendarScreenProps) {
+  const { params } = route;
+  const navigation = useNavigation<BottomTabNavigationProp>();
   const { setModalName } = useModalHook();
-  const [selectDateList, setSelectDateList] =
-    useRecoilState(selectCalendarList);
+  const [selectDateList, setSelectDateList] = useState<string[]>([]);
   const setPickerList = useSetRecoilState(pickerList);
   const [pickerSelectDate, setPickerSelectDate] =
     useRecoilState(pickerSelectValue);
@@ -28,6 +39,13 @@ export default function CalendarScreen() {
     setPickerList(pickerDateList());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (params && params.availableDates) {
+      setSelectDateList(params.availableDates);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
 
   const handleModalOpen = () => {
     setModalName('PICKER_SELECT');
@@ -42,7 +60,7 @@ export default function CalendarScreen() {
   const checkConfirm = () => selectDateList.length <= 0;
 
   const confirmPress = () => {
-    console.log('선택되었다');
+    navigation.navigate('Upload', { availableDates: selectDateList });
   };
 
   return (
@@ -60,7 +78,11 @@ export default function CalendarScreen() {
           />
         </View>
         {/* calendar */}
-        <CalendarPicker selectDate={pickerSelectDate} />
+        <CalendarPicker
+          selectDate={pickerSelectDate}
+          selectDateList={selectDateList}
+          setSelectDateList={setSelectDateList}
+        />
       </View>
       <SectionDividerBar style={{ marginVertical: 30 }} />
       <View

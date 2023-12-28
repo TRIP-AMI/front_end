@@ -1,7 +1,7 @@
-import { Button, Pressable, View, Text } from 'react-native';
+import { Pressable, View, Text } from 'react-native';
 import { Control, useController } from 'react-hook-form';
 import { Octicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
@@ -10,7 +10,10 @@ import BasicInput from '@/components/atoms/Input/BasicInput';
 import PressHashTag from '@/components/atoms/Tag/PressHashTag';
 import { Category, CategoryList } from '@/constants/category';
 import SelectButton from '@/components/atoms/Button/SelectButton';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import {
+  BottomTabParamList,
+  RootStackNavigationProp,
+} from '@/types/NavigationTypes';
 import Counter from '@/components/molecules/Controller/Counter';
 import useModalHook from '@/hooks/modalHook';
 import TimePickerModal from '../../Modal/TimePickerModal';
@@ -237,23 +240,51 @@ function AvailableDates({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
 }) {
+  const { params } = useRoute<RouteProp<BottomTabParamList, 'Upload'>>();
   const navigation = useNavigation<RootStackNavigationProp>();
   const {
-    field: { value },
+    field: { value, onChange },
   } = useController({ control, name: 'availableDates' });
 
+  useEffect(() => {
+    if (params && params.availableDates) {
+      onChange(params.availableDates);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
+
   const handleCal = () => {
-    navigation.navigate('Calendar');
+    navigation.navigate('Calendar', { availableDates: value });
   };
 
   return (
     <View>
-      <View>
+      <Pressable
+        onPress={handleCal}
+        style={{
+          padding: 14,
+          borderWidth: 1,
+          borderColor: '#ECECEC',
+          borderRadius: 5,
+        }}
+      >
+        <Text style={{ color: '#B9B9B9' }}>Please select a date.</Text>
+      </Pressable>
+
+      <View style={{ marginTop: 8 }}>
         {value.map((date: string) => (
-          <Text>{date}</Text>
+          <Text
+            key={date}
+            style={{
+              fontFamily: 'Montserrat-Medium',
+              fontSize: 16,
+              lineHeight: 22,
+            }}
+          >
+            {dayjs(date).format('MMMM YYYY')}
+          </Text>
         ))}
       </View>
-      <Button title='calendar go' onPress={handleCal} />
     </View>
   );
 }
@@ -331,7 +362,6 @@ export default function ProgramBasicInfoWrap({
         content={<TimeToMeet control={control} />}
       />
 
-      {/* TODO: data 매핑 해야함 */}
       {/* Available Dates */}
       <ContentInputWrap
         title='Available Dates'

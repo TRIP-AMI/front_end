@@ -86,6 +86,7 @@ function Navigation() {
             name='Calendar'
             component={CalendarScreen}
             options={{
+              presentation: 'modal',
               title: 'Available Dates',
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeft />,
