@@ -25,8 +25,11 @@ const useAuthForm = ({
 
   const { navigate } = useNavigation<RootStackNavigationProp>();
   const [isEmailSent, setIsEmailSent] = useState(false);
+  const [email, setEmail] = useState('');
   const [title, setTitle] = useState(TITLE);
   const { setModalName } = useModalHook();
+  const TIMER = 180;
+  const [timer, setTimer] = useState(TIMER);
 
   const {
     control,
@@ -41,33 +44,45 @@ const useAuthForm = ({
     },
   });
 
-  // TODO: 이메일 인증 요청, 에러 처리
+  // TODO: 이메일 인증 요청
   const onConfirmEmail = async (data: IJoinAuthInputs) => {
+    console.log(data);
     if (errors.email) return;
     try {
       await instance.post(`${BASE_API_URL}/email`, { email: data.email });
       setIsEmailSent(true);
       setTitle(`To the email you entered\nAuthentication number has been sent`);
+      setEmail(data.email);
+      setTimer(TIMER);
     } catch (e) {
       if (mode === 'JOIN') showToast('This account is already registered.');
       else if (mode === 'FIND_PW') setModalName('AUTH_ALERT');
       setIsEmailSent(false);
       setTitle(TITLE);
+      setTimer(TIMER);
+      setEmail('');
     }
   };
 
-  // TODO: 인증 코드 확인 요청, 에러 처리
+  // TODO: 인증 코드 확인 요청
   const onCheckAuthCode = async (data: IJoinAuthInputs) => {
-    if (errors.authCode) return;
+    if (errors.authCode || !data.authCode) return;
+    // TODO: 인증 코드 유효시간 만료 시 에러 처리 수정
+    if (timer === 0) {
+      setError('authCode', {
+        message: 'The authentication number has expired.',
+      });
+      return;
+    }
     try {
       if (mode === 'JOIN') {
         await joinAuthApi.checkAuthCode(data.authCode);
         console.log(
-          `auth success (email: ${data.email}, marketing agree: ${params?.optionalChecked})`,
+          `auth success (email: ${email}, marketing agree: ${params?.optionalChecked})`,
         );
-        navigate('CreateName', { email: data.email });
+        navigate('CreateName', { email });
       } else if (mode === 'FIND_PW') {
-        navigate('ResetPassword', { mode: 'RESET', email: data.email });
+        navigate('ResetPassword', { mode: 'RESET', email });
       }
     } catch (e) {
       setError('authCode', {
@@ -81,9 +96,11 @@ const useAuthForm = ({
     title,
     control,
     errors,
+    timer,
     handleSubmit,
     onConfirmEmail,
     onCheckAuthCode,
+    setTimer,
   };
 };
 
