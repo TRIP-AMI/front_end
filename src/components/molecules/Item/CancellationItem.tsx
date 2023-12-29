@@ -27,7 +27,6 @@ function CancellationItem({ item }: { item: CancellationItemProps }) {
         title={item.title}
         subTitle={item.subTitle}
         price={item.price}
-        date={item.date}
       />
     </View>
   );
