@@ -7,12 +7,18 @@ import BasicButton from '@/components/atoms/Button/BasicButton';
 import ProgramCourseWrap from '@/components/organisms/Section/createContent/ProgramCourseWrap';
 import ProgramCostWrap from '@/components/organisms/Section/createContent/ProgramCostWrap';
 import ProgramBasicInfoWrap from '@/components/organisms/Section/createContent/ProgramBasicInfoWrap';
+import useModalHook from '@/hooks/modalHook';
 
 export default function UploadScreen() {
   const { control, handleSubmit } = useUpload();
+  const { setModalName } = useModalHook();
 
   const onSubmit = (data: CreateContentBasicForm) => {
     console.log('form data', data);
+    // TODO: upload data to server
+
+    // 완료시 모달창 띄우기
+    setModalName('UPLOAD_COMPLETE');
   };
 
   return (

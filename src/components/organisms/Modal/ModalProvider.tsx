@@ -16,6 +16,7 @@ import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
 import JoinCompleteModal from '@/components/organisms/Modal/JoinCompleteModal';
 // import useLoginHook from '@/hooks/loginHook';
 import PickerSelectModal from './PickerSelectModal';
+import UploadCompleteModal from './UploadCompleteModal';
 
 export default function ModalProvider() {
   const modal = useRecoilValue(modalState);
@@ -47,6 +48,7 @@ export default function ModalProvider() {
       />
     ),
     APPLY_COMPLETE: <ApplyCompleteModal />,
+    UPLOAD_COMPLETE: <UploadCompleteModal />,
     REVIEW: modal?.applicationItem && (
       <ReviewModal
         imgUrl={modal.applicationItem.imgUrl}
