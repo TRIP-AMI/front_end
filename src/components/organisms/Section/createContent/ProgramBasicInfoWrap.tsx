@@ -210,10 +210,10 @@ function TimeToMeet({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
 
-  let labelText = 'hours / minutes';
+  let labelText = 'hours : minutes';
 
   if (value.h && value.m) {
-    labelText = `${value.h} / ${value.m}`;
+    labelText = `${value.h} : ${value.m}`;
   }
 
   return (
@@ -281,7 +281,7 @@ function AvailableDates({
               lineHeight: 22,
             }}
           >
-            {dayjs(date).format('MMMM YYYY')}
+            {dayjs(date).format('MMMM DD, YYYY')}
           </Text>
         ))}
       </View>

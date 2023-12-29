@@ -1,6 +1,8 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable camelcase */
 import dayjs, { Dayjs } from 'dayjs';
+import { useEffect, useState } from 'react';
+import { CalendarProps } from '@/types/NavigationTypes';
 
 export interface CalendarDateItem {
   value: number;
@@ -109,7 +111,7 @@ export const calculateDateList = ({ selectDate }: { selectDate: string }) => {
   });
 };
 
-export const pickerDateList = (): { label: string; value: Dayjs }[] => {
+export const selectableMonthsList = (): { label: string; value: string }[] => {
   const temp = [];
   const now = dayjs().startOf('M');
   const maxDate = 3;
@@ -117,12 +119,34 @@ export const pickerDateList = (): { label: string; value: Dayjs }[] => {
     const tempDate = now.add(i, 'M');
     temp.push({
       label: tempDate.format('MMMM YYYY'),
-      value: tempDate,
+      value: tempDate.format(),
     });
   }
   return temp;
 };
 
-export default function useCalendar() {
-  return {};
+export default function useCalendar(params: Readonly<CalendarProps>) {
+  const [selectDateList, setSelectDateList] = useState<string[]>([]);
+
+  const deleteDate = (date: string) => {
+    setSelectDateList((prev) =>
+      prev.filter((selectDate) => dayjs(date).format() !== selectDate),
+    );
+  };
+
+  const checkConfirm = () => selectDateList.length <= 0;
+
+  useEffect(() => {
+    if (params && params.availableDates) {
+      setSelectDateList(params.availableDates);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
+
+  return {
+    selectDateList,
+    setSelectDateList,
+    deleteDate,
+    checkConfirm,
+  };
 }
