@@ -21,16 +21,19 @@ const dummyAmiData = [
     data: [
       {
         id: 1,
+        key: 'Experience',
         score: 0,
         title: 'Experience',
       },
       {
         id: 2,
+        key: 'Review',
         score: 0,
         title: 'Review',
       },
       {
         id: 3,
+        key: 'Rating',
         score: 0,
         title: 'Rating',
       },
