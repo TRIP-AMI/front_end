@@ -6,34 +6,20 @@ import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import TextButton from '@/components/atoms/Button/TextButton';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import {
+  JoinTemsScreen,
+  RootStackNavigationProp,
+} from '@/types/NavigationTypes';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
-
-// TODO: 약관 데이터 수정
-const data = [
-  {
-    id: 1,
-    content: 'Agree to Terms and Conditions of Service (Required)',
-    required: true,
-  },
-  {
-    id: 2,
-    content: `Consent to collect /\n use personal information (Required)`,
-    required: true,
-  },
-  {
-    id: 3,
-    content: 'Accept receipt of marketing benefit notifications (Optional)',
-    required: false,
-  },
-];
+import JOIN_TERMS, { JoinTermsDataType } from '@/constants/joinTerms';
 
 export default function JoinScreen() {
   const [checkedIds, setCheckedIds] = useState<number[]>([]);
   const [isRequiredAgree, setIsRequiredAgree] = useState(false);
   const { setModalName } = useModalHook();
   const { navigate } = useNavigation<RootStackNavigationProp>();
+  const OPTIONAL_ID = 4;
 
   const onCheck = (id: number) => {
     if (checkedIds.includes(id)) {
@@ -44,20 +30,20 @@ export default function JoinScreen() {
   };
 
   const onFullAgree = () => {
-    console.log('full agree');
-    if (checkedIds.length === data.length) {
+    if (checkedIds.length === JOIN_TERMS.length) {
       setCheckedIds([]);
       return;
     }
-    setCheckedIds(data.map((item) => item.id));
+    setCheckedIds(JOIN_TERMS.map((item) => item.id));
   };
 
   useEffect(() => {
-    const checkedRequired = data.filter(
+    const checkedRequired = JOIN_TERMS.filter(
       (item) => checkedIds.includes(item.id) && item.required,
     );
     if (
-      checkedRequired.length === data.filter((item) => item.required).length
+      checkedRequired.length ===
+      JOIN_TERMS.filter((item) => item.required).length
     ) {
       setIsRequiredAgree(true);
     } else {
@@ -73,7 +59,15 @@ export default function JoinScreen() {
     if (!isRequiredAgree) return;
     navigate('JoinAuth', {
       mode: 'JOIN',
-      optionalChecked: checkedIds.includes(3),
+      optionalChecked: checkedIds.includes(OPTIONAL_ID),
+    });
+  };
+
+  const onPressView = (item: JoinTermsDataType) => {
+    const screen = item.title.split(' ')[0] as JoinTemsScreen;
+    navigate(screen, {
+      en: item.detail_en,
+      ko: item.detail_ko,
     });
   };
 
@@ -85,25 +79,29 @@ export default function JoinScreen() {
           content='Full Agree'
           customStyle={{
             borderColor:
-              checkedIds.length === data.length
+              checkedIds.length === JOIN_TERMS.length
                 ? Colors.lineGray04
                 : Colors.fontGray06,
           }}
-          background={checkedIds.length === data.length}
+          background={checkedIds.length === JOIN_TERMS.length}
         />
         <View style={styles.itemContainer}>
-          {data.map((item) => (
+          {JOIN_TERMS.map((item) => (
             <View key={item.id} style={styles.item}>
               <View style={styles.checkbox}>
                 <LabeledCheckBox
                   label={item.content}
+                  required={item.required ? '(Required)' : '(Optional)'}
                   textStyle={styles.itemText}
                   isChecked={checkedIds.includes(item.id)}
                   onCheck={() => onCheck(item.id)}
                 />
               </View>
-              {/* TODO: onPressView 정의 */}
-              <TextButton title='View' style={styles.tag} onPress={() => {}} />
+              <TextButton
+                title='View'
+                style={styles.tag}
+                onPress={() => onPressView(item)}
+              />
             </View>
           ))}
         </View>

@@ -10,12 +10,14 @@ import Colors from '@/styles/colors';
 
 interface InputProps extends TextInputProps {
   textarea?: boolean;
+  timer?: JSX.Element;
   error?: string;
   valid?: string;
 }
 
 export default function BasicInput({
   textarea,
+  timer,
   error,
   valid,
   ...props
@@ -29,17 +31,24 @@ export default function BasicInput({
         style={[
           styles.container,
           isTouched && { borderColor: Colors.lineGray01 },
+          timer && { flexDirection: 'row', justifyContent: 'space-between' },
         ]}
       >
         <TextInput
           placeholderTextColor={Colors.fontGray05}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...props}
-          style={[styles.input, textareaStyle, props.style]}
+          style={[
+            styles.input,
+            textareaStyle,
+            props.style,
+            timer && { flex: 1 },
+          ]}
           multiline={textarea}
           onFocus={() => setIsTouched(true)}
           onEndEditing={() => setIsTouched(false)}
         />
+        {timer && timer}
         {/* 최대 갯수 설정시 사용 */}
         {textarea && props.maxLength && (
           <View style={{ flexDirection: 'row-reverse' }}>

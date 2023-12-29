@@ -35,6 +35,7 @@ export default function CreateNameScreen({
     },
   });
   const { setModalName } = useModalHook();
+  const { email, agreedMarketing } = route.params;
 
   // TODO: API 연결, 에러 처리
   const onNext = async (data: ICreateNameInputs) => {
@@ -46,7 +47,8 @@ export default function CreateNameScreen({
       navigation.navigate('CreatePassword', {
         mode: 'CREATE',
         nickname: data.nickname,
-        email: route.params.email,
+        email,
+        agreedMarketing,
       });
     } catch (error) {
       showToast('The name is already in use.', Spacing.ToastWithButtons);

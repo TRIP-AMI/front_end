@@ -169,9 +169,10 @@
   ],
   "email": {},
   "nickname": {},
-  "joinAuth": {
-    "isAuth": true
-  },
+  "confirm": {},
+  "password": {},
+  "join": {},
+  "resetPassword": {},
   "login": {
     "memberId": 123,
     "email": "tripami@gmail.com",
