@@ -19,11 +19,13 @@ const dummyTouristDatas = [
     data: [
       {
         id: 1,
+        key: 'ApplicationDetails',
         score: 0,
         title: 'Application details',
       },
       {
         id: 2,
+        key: 'ReviewDetails',
         score: 0,
         title: 'Review details',
       },
@@ -37,16 +39,19 @@ const dummyAmiDatas = [
     data: [
       {
         id: 1,
+        key: 'Experience',
         score: 0,
         title: 'Experience',
       },
       {
         id: 2,
+        key: 'Review',
         score: 0,
         title: 'Review',
       },
       {
         id: 3,
+        key: 'Rating',
         score: 0,
         title: 'Rating',
       },
@@ -70,7 +75,12 @@ export default function MyPageScreen() {
     {
       id: 2,
       tabName: 'Review',
-      tabComponent: <ReviewItemList />,
+      tabComponent: (
+        <ReviewItemList
+          scrollEnabled={false}
+          emptyText='There are no reviews.'
+        />
+      ),
     },
   ];
 

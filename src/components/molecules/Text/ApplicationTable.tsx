@@ -4,40 +4,61 @@ import VerticalLine from '@components/atoms/etc/VerticalLine';
 import Colors from '@styles/colors';
 import useModalHook from '@hooks/modalHook';
 import { useNavigation } from '@react-navigation/native';
+import showToast from '@utils/toast/toast';
+import Spacing from '@styles/spacing';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
-function ApplicationTable() {
+function ApplicationTable({
+  applicationEnd,
+  noBroder,
+}: {
+  applicationEnd: boolean;
+  noBroder?: boolean;
+}) {
   const { setModalName } = useModalHook();
   const navigation = useNavigation<RootStackNavigationProp>();
 
   const tableData = [
     {
       id: 1,
+      key: 'Cancellation',
       title: 'Cancellation',
-      onPress: () => setModalName('APPLICATION_CANCEL'),
+      onPress: () => {
+        if (!applicationEnd) setModalName('APPLICATION_CANCEL');
+        else
+          showToast('This is not a cancellation period.', Spacing.ToastBasic);
+      },
     },
     {
       id: 2,
+      key: 'MailToApplicant',
       title: 'Mail to Applicant',
       onPress: () => setModalName('APPLICANT_INFO'),
     },
     {
       id: 3,
+      key: 'Details',
       title: 'Details',
       onPress: () => navigation.navigate('BookDetails'),
     },
   ];
+
+  const verticalLine = (index: number) => {
+    return index !== tableData.length - 1 && <VerticalLine hei={15} />;
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, noBroder && styles.noBorder]}>
       {tableData.map((item, index) => (
         <>
           <AmiScore
             key={item.id}
+            keyName={item.key}
             title={item.title}
             onPress={item.onPress}
             style={styles.text}
           />
-          {index !== tableData.length - 1 && <VerticalLine hei={15} />}
+          {!noBroder && verticalLine(index)}
         </>
       ))}
     </View>
@@ -53,6 +74,12 @@ const styles = StyleSheet.create({
     borderColor: Colors.lineGray04,
     borderWidth: 1,
     marginTop: 15,
+  },
+  noBorder: {
+    borderWidth: 0,
+    backgroundColor: '#FFFFFF',
+    marginTop: 2,
+    marginBottom: 20,
   },
   text: {
     color: Colors.fontGray03,

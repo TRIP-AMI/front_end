@@ -15,6 +15,7 @@ type AmiScoreTableProps = {
     title: string;
     data: {
       id: number;
+      key: string;
       score: number;
       title: string;
     }[];
@@ -29,6 +30,7 @@ function AmiScoreTable({ scores, style }: AmiScoreTableProps) {
         <>
           <AmiScore
             key={scores.title + item.id.toString()}
+            keyName={item.key}
             score={item.score}
             title={item.title}
           />

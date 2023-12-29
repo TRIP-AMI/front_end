@@ -17,8 +17,13 @@ type ApplicationItemProps = {
 
 // TODO Badge 색상 Colors.Primary로 변경해야 함
 function ApplicationItem({ item }: { item: ApplicationItemProps }) {
-  // TODO 프로그램 날짜와 현재 날짜를 비교하여 true, false를 반환해야 함
-  const applicationEnd = false;
+  const today = new Date();
+  const contentDate = new Date(
+    Number(item.date.slice(6)),
+    Number(item.date.slice(0, 2)) - 1,
+    Number(item.date.slice(3, 5)),
+  );
+  const applicationEnd = contentDate < today;
 
   return (
     <View style={styles.container}>
@@ -33,8 +38,13 @@ function ApplicationItem({ item }: { item: ApplicationItemProps }) {
         title={item.title}
         subTitle={item.subTitle}
         price={item.price}
+        applicationEnd={applicationEnd}
+        review
       />
-      <ApplicationTable key={item.id.toString() + item.title + item.date} />
+      <ApplicationTable
+        applicationEnd={applicationEnd}
+        key={item.id.toString() + item.title + item.date}
+      />
     </View>
   );
 }

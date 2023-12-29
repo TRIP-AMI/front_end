@@ -5,6 +5,8 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import modalState from '@utils/recoil/modal';
 import { useNavigation } from '@react-navigation/native';
 import profileType from '@utils/recoil/profile';
+import showToast from '@utils/toast/toast';
+import Spacing from '@styles/spacing';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function ApplicationContentItem({
@@ -12,24 +14,31 @@ function ApplicationContentItem({
   title,
   subTitle,
   price,
+  applicationEnd,
+  review,
 }: {
   imgUrl: string;
   title: string;
   subTitle: string;
   price: string;
+  applicationEnd?: boolean;
+  review?: boolean;
 }) {
   const profile = useRecoilValue(profileType);
   const setModal = useSetRecoilState(modalState);
   const navigation = useNavigation<RootStackNavigationProp>();
 
   const onReviewPress = () => {
-    setModal({
-      modalName: 'REVIEW',
-      applicationItem: { imgUrl, title },
-    });
+    if (applicationEnd) {
+      setModal({
+        modalName: 'REVIEW',
+        applicationItem: { imgUrl, title },
+      });
+    } else showToast('This is not a review period.', Spacing.ToastBasic);
   };
 
   // TODO 알맞는 컨텐츠로 이동해야 함
+  // TODO Review 한 후에 Review 버튼 숨기기
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.navigate('Content')}>
@@ -42,7 +51,7 @@ function ApplicationContentItem({
         <Text style={styles.subTitle}>{subTitle}</Text>
         <View style={styles.bottomContainer}>
           <Text style={styles.price}>{price}</Text>
-          {profile === 'TOURIST' && (
+          {review && profile === 'TOURIST' && (
             <Pressable style={styles.badge} onPress={onReviewPress}>
               <BlackBadge style={styles.badgeText} text='Review' />
             </Pressable>
@@ -57,7 +66,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'white',
   },
   subContainer: {
     flex: 1,

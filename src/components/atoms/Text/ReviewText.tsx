@@ -2,10 +2,10 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 
-function ReviewSummary({ name, content }: { name: string; content: string }) {
+function ReviewText({ name, content }: { name: string; content: string }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.content} numberOfLines={2} ellipsizeMode='tail'>
+      <Text style={styles.content}>
         <Text style={styles.name}>{name}</Text> {content}
       </Text>
     </View>
@@ -28,17 +28,17 @@ const styles = StyleSheet.create({
   name: {
     color: '#000000',
     fontSize: 14,
-    fontFamily: 'Pretendard-SemiBold',
+    fontFamily: 'Montserrat-SemiBold',
     letterSpacing: -0.42,
     lineHeight: 16,
   },
   content: {
     color: Colors.reviewContent,
     fontSize: 14,
-    fontFamily: 'Pretendard-Regular',
+    fontFamily: 'Montserrat-Regular',
     letterSpacing: -0.42,
     lineHeight: 16,
   },
 });
 
-export default ReviewSummary;
+export default ReviewText;
