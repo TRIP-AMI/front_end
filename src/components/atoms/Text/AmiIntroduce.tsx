@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View } from 'react-native';
-import Spacing from '@styles/spacing';
 import Colors from '@styles/colors';
 
 function AmiIntroduce({
@@ -19,7 +18,7 @@ function AmiIntroduce({
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: Spacing.IOS392Margin,
+    paddingTop: 20,
   },
   text: {
     color: Colors.fontGray03,
