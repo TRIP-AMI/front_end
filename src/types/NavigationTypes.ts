@@ -31,6 +31,10 @@ export type JoinTermsProps = {
   ko: string;
 };
 
+export type ContentProps = {
+  id: number;
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -39,7 +43,7 @@ export type RootStackParamList = {
   FAQ: undefined;
   Inquiry: undefined;
   Search: undefined;
-  Content: undefined;
+  Content: ContentProps;
   Category: { title: string };
   Login: undefined;
   Join: undefined;
