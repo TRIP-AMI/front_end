@@ -2,7 +2,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import Separator from '@components/atoms/etc/Separator';
 import Colors from '@styles/colors';
 
-// TODO applicantName으로 Jenny -> Jennie's 변환하는 법
 function BookDetailText({
   applicantName,
   title,
