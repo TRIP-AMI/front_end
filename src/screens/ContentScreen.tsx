@@ -8,6 +8,7 @@ import ContentPayment from '@components/molecules/Section/ContentPayment';
 import ContentButtons from '@/components/organisms/Section/ContentButtons';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import HomeFooter from '@/components/organisms/Section/HomeFooter';
+import ContentReportButton from '@/components/organisms/Section/ContentReportButton';
 
 // TODO: 구조, 스타일 수정
 export default function ContentScreen() {
@@ -29,6 +30,8 @@ export default function ContentScreen() {
         <SectionDividerBar style={{ height: 8 }} />
         {/* TODO: FAQ */}
         <View style={{ paddingVertical: 20 }} />
+        <SectionDividerBar style={{ height: 8 }} />
+        <ContentReportButton />
         <HomeFooter />
       </ScrollView>
       <ContentButtons />
