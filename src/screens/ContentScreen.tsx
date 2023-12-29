@@ -6,7 +6,9 @@ import ContentProgram from '@components/organisms/Section/ContentProgram';
 import ContentBannerCarousel from '@components/molecules/Banner/ContentBannerCarousel';
 import ContentPayment from '@components/molecules/Section/ContentPayment';
 import ContentButtons from '@/components/organisms/Section/ContentButtons';
+import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 
+// TODO: 구조, 스타일 수정
 export default function ContentScreen() {
   return (
     <SafeAreaView style={styles.container}>
@@ -14,6 +16,7 @@ export default function ContentScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <ContentBannerCarousel />
         <ContentMain />
+        <SectionDividerBar style={{ height: 8 }} />
         <ContentAmi />
         <ContentProgram />
         <ContentPayment />
