@@ -48,6 +48,8 @@ const useAuthForm = ({
     if (errors.email) return;
     try {
       await instance.post(`${BASE_API_URL}/email`, { email: data.email });
+      if (isEmailSent === true)
+        showToast('Sent an authentication number to that email.');
       setIsEmailSent(true);
       setTitle(`To the email you entered\nAuthentication number has been sent`);
       setEmail(data.email);
