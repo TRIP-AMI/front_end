@@ -3,6 +3,7 @@ import EmptyText from '@components/atoms/Text/EmptyText';
 import TotalText from '@components/atoms/Text/TotalText';
 import Spacing from '@styles/spacing';
 import ApplicationItemForAmi from '@components/molecules/Item/ApplicationItemForAmi';
+import FilterText from '@components/atoms/Text/FilterText';
 
 const dummyApplicationData = [
   {
@@ -56,6 +57,7 @@ function ApplicationItemListForAmi() {
         <View style={styles.container}>
           <View style={styles.textContainer}>
             <TotalText total={applicationData.length} />
+            <FilterText text='View All' />
           </View>
           <FlatList
             data={applicationData}
@@ -82,6 +84,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: 15,
   },
   itemContainer: {
