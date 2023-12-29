@@ -5,10 +5,12 @@ export type CreatePasswordProps = {
   mode: 'CREATE' | 'RESET';
   nickname?: string;
   email: string;
+  agreedMarketing?: boolean;
 };
 
 export type CreateNameProps = {
   email: string;
+  agreedMarketing: boolean;
 };
 
 export type EmailAuthProps = {

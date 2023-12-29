@@ -20,9 +20,11 @@ export default function EmailAuthScreen({
     title,
     control,
     errors,
+    timer,
     handleSubmit,
     onConfirmEmail,
     onCheckAuthCode,
+    setTimer,
   } = useAuthForm({ mode: route.params.mode, params: route.params });
 
   return (
@@ -61,6 +63,8 @@ export default function EmailAuthScreen({
             <AuthCodeInput
               control={control}
               errorText={errors.authCode?.message}
+              timer={timer}
+              setTimer={setTimer}
             />
           </View>
           <View style={styles.button}>
