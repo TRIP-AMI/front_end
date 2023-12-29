@@ -15,6 +15,7 @@ import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
 import JoinCompleteModal from '@/components/organisms/Modal/JoinCompleteModal';
 import PickerSelectModal from './PickerSelectModal';
 import AuthAlertModal from '@/components/molecules/Modal/AuthAlertModal';
+import ReportCompleteModal from './ReportCompleteModal';
 
 export default function ModalProvider() {
   const modal = useRecoilValue(modalState);
@@ -32,6 +33,7 @@ export default function ModalProvider() {
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     PICKER_SELECT: <PickerSelectModal />,
+    REPORT_COMPLETE: <ReportCompleteModal />,
     APPLY: <ApplyModal />,
     APPLY_CHECK: modal.applyCheck && (
       <ApplyCheckModal
