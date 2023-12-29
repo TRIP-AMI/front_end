@@ -21,6 +21,7 @@ function ApplicationTable({
   const tableData = [
     {
       id: 1,
+      key: 'Cancellation',
       title: 'Cancellation',
       onPress: () => {
         if (!applicationEnd) setModalName('APPLICATION_CANCEL');
@@ -30,28 +31,34 @@ function ApplicationTable({
     },
     {
       id: 2,
+      key: 'MailToApplicant',
       title: 'Mail to Applicant',
       onPress: () => setModalName('APPLICANT_INFO'),
     },
     {
       id: 3,
+      key: 'Details',
       title: 'Details',
       onPress: () => navigation.navigate('BookDetails'),
     },
   ];
+
+  const verticalLine = (index: number) => {
+    return index !== tableData.length - 1 && <VerticalLine hei={15} />;
+  };
+
   return (
     <View style={[styles.container, noBroder && styles.noBorder]}>
       {tableData.map((item, index) => (
         <>
           <AmiScore
             key={item.id}
+            keyName={item.key}
             title={item.title}
             onPress={item.onPress}
             style={styles.text}
           />
-          {!noBroder && index !== tableData.length - 1 && (
-            <VerticalLine hei={15} />
-          )}
+          {!noBroder && verticalLine(index)}
         </>
       ))}
     </View>

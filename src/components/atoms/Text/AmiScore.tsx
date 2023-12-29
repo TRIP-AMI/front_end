@@ -10,11 +10,13 @@ import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function AmiScore({
+  keyName,
   score,
   title,
   onPress,
   style,
 }: {
+  keyName: string;
   score?: number | undefined;
   title: string;
   onPress?: () => void;
@@ -23,10 +25,10 @@ function AmiScore({
   const navigation = useNavigation<RootStackNavigationProp>();
 
   const pressHandler = () => {
-    switch (title) {
-      case 'Application details':
+    switch (keyName) {
+      case 'ApplicationDetails':
         return navigation.navigate('ApplicationDetails');
-      case 'Review details':
+      case 'ReviewDetails':
         return navigation.navigate('ReviewDetails');
       default:
         return null;
