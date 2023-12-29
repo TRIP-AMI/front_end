@@ -31,10 +31,6 @@ export type JoinTermsProps = {
   ko: string;
 };
 
-export type CalendarProps = {
-  availableDates: string[];
-};
-
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -56,7 +52,7 @@ export type RootStackParamList = {
   CreatePassword: CreatePasswordProps;
   FindPassword: EmailAuthProps;
   ResetPassword: CreatePasswordProps;
-  Calendar: CalendarProps;
+  Calendar: undefined;
   ApplicationDetails: undefined;
   SelectProfile: SelectProfileProps;
   BookDetails: undefined;
@@ -67,12 +63,9 @@ export type BottomTabParamList = {
   Menu: undefined;
   Like: undefined;
   Home: undefined;
-  Upload: CalendarProps;
+  Upload: undefined;
   MyPage: undefined;
 };
 
 export type RootStackNavigationProp =
   NativeStackNavigationProp<RootStackParamList>;
-
-export type BottomTabNavigationProp =
-  NativeStackNavigationProp<BottomTabParamList>;

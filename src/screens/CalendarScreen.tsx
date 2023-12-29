@@ -1,45 +1,48 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { Octicons } from '@expo/vector-icons';
-import { StackScreenProps } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/native';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import Spacing from '@/styles/spacing';
-import useCalendar, { selectableMonthsList } from '@/hooks/calendarHook';
+import { pickerDateList } from '@/hooks/calendarHook';
+import selectCalendarList from '@/utils/recoil/calendar';
 import CalendarPicker from '@/components/molecules/Calendar/CalendarPicker';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
+import pickerSelectValue, { pickerList } from '@/utils/recoil/picker';
 import useModalHook from '@/hooks/modalHook';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
-import {
-  BottomTabNavigationProp,
-  RootStackParamList,
-} from '@/types/NavigationTypes';
-import PickerSelectModal from '@/components/organisms/Modal/PickerSelectModal';
 
-export type CalendarScreenProps = StackScreenProps<
-  RootStackParamList,
-  'Calendar'
->;
+export default function CalendarScreen() {
+  const { setModalName } = useModalHook();
+  const [selectDateList, setSelectDateList] =
+    useRecoilState(selectCalendarList);
+  const setPickerList = useSetRecoilState(pickerList);
+  const [pickerSelectDate, setPickerSelectDate] =
+    useRecoilState(pickerSelectValue);
 
-export default function CalendarScreen({ route }: CalendarScreenProps) {
-  const { params } = route;
-  const navigation = useNavigation<BottomTabNavigationProp>();
-  const { selectDateList, setSelectDateList, deleteDate, checkConfirm } =
-    useCalendar(params);
-  // modal
-  const { isVisible, onOpen, onClose } = useModalHook();
-  const pickerList = selectableMonthsList();
-  const defaultTime = dayjs().startOf('M').format();
-  const [pickerSelectDate, setPickerSelectDate] = useState<string>(defaultTime);
+  useEffect(() => {
+    const defaultTime = dayjs().startOf('M').format();
+    setPickerSelectDate(defaultTime);
+    setPickerList(pickerDateList());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleModalOpen = () => {
-    onOpen();
+    setModalName('PICKER_SELECT');
   };
 
+  const deleteDate = (date: string) => {
+    setSelectDateList((prev) =>
+      prev.filter((selectDate) => dayjs(date).format() !== selectDate),
+    );
+  };
+
+  const checkConfirm = () => selectDateList.length <= 0;
+
   const confirmPress = () => {
-    navigation.navigate('Upload', { availableDates: selectDateList });
+    console.log('선택되었다');
   };
 
   return (
@@ -57,11 +60,7 @@ export default function CalendarScreen({ route }: CalendarScreenProps) {
           />
         </View>
         {/* calendar */}
-        <CalendarPicker
-          selectDate={pickerSelectDate}
-          selectDateList={selectDateList}
-          setSelectDateList={setSelectDateList}
-        />
+        <CalendarPicker selectDate={pickerSelectDate} />
       </View>
       <SectionDividerBar style={{ marginVertical: 30 }} />
       <View
@@ -107,15 +106,6 @@ export default function CalendarScreen({ route }: CalendarScreenProps) {
           disabled={checkConfirm()}
         />
       </View>
-
-      {/* modal */}
-      <PickerSelectModal
-        isVisible={isVisible}
-        onClose={onClose}
-        pickerList={pickerList}
-        selectedValue={pickerSelectDate}
-        setSelectedValue={setPickerSelectDate}
-      />
     </View>
   );
 }

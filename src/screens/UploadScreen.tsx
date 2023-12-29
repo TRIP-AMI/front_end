@@ -1,62 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Spacing from '@/styles/spacing';
-import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
-import useUpload, { CreateContentBasicForm } from '@/hooks/uploadHook';
-import BasicButton from '@/components/atoms/Button/BasicButton';
-import ProgramCourseWrap from '@/components/organisms/Section/createContent/ProgramCourseWrap';
-import ProgramCostWrap from '@/components/organisms/Section/createContent/ProgramCostWrap';
-import ProgramBasicInfoWrap from '@/components/organisms/Section/createContent/ProgramBasicInfoWrap';
-import useModalHook from '@/hooks/modalHook';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 export default function UploadScreen() {
-  const { control, handleSubmit } = useUpload();
-  const { setModalName } = useModalHook();
+  const navigation = useNavigation<RootStackNavigationProp>();
 
-  const onSubmit = (data: CreateContentBasicForm) => {
-    console.log('form data', data);
-    // TODO: upload data to server
-
-    // 완료시 모달창 띄우기
-    setModalName('UPLOAD_COMPLETE');
+  const handleCal = () => {
+    navigation.navigate('Calendar');
   };
 
   return (
-    <SafeAreaView>
+    <View style={styles.container}>
       <StatusBar style='auto' />
-      <ScrollView style={styles.container}>
-        {/* basic info */}
-        <View style={styles.basicInfoWrap}>
-          <ProgramBasicInfoWrap control={control} />
-        </View>
-
-        {/* Program Course */}
-        <SectionDividerBar />
-        <View style={styles.courseWrap}>
-          <ProgramCourseWrap control={control} />
-        </View>
-        {/* Program Cost */}
-        <SectionDividerBar />
-        <View style={styles.costWrap}>
-          <ProgramCostWrap control={control} />
-        </View>
-
-        {/* submit */}
-        <BasicButton content='Upload' onPress={handleSubmit(onSubmit)} />
-      </ScrollView>
-    </SafeAreaView>
+      <View>
+        <Text>temp</Text>
+        <Button title='calendar go' onPress={handleCal} />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // paddingTop: 15,
+    flex: 1,
     backgroundColor: '#ffffff',
-  },
-  basicInfoWrap: {
-    marginTop: 15,
     paddingHorizontal: Spacing.IOS392Margin,
   },
-  courseWrap: { paddingHorizontal: Spacing.IOS392Margin },
-  costWrap: { marginTop: 25, paddingHorizontal: Spacing.IOS392Margin },
 });
