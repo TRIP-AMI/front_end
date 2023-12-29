@@ -13,8 +13,8 @@ import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal'
 import LoginInvalidModal from '@/components/molecules/Modal/LoginInvalidModal';
 import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
 import JoinCompleteModal from '@/components/organisms/Modal/JoinCompleteModal';
-import PickerSelectModal from './PickerSelectModal';
 import AuthAlertModal from '@/components/molecules/Modal/AuthAlertModal';
+import UploadCompleteModal from './UploadCompleteModal';
 
 export default function ModalProvider() {
   const modal = useRecoilValue(modalState);
@@ -31,7 +31,6 @@ export default function ModalProvider() {
     AUTH_ALERT: <AuthAlertModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
-    PICKER_SELECT: <PickerSelectModal />,
     APPLY: <ApplyModal />,
     APPLY_CHECK: modal.applyCheck && (
       <ApplyCheckModal
@@ -40,6 +39,7 @@ export default function ModalProvider() {
       />
     ),
     APPLY_COMPLETE: <ApplyCompleteModal />,
+    UPLOAD_COMPLETE: <UploadCompleteModal />,
     REVIEW: modal?.applicationItem && (
       <ReviewModal
         imgUrl={modal.applicationItem.imgUrl}

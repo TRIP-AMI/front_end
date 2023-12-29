@@ -11,6 +11,7 @@ import SettingIcon from '@components/molecules/etc/SettingIcon';
 import SwitchButton from '@components/atoms/Button/SwitchButton';
 import { BottomTabParamList } from '@/types/NavigationTypes';
 import Fonts from '@/styles/typography';
+import BackLeftArrow from '@/components/molecules/Header/BackLeftArrow';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -64,7 +65,10 @@ export default function BottomNavBar() {
           tabBarIcon: ({ color }) => (
             <AntDesign name='pluscircleo' color={color} size={26} />
           ),
-          title: 'UPLOAD',
+          headerLeft: () => <BackLeftArrow />,
+          title: 'Upload',
+          headerTitle: 'Create Content',
+          headerTitleAlign: 'center',
         }}
       />
       <Tab.Screen
