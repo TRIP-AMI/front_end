@@ -126,7 +126,7 @@
       "reviewId": 3,
       "reviewName": "Jenny",
       "reviewImg": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg",
-      "reviewContent": "The view of Namsan Tower is so pretty. The location was great to go around."
+      "reviewContent": "The view of Namsan. The view of Namsan. The view of Namsan. The view of Namsan. The view of Namsan. "
     }
   ],
   "post": [
@@ -169,9 +169,10 @@
   ],
   "email": {},
   "nickname": {},
-  "joinAuth": {
-    "isAuth": true
-  },
+  "confirm": {},
+  "password": {},
+  "join": {},
+  "resetPassword": {},
   "login": {
     "memberId": 123,
     "email": "tripami@gmail.com",

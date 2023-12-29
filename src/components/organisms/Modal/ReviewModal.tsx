@@ -6,7 +6,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import StarRating from '@components/molecules/etc/StarRating';
 import BasicFullScreenModal from '@components/atoms/Modal/BasicFullScreenModal';
 import Separator from '@components/atoms/etc/Separator';
 import Colors from '@styles/colors';
@@ -33,7 +32,6 @@ function ReviewModal({ imgUrl, title }: ApplicationItemProps) {
                 Please leave a score and review for AMI!
               </Text>
             </View>
-            <StarRating />
             <ReviewInput />
           </View>
         </View>

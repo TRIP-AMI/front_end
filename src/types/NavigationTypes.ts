@@ -5,10 +5,12 @@ export type CreatePasswordProps = {
   mode: 'CREATE' | 'RESET';
   nickname?: string;
   email: string;
+  agreedMarketing?: boolean;
 };
 
 export type CreateNameProps = {
   email: string;
+  agreedMarketing: boolean;
 };
 
 export type EmailAuthProps = {
@@ -20,6 +22,13 @@ export type EmailAuthProps = {
 export type SelectProfileProps = {
   nickname: string;
   imgUrl: string;
+};
+
+export type JoinTemsScreen = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
+
+export type JoinTermsProps = {
+  en: string;
+  ko: string;
 };
 
 export type RootStackParamList = {
@@ -34,6 +43,10 @@ export type RootStackParamList = {
   Category: { title: string };
   Login: undefined;
   Join: undefined;
+  Age: JoinTermsProps;
+  Privacy: JoinTermsProps;
+  Terms: JoinTermsProps;
+  Marketing: JoinTermsProps;
   JoinAuth: EmailAuthProps;
   CreateName: CreateNameProps;
   CreatePassword: CreatePasswordProps;
@@ -43,6 +56,7 @@ export type RootStackParamList = {
   ApplicationDetails: undefined;
   SelectProfile: SelectProfileProps;
   BookDetails: undefined;
+  ReviewDetails: undefined;
   Setting: undefined;
 };
 

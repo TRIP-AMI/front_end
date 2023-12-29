@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import BookDetailsScreen from '@screens/BookDetailsScreen';
 import SettingScreen from '@screens/SettingScreen';
+import ReviewDetailsScreen from '@screens/ReviewDetailsScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -31,13 +32,14 @@ import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import SelectProfileScreen from '@/screens/SelectProfileScreen';
 import CloseButton from '@/components/atoms/Button/CloseButton';
+import JoinTemsScreen from '@/screens/JoinTermsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
   const { isLoggedIn, profileState, getStoredToken } = useLoginHook();
   const { setModalName } = useModalHook();
-  const navigation = useNavigation();
+  const { goBack } = useNavigation();
 
   useEffect(() => {
     getStoredToken();
@@ -153,6 +155,16 @@ function Navigation() {
               headerShadowVisible: false,
             }}
           />
+          <Stack.Screen
+            name='ReviewDetails'
+            component={ReviewDetailsScreen}
+            options={{
+              title: 'Review details',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
         </>
       ) : (
         <>
@@ -181,6 +193,33 @@ function Navigation() {
             }}
           >
             <Stack.Screen name='Join' component={JoinScreen} />
+            <Stack.Group
+              screenOptions={{
+                headerBackVisible: false,
+                headerRight: () => <CloseButton onPress={() => goBack()} />,
+              }}
+            >
+              <Stack.Screen
+                name='Age'
+                component={JoinTemsScreen}
+                options={{ title: 'Age Consent' }}
+              />
+              <Stack.Screen
+                name='Privacy'
+                component={JoinTemsScreen}
+                options={{ title: 'Privacy Policy' }}
+              />
+              <Stack.Screen
+                name='Terms'
+                component={JoinTemsScreen}
+                options={{ title: 'Tems of Service' }}
+              />
+              <Stack.Screen
+                name='Marketing'
+                component={JoinTemsScreen}
+                options={{ title: 'Marketing Agreements' }}
+              />
+            </Stack.Group>
             <Stack.Screen
               name='JoinAuth'
               component={EmailAuthScreen}
@@ -208,9 +247,7 @@ function Navigation() {
               name='FindPassword'
               component={EmailAuthScreen}
               options={{
-                headerRight: () => (
-                  <CloseButton onPress={() => navigation.goBack()} />
-                ),
+                headerRight: () => <CloseButton onPress={() => goBack()} />,
               }}
             />
             <Stack.Screen

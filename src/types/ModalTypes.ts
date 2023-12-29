@@ -2,16 +2,17 @@ export type ModalName =
   | 'NOTIFICATION'
   | 'SEARCH'
   | 'PICKER_SELECT'
-  | 'LOGIN_CHECK'
   | 'LOGIN_INVALID'
   | 'JOIN_CANCEL'
   | 'JOIN_COMPLETE'
+  | 'AUTH_ALERT'
   | 'APPLY'
   | 'APPLY_CHECK'
   | 'APPLY_COMPLETE'
   | 'REVIEW'
   | 'APPLICATION_CANCEL'
-  | 'APPLICANT_INFO';
+  | 'APPLICANT_INFO'
+  | 'REVIEW_DETAIL';
 
 export type ApplyCheckProps = {
   date: string;

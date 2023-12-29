@@ -1,9 +1,12 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
+import showToast from '@utils/toast/toast';
+import Spacing from '@styles/spacing';
 
 function ClipboardText({ text }: { text: string }) {
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(text);
+    showToast('Copy ro clipboard', Spacing.ToastBasic);
   };
 
   return (

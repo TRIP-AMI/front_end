@@ -2,6 +2,7 @@ import { Control, useController } from 'react-hook-form';
 import BasicInput from '@/components/atoms/Input/BasicInput';
 import Colors from '@/styles/colors';
 import Regex from '@/constants/regex';
+import Timer from '@/components/molecules/etc/Timer';
 
 // TODO: control any 타입 수정..
 export function EmailInput({
@@ -101,26 +102,27 @@ export function PasswordInput({
 export function AuthCodeInput({
   control,
   errorText,
+  timer,
+  setTimer,
 }: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   errorText?: string;
+  timer: number;
+  setTimer: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const {
     field: { value, onChange },
   } = useController({
     name: 'authCode',
     control,
-    rules: {
-      required: true,
-    },
   });
   return (
     <BasicInput
       value={value}
       autoComplete='one-time-code'
       onChangeText={onChange}
-      placeholder='Enter authentication number'
+      placeholder='Authentication Number'
       placeholderTextColor={Colors.fontGray05}
       autoCorrect={false}
       autoCapitalize='none'
@@ -128,6 +130,7 @@ export function AuthCodeInput({
       style={{ fontFamily: 'Montserrat-Regular' }}
       autoFocus
       keyboardType='number-pad'
+      timer={<Timer timer={timer} setTimer={setTimer} />}
     />
   );
 }

@@ -1,15 +1,20 @@
 import { View, StyleSheet } from 'react-native';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 
-// TODO check 누를 시, 리뷰 데이터 저장 및 모달 종료
-export default function CheckButton({ disabled }: { disabled: boolean }) {
+export default function CheckButton({
+  disabled,
+  onPress,
+}: {
+  disabled: boolean;
+  onPress: () => void;
+}) {
   return (
     <View style={styles.container}>
       <BasicButton
         content='Check'
         round
         disabled={disabled}
-        onPress={() => console.log('check!')}
+        onPress={onPress}
       />
     </View>
   );

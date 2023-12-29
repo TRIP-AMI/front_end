@@ -2,27 +2,41 @@ import { StyleSheet, Text, View } from 'react-native';
 import Spacing from '@styles/spacing';
 import Colors from '@styles/colors';
 import ClipboardText from '@components/atoms/Text/ClipboardText';
+import { useRecoilValue } from 'recoil';
+import profileType from '@utils/recoil/profile';
+import Regex from '@/constants/regex';
 
 function BookDetailInfo({
   location,
   date,
   requiredTime,
-  applicantName,
-  applicantEmail,
+  name,
+  email,
 }: {
   location: string;
   date: string;
   requiredTime: string;
-  applicantName: string;
-  applicantEmail: string;
+  name: string;
+  email: string;
 }) {
+  const profile = useRecoilValue(profileType);
   const content = [
     { id: 1, title: 'Location', value: location },
     { id: 2, title: 'Date', value: date },
     { id: 3, title: 'Required Time', value: requiredTime },
-    { id: 4, title: 'Applicant Name', value: applicantName },
-    { id: 5, title: 'Applicant Email', value: applicantEmail },
   ];
+  if (profile === 'AMI') {
+    content.push({ id: 4, title: 'Applicant Name', value: name });
+    content.push({ id: 5, title: 'Applicant E-mail', value: email });
+  } else if (profile === 'TOURIST') {
+    content.push({ id: 5, title: 'AMI E-mail', value: email });
+  }
+
+  const isValidEmail = (mail: string) => {
+    if (mail.match(Regex.email)) return <ClipboardText text={mail} />;
+    return <Text>Invalid Email</Text>;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.marginContainer}>
@@ -31,8 +45,8 @@ function BookDetailInfo({
             <Text style={styles.title} key={item.id.toString() + item.title}>
               {item.title}
             </Text>
-            {item.title === 'Applicant Email' ? (
-              <ClipboardText text={item.value} />
+            {item.title.slice(-4) === 'mail' ? (
+              isValidEmail(item.value)
             ) : (
               <Text style={styles.value} key={item.id.toString() + item.value}>
                 {item.value}

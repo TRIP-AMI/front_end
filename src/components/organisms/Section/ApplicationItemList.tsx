@@ -10,7 +10,7 @@ const dummyApplicationData = [
     title: 'Itaewon Tour',
     subTitle: 'Restaurant - Cafe - Photo',
     price: '50,000 won',
-    date: '12.10.2023',
+    date: '12.10.2024',
     imgUrl: 'https://via.placeholder.com/600x600/ECECEC',
   },
   {
