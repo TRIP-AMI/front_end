@@ -130,7 +130,6 @@ function Navigation() {
                 headerLeft: () => <BackLeftArrow />,
               }}
             />
-
             <Stack.Screen
               name='Report'
               component={ContentReportScreen}

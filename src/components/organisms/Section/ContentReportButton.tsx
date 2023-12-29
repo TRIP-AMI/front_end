@@ -5,14 +5,18 @@ import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import Spacing from '@/styles/spacing';
 import Colors from '@/styles/colors';
 
-export default function ContentReportButton() {
+export default function ContentReportButton({
+  programId,
+}: {
+  programId: number;
+}) {
   const { navigate } = useNavigation<RootStackNavigationProp>();
 
   return (
     <View style={styles.container}>
       <TextButton
         title='Report'
-        onPress={() => navigate('Report')}
+        onPress={() => navigate('Report', { programId })}
         style={styles.text}
       />
     </View>

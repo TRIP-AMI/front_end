@@ -6,54 +6,59 @@ import Spacing from '@/styles/spacing';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import REPORT_OPTIONS from '@/constants/report';
 import ReportOptionCard from '@/components/molecules/Section/ReportOptionCard';
-import FooterButton from '@/components/molecules/Button/FooterButton';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { ReportProps, RootStackNavigationProp } from '@/types/NavigationTypes';
+import { ReportOptionType } from '@/types/ReportTypes';
+import ReportTitleText from '@/components/atoms/Text/ReportTitleText';
+import ReportFooterButton from '@/components/molecules/Footer/ReportFooterButton';
 
-export default function ContentReportScreen() {
+export default function ContentReportScreen({
+  route,
+}: {
+  route: { params: ReportProps };
+}) {
+  const { programId } = route.params;
   const [checkedId, setCheckedId] = useState<number>(0);
+  const [question, setQuestion] = useState<string>('');
   const { navigate } = useNavigation<RootStackNavigationProp>();
+  const TITLE = `Please tell me the reason\nfor reporting this program.`;
+  const SUBTITLE = `This content cannot be seen by AMI.`;
+  const onOptionPress = (item: ReportOptionType) => {
+    setCheckedId(item.id);
+    setQuestion(item.question);
+  };
 
   const onNextPress = () => {
-    // TODO: prop 정의하기
-    navigate('ReportDetail');
+    if (checkedId === 0) return;
+    navigate('ReportDetail', { programId, title: question });
   };
 
   return (
     <>
       <View style={styles.container}>
-        <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
-          <Text style={styles.title}>
-            {`Please tell me the reason\nfor reporting this program.`}
-          </Text>
-          <Text style={styles.subtitle}>
-            This content cannot be seen by AMI.
-          </Text>
+        <View style={styles.titleContainer}>
+          <ReportTitleText title={TITLE} />
+          <Text style={styles.subtitle}>{SUBTITLE}</Text>
         </View>
-        <View style={{ paddingVertical: 30 }}>
-          {REPORT_OPTIONS.map((item, idx) => (
-            <View>
+        <View>
+          {REPORT_OPTIONS.map((item) => (
+            <View key={item.id}>
               <ReportOptionCard
-                id={item.id}
                 content={item.title}
                 checked={checkedId === item.id}
-                onPress={() => setCheckedId(item.id)}
+                onPress={() => onOptionPress(item)}
               />
-              {idx < REPORT_OPTIONS.length - 1 && (
+              {item.id !== REPORT_OPTIONS.length && (
                 <SectionDividerBar style={{ height: 1 }} />
               )}
             </View>
           ))}
         </View>
       </View>
-      <View
-        style={{ paddingHorizontal: Spacing.IOS392Margin, marginBottom: 8 }}
-      >
-        <FooterButton
-          content='Next'
-          onPress={onNextPress}
-          disabled={checkedId === 0}
-        />
-      </View>
+      <ReportFooterButton
+        title='Next'
+        onPress={onNextPress}
+        disabled={checkedId === 0}
+      />
     </>
   );
 }
@@ -63,13 +68,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
-  title: {
-    fontSize: 18,
-    fontFamily: 'Montserrat-SemiBold',
-    letterSpacing: -0.36,
-    lineHeight: 24,
-    color: Colors.fontGray02,
-    paddingTop: 28,
+  titleContainer: {
+    paddingVertical: 28,
+    paddingHorizontal: Spacing.IOS392Margin,
   },
   subtitle: {
     fontSize: 14,
@@ -78,5 +79,9 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: Colors.fontGray03,
     paddingTop: 10,
+  },
+  footer: {
+    paddingHorizontal: Spacing.IOS392Margin,
+    marginBottom: 8,
   },
 });

@@ -35,6 +35,14 @@ export type ContentProps = {
   id: number;
 };
 
+export type ReportProps = {
+  programId: number;
+};
+
+export type ReportDetailProps = ReportProps & {
+  title: string;
+};
+
 export type RootStackParamList = {
   MenuBar: undefined;
   Service: undefined;
@@ -44,6 +52,8 @@ export type RootStackParamList = {
   Inquiry: undefined;
   Search: undefined;
   Content: ContentProps;
+  Report: ReportProps;
+  ReportDetail: ReportDetailProps;
   Category: { title: string };
   Login: undefined;
   Join: undefined;
@@ -61,8 +71,6 @@ export type RootStackParamList = {
   SelectProfile: SelectProfileProps;
   BookDetails: undefined;
   ReviewDetails: undefined;
-  Report: undefined;
-  ReportDetail: undefined;
 };
 
 export type BottomTabParamList = {

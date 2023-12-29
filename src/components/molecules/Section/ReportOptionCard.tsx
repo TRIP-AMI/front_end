@@ -4,19 +4,16 @@ import Spacing from '@/styles/spacing';
 import RadioButton from '@/components/atoms/Button/RadioButton';
 
 export default function ReportOptionCard({
-  id,
   content,
   checked,
   onPress,
 }: {
-  id: number;
   content: string;
   checked: boolean;
   onPress: () => void;
 }) {
   return (
     <Pressable
-      key={id}
       style={({ pressed }) => [styles.container, pressed && { opacity: 0.5 }]}
       onPress={onPress}
     >
