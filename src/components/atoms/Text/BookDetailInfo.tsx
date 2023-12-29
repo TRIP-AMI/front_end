@@ -4,6 +4,7 @@ import Colors from '@styles/colors';
 import ClipboardText from '@components/atoms/Text/ClipboardText';
 import { useRecoilValue } from 'recoil';
 import profileType from '@utils/recoil/profile';
+import Regex from '@/constants/regex';
 
 function BookDetailInfo({
   location,
@@ -30,6 +31,12 @@ function BookDetailInfo({
   } else if (profile === 'TOURIST') {
     content.push({ id: 5, title: 'AMI E-mail', value: email });
   }
+
+  const isValidEmail = (mail: string) => {
+    if (mail.match(Regex.email)) return <ClipboardText text={mail} />;
+    return <Text>Invalid Email</Text>;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.marginContainer}>
@@ -39,7 +46,7 @@ function BookDetailInfo({
               {item.title}
             </Text>
             {item.title.slice(-4) === 'mail' ? (
-              <ClipboardText text={item.value} />
+              isValidEmail(item.value)
             ) : (
               <Text style={styles.value} key={item.id.toString() + item.value}>
                 {item.value}
