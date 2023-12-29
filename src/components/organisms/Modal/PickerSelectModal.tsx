@@ -1,42 +1,33 @@
-import { View, StyleSheet, Pressable } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { AntDesign } from '@expo/vector-icons';
-import BasicBottomModal from '@/components/atoms/Modal/BasicBottomModal';
-import pickerSelectValue, { pickerList } from '@/utils/recoil/picker';
-import useModalHook from '@/hooks/modalHook';
+import { View } from 'react-native';
+import BasicBotoomSheetModal from '@/components/atoms/Modal/BasicBotoomSheetModal';
 
-export default function PickerSelectModal() {
-  const [selectedValue, setSelectedValue] = useRecoilState(pickerSelectValue);
-  const selectList = useRecoilValue(pickerList);
-  const { resetModal } = useModalHook();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Value = any;
+
+export default function PickerSelectModal({
+  isVisible,
+  onClose,
+  pickerList,
+  selectedValue,
+  setSelectedValue,
+}: {
+  isVisible: boolean;
+  onClose: () => void;
+  pickerList: { label: string; value: Value }[];
+  selectedValue: Value;
+  setSelectedValue: (value: Value) => void;
+}) {
   return (
-    <BasicBottomModal
-      onDismiss={() => {}}
-      header={
-        <View
-          style={{
-            flexDirection: 'row-reverse',
-            width: '100%',
-          }}
-        >
-          <Pressable
-            onPress={resetModal}
-            style={{ marginTop: 10, marginRight: 27 }}
-          >
-            <AntDesign name='arrowright' size={24} color='black' />
-          </Pressable>
-        </View>
-      }
-    >
-      <View style={styles.contentWrap}>
-        {/* picker */}
+    <BasicBotoomSheetModal isVisible={isVisible} onClose={onClose}>
+      {/* picker */}
+      <View style={{ paddingBottom: 30 }}>
         <Picker
           mode='dropdown'
           selectedValue={selectedValue}
           onValueChange={(itemValue) => setSelectedValue(itemValue)}
         >
-          {selectList.map((item) => (
+          {pickerList.map((item) => (
             <Picker.Item
               key={item.value}
               label={item.label}
@@ -45,15 +36,6 @@ export default function PickerSelectModal() {
           ))}
         </Picker>
       </View>
-    </BasicBottomModal>
+    </BasicBotoomSheetModal>
   );
 }
-
-const styles = StyleSheet.create({
-  contentWrap: {
-    width: '100%',
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
-    backgroundColor: '#fff',
-  },
-});

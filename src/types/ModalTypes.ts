@@ -9,6 +9,7 @@ export type ModalName =
   | 'APPLY'
   | 'APPLY_CHECK'
   | 'APPLY_COMPLETE'
+  | 'UPLOAD_COMPLETE'
   | 'REVIEW'
   | 'APPLICATION_CANCEL'
   | 'APPLICANT_INFO'

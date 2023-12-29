@@ -1,29 +1,34 @@
 import { View, Text, StyleSheet, Alert } from 'react-native';
-import { useRecoilState } from 'recoil';
 import { Dayjs } from 'dayjs';
 import { calculateDateList } from '@/hooks/calendarHook';
 import CalendarPressDate from '@/components/atoms/Press/CalendarPressDate';
-import selectCalendarList from '@/utils/recoil/calendar';
 
 const dayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-export default function CalendarPicker({ selectDate }: { selectDate: string }) {
+export default function CalendarPicker({
+  selectDate,
+  selectDateList,
+  setSelectDateList,
+}: {
+  selectDate: string;
+  selectDateList: string[];
+  setSelectDateList: React.Dispatch<React.SetStateAction<string[]>>;
+}) {
   const randerDateList = calculateDateList({ selectDate });
-  const [isList, setIsList] = useRecoilState(selectCalendarList);
 
   const isDateSelected = (list: string[], data: Dayjs): boolean => {
     return list.findIndex((date) => date === data.format()) !== -1;
   };
 
   const updateItem = (dayjsForm: Dayjs) => {
-    if (isList.length >= 5) {
+    if (selectDateList.length >= 5) {
       // TODO: toast 추후 변경필요
       Alert.alert('', 'You have selected all the dates. (max 5)', [
         { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
       return;
     }
-    setIsList((prev) => [...prev, dayjsForm.format()]);
+    setSelectDateList((prev) => [...prev, dayjsForm.format()]);
   };
 
   return (
@@ -46,7 +51,7 @@ export default function CalendarPicker({ selectDate }: { selectDate: string }) {
                     key={Math.random()}
                     item={item}
                     conPress={updateItem}
-                    active={isDateSelected(isList, item.date)}
+                    active={isDateSelected(selectDateList, item.date)}
                   />
                 );
               })}
