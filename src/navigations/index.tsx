@@ -14,6 +14,10 @@ import { useNavigation } from '@react-navigation/native';
 import BookDetailsScreen from '@screens/BookDetailsScreen';
 import SettingScreen from '@screens/SettingScreen';
 import ReviewDetailsScreen from '@screens/ReviewDetailsScreen';
+import EditProfileScreen from '@screens/setting/EditProfileScreen';
+import AccountManagementScreen from '@screens/setting/AccountManagementScreen';
+import InquiryDetailsScreen from '@screens/setting/InquiryDetailsScreen';
+import TermsAndConditionScreen from '@screens/setting/TermsAndConditionScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -150,6 +154,46 @@ function Navigation() {
             component={SettingScreen}
             options={{
               title: 'Settings',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='EditProfile'
+            component={EditProfileScreen}
+            options={{
+              title: 'Edit Profile',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='AccountManagement'
+            component={AccountManagementScreen}
+            options={{
+              title: 'Account Management',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='InquiryDetails'
+            component={InquiryDetailsScreen}
+            options={{
+              title: 'Inquiry details',
+              headerTitleStyle: Fonts.header.title,
+              headerLeft: () => <BackLeftArrow />,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name='TermsAndConditions'
+            component={TermsAndConditionScreen}
+            options={{
+              title: 'Terms and Conditions',
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeftArrow />,
               headerShadowVisible: false,

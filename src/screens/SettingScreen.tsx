@@ -1,11 +1,17 @@
-import { View, Text, StyleSheet, SafeAreaView, Switch } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Pressable } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import Separator from '@components/atoms/etc/Separator';
 import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import { useState } from 'react';
+import ToggleButton from '@components/atoms/Button/ToggleButton';
+import { useNavigation } from '@react-navigation/native';
+import LogoutButton from '@components/molecules/Button/LogoutButton';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function SettingScreen() {
+  const navigation = useNavigation<RootStackNavigationProp>();
+
   const [isAppPushEnabled, setIsAppPushEnabled] = useState(false);
   const appPushToggleSwitch = () =>
     setIsAppPushEnabled((previousState) => !previousState);
@@ -14,36 +20,37 @@ function SettingScreen() {
   const utilizeToggleSwitch = () =>
     setIsUtilizeEnabled((previousState) => !previousState);
 
-  // TODO react-native-paper의 ToggleButton도 확인해보기
-  const settingValue = (title: string, value: string) => {
-    switch (title) {
-      case 'Home Page Country':
+  const settingValue = (path: string, value: string) => {
+    switch (path) {
+      case 'HomePageCountry':
       case 'Version':
         return <Text style={styles.value}>{value}</Text>;
-      case 'App Push Notification':
+      case 'AppPushNotification':
         return (
-          <Switch
+          <ToggleButton
             value={isAppPushEnabled}
             onValueChange={appPushToggleSwitch}
-            trackColor={{ true: '#FFFFFF' }}
-            ios_backgroundColor='#FFFFFF'
-            thumbColor={isAppPushEnabled ? Colors.primary : Colors.fontGray06}
           />
         );
-      case 'Utilize marketing information':
+      case 'UtilizeMarketingInformation':
         return (
-          <Switch
+          <ToggleButton
             value={isUtilizeEnabled}
             onValueChange={utilizeToggleSwitch}
           />
         );
+      case 'Logout':
+        return null;
       default:
+        // TODO path error
         return (
-          <MaterialIcons
-            name='arrow-forward-ios'
-            size={15}
-            color={Colors.fontGray03}
-          />
+          <Pressable onPress={() => navigation.navigate(path)}>
+            <MaterialIcons
+              name='arrow-forward-ios'
+              size={20}
+              color={Colors.fontGray03}
+            />
+          </Pressable>
         );
     }
   };
@@ -63,6 +70,7 @@ function SettingScreen() {
     { title: 'Terms and conditions', value: '', path: 'TermsAndConditions' },
     { title: 'Version', value: '1.0.0', path: 'Version' },
   ];
+
   return (
     <SafeAreaView style={styles.container}>
       {settingList.map((item, index) => (
@@ -71,13 +79,14 @@ function SettingScreen() {
             <Text key={item.path} style={styles.text}>
               {item.title}
             </Text>
-            {settingValue(item.title, item.value)}
+            {settingValue(item.path, item.value)}
           </View>
           {(index === 2 || index === 6) && (
             <Separator color={Colors.lineGray05} hei={8} marginVer={0} />
           )}
         </>
       ))}
+      <LogoutButton />
     </SafeAreaView>
   );
 }

@@ -58,6 +58,10 @@ export type RootStackParamList = {
   BookDetails: undefined;
   ReviewDetails: undefined;
   Setting: undefined;
+  EditProfile: undefined;
+  AccountManagement: undefined;
+  InquiryDetails: undefined;
+  TermsAndConditions: undefined;
 };
 
 export type BottomTabParamList = {
