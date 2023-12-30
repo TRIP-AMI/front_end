@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/styles/colors';
 
-export default function ApplyCompleteModal({
+export default function IconFullScreenModal({
   title,
   detail,
   button,
