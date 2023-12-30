@@ -30,6 +30,8 @@ import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import SelectProfileScreen from '@/screens/SelectProfileScreen';
 import CloseButton from '@/components/atoms/Button/CloseButton';
+import ContentReportScreen from '@/screens/ContentReportScreen';
+import ContentReportDetailScreen from '@/screens/ContentReportDetailScreen';
 import JoinTermsScreen from '@/screens/JoinTermsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -110,15 +112,39 @@ function Navigation() {
               headerRight: () => <SearchNotificationRight theme='white' />,
             })}
           />
-          <Stack.Screen
-            name='Content'
-            component={ContentScreen}
-            options={{
-              title: '',
-              headerRight: () => <ContentHeaderRightIcons />,
-              headerLeft: () => <BackLeftArrow />,
+          <Stack.Group
+            screenOptions={{
+              headerBackVisible: false,
+              headerTitleStyle: Fonts.header.title,
+              headerShadowVisible: false,
             }}
-          />
+          >
+            <Stack.Screen
+              name='Content'
+              component={ContentScreen}
+              options={{
+                title: '',
+                headerRight: () => <ContentHeaderRightIcons />,
+                headerLeft: () => <BackLeftArrow />,
+              }}
+            />
+            <Stack.Screen
+              name='Report'
+              component={ContentReportScreen}
+              options={{
+                title: '',
+                headerRight: () => <CloseButton onPress={() => goBack()} />,
+              }}
+            />
+            <Stack.Screen
+              name='ReportDetail'
+              component={ContentReportDetailScreen}
+              options={{
+                title: '',
+                headerLeft: () => <BackLeftArrow />,
+              }}
+            />
+          </Stack.Group>
           <Stack.Screen
             name='ApplicationDetails'
             component={ApplicationDetailsScreen}

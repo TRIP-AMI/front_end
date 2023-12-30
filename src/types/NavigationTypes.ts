@@ -31,6 +31,18 @@ export type JoinTermsProps = {
   ko: string;
 };
 
+export type ContentProps = {
+  id: number;
+};
+
+export type ReportProps = {
+  programId: number;
+};
+
+export type ReportDetailProps = ReportProps & {
+  title: string;
+};
+
 export type CalendarProps = {
   availableDates: string[];
 };
@@ -43,7 +55,9 @@ export type RootStackParamList = {
   FAQ: undefined;
   Inquiry: undefined;
   Search: undefined;
-  Content: undefined;
+  Content: ContentProps;
+  Report: ReportProps;
+  ReportDetail: ReportDetailProps;
   Category: { title: string };
   Login: undefined;
   Join: undefined;

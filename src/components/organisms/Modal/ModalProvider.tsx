@@ -14,6 +14,7 @@ import LoginInvalidModal from '@/components/molecules/Modal/LoginInvalidModal';
 import JoinCancelModal from '@/components/molecules/Modal/JoinCancelModal';
 import JoinCompleteModal from '@/components/organisms/Modal/JoinCompleteModal';
 import AuthAlertModal from '@/components/molecules/Modal/AuthAlertModal';
+import ReportCompleteModal from './ReportCompleteModal';
 import UploadCompleteModal from './UploadCompleteModal';
 
 export default function ModalProvider() {
@@ -31,6 +32,7 @@ export default function ModalProvider() {
     AUTH_ALERT: <AuthAlertModal />,
     NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
+    REPORT_COMPLETE: <ReportCompleteModal />,
     APPLY: <ApplyModal />,
     APPLY_CHECK: modal.applyCheck && (
       <ApplyCheckModal
