@@ -30,7 +30,7 @@ import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import SelectProfileScreen from '@/screens/SelectProfileScreen';
 import CloseButton from '@/components/atoms/Button/CloseButton';
-import JoinTemsScreen from '@/screens/JoinTermsScreen';
+import JoinTermsScreen from '@/screens/JoinTermsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -152,6 +152,35 @@ function Navigation() {
               headerShadowVisible: false,
             }}
           />
+          <Stack.Group
+            screenOptions={{
+              headerBackVisible: false,
+              headerRight: () => <CloseButton onPress={() => goBack()} />,
+              headerShadowVisible: false,
+              headerTitleStyle: Fonts.header.title,
+            }}
+          >
+            <Stack.Screen
+              name='Age'
+              component={JoinTermsScreen}
+              options={{ title: 'Age Consent' }}
+            />
+            <Stack.Screen
+              name='Privacy'
+              component={JoinTermsScreen}
+              options={{ title: 'Privacy Policy' }}
+            />
+            <Stack.Screen
+              name='Terms'
+              component={JoinTermsScreen}
+              options={{ title: 'Tems of Service' }}
+            />
+            <Stack.Screen
+              name='Marketing'
+              component={JoinTermsScreen}
+              options={{ title: 'Marketing Agreements' }}
+            />
+          </Stack.Group>
         </>
       ) : (
         <>
@@ -184,26 +213,28 @@ function Navigation() {
               screenOptions={{
                 headerBackVisible: false,
                 headerRight: () => <CloseButton onPress={() => goBack()} />,
+                headerShadowVisible: false,
+                headerTitleStyle: Fonts.header.title,
               }}
             >
               <Stack.Screen
                 name='Age'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Age Consent' }}
               />
               <Stack.Screen
                 name='Privacy'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Privacy Policy' }}
               />
               <Stack.Screen
                 name='Terms'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Tems of Service' }}
               />
               <Stack.Screen
                 name='Marketing'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Marketing Agreements' }}
               />
             </Stack.Group>

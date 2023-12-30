@@ -3,7 +3,7 @@ import { JoinTermsProps } from '@/types/NavigationTypes';
 import Separator from '@/components/atoms/etc/Separator';
 import Colors from '@/styles/colors';
 
-export default function JoinTemsScreen({
+export default function JoinTermsScreen({
   route,
 }: {
   route: { params: JoinTermsProps };
