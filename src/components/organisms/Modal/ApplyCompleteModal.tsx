@@ -8,6 +8,7 @@ export default function ApplyCompleteModal() {
   const { resetModal } = useModalHook();
   const { navigate } = useNavigation<RootStackNavigationProp>();
 
+  // TODO: application detail prop 정의
   const onPressButton = () => {
     resetModal();
     navigate('ApplicationDetails');

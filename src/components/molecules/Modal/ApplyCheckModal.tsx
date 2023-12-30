@@ -12,7 +12,7 @@ export default function ApplyCheckModal({ date, user }: ApplyCheckProps) {
     { key: `Email: ${user?.email}` },
   ];
 
-  // TODO: APPLY_COMPLETE 모달 띄우기
+  // TODO: 요청 보내기 및 에러 처리
   const onConfirm = () => {
     setModalName('APPLY_COMPLETE');
   };
