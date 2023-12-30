@@ -24,7 +24,7 @@ export type SelectProfileProps = {
   imgUrl: string;
 };
 
-export type JoinTemsScreen = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
+export type JoinTermsScreen = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
 
 export type JoinTermsProps = {
   en: string;
