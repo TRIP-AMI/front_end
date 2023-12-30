@@ -32,6 +32,7 @@ import ContentReportDetailScreen from '@/screens/ContentReportDetailScreen';
 import JoinTermsScreen from '@/screens/JoinTermsScreen';
 import AboutScreen from '@/screens/bottomNav/Menu/About';
 import { RootStackParamList } from '@/types/NavigationTypes';
+import AnnouncementDetailScreen from '@/screens/bottomNav/Menu/Announcement/detail';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -68,6 +69,10 @@ function Navigation() {
               component={AboutScreen}
             />
             <Stack.Screen name='Announcement' component={AnnouncementScreen} />
+            <Stack.Screen
+              name='AnnouncementDetail'
+              component={AnnouncementDetailScreen}
+            />
             <Stack.Screen name='FAQ' component={FAQScreen} />
             <Stack.Screen name='Inquiry' component={InquiryScreen} />
           </Stack.Group>

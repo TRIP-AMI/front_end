@@ -51,6 +51,7 @@ export type RootStackParamList = {
   MenuBar: undefined;
   About: undefined;
   Announcement: undefined;
+  AnnouncementDetail: { announcementId: number };
   FAQ: undefined;
   Inquiry: undefined;
   Search: undefined;
