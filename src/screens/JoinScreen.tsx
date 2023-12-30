@@ -7,7 +7,7 @@ import TextButton from '@/components/atoms/Button/TextButton';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
 import {
-  JoinTemsScreen,
+  JoinTermsScreen,
   RootStackNavigationProp,
 } from '@/types/NavigationTypes';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
@@ -64,7 +64,7 @@ export default function JoinScreen() {
   };
 
   const onPressView = (item: JoinTermsDataType) => {
-    const screen = item.title.split(' ')[0] as JoinTemsScreen;
+    const screen = item.title.split(' ')[0] as JoinTermsScreen;
     navigate(screen, {
       en: item.detail_en,
       ko: item.detail_ko,

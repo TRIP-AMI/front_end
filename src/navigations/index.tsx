@@ -1,15 +1,14 @@
+import { useEffect } from 'react';
 import 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IntroductionScreen from '@screens/menu/IntroductionScreen';
 import BannerListScreen from '@screens/menu/BannerListScreen';
 import NotificationScreen from '@screens/menu/NotificationScreen';
 import FAQScreen from '@screens/menu/FAQScreen';
-import SearchScreen from '@screens/SearchScreen';
 import ContentScreen from '@screens/ContentScreen';
 import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderRightIcons';
 import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
-import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import BookDetailsScreen from '@screens/BookDetailsScreen';
 import ReviewDetailsScreen from '@screens/ReviewDetailsScreen';
@@ -31,9 +30,9 @@ import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import SelectProfileScreen from '@/screens/SelectProfileScreen';
 import CloseButton from '@/components/atoms/Button/CloseButton';
-import JoinTemsScreen from '@/screens/JoinTermsScreen';
 import ContentReportScreen from '@/screens/ContentReportScreen';
 import ContentReportDetailScreen from '@/screens/ContentReportDetailScreen';
+import JoinTermsScreen from '@/screens/JoinTermsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -87,7 +86,6 @@ function Navigation() {
               headerLeft: () => <BackLeftArrow />,
             }}
           />
-          <Stack.Screen name='Search' component={SearchScreen} />
           <Stack.Screen
             name='Calendar'
             component={CalendarScreen}
@@ -180,6 +178,35 @@ function Navigation() {
               headerShadowVisible: false,
             }}
           />
+          <Stack.Group
+            screenOptions={{
+              headerBackVisible: false,
+              headerRight: () => <CloseButton onPress={() => goBack()} />,
+              headerShadowVisible: false,
+              headerTitleStyle: Fonts.header.title,
+            }}
+          >
+            <Stack.Screen
+              name='Age'
+              component={JoinTermsScreen}
+              options={{ title: 'Age Consent' }}
+            />
+            <Stack.Screen
+              name='Privacy'
+              component={JoinTermsScreen}
+              options={{ title: 'Privacy Policy' }}
+            />
+            <Stack.Screen
+              name='Terms'
+              component={JoinTermsScreen}
+              options={{ title: 'Tems of Service' }}
+            />
+            <Stack.Screen
+              name='Marketing'
+              component={JoinTermsScreen}
+              options={{ title: 'Marketing Agreements' }}
+            />
+          </Stack.Group>
         </>
       ) : (
         <>
@@ -212,26 +239,28 @@ function Navigation() {
               screenOptions={{
                 headerBackVisible: false,
                 headerRight: () => <CloseButton onPress={() => goBack()} />,
+                headerShadowVisible: false,
+                headerTitleStyle: Fonts.header.title,
               }}
             >
               <Stack.Screen
                 name='Age'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Age Consent' }}
               />
               <Stack.Screen
                 name='Privacy'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Privacy Policy' }}
               />
               <Stack.Screen
                 name='Terms'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Tems of Service' }}
               />
               <Stack.Screen
                 name='Marketing'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Marketing Agreements' }}
               />
             </Stack.Group>

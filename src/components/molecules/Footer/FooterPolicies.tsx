@@ -1,27 +1,34 @@
-import { View, StyleSheet, Pressable } from 'react-native';
-import FooterDefaultText from '@components/atoms/Text/FooterDefaultText';
+import { useNavigation } from '@react-navigation/native';
+import { View, StyleSheet } from 'react-native';
+import TextButton from '@/components/atoms/Button/TextButton';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import JOIN_TERMS from '@/constants/joinTerms';
 
 function FooterPolicies() {
+  const { navigate } = useNavigation<RootStackNavigationProp>();
   return (
     <View style={styles.policies}>
-      <Pressable
-        onPress={() => console.log('Privacy Policy')}
-        style={({ pressed }) => pressed && styles.pressed}
-      >
-        <FooterDefaultText>Privacy Policy</FooterDefaultText>
-      </Pressable>
-      <Pressable
-        onPress={() => console.log('Operational Policy')}
-        style={({ pressed }) => pressed && styles.pressed}
-      >
-        <FooterDefaultText>Operational Policy</FooterDefaultText>
-      </Pressable>
-      <Pressable
-        onPress={() => console.log('Terms of Service')}
-        style={({ pressed }) => pressed && styles.pressed}
-      >
-        <FooterDefaultText>Terms of Service</FooterDefaultText>
-      </Pressable>
+      <TextButton
+        title='Privacy Policy'
+        onPress={() =>
+          navigate('Privacy', {
+            en: JOIN_TERMS[1].detail_en,
+            ko: JOIN_TERMS[1].detail_ko,
+          })
+        }
+        style={styles.text}
+      />
+      <View style={{ width: 1, height: 12, backgroundColor: '#CECECE' }} />
+      <TextButton
+        title='Terms of Service'
+        onPress={() =>
+          navigate('Terms', {
+            en: JOIN_TERMS[2].detail_en,
+            ko: JOIN_TERMS[2].detail_ko,
+          })
+        }
+        style={[styles.text, { paddingLeft: 15 }]}
+      />
     </View>
   );
 }
@@ -29,11 +36,21 @@ function FooterPolicies() {
 const styles = StyleSheet.create({
   policies: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    margin: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingVertical: 10,
   },
-  pressed: {
-    opacity: 0.5,
+  bar: {
+    width: 1,
+    height: 12,
+    backgroundColor: '#6E6E6E',
+  },
+  text: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 12,
+    lineHeight: 20,
+    color: '#E9E9E9',
+    paddingRight: 15,
   },
 });
 

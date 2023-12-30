@@ -24,7 +24,7 @@ export type SelectProfileProps = {
   imgUrl: string;
 };
 
-export type JoinTemsScreen = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
+export type JoinTermsScreen = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
 
 export type JoinTermsProps = {
   en: string;
@@ -41,6 +41,10 @@ export type ReportProps = {
 
 export type ReportDetailProps = ReportProps & {
   title: string;
+};
+
+export type CalendarProps = {
+  availableDates: string[];
 };
 
 export type RootStackParamList = {
@@ -66,7 +70,7 @@ export type RootStackParamList = {
   CreatePassword: CreatePasswordProps;
   FindPassword: EmailAuthProps;
   ResetPassword: CreatePasswordProps;
-  Calendar: undefined;
+  Calendar: CalendarProps;
   ApplicationDetails: undefined;
   SelectProfile: SelectProfileProps;
   BookDetails: undefined;
@@ -77,9 +81,12 @@ export type BottomTabParamList = {
   Menu: undefined;
   Like: undefined;
   Home: undefined;
-  Upload: undefined;
+  Upload: CalendarProps;
   MyPage: undefined;
 };
 
 export type RootStackNavigationProp =
   NativeStackNavigationProp<RootStackParamList>;
+
+export type BottomTabNavigationProp =
+  NativeStackNavigationProp<BottomTabParamList>;

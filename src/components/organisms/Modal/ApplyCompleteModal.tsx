@@ -1,20 +1,31 @@
-import { useRecoilValue } from 'recoil'; // TODO: 지우기
-import { useEffect } from 'react';
-import IconFullScreenModal from '@/components/molecules/Modal/IconFullScreenModal';
-import modalState from '@/utils/recoil/modal';
+import { useNavigation } from '@react-navigation/native';
+import IconFullScreenView from '@/components/atoms/Modal/IconFullScreenView';
+import BasicButton from '@/components/atoms/Button/BasicButton';
+import useModalHook from '@/hooks/modalHook';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 export default function ApplyCompleteModal() {
-  const modal = useRecoilValue(modalState);
+  const { resetModal } = useModalHook();
+  const { navigate } = useNavigation<RootStackNavigationProp>();
 
-  useEffect(() => {
-    console.log(modal?.modalName);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // TODO: application detail prop 정의
+  const onPressButton = () => {
+    resetModal();
+    navigate('ApplicationDetails');
+  };
 
   return (
-    <IconFullScreenModal
+    <IconFullScreenView
       title='Your application has been completed!'
       detail={`When the reservation is confirmed,\n we will inform you of the schedule\n by the email you entered.`}
+      button={
+        <BasicButton
+          content='Application Details'
+          round
+          onPress={onPressButton}
+        />
+      }
+      buttonStyle={{ paddingHorizontal: 64 }}
     />
   );
 }
