@@ -11,7 +11,7 @@ import PressHashTag from '@/components/atoms/Tag/PressHashTag';
 import { Category, CategoryList } from '@/constants/category';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import {
-  BottomTabParamList,
+  MainBottomTabParamList,
   RootStackNavigationProp,
 } from '@/types/NavigationTypes';
 import Counter from '@/components/molecules/Controller/Counter';
@@ -258,7 +258,7 @@ function AvailableDates({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
 }) {
-  const { params } = useRoute<RouteProp<BottomTabParamList, 'Upload'>>();
+  const { params } = useRoute<RouteProp<MainBottomTabParamList, 'Upload'>>();
   const navigation = useNavigation<RootStackNavigationProp>();
   const {
     field: { value, onChange },

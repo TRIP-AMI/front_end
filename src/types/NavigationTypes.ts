@@ -49,9 +49,9 @@ export type CalendarProps = {
 
 export type RootStackParamList = {
   MenuBar: undefined;
-  Service: undefined;
-  BannerList: undefined;
-  Notification: undefined;
+  About: undefined;
+  Announcement: undefined;
+  AnnouncementDetail: { announcementId: number };
   FAQ: undefined;
   Inquiry: undefined;
   Search: undefined;
@@ -77,7 +77,7 @@ export type RootStackParamList = {
   ReviewDetails: undefined;
 };
 
-export type BottomTabParamList = {
+export type MainBottomTabParamList = {
   Menu: undefined;
   Like: undefined;
   Home: undefined;
@@ -88,5 +88,5 @@ export type BottomTabParamList = {
 export type RootStackNavigationProp =
   NativeStackNavigationProp<RootStackParamList>;
 
-export type BottomTabNavigationProp =
-  NativeStackNavigationProp<BottomTabParamList>;
+export type MainBottomTabNavigationProp =
+  NativeStackNavigationProp<MainBottomTabParamList>;

@@ -13,7 +13,7 @@ import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import useModalHook from '@/hooks/modalHook';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
 import {
-  BottomTabNavigationProp,
+  MainBottomTabNavigationProp,
   RootStackParamList,
 } from '@/types/NavigationTypes';
 import PickerSelectModal from '@/components/organisms/Modal/PickerSelectModal';
@@ -25,7 +25,7 @@ export type CalendarScreenProps = StackScreenProps<
 
 export default function CalendarScreen({ route }: CalendarScreenProps) {
   const { params } = route;
-  const navigation = useNavigation<BottomTabNavigationProp>();
+  const navigation = useNavigation<MainBottomTabNavigationProp>();
   const { selectDateList, setSelectDateList, deleteDate, checkConfirm } =
     useCalendar(params);
   // modal
