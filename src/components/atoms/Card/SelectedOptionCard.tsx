@@ -25,7 +25,7 @@ export default function SelectedOptionCard({
         </Pressable>
       </View>
       <View style={styles.content}>
-        <View style={{ flex: 2, alignItems: 'flex-end' }}>
+        <View style={{ flex: 1, alignItems: 'flex-end' }}>
           <Text style={styles.text}>
             {price > 0 ? `${price.toLocaleString()} won` : 'Free'}
           </Text>
@@ -38,19 +38,18 @@ export default function SelectedOptionCard({
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: '#F2F2F2',
-    width: '88%',
-    height: 80,
+    width: '100%',
     paddingHorizontal: 15,
-    paddingVertical: 14,
+    paddingVertical: 12,
+    marginTop: 10,
   },
   header: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingBottom: 12,
   },
   content: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -60,5 +59,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 17,
     color: Colors.fontGray02,
+    paddingTop: 5,
   },
 });

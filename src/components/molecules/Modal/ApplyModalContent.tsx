@@ -30,8 +30,8 @@ export default function ApplyModalContent({
 
 const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: 24,
     flex: 2.5,
     width: '100%',
-    alignItems: 'center',
   },
 });

@@ -25,6 +25,7 @@ export default function BasicModalDetail({
 const styles = StyleSheet.create({
   listContainer: {
     flexDirection: 'row',
-    marginTop: 14,
+    paddingTop: 14,
+    paddingHorizontal: 20,
   },
 });
