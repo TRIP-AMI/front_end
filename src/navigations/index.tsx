@@ -1,21 +1,18 @@
 import { useEffect } from 'react';
 import 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import IntroductionScreen from '@screens/menu/IntroductionScreen';
-import BannerListScreen from '@screens/menu/BannerListScreen';
-import NotificationScreen from '@screens/menu/NotificationScreen';
-import FAQScreen from '@screens/menu/FAQScreen';
 import ContentScreen from '@screens/ContentScreen';
 import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderRightIcons';
 import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
-import { useNavigation } from '@react-navigation/native';
 import BookDetailsScreen from '@screens/BookDetailsScreen';
 import ReviewDetailsScreen from '@screens/ReviewDetailsScreen';
-import InquiryScreen from '@/screens/menu/InquiryScreen';
-import { RootStackParamList } from '@/types/NavigationTypes';
-import BottomNavBar from './BottomNavBar';
-import CategoryScreen from '@/screens/CategoryScreen';
+import AnnouncementScreen from '@/screens/bottomNav/Menu/Announcement';
+import FAQScreen from '@/screens/bottomNav/Menu/FAQ/FAQScreen';
+import InquiryScreen from '@/screens/bottomNav/Menu/Inquiry/InquiryScreen';
+import BottomNavBar from './MainBottomNavTab';
+import CategoryScreen from '@/screens/Category/CategoryScreen';
 import Colors from '@/styles/colors';
 import SearchNotificationRight from '@/components/molecules/Header/SearchNotificationRight';
 import BackLeft from '@/components/molecules/Header/BackLeft';
@@ -27,12 +24,14 @@ import EmailAuthScreen from '@/screens/EmailAuthScreen';
 import useModalHook from '@/hooks/modalHook';
 import CreateNameScreen from '@/screens/CreateNameScreen';
 import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
-import CalendarScreen from '@/screens/CalendarScreen';
+import CalendarScreen from '@/screens/bottomNav/Upload/Calendar/CalendarScreen';
 import SelectProfileScreen from '@/screens/SelectProfileScreen';
 import CloseButton from '@/components/atoms/Button/CloseButton';
 import ContentReportScreen from '@/screens/ContentReportScreen';
 import ContentReportDetailScreen from '@/screens/ContentReportDetailScreen';
 import JoinTermsScreen from '@/screens/JoinTermsScreen';
+import AboutScreen from '@/screens/bottomNav/Menu/About';
+import { RootStackParamList } from '@/types/NavigationTypes';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -50,42 +49,28 @@ function Navigation() {
     <Stack.Navigator>
       {isLoggedIn ? (
         <>
+          {/* bottom nav */}
           <Stack.Screen
             name='MenuBar'
             component={BottomNavBar}
             options={{ headerShown: false }}
           />
-          <Stack.Screen
-            name='Service'
-            component={IntroductionScreen}
-            options={{
-              title: 'CultureX',
-            }}
-          />
-          <Stack.Screen
-            name='BannerList'
-            component={BannerListScreen}
-            options={{
-              title: 'Events',
-            }}
-          />
-          <Stack.Screen name='Notification' component={NotificationScreen} />
-          <Stack.Screen
-            name='FAQ'
-            component={FAQScreen}
-            options={{
+          {/* menu */}
+          <Stack.Group
+            screenOptions={{
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeftArrow />,
             }}
-          />
-          <Stack.Screen
-            name='Inquiry'
-            component={InquiryScreen}
-            options={{
-              headerTitleStyle: Fonts.header.title,
-              headerLeft: () => <BackLeftArrow />,
-            }}
-          />
+          >
+            <Stack.Screen
+              name='About'
+              options={{ title: 'About TRIPAMI' }}
+              component={AboutScreen}
+            />
+            <Stack.Screen name='Announcement' component={AnnouncementScreen} />
+            <Stack.Screen name='FAQ' component={FAQScreen} />
+            <Stack.Screen name='Inquiry' component={InquiryScreen} />
+          </Stack.Group>
           <Stack.Screen
             name='Calendar'
             component={CalendarScreen}

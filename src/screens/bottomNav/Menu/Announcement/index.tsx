@@ -1,10 +1,9 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function IntroductionScreen() {
+export default function AnnouncementScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to CultureX!</Text>
-      <Text style={styles.subtitle}>하하하</Text>
+      <Text style={styles.title}>공지사항</Text>
     </View>
   );
 }
