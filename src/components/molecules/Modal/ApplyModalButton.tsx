@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import Colors from '@/styles/colors';
 import BasicButton from '@/components/atoms/Button/BasicButton';
-// import useModalHook from '@/hooks/modalHook';
+import useModalHook from '@/hooks/modalHook';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 
 export default function ApplyModalButton({
@@ -11,7 +11,7 @@ export default function ApplyModalButton({
   price: number;
   selectedDate: string;
 }) {
-  // const { setModalName, resetModal } = useModalHook();
+  const { setModalName } = useModalHook();
 
   // TODO: user 정보 받아오기
   const user = {
@@ -21,15 +21,16 @@ export default function ApplyModalButton({
   };
 
   const onApply = () => {
-    console.log('user', user, 'date', selectedDate);
-    // setModalName('APPLY_CHECK', {
-    //   date: selectedDate,
-    //   user: {
-    //     id: user.id,
-    //     name: user.name,
-    //     email: user.email,
-    //   },
-    // });
+    setModalName('APPLY_CHECK', {
+      applyCheck: {
+        date: selectedDate,
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+        },
+      },
+    });
   };
 
   return (

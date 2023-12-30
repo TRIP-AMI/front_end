@@ -5,7 +5,7 @@ import { ApplyCheckProps } from '@/types/ModalTypes';
 import useModalHook from '@/hooks/modalHook';
 
 export default function ApplyCheckModal({ date, user }: ApplyCheckProps) {
-  const { resetModal } = useModalHook();
+  const { setModalName, resetModal } = useModalHook();
 
   const data = [
     { key: `Application Date: ${date}` },
@@ -14,8 +14,7 @@ export default function ApplyCheckModal({ date, user }: ApplyCheckProps) {
 
   // TODO: APPLY_COMPLETE 모달 띄우기
   const onConfirm = () => {
-    // setModalName('APPLY_COMPLETE');
-    resetModal();
+    setModalName('APPLY_COMPLETE');
   };
 
   return (
