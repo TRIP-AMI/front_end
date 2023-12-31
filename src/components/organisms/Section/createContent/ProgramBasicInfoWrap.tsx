@@ -10,13 +10,14 @@ import BasicInput from '@/components/atoms/Input/BasicInput';
 import PressHashTag from '@/components/atoms/Tag/PressHashTag';
 import { Category, CategoryList } from '@/constants/category';
 import SelectButton from '@/components/atoms/Button/SelectButton';
-import {
-  MainBottomTabParamList,
-  RootStackNavigationProp,
-} from '@/types/NavigationTypes';
+
 import Counter from '@/components/molecules/Controller/Counter';
 import useModalHook from '@/hooks/modalHook';
 import TimePickerModal from '../../Modal/TimePickerModal';
+import {
+  UploadStackNavigationProp,
+  UploadStackParamList,
+} from '@/navigations/MainBottomNavTab/Upload/UploadStack';
 
 // input =======================================================================================================================================
 function Title({
@@ -258,8 +259,8 @@ function AvailableDates({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
 }) {
-  const { params } = useRoute<RouteProp<MainBottomTabParamList, 'Upload'>>();
-  const navigation = useNavigation<RootStackNavigationProp>();
+  const { params } = useRoute<RouteProp<UploadStackParamList, 'Upload'>>();
+  const navigation = useNavigation<UploadStackNavigationProp>();
   const {
     field: { value, onChange },
   } = useController({ control, name: 'availableDates' });

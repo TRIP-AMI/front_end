@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
 import TextButton from '@/components/atoms/Button/TextButton';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { RootStackNavigationProp } from '@/navigations';
 import JOIN_TERMS from '@/constants/joinTerms';
 
 function FooterPolicies() {
@@ -11,9 +11,12 @@ function FooterPolicies() {
       <TextButton
         title='Privacy Policy'
         onPress={() =>
-          navigate('Privacy', {
-            en: JOIN_TERMS[1].detail_en,
-            ko: JOIN_TERMS[1].detail_ko,
+          navigate('TermsStack', {
+            screen: 'Privacy',
+            params: {
+              en: JOIN_TERMS[1].detail_en,
+              ko: JOIN_TERMS[1].detail_ko,
+            },
           })
         }
         style={styles.text}
@@ -22,9 +25,12 @@ function FooterPolicies() {
       <TextButton
         title='Terms of Service'
         onPress={() =>
-          navigate('Terms', {
-            en: JOIN_TERMS[2].detail_en,
-            ko: JOIN_TERMS[2].detail_ko,
+          navigate('TermsStack', {
+            screen: 'Terms',
+            params: {
+              en: JOIN_TERMS[2].detail_en,
+              ko: JOIN_TERMS[2].detail_ko,
+            },
           })
         }
         style={[styles.text, { paddingLeft: 15 }]}

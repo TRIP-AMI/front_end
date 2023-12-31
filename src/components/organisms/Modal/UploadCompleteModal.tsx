@@ -5,10 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
-import { MainBottomTabNavigationProp } from '@/types/NavigationTypes';
+import { MainBottomNavTabNavigationProp } from '@/navigations/MainBottomNavTab/MainBottomNavTab';
 
 export default function UploadCompleteModal() {
-  const { navigate } = useNavigation<MainBottomTabNavigationProp>();
+  const { navigate } = useNavigation<MainBottomNavTabNavigationProp>();
   const { resetModal } = useModalHook();
   const handleOnPress = () => {
     navigate('Home');

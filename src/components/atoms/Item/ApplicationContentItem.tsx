@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import profileType from '@utils/recoil/profile';
 import showToast from '@utils/toast/toast';
 import Spacing from '@styles/spacing';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { RootStackNavigationProp } from '@/navigations';
 
 function ApplicationContentItem({
   id,
@@ -43,11 +43,27 @@ function ApplicationContentItem({
   // TODO Review 한 후에 Review 버튼 숨기기
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate('Content', { id })}>
+      <Pressable
+        onPress={() =>
+          navigation.navigate('ContentStack', {
+            screen: 'Content',
+            params: { id },
+          })
+        }
+      >
         <Image resizeMode='cover' style={styles.img} source={{ uri: imgUrl }} />
       </Pressable>
       <View style={styles.subContainer}>
-        <Pressable onPress={() => navigation.navigate('BookDetails')}>
+        <Pressable
+          onPress={() =>
+            navigation.navigate('MainBottomNavTab', {
+              screen: 'MyPageStack',
+              params: {
+                screen: 'BookDetails',
+              },
+            })
+          }
+        >
           <Text style={styles.title}>{title}</Text>
         </Pressable>
         <Text style={styles.subTitle}>{subTitle}</Text>

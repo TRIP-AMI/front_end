@@ -6,7 +6,7 @@ import useModalHook from '@hooks/modalHook';
 import { useNavigation } from '@react-navigation/native';
 import showToast from '@utils/toast/toast';
 import Spacing from '@styles/spacing';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
 
 function ApplicationTable({
   applicationEnd,
@@ -16,7 +16,7 @@ function ApplicationTable({
   noBroder?: boolean;
 }) {
   const { setModalName } = useModalHook();
-  const navigation = useNavigation<RootStackNavigationProp>();
+  const navigation = useNavigation<MyPageStackNavigationProp>();
 
   const tableData = [
     {
