@@ -15,6 +15,7 @@ export type ModalName =
   | 'APPLICATION_CANCEL'
   | 'APPLICANT_INFO'
   | 'REVIEW_DETAIL'
+  | 'APPLICATION_FILTER'
   | 'LOGOUT';
 
 export type ApplyCheckProps = {
@@ -35,8 +36,14 @@ export type CustomModalProps = {
   applyCheck?: ApplyCheckProps;
   title?: string;
   applicationItem?: ApplicationItemProps;
+  applicationFilter?: ApplicationFilterProps;
 };
 
 export type ModalState = CustomModalProps & {
   modalName: ModalName;
+};
+
+export type ApplicationFilterProps = {
+  category: string;
+  onChange: (select: string) => void;
 };

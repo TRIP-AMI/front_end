@@ -19,47 +19,70 @@ type ApplicationItemProps = {
 };
 
 // TODO Badge 색상 Colors.Primary로 변경해야 함
-function ApplicationItemForAmi({ item }: { item: ApplicationItemProps }) {
+function ApplicationItemForAmi({
+  item,
+  category,
+}: {
+  item: ApplicationItemProps;
+  category: string;
+}) {
   const today = new Date();
   const contentDate = new Date(
     Number(item.date.slice(6)),
     Number(item.date.slice(0, 2)) - 1,
     Number(item.date.slice(3, 5)),
   );
-  const applicationEnd = contentDate < today;
+  const isApplicationEnd = contentDate < today;
+  const isVisible = (cate: string, applicationEnd: boolean) => {
+    return !(
+      (cate === 'Only New' && applicationEnd) ||
+      (cate === 'Only Last' && !applicationEnd)
+    );
+  };
 
   return (
-    <View
-      style={{
-        backgroundColor: applicationEnd ? Colors.fontGray08 : Colors.second,
-        borderRadius: 5,
-      }}
-    >
-      <View style={styles.container}>
-        <View style={styles.subContainer}>
-          {!applicationEnd ? (
-            <Text style={[styles.title, { color: '#46A6FB' }]}>
-              Last Application
-            </Text>
-          ) : (
-            <Text style={styles.title}>New Application</Text>
-          )}
-          <Badge size={7} visible={!applicationEnd} style={styles.badge} />
+    <View>
+      {isVisible(category, isApplicationEnd) ? (
+        <View
+          style={{
+            backgroundColor: isApplicationEnd
+              ? Colors.fontGray08
+              : Colors.second,
+            borderRadius: 5,
+            marginBottom: 20,
+          }}
+        >
+          <View style={styles.container}>
+            <View style={styles.subContainer}>
+              {!isApplicationEnd ? (
+                <Text style={[styles.title, { color: '#46A6FB' }]}>
+                  Last Application
+                </Text>
+              ) : (
+                <Text style={styles.title}>New Application</Text>
+              )}
+              <Badge
+                size={7}
+                visible={!isApplicationEnd}
+                style={styles.badge}
+              />
+            </View>
+            <ApplicationContentItem
+              key={item.id.toString() + item.title + item.subTitle}
+              id={item.id}
+              imgUrl={item.imgUrl}
+              title={item.title}
+              subTitle={item.subTitle}
+              price={item.price}
+            />
+            <ApplicantList
+              tourist={item.tourist}
+              date={item.date}
+              applicationEnd={isApplicationEnd}
+            />
+          </View>
         </View>
-        <ApplicationContentItem
-          key={item.id.toString() + item.title + item.subTitle}
-          id={item.id}
-          imgUrl={item.imgUrl}
-          title={item.title}
-          subTitle={item.subTitle}
-          price={item.price}
-        />
-        <ApplicantList
-          tourist={item.tourist}
-          date={item.date}
-          applicationEnd={applicationEnd}
-        />
-      </View>
+      ) : null}
     </View>
   );
 }

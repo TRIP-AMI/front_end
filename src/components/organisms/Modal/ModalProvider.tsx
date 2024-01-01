@@ -4,6 +4,7 @@ import ReviewModal from '@components/organisms/Modal/ReviewModal';
 import ApplicationCancel from '@components/molecules/Modal/ApplicationCancel';
 import ApplicantInfoModal from '@components/molecules/Modal/ApplicantInfoModal';
 import ReviewDetailsModal from '@components/molecules/Modal/ReviewDetailsModal';
+import ApplicationFilterModal from '@components/molecules/Modal/ApplicationFilterModal';
 import LogoutModal from '@components/molecules/Modal/LogoutModal';
 import modalState from '@/utils/recoil/modal';
 import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
@@ -52,6 +53,12 @@ export default function ModalProvider() {
     APPLICATION_CANCEL: <ApplicationCancel />,
     APPLICANT_INFO: <ApplicantInfoModal />,
     REVIEW_DETAIL: <ReviewDetailsModal />,
+    APPLICATION_FILTER: modal?.applicationFilter && (
+      <ApplicationFilterModal
+        category={modal.applicationFilter.category}
+        onChange={modal.applicationFilter.onChange}
+      />
+    ),
     LOGOUT: <LogoutModal />,
   };
 
