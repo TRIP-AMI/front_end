@@ -36,9 +36,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Regular',
     letterSpacing: -0.24,
     lineHeight: 15,
-  },
-  button: {
-    width: '24.3%',
+    marginBottom: 20,
   },
 });
 

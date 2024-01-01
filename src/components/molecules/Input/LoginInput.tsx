@@ -138,10 +138,14 @@ export function AuthCodeInput({
 export function NameInput({
   control,
   errorText,
+  autoFocus,
+  name,
 }: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   errorText?: string;
+  autoFocus?: boolean;
+  name?: string;
 }) {
   const {
     field: { value, onChange },
@@ -161,11 +165,11 @@ export function NameInput({
       value={value}
       autoComplete='nickname'
       onChangeText={onChange}
-      placeholder='Enter a name'
+      placeholder={name || 'Enter a name'}
       placeholderTextColor={Colors.fontGray05}
       autoCorrect={false}
       autoCapitalize='none'
-      autoFocus
+      autoFocus={autoFocus === undefined ? true : autoFocus}
       error={errorText}
       style={{ fontFamily: 'Montserrat-Regular' }}
     />

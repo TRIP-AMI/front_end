@@ -2,12 +2,21 @@ import { NameInput } from '@components/molecules/Input/LoginInput';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import OutlinedButton from '@components/atoms/Button/OutlinedButton';
+import { useState } from 'react';
+
+type dataType = {
+  nickname: string;
+};
 
 function EditNameInput() {
+  // TODO API 연결해서 이름 가져오기
+  const [userName, setUserName] = useState('Jenny');
+
   const {
     control,
+    reset,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -16,19 +25,27 @@ function EditNameInput() {
   });
 
   // TODO API 연결
-  const onSubmit = (data: unknown) => {
+  const onSubmit = (data: dataType) => {
     console.log('data::::', data);
+    reset();
+    setUserName(data.nickname);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.input}>
-        <NameInput control={control} errorText={errors.nickname?.message} />
+        <NameInput
+          control={control}
+          errorText={errors.nickname?.message}
+          autoFocus={false}
+          name={userName}
+        />
       </View>
       <OutlinedButton
-        disabled={!!errors.nickname}
+        disabled={!!errors.nickname || !isDirty || !isValid}
         content='Confirm'
         onPress={handleSubmit(onSubmit)}
+        customStyle={styles.button}
       />
     </View>
   );
@@ -42,6 +59,10 @@ const styles = StyleSheet.create({
   },
   input: {
     width: screenWidth * 0.653,
+    marginRight: 5,
+  },
+  button: {
+    width: screenWidth * 0.211,
   },
 });
 
