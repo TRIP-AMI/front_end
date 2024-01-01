@@ -50,7 +50,12 @@ export default function ModalProvider() {
     APPLICATION_CANCEL: <ApplicationCancel />,
     APPLICANT_INFO: <ApplicantInfoModal />,
     REVIEW_DETAIL: <ReviewDetailsModal />,
-    APPLICATION_FILTER: <ApplicationFilterModal />,
+    APPLICATION_FILTER: modal?.applicationFilter && (
+      <ApplicationFilterModal
+        category={modal.applicationFilter.category}
+        onChange={modal.applicationFilter.onChange}
+      />
+    ),
   };
 
   return <View style={styles.backdrop}>{ModalList[modalName]}</View>;

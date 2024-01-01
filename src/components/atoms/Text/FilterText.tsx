@@ -1,19 +1,22 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import Colors from '@styles/colors';
 import { MaterialIcons } from '@expo/vector-icons';
-import useModalHook from '@hooks/modalHook';
+import { useSetRecoilState } from 'recoil';
+import modalState from '@utils/recoil/modal';
+import { ApplicationFilterProps } from '@/types/ModalTypes';
 
-// TODO CreateContentScreen 병합되면 모달창 가져다가 사용
-function FilterText({ text }: { text: string }) {
-  const { setModalName } = useModalHook();
-
+function FilterText({ category, onChange }: ApplicationFilterProps) {
+  const setModal = useSetRecoilState(modalState);
   const onFilterPress = () => {
-    setModalName('APPLICATION_FILTER');
+    setModal({
+      modalName: 'APPLICATION_FILTER',
+      applicationFilter: { category, onChange },
+    });
   };
 
   return (
     <Pressable style={styles.container} onPress={onFilterPress}>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text}>{category}</Text>
       <MaterialIcons
         name='keyboard-arrow-down'
         size={18}

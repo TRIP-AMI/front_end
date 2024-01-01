@@ -3,39 +3,36 @@ import BasicBottomModal from '@components/atoms/Modal/BasicBottomModal';
 import Spacing from '@styles/spacing';
 import Colors from '@styles/colors';
 import FilterHeaderButton from '@components/atoms/Button/FilterHeaderButton';
+import { ApplicationFilterProps } from '@/types/ModalTypes';
 
-function ApplicationFilterModal() {
+function ApplicationFilterModal({
+  category,
+  onChange,
+}: ApplicationFilterProps) {
+  const filterCategory = [
+    { title: 'View All', onPress: () => onChange('View All') },
+    { title: 'Only New', onPress: () => onChange('Only New') },
+    { title: 'Only Last', onPress: () => onChange('Only Last') },
+  ];
+
   return (
     <BasicBottomModal
       header={<FilterHeaderButton />}
       onDismiss={() => {}}
-      modalViewStyle={{ height: '38%' }}
+      modalViewStyle={{ height: '35%' }}
     >
       <View style={styles.container}>
-        <Pressable
-          style={[
-            styles.filterContainer,
-            { backgroundColor: Colors.fontGray08 },
-          ]}
-        >
-          <Text style={styles.filterText}>View All</Text>
-        </Pressable>
-        <Pressable
-          style={[
-            styles.filterContainer,
-            false && { backgroundColor: Colors.fontGray08 },
-          ]}
-        >
-          <Text style={styles.filterText}>Only New</Text>
-        </Pressable>
-        <Pressable
-          style={[
-            styles.filterContainer,
-            false && { backgroundColor: Colors.fontGray08 },
-          ]}
-        >
-          <Text style={styles.filterText}>Only Last</Text>
-        </Pressable>
+        {filterCategory.map((item) => (
+          <Pressable
+            style={[
+              styles.filterContainer,
+              item.title === category && { backgroundColor: Colors.fontGray08 },
+            ]}
+            onPress={item.onPress}
+          >
+            <Text style={styles.filterText}>{item.title}</Text>
+          </Pressable>
+        ))}
       </View>
     </BasicBottomModal>
   );

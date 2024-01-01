@@ -34,8 +34,14 @@ export type CustomModalProps = {
   applyCheck?: ApplyCheckProps;
   title?: string;
   applicationItem?: ApplicationItemProps;
+  applicationFilter?: ApplicationFilterProps;
 };
 
 export type ModalState = CustomModalProps & {
   modalName: ModalName;
+};
+
+export type ApplicationFilterProps = {
+  category: string;
+  onChange: (select: string) => void;
 };

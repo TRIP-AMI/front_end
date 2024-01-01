@@ -4,6 +4,8 @@ import TotalText from '@components/atoms/Text/TotalText';
 import Spacing from '@styles/spacing';
 import ApplicationItemForAmi from '@components/molecules/Item/ApplicationItemForAmi';
 import FilterText from '@components/atoms/Text/FilterText';
+import { useState } from 'react';
+import useModalHook from '@hooks/modalHook';
 
 const dummyApplicationData = [
   {
@@ -50,6 +52,13 @@ const dummyApplicationData = [
 
 function ApplicationItemListForAmi() {
   const applicationData = dummyApplicationData;
+  const { resetModal } = useModalHook();
+  const [category, setCategory] = useState('View All');
+
+  const onChange = (select: string) => {
+    resetModal();
+    setCategory(select);
+  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -57,14 +66,12 @@ function ApplicationItemListForAmi() {
         <View style={styles.container}>
           <View style={styles.textContainer}>
             <TotalText total={applicationData.length} />
-            <FilterText text='View All' />
+            <FilterText category={category} onChange={onChange} />
           </View>
           <FlatList
             data={applicationData}
             renderItem={({ item }) => (
-              <View style={styles.itemContainer}>
-                <ApplicationItemForAmi item={item} />
-              </View>
+              <ApplicationItemForAmi item={item} category={category} />
             )}
             keyExtractor={(item) => item.id.toString() + item.title}
             showsVerticalScrollIndicator={false}
@@ -87,9 +94,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 15,
-  },
-  itemContainer: {
-    marginBottom: 20,
   },
 });
 
