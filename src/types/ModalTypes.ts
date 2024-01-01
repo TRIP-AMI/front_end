@@ -14,7 +14,8 @@ export type ModalName =
   | 'REVIEW'
   | 'APPLICATION_CANCEL'
   | 'APPLICANT_INFO'
-  | 'REVIEW_DETAIL';
+  | 'REVIEW_DETAIL'
+  | 'APPLICATION_FILTER';
 
 export type ApplyCheckProps = {
   date: string;
@@ -34,8 +35,14 @@ export type CustomModalProps = {
   applyCheck?: ApplyCheckProps;
   title?: string;
   applicationItem?: ApplicationItemProps;
+  applicationFilter?: ApplicationFilterProps;
 };
 
 export type ModalState = CustomModalProps & {
   modalName: ModalName;
+};
+
+export type ApplicationFilterProps = {
+  category: string;
+  onChange: (select: string) => void;
 };
