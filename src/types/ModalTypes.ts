@@ -6,6 +6,7 @@ export type ModalName =
   | 'JOIN_CANCEL'
   | 'JOIN_COMPLETE'
   | 'AUTH_ALERT'
+  | 'REPORT_COMPLETE'
   | 'APPLY'
   | 'APPLY_CHECK'
   | 'APPLY_COMPLETE'

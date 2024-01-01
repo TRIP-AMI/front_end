@@ -1,28 +1,41 @@
-import { Ionicons, AntDesign } from '@expo/vector-icons';
+import {
+  Ionicons,
+  AntDesign,
+  FontAwesome5,
+  Octicons,
+} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '@screens/HomeScreen';
-import MyPageScreen from '@screens/MyPageScreen';
-import LikeScreen from '@screens/LikeScreen';
-import MenuScreen from '@screens/MenuScreen';
 import Colors from '@styles/colors';
 import HomeHeaderIcons from '@components/molecules/Header/HomeHeaderIcons';
-import UploadScreen from '@screens/UploadScreen';
 import SettingIcon from '@components/molecules/etc/SettingIcon';
 import SwitchButton from '@components/atoms/Button/SwitchButton';
-import { BottomTabParamList } from '@/types/NavigationTypes';
+import MyPageScreen from '@/screens/bottomNav/MyPage/MyPageScreen';
+import UploadScreen from '@/screens/bottomNav/Upload/UploadScreen';
+import MenuScreen from '@/screens/bottomNav/Menu/MenuScreen';
+import LikeScreen from '@/screens/bottomNav/Like/LikeScreen';
+import HomeScreen from '@/screens/bottomNav/Home/HomeScreen';
+import { MainBottomTabParamList } from '@/types/NavigationTypes';
 import Fonts from '@/styles/typography';
 import BackLeftArrow from '@/components/molecules/Header/BackLeftArrow';
 
-const Tab = createBottomTabNavigator<BottomTabParamList>();
+const Tab = createBottomTabNavigator<MainBottomTabParamList>();
+
+const iconSize = 24;
 
 export default function BottomNavBar() {
   return (
     <Tab.Navigator
       initialRouteName='Home'
       screenOptions={{
-        tabBarActiveTintColor: Colors.primary,
+        tabBarStyle: {
+          paddingTop: 10,
+          height: 90,
+        },
         headerTitleStyle: Fonts.header.title,
         headerTitleAlign: 'left',
+        tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveTintColor: Colors.fontGray02,
+        tabBarLabelStyle: Fonts.tabBar.label,
       }}
     >
       <Tab.Screen
@@ -30,10 +43,11 @@ export default function BottomNavBar() {
         component={MenuScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <Ionicons name='menu' color={color} size={26} />
+            <Ionicons name='menu' color={color} size={30} />
           ),
           headerRight: () => <HomeHeaderIcons />,
           title: 'MENU',
+          tabBarLabel: 'Menu',
         }}
       />
       <Tab.Screen
@@ -41,8 +55,9 @@ export default function BottomNavBar() {
         component={LikeScreen}
         options={{
           title: 'LIKE',
+          tabBarLabel: 'Like',
           tabBarIcon: ({ color }) => (
-            <Ionicons name='heart' color={color} size={26} />
+            <FontAwesome5 name='heart' size={iconSize} color={color} />
           ),
         }}
       />
@@ -51,9 +66,10 @@ export default function BottomNavBar() {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <Ionicons name='home' color={color} size={26} />
+            <Ionicons name='md-home-outline' color={color} size={iconSize} />
           ),
           title: 'TRIPAMI',
+          tabBarLabel: 'Home',
           headerTitleStyle: Fonts.header.logo,
           headerRight: () => <HomeHeaderIcons />,
         }}
@@ -63,7 +79,7 @@ export default function BottomNavBar() {
         component={UploadScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name='pluscircleo' color={color} size={26} />
+            <AntDesign name='pluscircleo' color={color} size={iconSize} />
           ),
           headerLeft: () => <BackLeftArrow />,
           title: 'Upload',
@@ -77,7 +93,7 @@ export default function BottomNavBar() {
         options={{
           title: 'My',
           tabBarIcon: ({ color }) => (
-            <Ionicons name='person' color={color} size={26} />
+            <Octicons name='person' color={color} size={iconSize} />
           ),
           headerRight: () => <SettingIcon />,
           headerLeft: () => <SwitchButton />,

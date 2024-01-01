@@ -16,7 +16,7 @@ export default function HomeBannerCard({
   const navigation = useNavigation<RootStackNavigationProp>();
   return (
     // TODO 나중에 각 컨텐츠로 이동하도록 경로 수정
-    <Pressable onPress={() => navigation.navigate('Content')}>
+    <Pressable onPress={() => navigation.navigate('Content', { id: item.id })}>
       <View style={styles.imgContainer}>
         <Image
           source={{ uri: item.imgUrl }}

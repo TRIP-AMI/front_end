@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,
-    marginBottom: 1,
+    paddingBottom: 1,
   },
   title: {
     color: Colors.fontGray05,

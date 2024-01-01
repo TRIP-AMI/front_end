@@ -5,7 +5,9 @@ import Colors from '@styles/colors';
 
 function ContentTitles({ price, option }: { price: string; option: string }) {
   return (
-    <View style={{ marginHorizontal: Spacing.IOS392Margin }}>
+    <View
+      style={{ paddingHorizontal: Spacing.IOS392Margin, paddingVertical: 20 }}
+    >
       <TextTitle style={styles.title}>{price}</TextTitle>
       <TextTitle style={styles.subtitle}>{option}</TextTitle>
     </View>

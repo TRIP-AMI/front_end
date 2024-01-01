@@ -10,6 +10,7 @@ import Spacing from '@styles/spacing';
 import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 function ApplicationContentItem({
+  id,
   imgUrl,
   title,
   subTitle,
@@ -17,6 +18,7 @@ function ApplicationContentItem({
   applicationEnd,
   review,
 }: {
+  id: number;
   imgUrl: string;
   title: string;
   subTitle: string;
@@ -41,7 +43,7 @@ function ApplicationContentItem({
   // TODO Review 한 후에 Review 버튼 숨기기
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate('Content')}>
+      <Pressable onPress={() => navigation.navigate('Content', { id })}>
         <Image resizeMode='cover' style={styles.img} source={{ uri: imgUrl }} />
       </Pressable>
       <View style={styles.subContainer}>

@@ -12,3 +12,7 @@ export interface ICreatePasswordInputs {
   password: string;
   reentered: string;
 }
+
+export interface IReportDetailInputs {
+  content: string;
+}

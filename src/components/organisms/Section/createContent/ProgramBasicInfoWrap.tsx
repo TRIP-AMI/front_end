@@ -11,7 +11,7 @@ import PressHashTag from '@/components/atoms/Tag/PressHashTag';
 import { Category, CategoryList } from '@/constants/category';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import {
-  BottomTabParamList,
+  MainBottomTabParamList,
   RootStackNavigationProp,
 } from '@/types/NavigationTypes';
 import Counter from '@/components/molecules/Controller/Counter';
@@ -28,6 +28,24 @@ function Title({
   const {
     field: { value, onChange },
   } = useController({ control, name: 'title' });
+
+  return (
+    <BasicInput
+      value={value}
+      onChangeText={onChange}
+      placeholder='No more than 50 characters.'
+    />
+  );
+}
+function SubTitle({
+  control,
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any>;
+}) {
+  const {
+    field: { value, onChange },
+  } = useController({ control, name: 'subTitle' });
 
   return (
     <BasicInput
@@ -240,7 +258,7 @@ function AvailableDates({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
 }) {
-  const { params } = useRoute<RouteProp<BottomTabParamList, 'Upload'>>();
+  const { params } = useRoute<RouteProp<MainBottomTabParamList, 'Upload'>>();
   const navigation = useNavigation<RootStackNavigationProp>();
   const {
     field: { value, onChange },
@@ -328,6 +346,12 @@ export default function ProgramBasicInfoWrap({
     <View>
       {/* title */}
       <ContentInputWrap title='Title' content={<Title control={control} />} />
+
+      {/* subTitle */}
+      <ContentInputWrap
+        title='subTitle'
+        content={<SubTitle control={control} />}
+      />
 
       {/* Explanation */}
       <ContentInputWrap

@@ -5,6 +5,7 @@ import { ProgramCostType } from '@/types/program/ProgramCost';
 
 export interface CreateContentBasicForm {
   title: string;
+  subTitle: string;
   explanation: string;
   category: Category[];
   hashtag: string;
@@ -31,6 +32,7 @@ const useUpload = () => {
     defaultValues: {
       // baiscInfo
       title: '',
+      subTitle: '',
       explanation: '',
       category: [],
       hashtag: '',

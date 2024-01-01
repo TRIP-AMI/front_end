@@ -1,15 +1,11 @@
 import { useEffect } from 'react';
 import 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import IntroductionScreen from '@screens/menu/IntroductionScreen';
-import BannerListScreen from '@screens/menu/BannerListScreen';
-import NotificationScreen from '@screens/menu/NotificationScreen';
-import FAQScreen from '@screens/menu/FAQScreen';
 import ContentScreen from '@screens/ContentScreen';
 import ContentHeaderRightIcons from '@components/molecules/Header/ContentHeaderRightIcons';
 import BackLeftArrow from '@components/molecules/Header/BackLeftArrow';
 import ApplicationDetailsScreen from '@screens/ApplicationDetailsScreen';
-import { useNavigation } from '@react-navigation/native';
 import BookDetailsScreen from '@screens/BookDetailsScreen';
 import SettingScreen from '@screens/SettingScreen';
 import ReviewDetailsScreen from '@screens/ReviewDetailsScreen';
@@ -17,6 +13,11 @@ import EditProfileScreen from '@screens/setting/EditProfileScreen';
 import AccountManagementScreen from '@screens/setting/AccountManagementScreen';
 import InquiryDetailsScreen from '@screens/setting/InquiryDetailsScreen';
 import TermsAndConditionScreen from '@screens/setting/TermsAndConditionScreen';
+import AnnouncementScreen from '@/screens/bottomNav/Menu/Announcement';
+import FAQScreen from '@/screens/bottomNav/Menu/FAQ/FAQScreen';
+import InquiryScreen from '@/screens/bottomNav/Menu/Inquiry/InquiryScreen';
+import BottomNavBar from './MainBottomNavTab';
+import CategoryScreen from '@/screens/Category/CategoryScreen';
 import InquiryScreen from '@/screens/menu/InquiryScreen';
 import { RootStackParamList } from '@/types/NavigationTypes';
 import BottomNavBar from './BottomNavBar';
@@ -32,10 +33,14 @@ import EmailAuthScreen from '@/screens/EmailAuthScreen';
 import useModalHook from '@/hooks/modalHook';
 import CreateNameScreen from '@/screens/CreateNameScreen';
 import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
-import CalendarScreen from '@/screens/CalendarScreen';
+import CalendarScreen from '@/screens/bottomNav/Upload/Calendar/CalendarScreen';
 import SelectProfileScreen from '@/screens/SelectProfileScreen';
 import CloseButton from '@/components/atoms/Button/CloseButton';
-import JoinTemsScreen from '@/screens/JoinTermsScreen';
+import ContentReportScreen from '@/screens/ContentReportScreen';
+import ContentReportDetailScreen from '@/screens/ContentReportDetailScreen';
+import JoinTermsScreen from '@/screens/JoinTermsScreen';
+import AboutScreen from '@/screens/bottomNav/Menu/About';
+import AnnouncementDetailScreen from '@/screens/bottomNav/Menu/Announcement/detail';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -53,42 +58,32 @@ function Navigation() {
     <Stack.Navigator>
       {isLoggedIn ? (
         <>
+          {/* bottom nav */}
           <Stack.Screen
             name='MenuBar'
             component={BottomNavBar}
             options={{ headerShown: false }}
           />
-          <Stack.Screen
-            name='Service'
-            component={IntroductionScreen}
-            options={{
-              title: 'CultureX',
-            }}
-          />
-          <Stack.Screen
-            name='BannerList'
-            component={BannerListScreen}
-            options={{
-              title: 'Events',
-            }}
-          />
-          <Stack.Screen name='Notification' component={NotificationScreen} />
-          <Stack.Screen
-            name='FAQ'
-            component={FAQScreen}
-            options={{
+          {/* menu */}
+          <Stack.Group
+            screenOptions={{
               headerTitleStyle: Fonts.header.title,
               headerLeft: () => <BackLeftArrow />,
             }}
-          />
-          <Stack.Screen
-            name='Inquiry'
-            component={InquiryScreen}
-            options={{
-              headerTitleStyle: Fonts.header.title,
-              headerLeft: () => <BackLeftArrow />,
-            }}
-          />
+          >
+            <Stack.Screen
+              name='About'
+              options={{ title: 'About TRIPAMI' }}
+              component={AboutScreen}
+            />
+            <Stack.Screen name='Announcement' component={AnnouncementScreen} />
+            <Stack.Screen
+              name='AnnouncementDetail'
+              component={AnnouncementDetailScreen}
+            />
+            <Stack.Screen name='FAQ' component={FAQScreen} />
+            <Stack.Screen name='Inquiry' component={InquiryScreen} />
+          </Stack.Group>
           <Stack.Screen
             name='Calendar'
             component={CalendarScreen}
@@ -115,15 +110,39 @@ function Navigation() {
               headerRight: () => <SearchNotificationRight theme='white' />,
             })}
           />
-          <Stack.Screen
-            name='Content'
-            component={ContentScreen}
-            options={{
-              title: '',
-              headerRight: () => <ContentHeaderRightIcons />,
-              headerLeft: () => <BackLeftArrow />,
+          <Stack.Group
+            screenOptions={{
+              headerBackVisible: false,
+              headerTitleStyle: Fonts.header.title,
+              headerShadowVisible: false,
             }}
-          />
+          >
+            <Stack.Screen
+              name='Content'
+              component={ContentScreen}
+              options={{
+                title: '',
+                headerRight: () => <ContentHeaderRightIcons />,
+                headerLeft: () => <BackLeftArrow />,
+              }}
+            />
+            <Stack.Screen
+              name='Report'
+              component={ContentReportScreen}
+              options={{
+                title: '',
+                headerRight: () => <CloseButton onPress={() => goBack()} />,
+              }}
+            />
+            <Stack.Screen
+              name='ReportDetail'
+              component={ContentReportDetailScreen}
+              options={{
+                title: '',
+                headerLeft: () => <BackLeftArrow />,
+              }}
+            />
+          </Stack.Group>
           <Stack.Screen
             name='ApplicationDetails'
             component={ApplicationDetailsScreen}
@@ -207,6 +226,35 @@ function Navigation() {
               headerShadowVisible: false,
             }}
           />
+          <Stack.Group
+            screenOptions={{
+              headerBackVisible: false,
+              headerRight: () => <CloseButton onPress={() => goBack()} />,
+              headerShadowVisible: false,
+              headerTitleStyle: Fonts.header.title,
+            }}
+          >
+            <Stack.Screen
+              name='Age'
+              component={JoinTermsScreen}
+              options={{ title: 'Age Consent' }}
+            />
+            <Stack.Screen
+              name='Privacy'
+              component={JoinTermsScreen}
+              options={{ title: 'Privacy Policy' }}
+            />
+            <Stack.Screen
+              name='Terms'
+              component={JoinTermsScreen}
+              options={{ title: 'Tems of Service' }}
+            />
+            <Stack.Screen
+              name='Marketing'
+              component={JoinTermsScreen}
+              options={{ title: 'Marketing Agreements' }}
+            />
+          </Stack.Group>
         </>
       ) : (
         <>
@@ -239,26 +287,28 @@ function Navigation() {
               screenOptions={{
                 headerBackVisible: false,
                 headerRight: () => <CloseButton onPress={() => goBack()} />,
+                headerShadowVisible: false,
+                headerTitleStyle: Fonts.header.title,
               }}
             >
               <Stack.Screen
                 name='Age'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Age Consent' }}
               />
               <Stack.Screen
                 name='Privacy'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Privacy Policy' }}
               />
               <Stack.Screen
                 name='Terms'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Tems of Service' }}
               />
               <Stack.Screen
                 name='Marketing'
-                component={JoinTemsScreen}
+                component={JoinTermsScreen}
                 options={{ title: 'Marketing Agreements' }}
               />
             </Stack.Group>

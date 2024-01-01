@@ -20,6 +20,14 @@ const Fonts = {
       lineHeight: 24,
     },
   },
+  tabBar: {
+    label: {
+      fontFamily: 'Montserrat-Medium',
+      fontSize: 12,
+      lineHeight: 16,
+      letterSpacing: 0,
+    },
+  },
   title: {
     fontSize: 18,
     fontFamily: 'Montserrat-SemiBold',
