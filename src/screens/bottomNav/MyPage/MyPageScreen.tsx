@@ -12,6 +12,7 @@ import userState from '@utils/recoil/user';
 import profileType from '@utils/recoil/profile';
 import ApplicantButton from '@components/atoms/Button/ApplicantButton';
 import EmptyText from '@components/atoms/Text/EmptyText';
+import Spacing from '@styles/spacing';
 
 const dummyTouristDatas = [
   {
@@ -94,13 +95,20 @@ export default function MyPageScreen() {
         </View>
         {profile === 'AMI' ? (
           <>
-            <AmiScoreTable scores={dummyAmiData} style={{ marginBottom: 8 }} />
+            <View style={styles.subContainer}>
+              <AmiScoreTable
+                scores={dummyAmiData}
+                style={{ marginBottom: 8 }}
+              />
+            </View>
             <ApplicantButton />
             <BasicTab data={tabData} />
           </>
         ) : (
           <>
-            <AmiScoreTable scores={dummyTouristData} />
+            <View style={styles.subContainer}>
+              <AmiScoreTable scores={dummyTouristData} />
+            </View>
             <EmptyText text='Have a great trip to Korea with AMI' />
           </>
         )}
@@ -114,6 +122,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  subContainer: {
+    marginHorizontal: Spacing.IOS392Margin,
   },
   headerMargin: {
     marginTop: 20,
