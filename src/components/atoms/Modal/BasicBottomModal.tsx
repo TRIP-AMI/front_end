@@ -1,4 +1,11 @@
-import { Modal, View, Pressable, StyleSheet } from 'react-native';
+import {
+  Modal,
+  View,
+  Pressable,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import { ReactNode } from 'react';
 import useModalHook from '@/hooks/modalHook';
 
@@ -6,10 +13,12 @@ export default function BasicBottomModal({
   children,
   onDismiss,
   header,
+  modalViewStyle,
 }: {
   children: ReactNode;
   onDismiss: () => void;
   header: ReactNode;
+  modalViewStyle?: StyleProp<ViewStyle>;
 }) {
   const { resetModal } = useModalHook();
 
@@ -17,7 +26,7 @@ export default function BasicBottomModal({
     <Modal animationType='slide' onDismiss={onDismiss} transparent>
       <View style={styles.container}>
         <Pressable onPress={resetModal} style={styles.container} />
-        <View style={styles.modalView}>
+        <View style={[styles.modalView, modalViewStyle]}>
           <View style={styles.modalHeader}>{header}</View>
           <View style={styles.modalContent}>{children}</View>
         </View>
