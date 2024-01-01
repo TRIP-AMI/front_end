@@ -181,5 +181,6 @@
     "role": null,
     "agreedMarketing": true,
     "token": "token"
-  }
+  },
+  "report": {}
 }

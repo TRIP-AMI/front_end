@@ -1,10 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 import TextTitle from '@components/atoms/Text/TextTitle';
-import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import AmiScoreTable from '@components/molecules/Text/AmiScoreTable';
 import AmiIntroduce from '@components/atoms/Text/AmiIntroduce';
-import Separator from '@components/atoms/etc/Separator';
 import AmiProfile from '@components/molecules/Item/AmiProfile';
 
 const dummyData = [
@@ -64,7 +62,9 @@ const dummyIntroduce =
 function ContentAmi() {
   const dummyProfile = dummyData[0];
   return (
-    <>
+    <View
+      style={{ paddingVertical: 20, paddingHorizontal: Spacing.IOS392Margin }}
+    >
       <TextTitle style={styles.title}>Introduce AMI</TextTitle>
       <View style={{ paddingBottom: 12 }}>
         <AmiProfile imgUrl={dummyProfile.imgUrl} name={dummyProfile.name} />
@@ -73,8 +73,7 @@ function ContentAmi() {
         <AmiScoreTable key={score.title} scores={score} />
       ))}
       <AmiIntroduce>{dummyIntroduce}</AmiIntroduce>
-      <Separator color={Colors.lineGray05} hei={8} marginVer={30} />
-    </>
+    </View>
   );
 }
 
@@ -84,9 +83,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,
-    marginLeft: Spacing.IOS392Margin,
-    marginTop: 10,
-    marginBottom: 20,
   },
 });
 

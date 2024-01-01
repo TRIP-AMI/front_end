@@ -1,5 +1,6 @@
 import { View, StyleSheet, Pressable, Image } from 'react-native';
-import ContentScreen from '@screens/ContentScreen';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '@/types/NavigationTypes';
 
 export type SectionItemProps = {
   id: number;
@@ -8,9 +9,11 @@ export type SectionItemProps = {
 };
 
 export default function SectionItem({ item }: { item: SectionItemProps }) {
+  const { navigate } = useNavigation<RootStackNavigationProp>();
+
   return (
     <View style={styles.imgContainer}>
-      <Pressable onPress={() => ContentScreen}>
+      <Pressable onPress={() => navigate('Content', { id: item.id })}>
         <Image
           source={{ uri: item.imgUrl }}
           resizeMode='cover'

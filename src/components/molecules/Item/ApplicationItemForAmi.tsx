@@ -69,6 +69,7 @@ function ApplicationItemForAmi({
             </View>
             <ApplicationContentItem
               key={item.id.toString() + item.title + item.subTitle}
+              id={item.id}
               imgUrl={item.imgUrl}
               title={item.title}
               subTitle={item.subTitle}

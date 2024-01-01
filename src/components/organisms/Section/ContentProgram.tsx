@@ -4,7 +4,6 @@ import Spacing from '@styles/spacing';
 import ContentLocation from '@components/atoms/Text/ContentLocation';
 import Colors from '@styles/colors';
 import ContentProgramItem from '@components/molecules/Item/ContentProgramItem';
-import Separator from '@components/atoms/etc/Separator';
 
 const dummyProgram = [
   {
@@ -64,7 +63,6 @@ function ContentProgram() {
           travelTime={item.travelTime}
         />
       ))}
-      <Separator color={Colors.lineGray05} hei={8} marginVer={30} />
     </View>
   );
 }
@@ -75,8 +73,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,
-    marginBottom: 15,
-    marginLeft: Spacing.IOS392Margin,
+    paddingVertical: 20,
+    paddingHorizontal: Spacing.IOS392Margin,
   },
   location: {
     color: Colors.fontGray03,

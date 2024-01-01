@@ -1,17 +1,13 @@
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Colors from '@styles/colors';
-import TextTitle from '../../atoms/Text/TextTitle';
-import FooterPolicies from '../../molecules/Footer/FooterPolicies';
-import FooterInfo from '../../molecules/Footer/FooterInfo';
+import FooterPolicies from '@/components/molecules/Footer/FooterPolicies';
+import FooterInfo from '@/components/molecules/Footer/FooterInfo';
 
 export default function HomeFooter() {
   return (
     <View style={styles.container}>
-      {/* title */}
-      <TextTitle>TRIPAMI CO.LTD</TextTitle>
-      {/* info */}
+      <Text style={styles.title}>TRIPAMI</Text>
       <FooterInfo />
-      {/* policies */}
       <FooterPolicies />
     </View>
   );
@@ -19,10 +15,16 @@ export default function HomeFooter() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: 180,
     justifyContent: 'space-evenly',
-    padding: 10,
     backgroundColor: Colors.footerBackground,
+    paddingHorizontal: 24,
+    paddingVertical: 20,
+  },
+  title: {
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 16,
+    lineHeight: 16,
+    color: 'white',
+    paddingVertical: 10,
   },
 });

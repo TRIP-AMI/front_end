@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import AmiScore from '@components/atoms/Text/AmiScore';
 import Colors from '@styles/colors';
-import Spacing from '@styles/spacing';
 import VerticalLine from '@components/atoms/etc/VerticalLine';
 
 type AmiScoreTableProps = {
@@ -49,8 +48,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: Colors.lineGray04,
     borderWidth: 1,
-    marginHorizontal: Spacing.IOS392Margin,
-    marginBottom: 20,
   },
 });
 

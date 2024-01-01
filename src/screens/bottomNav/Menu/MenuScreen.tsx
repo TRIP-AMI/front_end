@@ -2,15 +2,14 @@ import { StyleSheet, View } from 'react-native';
 import Spacing from '@/styles/spacing';
 import MenuItem, { MenuItemProps } from '@/components/atoms/Text/MenuItem';
 
-export default function MenuScreen() {
-  const menuList: MenuItemProps[] = [
-    { title: 'Service', path: 'Service' },
-    { title: 'Event', path: 'BannerList' },
-    { title: 'Notification', path: 'Notification' },
-    { title: 'FAQ', path: 'FAQ' },
-    { title: '1:1 Inquiry', path: 'Inquiry' },
-  ];
+const menuList: MenuItemProps[] = [
+  { title: 'About TRIPAMI', path: 'About' },
+  { title: 'Announcement', path: 'Announcement' },
+  { title: 'FAQ', path: 'FAQ' },
+  { title: '1:1 Inquiry', path: 'Inquiry' },
+];
 
+export default function MenuScreen() {
   return (
     <View style={styles.container}>
       {menuList.map((item) => (

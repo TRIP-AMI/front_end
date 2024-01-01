@@ -24,11 +24,23 @@ export type SelectProfileProps = {
   imgUrl: string;
 };
 
-export type JoinTemsScreen = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
+export type JoinTermsScreen = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
 
 export type JoinTermsProps = {
   en: string;
   ko: string;
+};
+
+export type ContentProps = {
+  id: number;
+};
+
+export type ReportProps = {
+  programId: number;
+};
+
+export type ReportDetailProps = ReportProps & {
+  title: string;
 };
 
 export type CalendarProps = {
@@ -37,13 +49,15 @@ export type CalendarProps = {
 
 export type RootStackParamList = {
   MenuBar: undefined;
-  Service: undefined;
-  BannerList: undefined;
-  Notification: undefined;
+  About: undefined;
+  Announcement: undefined;
+  AnnouncementDetail: { announcementId: number };
   FAQ: undefined;
   Inquiry: undefined;
   Search: undefined;
-  Content: undefined;
+  Content: ContentProps;
+  Report: ReportProps;
+  ReportDetail: ReportDetailProps;
   Category: { title: string };
   Login: undefined;
   Join: undefined;
@@ -63,7 +77,7 @@ export type RootStackParamList = {
   ReviewDetails: undefined;
 };
 
-export type BottomTabParamList = {
+export type MainBottomTabParamList = {
   Menu: undefined;
   Like: undefined;
   Home: undefined;
@@ -74,5 +88,5 @@ export type BottomTabParamList = {
 export type RootStackNavigationProp =
   NativeStackNavigationProp<RootStackParamList>;
 
-export type BottomTabNavigationProp =
-  NativeStackNavigationProp<BottomTabParamList>;
+export type MainBottomTabNavigationProp =
+  NativeStackNavigationProp<MainBottomTabParamList>;
