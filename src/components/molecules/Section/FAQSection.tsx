@@ -12,13 +12,13 @@ const data = [
     id: '2',
     title: '2. What is the role of AMI?',
     content:
-      'It is a service in which Korean locals introduce hidden places throughout Korea to travelers.',
+      'AMI becomes a customized guide or friend for travelers at various places and times such as travel destinations, restaurants, and concerts.',
   },
   {
     id: '3',
     title: '3. Does the program run on the course?',
     content:
-      'It is a service in which Korean locals introduce hidden places throughout Korea to travelers.',
+      'It will be carried out according to the course shown in the program, but it can be flexibly adjusted by ARMY and travelers.',
   },
 ];
 
