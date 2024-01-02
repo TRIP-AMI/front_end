@@ -2,6 +2,7 @@ import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
+import { View, Text } from 'react-native';
 import BackLeftArrow from '@/components/molecules/Header/BackLeftArrow';
 import AboutScreen from '@/screens/bottomNav/Menu/About';
 import AnnouncementScreen from '@/screens/bottomNav/Menu/Announcement';
@@ -37,7 +38,12 @@ export default function MenuStack() {
         name='Menu'
         component={MenuScreen}
         options={{
-          title: 'MENU',
+          headerTitle: '',
+          headerLeft: () => (
+            <View>
+              <Text style={Fonts.header.title}>MENU</Text>
+            </View>
+          ),
           headerRight: () => <HomeHeaderIcons />,
         }}
       />
