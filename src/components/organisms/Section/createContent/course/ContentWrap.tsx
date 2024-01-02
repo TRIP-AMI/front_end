@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native';
 import { ProgramCourse } from '@/types/program/ProgramCourse';
-import NumberInCircle from '@/components/atoms/\bBadge/NumberInCircle';
+import NumberInCircle from '@/components/atoms/Badge/NumberInCircle';
 import VerticalLine from './VerticalLine';
 import TopContent from './TopContent';
 import MidContent from './MidContent';
