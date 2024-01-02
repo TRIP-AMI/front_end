@@ -11,6 +11,7 @@ import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import HomeFooter from '@/components/organisms/Section/HomeFooter';
 import ContentReportButton from '@/components/organisms/Section/ContentReportButton';
 import { ContentStackParamList } from '@/navigations/Common/ContentStack';
+import FAQSection from '@/components/molecules/Section/FAQSection';
 
 export type ContentScreenProps = StackScreenProps<
   ContentStackParamList,
@@ -38,7 +39,9 @@ export default function ContentScreen({ route }: ContentScreenProps) {
         <View style={{ paddingVertical: 20 }} />
         <SectionDividerBar style={{ height: 8 }} />
         {/* TODO: FAQ */}
-        <View style={{ paddingVertical: 20 }} />
+        <View style={{ paddingVertical: 30 }}>
+          <FAQSection />
+        </View>
         <SectionDividerBar style={{ height: 8 }} />
         <ContentReportButton programId={id} />
         <HomeFooter />

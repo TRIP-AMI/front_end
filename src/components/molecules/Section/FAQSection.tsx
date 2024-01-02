@@ -31,6 +31,7 @@ export default function FAQSection() {
           key={item.item.id}
           title={item.item.title}
           content={item.item.content}
+          lastIndex={item.index === data.length - 1}
         />
       )}
       keyExtractor={(item) => item.id}
