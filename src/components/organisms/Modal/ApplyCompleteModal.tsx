@@ -2,11 +2,11 @@ import { useNavigation } from '@react-navigation/native';
 import IconFullScreenView from '@/components/atoms/Modal/IconFullScreenView';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import useModalHook from '@/hooks/modalHook';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
 
 export default function ApplyCompleteModal() {
   const { resetModal } = useModalHook();
-  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const { navigate } = useNavigation<MyPageStackNavigationProp>();
 
   // TODO: application detail prop 정의
   const onPressButton = () => {

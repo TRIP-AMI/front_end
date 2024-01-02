@@ -1,25 +1,32 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackScreenProps } from '@react-navigation/stack';
 import Colors from '@/styles/colors';
 import Spacing from '@/styles/spacing';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import REPORT_OPTIONS from '@/constants/report';
 import ReportOptionCard from '@/components/molecules/Section/ReportOptionCard';
-import { ReportProps, RootStackNavigationProp } from '@/types/NavigationTypes';
+import {
+  ContentStackNavigationProp,
+  ContentStackParamList,
+} from '@/navigations/Common/ContentStack';
 import { ReportOptionType } from '@/types/ReportTypes';
 import ReportTitleText from '@/components/atoms/Text/ReportTitleText';
 import ReportFooterButton from '@/components/molecules/Footer/ReportFooterButton';
 
+export type ContentReportScreenProps = StackScreenProps<
+  ContentStackParamList,
+  'Report'
+>;
+
 export default function ContentReportScreen({
   route,
-}: {
-  route: { params: ReportProps };
-}) {
+}: ContentReportScreenProps) {
   const { programId } = route.params;
   const [checkedId, setCheckedId] = useState<number>(0);
   const [question, setQuestion] = useState<string>('');
-  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const { navigate } = useNavigation<ContentStackNavigationProp>();
   const TITLE = `Please tell me the reason\nfor reporting this program.`;
   const SUBTITLE = `This content cannot be seen by AMI.`;
   const onOptionPress = (item: ReportOptionType) => {

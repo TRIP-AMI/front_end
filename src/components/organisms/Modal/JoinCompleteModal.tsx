@@ -2,11 +2,11 @@ import { View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import IconFullScreenModal from '@/components/molecules/Modal/IconFullScreenModal';
 import BasicButton from '@/components/atoms/Button/BasicButton';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useModalHook from '@/hooks/modalHook';
+import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 
 export default function JoinCompleteModal({ title }: { title: string }) {
-  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const { navigate } = useNavigation<AuthStackNavigationProp>();
   const { resetModal } = useModalHook();
 
   const onPress = () => {

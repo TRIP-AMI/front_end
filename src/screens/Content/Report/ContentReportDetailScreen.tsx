@@ -1,10 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
+import { StackScreenProps } from '@react-navigation/stack';
 import ReportTitleText from '@/components/atoms/Text/ReportTitleText';
-import {
-  ReportDetailProps,
-  RootStackNavigationProp,
-} from '@/types/NavigationTypes';
+import { ContentStackParamList } from '@/navigations/Common/ContentStack';
 import Spacing from '@/styles/spacing';
 import BasicInput from '@/components/atoms/Input/BasicInput';
 import ReportFooterButton from '@/components/molecules/Footer/ReportFooterButton';
@@ -12,13 +10,15 @@ import useModalHook from '@/hooks/modalHook';
 import instance, { BASE_API_URL } from '@/services/config/axios';
 import { IReportDetailInputs } from '@/types/FormTypes';
 
+export type ContentReportDetailScreenProps = StackScreenProps<
+  ContentStackParamList,
+  'ReportDetail'
+>;
+
 export default function ContentReportDetailScreen({
   route,
   navigation,
-}: {
-  route: { params: ReportDetailProps };
-  navigation: RootStackNavigationProp;
-}) {
+}: ContentReportDetailScreenProps) {
   const { programId, title } = route.params;
   const { control, handleSubmit } = useForm<IReportDetailInputs>({
     defaultValues: {

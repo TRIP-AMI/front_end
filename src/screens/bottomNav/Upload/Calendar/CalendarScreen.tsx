@@ -4,7 +4,6 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Octicons } from '@expo/vector-icons';
 import { StackScreenProps } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/native';
 import SelectButton from '@/components/atoms/Button/SelectButton';
 import Spacing from '@/styles/spacing';
 import useCalendar, { selectableMonthsList } from '@/hooks/calendarHook';
@@ -12,20 +11,19 @@ import CalendarPicker from '@/components/molecules/Calendar/CalendarPicker';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import useModalHook from '@/hooks/modalHook';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
-import {
-  MainBottomTabNavigationProp,
-  RootStackParamList,
-} from '@/types/NavigationTypes';
 import PickerSelectModal from '@/components/organisms/Modal/PickerSelectModal';
+import { UploadStackParamList } from '@/navigations/MainBottomNavTab/Upload/UploadStack';
 
 export type CalendarScreenProps = StackScreenProps<
-  RootStackParamList,
+  UploadStackParamList,
   'Calendar'
 >;
 
-export default function CalendarScreen({ route }: CalendarScreenProps) {
+export default function CalendarScreen({
+  route,
+  navigation,
+}: CalendarScreenProps) {
   const { params } = route;
-  const navigation = useNavigation<MainBottomTabNavigationProp>();
   const { selectDateList, setSelectDateList, deleteDate, checkConfirm } =
     useCalendar(params);
   // modal

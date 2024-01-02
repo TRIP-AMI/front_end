@@ -5,14 +5,14 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Badge } from 'react-native-paper';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
 
 // TODO Badge 색상 Colors.Primary로 변경해야 함
 function ApplicantButton() {
   const [alarmCount] = useState(1);
   const alarmBadgeShow = alarmCount > 0;
 
-  const navigation = useNavigation<RootStackNavigationProp>();
+  const navigation = useNavigation<MyPageStackNavigationProp>();
 
   return (
     <Pressable

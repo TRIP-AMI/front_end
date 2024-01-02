@@ -6,13 +6,11 @@ import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
 import TextButton from '@/components/atoms/Button/TextButton';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
-import {
-  JoinTermsScreen,
-  RootStackNavigationProp,
-} from '@/types/NavigationTypes';
+import { RootStackNavigationProp } from '@/navigations';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import JOIN_TERMS, { JoinTermsDataType } from '@/constants/joinTerms';
+import { JoinTermsScreenType } from '@/navigations/Common/TermsStack';
 
 export default function JoinScreen() {
   const [checkedIds, setCheckedIds] = useState<number[]>([]);
@@ -57,17 +55,23 @@ export default function JoinScreen() {
 
   const onNext = () => {
     if (!isRequiredAgree) return;
-    navigate('JoinAuth', {
-      mode: 'JOIN',
-      optionalChecked: checkedIds.includes(OPTIONAL_ID),
+    navigate('AuthStack', {
+      screen: 'JoinAuth',
+      params: {
+        mode: 'JOIN',
+        optionalChecked: checkedIds.includes(OPTIONAL_ID),
+      },
     });
   };
 
   const onPressView = (item: JoinTermsDataType) => {
-    const screen = item.title.split(' ')[0] as JoinTermsScreen;
-    navigate(screen, {
-      en: item.detail_en,
-      ko: item.detail_ko,
+    const screen = item.title.split(' ')[0] as JoinTermsScreenType;
+    navigate('TermsStack', {
+      screen,
+      params: {
+        en: item.detail_en,
+        ko: item.detail_ko,
+      },
     });
   };
 

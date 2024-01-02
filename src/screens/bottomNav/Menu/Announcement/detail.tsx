@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { RootStackParamList } from '@/types/NavigationTypes';
+import { RootStackParamList } from '@/navigations';
 import Spacing from '@/styles/spacing';
 
 type AnnouncementDetailScreenProps = StackScreenProps<

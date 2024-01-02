@@ -2,12 +2,12 @@ import { useNavigation } from '@react-navigation/native';
 import { Text, StyleSheet } from 'react-native';
 import BasicTwoButtonModal from '@/components/atoms/Modal/BasicTwoButtonsModal';
 import BasicModalText from '@/components/atoms/Text/BasicModalText';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import Colors from '@/styles/colors';
 import useModalHook from '@/hooks/modalHook';
+import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 
 export default function JoinCancelModal() {
-  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const { navigate } = useNavigation<AuthStackNavigationProp>();
   const { resetModal } = useModalHook();
 
   const onCancel = () => {

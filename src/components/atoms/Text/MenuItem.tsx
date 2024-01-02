@@ -1,17 +1,17 @@
 import { StyleSheet, Text, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
-  RootStackParamList,
-  RootStackNavigationProp,
-} from '@/types/NavigationTypes';
+  MenuParamList,
+  MenuStackNavigationProp,
+} from '@/navigations/MainBottomNavTab/Menu/MenuStack';
 
 export type MenuItemProps = {
   title: string;
-  path: keyof RootStackParamList;
+  path: Exclude<keyof MenuParamList, 'AnnouncementDetail'>;
 };
 
 export default function MenuItem({ title, path }: MenuItemProps) {
-  const navigation = useNavigation<RootStackNavigationProp>();
+  const navigation = useNavigation<MenuStackNavigationProp>();
 
   return (
     <Pressable onPress={() => navigation.navigate(path)}>

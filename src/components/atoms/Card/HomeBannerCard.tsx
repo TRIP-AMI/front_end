@@ -1,6 +1,6 @@
 import { View, Image, StyleSheet, Dimensions, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { RootStackNavigationProp } from '@/navigations';
 
 type HomeBannerCardProps = {
   id: number;
@@ -14,9 +14,17 @@ export default function HomeBannerCard({
   item: HomeBannerCardProps;
 }) {
   const navigation = useNavigation<RootStackNavigationProp>();
+
+  const goContent = () => {
+    navigation.navigate('ContentStack', {
+      screen: 'Content',
+      params: { id: item.id },
+    });
+  };
+
   return (
     // TODO 나중에 각 컨텐츠로 이동하도록 경로 수정
-    <Pressable onPress={() => navigation.navigate('Content', { id: item.id })}>
+    <Pressable onPress={goContent}>
       <View style={styles.imgContainer}>
         <Image
           source={{ uri: item.imgUrl }}

@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import {
+  AuthStackNavigationProp,
   EmailAuthProps,
-  RootStackNavigationProp,
-} from '@/types/NavigationTypes';
+} from '@/navigations/AuthStack/AuthStack';
 import { IJoinAuthInputs } from '@/types/FormTypes';
 import instance, { BASE_API_URL } from '@/services/config/axios';
 import showToast from '@/utils/toast/toast';
@@ -22,7 +22,7 @@ const useAuthForm = ({
       ? 'Please enter your email'
       : `Please enter your email\nyou signed up for membership.`;
 
-  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const { navigate } = useNavigation<AuthStackNavigationProp>();
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [email, setEmail] = useState('');
   const [title, setTitle] = useState(TITLE);

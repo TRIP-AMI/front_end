@@ -5,7 +5,7 @@ import {
 } from '@/components/molecules/Input/LoginInput';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import OutlinedButton from '@/components/atoms/Button/OutlinedButton';
-import { EmailAuthProps } from '@/types/NavigationTypes';
+import { EmailAuthProps } from '@/navigations/AuthStack/AuthStack';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import useAuthForm from '@/hooks/authFormHook';
 import Colors from '@/styles/colors';

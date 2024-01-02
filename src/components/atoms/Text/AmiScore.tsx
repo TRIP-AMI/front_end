@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Colors from '@styles/colors';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
 
 function AmiScore({
   keyName,
@@ -22,7 +22,7 @@ function AmiScore({
   onPress?: () => void;
   style?: StyleProp<TextStyle>;
 }) {
-  const navigation = useNavigation<RootStackNavigationProp>();
+  const navigation = useNavigation<MyPageStackNavigationProp>();
 
   const pressHandler = () => {
     switch (keyName) {
