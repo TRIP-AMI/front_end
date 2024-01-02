@@ -46,7 +46,12 @@ export default function SelectBox({
               style={styles.listContainer}
               disabled={date.person === 0}
             >
-              <Text style={[styles.itemText, { color: Colors.fontGray02 }]}>
+              <Text
+                style={[
+                  styles.itemText,
+                  date.person > 0 && { color: Colors.fontGray02 },
+                ]}
+              >
                 {date.date}
               </Text>
               <Text style={styles.itemText}>{`${date.person} Left`}</Text>
