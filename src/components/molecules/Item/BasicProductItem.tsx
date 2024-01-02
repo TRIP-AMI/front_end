@@ -1,15 +1,18 @@
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import dayjs from 'dayjs';
 import BasicItem from '@/types/basicItem';
 import BasicProductItemTitle from '@/components/atoms/Text/BasicProductItemTitle';
 import BasicProductItemSubTitle from '@/components/atoms/Text/BasicProductItemSubTitle';
 import BasicProductItemImg from '@/components/atoms/Image/BasicProductItemImg';
 import LikeHeart from '@/components/atoms/Lottie/LikeHeart';
+import Colors from '@/styles/colors';
 
 export default function BasicProductItem({
   basicItem,
 }: {
   basicItem: BasicItem;
 }) {
+  const dateFormat = dayjs(basicItem.itemDate).format('MM/DD(MMM)');
   return (
     <View style={styles.basicItemWrap}>
       <View style={styles.imgWrap}>
@@ -24,6 +27,17 @@ export default function BasicProductItem({
         <BasicProductItemSubTitle>
           {basicItem.itemSubTitle}
         </BasicProductItemSubTitle>
+        <Text
+          style={{
+            color: Colors.primary,
+            fontFamily: 'Montserrat-SemiBold',
+            fontSize: 14,
+            lineHeight: 18,
+            letterSpacing: -0.28,
+          }}
+        >
+          {dateFormat}
+        </Text>
       </View>
     </View>
   );

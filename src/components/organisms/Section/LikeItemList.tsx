@@ -14,6 +14,7 @@ const processData = (list: any): BasicItem[] => {
       .withBasicItemImg(item.likeImg)
       .withBasicItemTitle(item.likeTitle)
       .withBasicItemSubTitle(item.likeSubTitle)
+      .withBasicItemDate(item.likeDate)
       .build();
   });
 };

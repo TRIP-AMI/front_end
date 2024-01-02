@@ -8,7 +8,10 @@ export default class BasicItem {
 
   itemSubTitle: string;
 
+  itemDate: Date;
+
   constructor(builder: BasicItemBuilder) {
+    this.itemDate = builder.itemDate;
     this.itemId = builder.itemId;
     this.itemImg = builder.itemImg;
     this.itemTitle = builder.itemTitle;
@@ -29,6 +32,8 @@ class BasicItemBuilder {
 
   itemSubTitle: string = '';
 
+  itemDate: Date = new Date();
+
   withBasicItemId(itemId: string): BasicItemBuilder {
     this.itemId = itemId;
     return this;
@@ -46,6 +51,11 @@ class BasicItemBuilder {
 
   withBasicItemSubTitle(itemSubTitle: string): BasicItemBuilder {
     this.itemSubTitle = itemSubTitle;
+    return this;
+  }
+
+  withBasicItemDate(itemDate: Date): BasicItemBuilder {
+    this.itemDate = itemDate;
     return this;
   }
 

@@ -6,4 +6,10 @@ const getLikeList = () => {
   return instance({ url, method });
 };
 
-export default { getLikeList };
+const postUnlikedList = (id: string) => {
+  const url = `${BASE_API_URL}/like/${id}`;
+  const method = 'DELETE';
+  return instance({ url, method });
+};
+
+export default { getLikeList, postUnlikedList };
