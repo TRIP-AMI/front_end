@@ -1,16 +1,16 @@
 import { View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import TextButton from '@/components/atoms/Button/TextButton';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import Spacing from '@/styles/spacing';
 import Colors from '@/styles/colors';
+import { ContentStackNavigationProp } from '@/navigations/Common/ContentStack';
 
 export default function ContentReportButton({
   programId,
 }: {
   programId: number;
 }) {
-  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const { navigate } = useNavigation<ContentStackNavigationProp>();
 
   return (
     <View style={styles.container}>

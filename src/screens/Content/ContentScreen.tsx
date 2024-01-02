@@ -5,18 +5,20 @@ import ContentAmi from '@components/organisms/Section/ContentAmi';
 import ContentProgram from '@components/organisms/Section/ContentProgram';
 import ContentBannerCarousel from '@components/molecules/Banner/ContentBannerCarousel';
 import ContentPayment from '@components/molecules/Section/ContentPayment';
+import { StackScreenProps } from '@react-navigation/stack';
 import ContentButtons from '@/components/organisms/Section/ContentButtons';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import HomeFooter from '@/components/organisms/Section/HomeFooter';
 import ContentReportButton from '@/components/organisms/Section/ContentReportButton';
-import { ContentProps } from '@/types/NavigationTypes';
+import { ContentStackParamList } from '@/navigations/Common/ContentStack';
+
+export type ContentScreenProps = StackScreenProps<
+  ContentStackParamList,
+  'Content'
+>;
 
 // TODO: 구조, 스타일 수정
-export default function ContentScreen({
-  route,
-}: {
-  route: { params: ContentProps };
-}) {
+export default function ContentScreen({ route }: ContentScreenProps) {
   const { id } = route.params;
 
   return (

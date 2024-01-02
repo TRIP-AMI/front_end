@@ -3,15 +3,15 @@ import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import loginState from '@/utils/recoil/login';
 import loginApi from '@/services/module/login/login';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import { ILoginInputs } from '@/types/FormTypes';
 import profileType from '@/utils/recoil/profile';
 import { Profile } from '@/types/UserTypes';
+import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 
 const useLoginHook = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
   const [profileState, setProfileState] = useRecoilState<Profile>(profileType);
-  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const { navigate } = useNavigation<AuthStackNavigationProp>();
 
   const getStoredToken = async () => {
     const token = await AsyncStorage.getItem('token');

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { View, StyleSheet } from 'react-native';
-import { CreatePasswordProps } from '@/types/NavigationTypes';
+import { CreatePasswordProps } from '@/navigations/AuthStack/AuthStack';
 import { PasswordInput } from '@/components/molecules/Input/LoginInput';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';

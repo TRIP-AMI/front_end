@@ -1,10 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { View, StyleSheet } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import { NameInput } from '@/components/molecules/Input/LoginInput';
-import {
-  CreateNameProps,
-  RootStackNavigationProp,
-} from '@/types/NavigationTypes';
+import { AuthStackParamList } from '@/navigations/AuthStack/AuthStack';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
@@ -17,13 +15,15 @@ interface ICreateNameInputs {
   nickname: string;
 }
 
+export type CreateNameScreenProps = StackScreenProps<
+  AuthStackParamList,
+  'CreateName'
+>;
+
 export default function CreateNameScreen({
   route,
   navigation,
-}: {
-  route: { params: CreateNameProps };
-  navigation: RootStackNavigationProp;
-}) {
+}: CreateNameScreenProps) {
   const {
     control,
     handleSubmit,

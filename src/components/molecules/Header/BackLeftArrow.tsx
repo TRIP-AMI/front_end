@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { IconButton } from '@/components/atoms/Button/IconButton';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { RootStackNavigationProp } from '@/navigations';
 
 export default function BackLeftArrow({
   theme = 'black',

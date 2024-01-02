@@ -11,14 +11,14 @@ import {
   PasswordInput,
 } from '@/components/molecules/Input/LoginInput';
 import LabeledCheckBox from '@/components/molecules/Toggle/LabeledCheckBox';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
 import useModalHook from '@/hooks/modalHook';
 import { ILoginInputs } from '@/types/FormTypes';
 import useLoginHook from '@/hooks/loginHook';
+import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 
 export default function LoginScreen() {
   const { onLogin } = useLoginHook();
-  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const { navigate } = useNavigation<AuthStackNavigationProp>();
   const [isChecked, setChecked] = useState(false);
   const { setModalName } = useModalHook();
   const {

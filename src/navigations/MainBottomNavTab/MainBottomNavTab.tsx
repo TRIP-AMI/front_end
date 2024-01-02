@@ -7,22 +7,31 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Colors from '@styles/colors';
 import HomeHeaderIcons from '@components/molecules/Header/HomeHeaderIcons';
-import SettingIcon from '@components/molecules/etc/SettingIcon';
-import SwitchButton from '@components/atoms/Button/SwitchButton';
-import MyPageScreen from '@/screens/bottomNav/MyPage/MyPageScreen';
-import UploadScreen from '@/screens/bottomNav/Upload/UploadScreen';
-import MenuScreen from '@/screens/bottomNav/Menu/MenuScreen';
+import { NavigatorScreenParams } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import LikeScreen from '@/screens/bottomNav/Like/LikeScreen';
 import HomeScreen from '@/screens/bottomNav/Home/HomeScreen';
-import { MainBottomTabParamList } from '@/types/NavigationTypes';
 import Fonts from '@/styles/typography';
-import BackLeftArrow from '@/components/molecules/Header/BackLeftArrow';
+import MenuStack, { MenuParamList } from './Menu/MenuStack';
+import MyPageStack, { MyPageParamList } from './MyPage/MyPageStack';
+import UploadStack, { UploadStackParamList } from './Upload/UploadStack';
 
-const Tab = createBottomTabNavigator<MainBottomTabParamList>();
+export type MainBottomNavTabParamList = {
+  MenuStack: NavigatorScreenParams<MenuParamList>;
+  Like: undefined;
+  Home: undefined;
+  UploadStack: NavigatorScreenParams<UploadStackParamList>;
+  MyPageStack: NavigatorScreenParams<MyPageParamList>;
+};
+
+export type MainBottomNavTabNavigationProp =
+  NativeStackNavigationProp<MainBottomNavTabParamList>;
+
+const Tab = createBottomTabNavigator<MainBottomNavTabParamList>();
 
 const iconSize = 24;
 
-export default function BottomNavBar() {
+export default function MainBottomNavTab() {
   return (
     <Tab.Navigator
       initialRouteName='Home'
@@ -39,14 +48,13 @@ export default function BottomNavBar() {
       }}
     >
       <Tab.Screen
-        name='Menu'
-        component={MenuScreen}
+        name='MenuStack'
+        component={MenuStack}
         options={{
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <Ionicons name='menu' color={color} size={30} />
           ),
-          headerRight: () => <HomeHeaderIcons />,
-          title: 'MENU',
           tabBarLabel: 'Menu',
         }}
       />
@@ -75,32 +83,25 @@ export default function BottomNavBar() {
         }}
       />
       <Tab.Screen
-        name='Upload'
-        component={UploadScreen}
+        name='UploadStack'
+        component={UploadStack}
         options={{
           tabBarIcon: ({ color }) => (
             <AntDesign name='pluscircleo' color={color} size={iconSize} />
           ),
-          headerLeft: () => <BackLeftArrow />,
           title: 'Upload',
-          headerTitle: 'Create Content',
-          headerTitleAlign: 'center',
+          headerShown: false,
         }}
       />
       <Tab.Screen
-        name='MyPage'
-        component={MyPageScreen}
+        name='MyPageStack'
+        component={MyPageStack}
         options={{
           title: 'My',
           tabBarIcon: ({ color }) => (
             <Octicons name='person' color={color} size={iconSize} />
           ),
-          headerRight: () => <SettingIcon />,
-          headerLeft: () => <SwitchButton />,
-          headerTitle: '',
-          headerStyle: {
-            shadowColor: 'transparent',
-          },
+          headerShown: false,
         }}
       />
     </Tab.Navigator>

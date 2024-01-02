@@ -5,7 +5,7 @@ import { useSetRecoilState } from 'recoil';
 import Fonts from '@/styles/typography';
 import Spacing from '@/styles/spacing';
 import ProfileBox from '@/components/molecules/Profile/ProfileBox';
-import { SelectProfileProps } from '@/types/NavigationTypes';
+import { SelectProfileProps } from '@/navigations/AuthStack/AuthStack';
 import { Profile } from '@/types/UserTypes';
 import BulletListItem from '@/components/atoms/Text/BulletListItem';
 import FooterButton from '@/components/molecules/Button/FooterButton';

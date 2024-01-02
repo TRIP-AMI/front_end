@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import Spacing from '@/styles/spacing';
-import { RootStackParamList } from '@/types/NavigationTypes';
+import { MenuParamList } from '@/navigations/MainBottomNavTab/Menu/MenuStack';
 
 // data title 영어로 바꿔줘야함
 const data = [
@@ -33,10 +33,7 @@ const data = [
   },
 ];
 
-type AnnouncementScreenProps = StackScreenProps<
-  RootStackParamList,
-  'Announcement'
->;
+type AnnouncementScreenProps = StackScreenProps<MenuParamList, 'Announcement'>;
 
 export default function AnnouncementScreen({
   navigation,
