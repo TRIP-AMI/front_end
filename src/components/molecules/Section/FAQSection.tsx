@@ -1,4 +1,5 @@
-import { FlatList } from 'react-native';
+// import { FlatList } from 'react-native';
+import { ScrollView } from 'react-native';
 import DropToggle from '@/components/molecules/Toggle/DropToggle';
 
 const data = [
@@ -24,7 +25,16 @@ const data = [
 
 export default function FAQSection() {
   return (
-    <FlatList
+    <ScrollView showsVerticalScrollIndicator={false}>
+      {data.map((item, index) => (
+        <DropToggle
+          key={item.id}
+          title={item.title}
+          content={item.content}
+          lastIndex={index === data.length - 1}
+        />
+      ))}
+      {/* <FlatList
       data={data}
       renderItem={(item) => (
         <DropToggle
@@ -35,6 +45,7 @@ export default function FAQSection() {
         />
       )}
       keyExtractor={(item) => item.id}
-    />
+    /> */}
+    </ScrollView>
   );
 }
