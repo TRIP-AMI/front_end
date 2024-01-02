@@ -27,7 +27,7 @@ function ContentProgramItem({
   } | null;
 }) {
   return (
-    <View>
+    <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
       <View style={styles.container}>
         <View style={styles.order}>
           <ProgramOrder order={order} />
@@ -52,20 +52,16 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginHorizontal: Spacing.IOS392Margin,
   },
   order: {
     alignSelf: 'center',
-    marginLeft: Spacing.IOS392Margin,
   },
   textContainer: {
     alignSelf: 'center',
     flexDirection: 'row',
     backgroundColor: Colors.second,
     borderRadius: 5,
-    marginRight: Spacing.IOS392Margin,
     marginLeft: 15,
-    marginBottom: 6,
   },
 });
 

@@ -63,10 +63,10 @@ function ContentAmi() {
   const dummyProfile = dummyData[0];
   return (
     <View
-      style={{ paddingVertical: 20, paddingHorizontal: Spacing.IOS392Margin }}
+      style={{ paddingVertical: 30, paddingHorizontal: Spacing.IOS392Margin }}
     >
       <TextTitle style={styles.title}>Introduce AMI</TextTitle>
-      <View style={{ paddingBottom: 12 }}>
+      <View style={{ paddingTop: 20, paddingBottom: 12 }}>
         <AmiProfile imgUrl={dummyProfile.imgUrl} name={dummyProfile.name} />
       </View>
       {dummyAmiData.map((score) => (
