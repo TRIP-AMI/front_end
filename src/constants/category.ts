@@ -1,3 +1,11 @@
+/* eslint-disable import/extensions */
+import IconActivity from '@/assets/icons/category/Activity.png';
+import IconRestaurant from '@/assets/icons/category/Restaurant.png';
+import IconTourism from '@/assets/icons/category/Tourism.png';
+import IconPhoto from '@/assets/icons/category/Photo.png';
+import IconKPOP from '@/assets/icons/category/K-POP.png';
+import IconShopping from '@/assets/icons/category/Shopping.png';
+
 export type Category =
   | 'ACTIVITY'
   | 'RESTAURANT'
@@ -14,3 +22,17 @@ export const CategoryList: { id: Category; label: string }[] = [
   { id: 'KPOP', label: 'K-POP' },
   { id: 'SHOPPING', label: 'Shopping' },
 ];
+
+export const CategoryFindLabel = (id: Category): string => {
+  const category = CategoryList.find((item) => id === item.id);
+  return category ? category.label : '';
+};
+
+export const CategoryIcon = {
+  ACTIVITY: IconActivity,
+  RESTAURANT: IconRestaurant,
+  TOURISM: IconTourism,
+  PHOTO: IconPhoto,
+  KPOP: IconKPOP,
+  SHOPPING: IconShopping,
+};
