@@ -45,12 +45,14 @@ function EditNameInput({
           name={userName}
         />
       </View>
-      <ConfirmButton
-        disabled={!!errors.nickname || !isDirty || !isValid}
-        content='Confirm'
-        onPress={handleSubmit(onSubmit)}
-        customStyle={styles.button}
-      />
+      <View>
+        <ConfirmButton
+          disabled={!!errors.nickname || !isDirty || !isValid}
+          content='Confirm'
+          onPress={handleSubmit(onSubmit)}
+          customStyle={styles.button}
+        />
+      </View>
     </View>
   );
 }
