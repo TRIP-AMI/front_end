@@ -1,4 +1,4 @@
-import { Modal, View, StyleSheet } from 'react-native';
+import { Modal, View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import ModalButton from '@/components/atoms/Button/ModalButton';
 import Colors from '@/styles/colors';
 import ModalBackdrop from '@/components/atoms/Modal/ModalBackdrop';
@@ -7,19 +7,21 @@ type BasicCheckModalProps = {
   children: React.ReactNode;
   buttonText?: string;
   onCheck: () => void;
+  customModalViewStyle?: StyleProp<ViewStyle>;
 };
 
 export default function BasicCheckModal({
   children,
   buttonText,
   onCheck,
+  customModalViewStyle,
 }: BasicCheckModalProps) {
   const text = buttonText === undefined ? 'Check' : buttonText;
   return (
     <View style={styles.centeredView}>
       <Modal animationType='slide' transparent>
         <ModalBackdrop>
-          <View style={styles.modalView}>
+          <View style={[styles.modalView, customModalViewStyle]}>
             <View style={styles.contentContainer}>{children}</View>
             <View style={styles.buttonContainer}>
               <View style={{ width: '100%' }}>
