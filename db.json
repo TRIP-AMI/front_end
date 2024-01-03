@@ -188,5 +188,35 @@
     "agreedMarketing": true,
     "token": "token"
   },
-  "report": {}
+  "report": {},
+  "notification": [
+    {
+      "id": "1",
+      "title": "Booking Notification",
+      "content": "Jennie’s Itaewon program application has been completed",
+      "date": "2024-01-04 12:00",
+      "read": false
+    },
+    {
+      "id": "2",
+      "title": "Booking Notification",
+      "content": "Jennie’s Itaewon program application has been completed",
+      "date": "2024-01-04 12:00",
+      "read": true
+    },
+    {
+      "id": "3",
+      "title": "Booking Notification",
+      "content": "Jennie’s Itaewon program application has been completed",
+      "date": "2024-01-04 12:00",
+      "read": false
+    },
+    {
+      "id": "4",
+      "title": "Booking Notification",
+      "content": "Jennie’s Itaewon program application has been completed",
+      "date": "2024-01-04 12:00",
+      "read": true
+    }
+  ]
 }

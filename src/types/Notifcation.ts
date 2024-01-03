@@ -8,11 +8,14 @@ export default class Alarm {
 
   alarmReadState: boolean;
 
+  alarmDate: Date;
+
   constructor(builder: AlarmBuilder) {
     this.alarmId = builder.alarmId;
     this.alarmTitle = builder.alarmTitle;
     this.alarmContent = builder.alarmContent;
     this.alarmReadState = builder.alarmReadState;
+    this.alarmDate = builder.alarmDate;
   }
 
   static get Builder() {
@@ -28,6 +31,8 @@ class AlarmBuilder {
   alarmContent: string = '';
 
   alarmReadState: boolean = false;
+
+  alarmDate: Date = new Date();
 
   withAlarmId(alarmId: string): AlarmBuilder {
     this.alarmId = alarmId;
@@ -46,6 +51,11 @@ class AlarmBuilder {
 
   withAlarmReadState(alarmReadState: boolean): AlarmBuilder {
     this.alarmReadState = alarmReadState;
+    return this;
+  }
+
+  withAlarmDate(alarmDate: Date): AlarmBuilder {
+    this.alarmDate = alarmDate;
     return this;
   }
 
