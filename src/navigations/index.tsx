@@ -21,13 +21,14 @@ import ContentStack, { ContentStackParamList } from './Common/ContentStack';
 import NotificationScreen from '@/screens/Notification';
 import HeaderLeftTitle from '@/components/atoms/Text/HeaderLeftTitle';
 import RightCloseX from '@/components/molecules/Header/RightCloseX';
+import { Category, CategoryFindLabel } from '@/constants/category';
 
 export type RootStackParamList = {
   MainBottomNavTab: NavigatorScreenParams<MainBottomNavTabParamList>;
   AuthStack: NavigatorScreenParams<AuthStackParamList>;
   ContentStack: NavigatorScreenParams<ContentStackParamList>;
   TermsStack: NavigatorScreenParams<TermsStackParamList>;
-  Category: { title: string };
+  Category: { categoryId: Category };
   Notification: undefined;
 };
 
@@ -59,7 +60,7 @@ function Navigation() {
             name='Category'
             component={CategoryScreen}
             options={({ route }) => ({
-              title: route.params.title,
+              title: CategoryFindLabel(route.params.categoryId),
               headerStyle: {
                 backgroundColor: Colors.primary,
               },
