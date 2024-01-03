@@ -3,9 +3,9 @@ import {
   View,
   StyleSheet,
   Pressable,
-  Image,
   Text,
   Dimensions,
+  ImageBackground,
 } from 'react-native';
 import { RootStackNavigationProp } from '@/navigations';
 
@@ -21,12 +21,14 @@ dummyIcons.length = 6;
 export default function HomeIcon({ item }: { item: HomeIconProps }) {
   const navigation = useNavigation<RootStackNavigationProp>();
 
+  const image = { uri: item.imgUrl };
+
   return (
     <Pressable
       onPress={() => navigation.navigate('Category', { title: item.title })}
     >
       <View style={styles.iconContainer}>
-        <Image source={{ uri: item.imgUrl }} style={styles.icon} />
+        <ImageBackground source={image} style={styles.icon} />
         <Text style={styles.iconTitle}>{item.title}</Text>
       </View>
     </Pressable>
@@ -48,6 +50,9 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     marginBottom: 5,
+    backgroundColor: '#F2F2F2',
+    borderRadius: 3,
+    overflow: 'hidden',
   },
   iconTitle: {
     fontSize: 15,

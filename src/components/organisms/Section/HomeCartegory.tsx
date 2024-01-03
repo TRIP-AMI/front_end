@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import HomeIcon from '@components/molecules/IconWrap/HomeIconWrap';
 
-const dummyIcons = [
+const Icons = [
   {
     id: 1,
     title: 'Activity',
@@ -38,7 +38,7 @@ export default function HomeCartegory() {
   return (
     <View>
       <View style={styles.iconGridContainer}>
-        {dummyIcons.map((item) => (
+        {Icons.map((item) => (
           <HomeIcon key={item.id} item={item} />
         ))}
       </View>

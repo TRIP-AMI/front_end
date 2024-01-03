@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import HomeBannerCarousel from '@components/molecules/Banner/HomeBannerCarousel';
 import HomeSectionList from '@components/organisms/Section/HomeSectionList';
 import HomeFooter from '@components/organisms/Section/HomeFooter';
-import HomeIconGrid from '@/components/organisms/Section/HomeCartegory';
+import HomeCartegory from '@/components/organisms/Section/HomeCartegory';
 
 export default function HomeScreen() {
   return (
@@ -11,7 +11,7 @@ export default function HomeScreen() {
       <StatusBar style='auto' />
       <ScrollView showsVerticalScrollIndicator={false}>
         <HomeBannerCarousel />
-        <HomeIconGrid />
+        <HomeCartegory />
         <HomeSectionList />
         <HomeFooter />
       </ScrollView>
