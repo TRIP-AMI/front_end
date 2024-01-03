@@ -1,14 +1,14 @@
 import ReviewItem from '@components/molecules/Item/ReviewItem';
 import { FlatList, StyleSheet, View } from 'react-native';
 import EmptyText from '@components/atoms/Text/EmptyText';
-import { ReviewListResponse as ReviewItemListType } from '@/services/module/review/review';
+import { ReviewItemType } from '@/services/module/review/review';
 
 function ReviewItemList({
   data,
   scrollEnabled,
   emptyText,
 }: {
-  data: ReviewItemListType[];
+  data: ReviewItemType[];
   scrollEnabled: boolean;
   emptyText: string;
 }) {

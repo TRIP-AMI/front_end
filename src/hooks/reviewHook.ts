@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import reviewApi, {
-  ReviewListResponse as ReviewItemType,
-} from '@/services/module/review/review';
+import reviewApi, { ReviewItemType } from '@/services/module/review/review';
 
 const useReview = () => {
   const [reviews, setReviews] = useState<ReviewItemType[]>([]);

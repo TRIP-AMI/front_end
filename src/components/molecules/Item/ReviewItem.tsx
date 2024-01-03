@@ -2,13 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import Colors from '@styles/colors';
 import AmiImg from '@components/atoms/Image/AmiImg';
 import ReviewText from '@components/atoms/Text/ReviewText';
-
-type ReviewItemType = {
-  reviewId: number;
-  reviewName: string;
-  reviewImg: string;
-  reviewContent: string;
-};
+import { ReviewItemType } from '@/services/module/review/review';
 
 function ReviewItem({ item }: { item: ReviewItemType }) {
   return (
