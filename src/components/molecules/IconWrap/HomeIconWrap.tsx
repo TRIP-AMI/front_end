@@ -1,19 +1,17 @@
+/* eslint-disable import/extensions */
 import { useNavigation } from '@react-navigation/native';
 import {
   View,
   StyleSheet,
   Pressable,
-  Image,
   Text,
   Dimensions,
+  Image,
 } from 'react-native';
 import { RootStackNavigationProp } from '@/navigations';
+import { Category, CategoryIcon } from '@/constants/category';
 
-type HomeIconProps = {
-  id: number;
-  title: string;
-  imgUrl: string;
-};
+type HomeIconProps = { id: Category; label: string };
 
 const dummyIcons = [];
 dummyIcons.length = 6;
@@ -21,13 +19,20 @@ dummyIcons.length = 6;
 export default function HomeIcon({ item }: { item: HomeIconProps }) {
   const navigation = useNavigation<RootStackNavigationProp>();
 
+  const IconView = (
+    <Image
+      source={CategoryIcon[item.id]}
+      style={{ width: '100%', height: '100%' }}
+    />
+  );
+
   return (
     <Pressable
-      onPress={() => navigation.navigate('Category', { title: item.title })}
+      onPress={() => navigation.navigate('Category', { categoryId: item.id })}
     >
       <View style={styles.iconContainer}>
-        <Image source={{ uri: item.imgUrl }} style={styles.icon} />
-        <Text style={styles.iconTitle}>{item.title}</Text>
+        <View style={styles.iconWrap}>{IconView}</View>
+        <Text style={styles.iconTitle}>{item.label}</Text>
       </View>
     </Pressable>
   );
@@ -42,16 +47,21 @@ const styles = StyleSheet.create({
     width: (windowWidth - iconGridMargin * 2) / column,
     height: 70,
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: 15,
   },
-  icon: {
+  iconWrap: {
     width: 60,
     height: 60,
     marginBottom: 5,
+    padding: 4,
+    backgroundColor: '#F2F2F2',
+    borderRadius: 3,
+    overflow: 'hidden',
   },
   iconTitle: {
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 14,
+    lineHeight: 18,
     textAlign: 'center',
   },
 });
