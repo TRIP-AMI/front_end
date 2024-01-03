@@ -12,6 +12,7 @@ import HomeFooter from '@/components/organisms/Section/HomeFooter';
 import ContentReportButton from '@/components/organisms/Section/ContentReportButton';
 import { ContentStackParamList } from '@/navigations/Common/ContentStack';
 import FAQSection from '@/components/molecules/Section/FAQSection';
+import ContentReview from '@/components/molecules/Section/ContentReview';
 
 export type ContentScreenProps = StackScreenProps<
   ContentStackParamList,
@@ -35,10 +36,8 @@ export default function ContentScreen({ route }: ContentScreenProps) {
         <SectionDividerBar style={{ height: 8 }} />
         <ContentPayment />
         <SectionDividerBar style={{ height: 8 }} />
-        {/* TODO: review */}
-        <View style={{ paddingVertical: 20 }} />
+        <ContentReview />
         <SectionDividerBar style={{ height: 8 }} />
-        {/* TODO: FAQ */}
         <View style={{ paddingVertical: 30 }}>
           <FAQSection scrollEnabled={false} />
         </View>
