@@ -1,6 +1,5 @@
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Colors from '@styles/colors';
-import Spacing from '@styles/spacing';
 import AmiImg from '@components/atoms/Image/AmiImg';
 import ReviewText from '@components/atoms/Text/ReviewText';
 
@@ -14,28 +13,31 @@ type ReviewItemType = {
 function ReviewItem({ item }: { item: ReviewItemType }) {
   return (
     <View style={styles.container}>
-      <AmiImg imgUrl={item.reviewImg} style={styles.img} />
+      <View style={styles.imgContainer}>
+        <AmiImg imgUrl={item.reviewImg} style={styles.img} />
+      </View>
       <ReviewText name={item.reviewName} content={item.reviewContent} />
     </View>
   );
 }
-
-const screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
     borderRadius: 5,
     flexDirection: 'row',
     backgroundColor: Colors.fontGray08,
-    padding: screenHeight * 0.016,
-    marginHorizontal: Spacing.IOS392Margin,
-    marginBottom: screenHeight * 0.0094,
+    padding: 14,
+    marginBottom: 8,
     justifyContent: 'center',
   },
+  imgContainer: {
+    width: 32,
+    height: 32,
+    alignSelf: 'center',
+  },
   img: {
-    width: screenHeight * 0.038,
-    height: screenHeight * 0.038,
-    marginRight: Dimensions.get('window').width * 0.025,
+    width: '100%',
+    height: '100%',
     marginBottom: 0,
   },
 });

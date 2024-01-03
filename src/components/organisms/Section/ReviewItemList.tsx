@@ -1,8 +1,8 @@
 import ReviewItem from '@components/molecules/Item/ReviewItem';
-import { FlatList, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import EmptyText from '@components/atoms/Text/EmptyText';
-// import Spacing from '@styles/spacing';
 import { ReviewListResponse as ReviewItemListType } from '@/services/module/review/review';
+import Spacing from '@/styles/spacing';
 
 function ReviewItemList({
   data,
@@ -14,7 +14,7 @@ function ReviewItemList({
   emptyText: string;
 }) {
   return (
-    <View>
+    <View style={styles.listContainer}>
       {data.length === 0 ? (
         <EmptyText text={emptyText} />
       ) : (
@@ -29,13 +29,12 @@ function ReviewItemList({
   );
 }
 
-// const styles = StyleSheet.create({
-//   textContainer: {
-//     paddingTop: 10,
-//     paddingBottom: 20,
-//     alignSelf: 'flex-start',
-//     marginHorizontal: Spacing.IOS392Margin,
-//   },
-// });
+const styles = StyleSheet.create({
+  listContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    paddingHorizontal: Spacing.IOS392Margin,
+  },
+});
 
 export default ReviewItemList;
