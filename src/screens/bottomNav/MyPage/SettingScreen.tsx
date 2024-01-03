@@ -7,10 +7,10 @@ import { useState } from 'react';
 import ToggleButton from '@components/atoms/Button/ToggleButton';
 import { useNavigation } from '@react-navigation/native';
 import LogoutButton from '@components/molecules/Button/LogoutButton';
-import { RootStackNavigationProp } from '@/types/NavigationTypes';
+import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
 
 function SettingScreen() {
-  const navigation = useNavigation<RootStackNavigationProp>();
+  const navigation = useNavigation<MyPageStackNavigationProp>();
 
   const [isAppPushEnabled, setIsAppPushEnabled] = useState(false);
   const appPushToggleSwitch = () =>
