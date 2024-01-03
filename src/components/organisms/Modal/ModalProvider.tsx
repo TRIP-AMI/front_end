@@ -6,6 +6,7 @@ import ApplicantInfoModal from '@components/molecules/Modal/ApplicantInfoModal';
 import ReviewDetailsModal from '@components/molecules/Modal/ReviewDetailsModal';
 import ApplicationFilterModal from '@components/molecules/Modal/ApplicationFilterModal';
 import LogoutModal from '@components/molecules/Modal/LogoutModal';
+import ImgChangeModal from '@components/molecules/Modal/ImgChangeModal';
 import modalState from '@/utils/recoil/modal';
 import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
@@ -60,6 +61,12 @@ export default function ModalProvider() {
       />
     ),
     LOGOUT: <LogoutModal />,
+    IMAGE_CHANGE: modal?.imageChange && (
+      <ImgChangeModal
+        imgUrl={modal.imageChange.imgUrl}
+        onChange={modal.imageChange.onChange}
+      />
+    ),
   };
 
   return <View style={styles.backdrop}>{ModalList[modalName]}</View>;

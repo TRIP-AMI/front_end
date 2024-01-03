@@ -16,7 +16,8 @@ export type ModalName =
   | 'APPLICANT_INFO'
   | 'REVIEW_DETAIL'
   | 'APPLICATION_FILTER'
-  | 'LOGOUT';
+  | 'LOGOUT'
+  | 'IMAGE_CHANGE';
 
 export type ApplyCheckProps = {
   date: string;
@@ -37,6 +38,7 @@ export type CustomModalProps = {
   title?: string;
   applicationItem?: ApplicationItemProps;
   applicationFilter?: ApplicationFilterProps;
+  imageChange?: ImageChangeProps;
 };
 
 export type ModalState = CustomModalProps & {
@@ -46,4 +48,9 @@ export type ModalState = CustomModalProps & {
 export type ApplicationFilterProps = {
   category: string;
   onChange: (select: string) => void;
+};
+
+export type ImageChangeProps = {
+  imgUrl: string;
+  onChange: (imgUrl: string) => void;
 };
