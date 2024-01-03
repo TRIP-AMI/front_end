@@ -18,6 +18,9 @@ import useLoginHook from '@/hooks/loginHook';
 import AuthStack, { AuthStackParamList } from './AuthStack/AuthStack';
 import TermsStack, { TermsStackParamList } from './Common/TermsStack';
 import ContentStack, { ContentStackParamList } from './Common/ContentStack';
+import NotificationScreen from '@/screens/Notification';
+import HeaderLeftTitle from '@/components/atoms/Text/HeaderLeftTitle';
+import RightCloseX from '@/components/molecules/Header/RightCloseX';
 
 export type RootStackParamList = {
   MainBottomNavTab: NavigatorScreenParams<MainBottomNavTabParamList>;
@@ -25,6 +28,7 @@ export type RootStackParamList = {
   ContentStack: NavigatorScreenParams<ContentStackParamList>;
   TermsStack: NavigatorScreenParams<TermsStackParamList>;
   Category: { title: string };
+  Notification: undefined;
 };
 
 export type RootStackNavigationProp =
@@ -73,6 +77,18 @@ function Navigation() {
             name='ContentStack'
             component={ContentStack}
             options={{ headerShown: false }}
+          />
+
+          {/* Notification */}
+          <Stack.Screen
+            name='Notification'
+            component={NotificationScreen}
+            options={{
+              headerTitle: '',
+              headerLeft: () => <HeaderLeftTitle title='Notification' />,
+              headerRight: () => <RightCloseX />,
+              headerShadowVisible: false,
+            }}
           />
         </>
       ) : (

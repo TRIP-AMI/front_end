@@ -2,9 +2,15 @@ import LottieView from 'lottie-react-native';
 import { useEffect, useRef, useState } from 'react';
 import { Pressable } from 'react-native';
 
-export default function LikeHeart() {
+export default function LikeHeart({
+  likeValue,
+  updateValue,
+}: {
+  likeValue: boolean;
+  updateValue?: (value: boolean) => void;
+}) {
   const likeBtn = useRef<LottieView>(null);
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState(likeValue);
 
   const likePress = () => {
     setIsOn((prev) => !prev);
@@ -17,6 +23,11 @@ export default function LikeHeart() {
     } else {
       likeBtn.current?.reset();
     }
+
+    if (updateValue) {
+      updateValue(isOn);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOn]);
 
   return (
@@ -28,7 +39,7 @@ export default function LikeHeart() {
         ref={likeBtn}
         // TODO: lint 수정필요
         // eslint-disable-next-line import/extensions
-        source={require('../../../../assets/lottie/Animation_backGrayHeart.json')}
+        source={require('@/assets/lottie/Animation_backGrayHeart.json')}
         style={{ width: '100%', aspectRatio: 1 }}
         autoPlay={false}
         loop={false}

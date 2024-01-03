@@ -8,11 +8,20 @@ export default class BasicItem {
 
   itemSubTitle: string;
 
+  itemDate: Date;
+
+  itemLike?: boolean;
+
   constructor(builder: BasicItemBuilder) {
+    this.itemDate = builder.itemDate;
     this.itemId = builder.itemId;
     this.itemImg = builder.itemImg;
     this.itemTitle = builder.itemTitle;
     this.itemSubTitle = builder.itemSubTitle;
+
+    if (builder.itemLike) {
+      this.itemLike = builder.itemLike;
+    }
   }
 
   static get Builder() {
@@ -28,6 +37,10 @@ class BasicItemBuilder {
   itemTitle: string = '';
 
   itemSubTitle: string = '';
+
+  itemDate: Date = new Date();
+
+  itemLike?: boolean;
 
   withBasicItemId(itemId: string): BasicItemBuilder {
     this.itemId = itemId;
@@ -46,6 +59,16 @@ class BasicItemBuilder {
 
   withBasicItemSubTitle(itemSubTitle: string): BasicItemBuilder {
     this.itemSubTitle = itemSubTitle;
+    return this;
+  }
+
+  withBasicItemDate(itemDate: Date): BasicItemBuilder {
+    this.itemDate = itemDate;
+    return this;
+  }
+
+  withBasicItemLike(itemLike: boolean): BasicItemBuilder {
+    this.itemLike = itemLike;
     return this;
   }
 
