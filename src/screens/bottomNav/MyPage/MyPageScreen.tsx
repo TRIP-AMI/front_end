@@ -13,6 +13,7 @@ import profileType from '@utils/recoil/profile';
 import ApplicantButton from '@components/atoms/Button/ApplicantButton';
 import EmptyText from '@components/atoms/Text/EmptyText';
 import Spacing from '@styles/spacing';
+import useReview from '@/hooks/reviewHook';
 
 const dummyTouristDatas = [
   {
@@ -66,21 +67,29 @@ export default function MyPageScreen() {
   const dummyTouristData = dummyTouristDatas[0];
   const userData = useRecoilValue(userState);
   const profile = useRecoilValue(profileType);
+  const { reviews } = useReview();
 
   const tabData = [
     {
       id: 1,
       tabName: 'Post',
-      tabComponent: <PostItemList />,
+      tabComponent: (
+        <View style={{ paddingVertical: 25 }}>
+          <PostItemList />
+        </View>
+      ),
     },
     {
       id: 2,
       tabName: 'Review',
       tabComponent: (
-        <ReviewItemList
-          scrollEnabled={false}
-          emptyText='There are no reviews.'
-        />
+        <View style={{ paddingVertical: 25 }}>
+          <ReviewItemList
+            data={reviews}
+            scrollEnabled={false}
+            emptyText='There are no reviews.'
+          />
+        </View>
       ),
     },
   ];
