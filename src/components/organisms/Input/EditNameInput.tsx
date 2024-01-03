@@ -1,17 +1,19 @@
 import { NameInput } from '@components/molecules/Input/LoginInput';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, Keyboard, StyleSheet, View } from 'react-native';
 import { useForm } from 'react-hook-form';
-import OutlinedButton from '@components/atoms/Button/OutlinedButton';
-import { useState } from 'react';
+import ConfirmButton from '@components/atoms/Button/ConfirmButton';
 
 type dataType = {
   nickname: string;
 };
 
-function EditNameInput() {
-  // TODO API 연결해서 이름 가져오기
-  const [userName, setUserName] = useState('Jenny');
-
+function EditNameInput({
+  userName,
+  setUserName,
+}: {
+  userName: string;
+  setUserName: (name: string) => void;
+}) {
   const {
     control,
     reset,
@@ -25,8 +27,10 @@ function EditNameInput() {
   });
 
   // TODO API 연결
+  // TODO 동일 이름 입력 시 에러 처리
   const onSubmit = (data: dataType) => {
     console.log('data::::', data);
+    Keyboard.dismiss();
     reset();
     setUserName(data.nickname);
   };
@@ -41,7 +45,7 @@ function EditNameInput() {
           name={userName}
         />
       </View>
-      <OutlinedButton
+      <ConfirmButton
         disabled={!!errors.nickname || !isDirty || !isValid}
         content='Confirm'
         onPress={handleSubmit(onSubmit)}
