@@ -24,15 +24,41 @@ function LastDateBadge({ date }: { date: Date }) {
 
 export default function BasicProductItem({
   basicItem,
+  setList,
 }: {
   basicItem: BasicItem;
+  setList?: React.Dispatch<React.SetStateAction<BasicItem[]>>;
 }) {
   const dateFormat = dayjs(basicItem.itemDate).format('MM/DD(MMM) HH:mm');
+
+  const updateLikeValue = (value: boolean) => {
+    if (setList) {
+      const updateList = (prev: BasicItem[]): BasicItem[] => {
+        const copy = [...prev];
+        return copy.map((item) => {
+          if (item.itemId === basicItem.itemId) {
+            return {
+              ...item,
+              itemLike: value,
+            };
+          }
+          return item;
+        });
+      };
+      setList(updateList);
+    }
+  };
+
   return (
     <View style={styles.basicItemWrap}>
       <View style={styles.imgWrap}>
         <BasicProductItemImg planUri={basicItem.itemImg}>
-          <LikeHeart />
+          {basicItem.itemLike !== undefined && (
+            <LikeHeart
+              likeValue={basicItem.itemLike}
+              updateValue={updateLikeValue}
+            />
+          )}
         </BasicProductItemImg>
       </View>
       <View>
