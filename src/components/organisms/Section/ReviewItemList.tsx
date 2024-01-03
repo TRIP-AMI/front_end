@@ -1,5 +1,4 @@
 import ReviewItem from '@components/molecules/Item/ReviewItem';
-import { useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import EmptyText from '@components/atoms/Text/EmptyText';
 import TotalText from '@components/atoms/Text/TotalText';
@@ -15,12 +14,7 @@ function ReviewItemList({
   emptyText: string;
   totalVisible?: boolean;
 }) {
-  const { reviews, getReviews } = useReview();
-
-  useEffect(() => {
-    getReviews();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { reviews } = useReview();
 
   return (
     <View>
