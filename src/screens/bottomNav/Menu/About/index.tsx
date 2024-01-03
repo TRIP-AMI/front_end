@@ -7,7 +7,8 @@ export default function AboutScreen() {
     <View style={styles.container}>
       <ScrollView>
         <Image
-          source={require('../../../../../assets/images/about_tripami.png')}
+          // eslint-disable-next-line import/extensions
+          source={require('@/assets/images/about_tripami.png')}
           style={{ width: '100%', objectFit: 'contain' }}
         />
       </ScrollView>

@@ -39,7 +39,7 @@ export default function LikeHeart({
         ref={likeBtn}
         // TODO: lint 수정필요
         // eslint-disable-next-line import/extensions
-        source={require('../../../../assets/lottie/Animation_backGrayHeart.json')}
+        source={require('@/assets/lottie/Animation_backGrayHeart.json')}
         style={{ width: '100%', aspectRatio: 1 }}
         autoPlay={false}
         loop={false}

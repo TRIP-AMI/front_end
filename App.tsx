@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -10,17 +11,17 @@ import CustomToast from '@/components/atoms/Toast/CustomToast';
 
 const fetchFonts = async () => {
   await Font.loadAsync({
-    'Pretendard-Regular': require('./assets/fonts/pretendard/Pretendard-Regular.ttf'),
-    'Pretendard-Medium': require('./assets/fonts/pretendard/Pretendard-Medium.ttf'),
-    'Pretendard-Bold': require('./assets/fonts/pretendard/Pretendard-Bold.ttf'),
-    'Pretendard-SemiBold': require('./assets/fonts/pretendard/Pretendard-SemiBold.ttf'),
-    'Pretendard-ExtraBold': require('./assets/fonts/pretendard/Pretendard-ExtraBold.ttf'),
-    'Mortend-Bold': require('./assets/fonts/mortend/Mortend-Bold.ttf'),
-    'Montserrat-Regular': require('./assets/fonts/montserrat/Montserrat-Regular.ttf'),
-    'Montserrat-Medium': require('./assets/fonts/montserrat/Montserrat-Medium.ttf'),
-    'Montserrat-Bold': require('./assets/fonts/montserrat/Montserrat-Bold.ttf'),
-    'Montserrat-SemiBold': require('./assets/fonts/montserrat/Montserrat-SemiBold.ttf'),
-    'Montserrat-ExtraBold': require('./assets/fonts/montserrat/Montserrat-ExtraBold.ttf'),
+    'Pretendard-Regular': require('./src/assets/fonts/pretendard/Pretendard-Regular.ttf'),
+    'Pretendard-Medium': require('./src/assets/fonts/pretendard/Pretendard-Medium.ttf'),
+    'Pretendard-Bold': require('./src/assets/fonts/pretendard/Pretendard-Bold.ttf'),
+    'Pretendard-SemiBold': require('./src/assets/fonts/pretendard/Pretendard-SemiBold.ttf'),
+    'Pretendard-ExtraBold': require('./src/assets/fonts/pretendard/Pretendard-ExtraBold.ttf'),
+    'Mortend-Bold': require('./src/assets/fonts/mortend/Mortend-Bold.ttf'),
+    'Montserrat-Regular': require('./src/assets/fonts/montserrat/Montserrat-Regular.ttf'),
+    'Montserrat-Medium': require('./src/assets/fonts/montserrat/Montserrat-Medium.ttf'),
+    'Montserrat-Bold': require('./src/assets/fonts/montserrat/Montserrat-Bold.ttf'),
+    'Montserrat-SemiBold': require('./src/assets/fonts/montserrat/Montserrat-SemiBold.ttf'),
+    'Montserrat-ExtraBold': require('./src/assets/fonts/montserrat/Montserrat-ExtraBold.ttf'),
   });
 };
 

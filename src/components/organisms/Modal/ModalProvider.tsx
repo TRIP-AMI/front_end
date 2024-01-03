@@ -6,7 +6,6 @@ import ApplicantInfoModal from '@components/molecules/Modal/ApplicantInfoModal';
 import ReviewDetailsModal from '@components/molecules/Modal/ReviewDetailsModal';
 import ApplicationFilterModal from '@components/molecules/Modal/ApplicationFilterModal';
 import modalState from '@/utils/recoil/modal';
-import NotifcationModal from '@/components/organisms/Modal/NotifcationModal';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 import ApplyModal from '@/components/organisms/Modal/ApplyModal';
 import ApplyCheckModal from '@/components/molecules/Modal/ApplyCheckModal';
@@ -31,7 +30,6 @@ export default function ModalProvider() {
       <JoinCompleteModal title={modal.title} />
     ) : undefined,
     AUTH_ALERT: <AuthAlertModal />,
-    NOTIFICATION: <NotifcationModal />,
     SEARCH: <SearchModal />,
     REPORT_COMPLETE: <ReportCompleteModal />,
     APPLY: <ApplyModal />,
