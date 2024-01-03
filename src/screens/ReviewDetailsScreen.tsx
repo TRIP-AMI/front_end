@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
     alignItems: 'center',
+    paddingHorizontal: Spacing.IOS392Margin,
+    paddingVertical: 10,
   },
   textContainer: {
-    marginTop: 10,
-    marginBottom: 20,
+    paddingBottom: 20,
     alignSelf: 'flex-start',
-    marginHorizontal: Spacing.IOS392Margin,
   },
 });
 

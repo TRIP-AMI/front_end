@@ -83,7 +83,12 @@ export default function MyPageScreen() {
       id: 2,
       tabName: 'Review',
       tabComponent: (
-        <View style={{ paddingVertical: 25 }}>
+        <View
+          style={{
+            paddingVertical: 25,
+            paddingHorizontal: Spacing.IOS392Margin,
+          }}
+        >
           <ReviewItemList
             data={reviews}
             scrollEnabled={false}
