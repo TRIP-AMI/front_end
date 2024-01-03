@@ -40,7 +40,7 @@ export default function ContentScreen({ route }: ContentScreenProps) {
         <SectionDividerBar style={{ height: 8 }} />
         {/* TODO: FAQ */}
         <View style={{ paddingVertical: 30 }}>
-          <FAQSection />
+          <FAQSection scrollEnabled={false} />
         </View>
         <SectionDividerBar style={{ height: 8 }} />
         <ContentReportButton programId={id} />
