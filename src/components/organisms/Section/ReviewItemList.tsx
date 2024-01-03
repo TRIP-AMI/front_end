@@ -1,17 +1,10 @@
 import ReviewItem from '@components/molecules/Item/ReviewItem';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import EmptyText from '@components/atoms/Text/EmptyText';
 import TotalText from '@components/atoms/Text/TotalText';
 import Spacing from '@styles/spacing';
-import reviewApi from '@/services/module/review/review';
-
-type ReviewItemType = {
-  reviewId: number;
-  reviewName: string;
-  reviewImg: string;
-  reviewContent: string;
-};
+import useReview from '@/hooks/reviewHook';
 
 function ReviewItemList({
   scrollEnabled,
@@ -22,34 +15,26 @@ function ReviewItemList({
   emptyText: string;
   totalVisible?: boolean;
 }) {
-  const [dummyReview, setDummyReview] = useState<ReviewItemType[]>([]);
-
-  const getData = async () => {
-    try {
-      const data = await reviewApi.getReviewList();
-      setDummyReview(data);
-    } catch (error) {
-      console.error('배너 목록 호출에 실패하였습니다.', error);
-    }
-  };
+  const { reviews, getReviews } = useReview();
 
   useEffect(() => {
-    getData();
+    getReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <View>
-      {dummyReview.length === 0 ? (
+      {reviews.length === 0 ? (
         <EmptyText text={emptyText} />
       ) : (
         <>
           {totalVisible && (
             <View style={styles.textContainer}>
-              <TotalText total={dummyReview.length} />
+              <TotalText total={reviews.length} />
             </View>
           )}
           <FlatList
-            data={dummyReview}
+            data={reviews}
             renderItem={({ item }) => <ReviewItem item={item} />}
             keyExtractor={(item) => item.reviewId.toString()}
             scrollEnabled={scrollEnabled}
@@ -63,11 +48,12 @@ function ReviewItemList({
 
 const styles = StyleSheet.create({
   listWrap: {
-    marginBottom: 52,
+    // marginBottom: 52,
+    // paddingHorizontal: Spacing.IOS392Margin,
   },
   textContainer: {
-    marginTop: 10,
-    marginBottom: 20,
+    paddingTop: 10,
+    paddingBottom: 20,
     alignSelf: 'flex-start',
     marginHorizontal: Spacing.IOS392Margin,
   },
