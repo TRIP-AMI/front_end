@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     lineHeight: 15,
   },
   content: {
+    color: '#4A4A4A',
     fontFamily: 'Montserrat-Regular',
     fontSize: 14,
     lineHeight: 15,
