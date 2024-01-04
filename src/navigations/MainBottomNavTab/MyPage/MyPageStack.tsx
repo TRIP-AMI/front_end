@@ -4,6 +4,11 @@ import {
 } from '@react-navigation/native-stack';
 
 import { useRecoilState } from 'recoil';
+import SettingScreen from '@screens/bottomNav/MyPage/SettingScreen';
+import EditProfileScreen from '@screens/bottomNav/MyPage/Setting/EditProfileScreen';
+import InquiryDetailsScreen from '@screens/bottomNav/MyPage/Setting/InquiryDetailsScreen';
+import TermsAndConditionScreen from '@screens/bottomNav/MyPage/Setting/TermsAndConditionScreen';
+import AccountManagementScreen from '@screens/bottomNav/MyPage/Setting/AccountManagementScreen';
 import MyPageScreen from '@/screens/bottomNav/MyPage/MyPageScreen';
 import ApplicationDetailsScreen from '@/screens/ApplicationDetailsScreen';
 import Fonts from '@/styles/typography';
@@ -20,6 +25,11 @@ export type MyPageParamList = {
   ApplicationDetails: undefined;
   BookDetails: undefined;
   ReviewDetails: undefined;
+  Setting: undefined;
+  EditProfile: undefined;
+  AccountManagement: undefined;
+  InquiryDetails: undefined;
+  TermsAndConditions: undefined;
 };
 
 export type MyPageStackNavigationProp =
@@ -71,6 +81,56 @@ export default function MyPageStack() {
         options={{
           title: 'Review details',
           headerLeft: () => <BackLeftArrow />,
+        }}
+      />
+      <Stack.Screen
+        name='Setting'
+        component={SettingScreen}
+        options={{
+          title: 'Settings',
+          headerTitleStyle: Fonts.header.title,
+          headerLeft: () => <BackLeftArrow />,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name='EditProfile'
+        component={EditProfileScreen}
+        options={{
+          title: 'Edit Profile',
+          headerTitleStyle: Fonts.header.title,
+          headerLeft: () => <BackLeftArrow />,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name='AccountManagement'
+        component={AccountManagementScreen}
+        options={{
+          title: 'Account Management',
+          headerTitleStyle: Fonts.header.title,
+          headerLeft: () => <BackLeftArrow />,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name='InquiryDetails'
+        component={InquiryDetailsScreen}
+        options={{
+          title: 'Inquiry details',
+          headerTitleStyle: Fonts.header.title,
+          headerLeft: () => <BackLeftArrow />,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name='TermsAndConditions'
+        component={TermsAndConditionScreen}
+        options={{
+          title: 'Terms and Conditions',
+          headerTitleStyle: Fonts.header.title,
+          headerLeft: () => <BackLeftArrow />,
+          headerShadowVisible: false,
         }}
       />
     </Stack.Navigator>

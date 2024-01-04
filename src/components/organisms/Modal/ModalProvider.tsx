@@ -5,6 +5,8 @@ import ApplicationCancel from '@components/molecules/Modal/ApplicationCancel';
 import ApplicantInfoModal from '@components/molecules/Modal/ApplicantInfoModal';
 import ReviewDetailsModal from '@components/molecules/Modal/ReviewDetailsModal';
 import ApplicationFilterModal from '@components/molecules/Modal/ApplicationFilterModal';
+import LogoutModal from '@components/molecules/Modal/LogoutModal';
+import ImgChangeModal from '@components/molecules/Modal/ImgChangeModal';
 import modalState from '@/utils/recoil/modal';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 import ApplyModal from '@/components/organisms/Modal/ApplyModal';
@@ -54,6 +56,13 @@ export default function ModalProvider() {
       <ApplicationFilterModal
         category={modal.applicationFilter.category}
         onChange={modal.applicationFilter.onChange}
+      />
+    ),
+    LOGOUT: <LogoutModal />,
+    IMAGE_CHANGE: modal?.imageChange && (
+      <ImgChangeModal
+        imgUrl={modal.imageChange.imgUrl}
+        onChange={modal.imageChange.onChange}
       />
     ),
   };
