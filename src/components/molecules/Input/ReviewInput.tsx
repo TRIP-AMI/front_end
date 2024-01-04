@@ -1,34 +1,33 @@
 import { StyleSheet } from 'react-native';
 import BasicInput from '@components/atoms/Input/BasicInput';
-import { Controller, useForm } from 'react-hook-form';
+import { Control, Controller } from 'react-hook-form';
 import CheckButton from '@components/molecules/Button/CheckButton';
-import StarRating from '@components/molecules/etc/StarRating';
-import { useState } from 'react';
-import useModalHook from '@hooks/modalHook';
 
-function ReviewInput() {
-  const [starRating, setStarRating] = useState(0);
-  const { setModalName } = useModalHook();
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: { content: '' },
-  });
-
-  const onSubmit = (data: unknown) => {
-    console.log('data::::', data);
-    console.log('starRating::::', starRating);
-    setModalName('REVIEW_DETAIL');
-  };
-
+function ReviewInput({
+  control,
+  errorText,
+  starRating,
+  handleSubmit,
+  placeholder,
+  onSubmit,
+  notRequiredContent,
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any>;
+  errorText?: string;
+  starRating?: number;
+  placeholder: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  handleSubmit: any;
+  onSubmit: (data: unknown) => void;
+  notRequiredContent?: boolean;
+}) {
   return (
     <Controller
       control={control}
       rules={{
         required: {
-          value: true,
+          value: !notRequiredContent,
           message: 'Content is required.',
         },
         maxLength: {
@@ -39,19 +38,20 @@ function ReviewInput() {
       render={({ field: { onChange, onBlur, value } }) => {
         return (
           <>
-            <StarRating starRating={starRating} setStarRating={setStarRating} />
             <BasicInput
               textarea
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder='Good things, things to improve, etc.'
+              placeholder={placeholder}
               maxLength={100}
-              error={errors.content?.message}
+              error={errorText}
               style={styles.input}
             />
             <CheckButton
-              disabled={value === '' || starRating === 0}
+              disabled={
+                (!notRequiredContent && value === '') || starRating === 0
+              }
               onPress={handleSubmit(onSubmit)}
             />
           </>
