@@ -19,7 +19,11 @@ export default function ContentReview() {
       <View style={styles.header}>
         <TextTitle style={styles.title}>Review</TextTitle>
         {reviews.length > 0 && (
-          <TextButton title='More' style={styles.button} onPress={onPress} />
+          <TextButton
+            title={viewAll ? 'Hide' : 'More'}
+            style={styles.button}
+            onPress={onPress}
+          />
         )}
       </View>
       {reviews.length > 0 ? (
