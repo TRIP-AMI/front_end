@@ -9,12 +9,12 @@
   "banner": [
     {
       "id": 1,
-      "link": "",
+      "link": "expo://",
       "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg"
     },
     {
       "id": 2,
-      "title": "item2",
+      "link": "",
       "imgUrl": "https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg"
     }
   ],
