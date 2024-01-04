@@ -1,6 +1,5 @@
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Colors from '@styles/colors';
-import Spacing from '@styles/spacing';
 
 function ReviewText({ name, content }: { name: string; content: string }) {
   return (
@@ -12,18 +11,10 @@ function ReviewText({ name, content }: { name: string; content: string }) {
   );
 }
 
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
-
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    width:
-      screenWidth -
-      Spacing.IOS392Margin * 2 -
-      screenHeight * 0.015 * 2 - // padding
-      screenWidth * 0.025 - // img marginRight
-      screenHeight * 0.038, // img width
+    paddingHorizontal: 10,
+    width: '90%',
   },
   name: {
     color: '#000000',
