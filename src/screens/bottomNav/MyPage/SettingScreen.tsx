@@ -20,31 +20,54 @@ function SettingScreen() {
   const utilizeToggleSwitch = () =>
     setIsUtilizeEnabled((previousState) => !previousState);
 
-  const settingValue = (path: string, value: string) => {
+  const settingValue = (path: string, title: string, value: string) => {
     switch (path) {
       case 'HomePageCountry':
       case 'Version':
-        return <Text style={styles.value}>{value}</Text>;
+        return (
+          <View style={styles.subContainer}>
+            <Text key={path} style={styles.text}>
+              {title}
+            </Text>
+            <Text style={styles.value}>{value}</Text>
+          </View>
+        );
       case 'AppPushNotification':
         return (
-          <ToggleButton
-            value={isAppPushEnabled}
-            onValueChange={appPushToggleSwitch}
-          />
+          <View style={styles.subContainer}>
+            <Text key={path} style={styles.text}>
+              {title}
+            </Text>
+            <ToggleButton
+              value={isAppPushEnabled}
+              onValueChange={appPushToggleSwitch}
+            />
+          </View>
         );
       case 'UtilizeMarketingInformation':
         return (
-          <ToggleButton
-            value={isUtilizeEnabled}
-            onValueChange={utilizeToggleSwitch}
-          />
+          <View style={styles.subContainer}>
+            <Text key={path} style={styles.text}>
+              {title}
+            </Text>
+            <ToggleButton
+              value={isUtilizeEnabled}
+              onValueChange={utilizeToggleSwitch}
+            />
+          </View>
         );
       case 'Logout':
         return null;
       default:
         // TODO path error
         return (
-          <Pressable onPress={() => navigation.navigate(path)}>
+          <Pressable
+            style={styles.subContainer}
+            onPress={() => navigation.navigate(path)}
+          >
+            <Text key={path} style={styles.text}>
+              {title}
+            </Text>
             <MaterialIcons
               name='arrow-forward-ios'
               size={20}
@@ -75,12 +98,7 @@ function SettingScreen() {
     <SafeAreaView style={styles.container}>
       {settingList.map((item, index) => (
         <>
-          <View style={styles.subContainer}>
-            <Text key={item.path} style={styles.text}>
-              {item.title}
-            </Text>
-            {settingValue(item.path, item.value)}
-          </View>
+          {settingValue(item.path, item.title, item.value)}
           {(index === 2 || index === 6) && (
             <Separator color={Colors.lineGray05} hei={8} marginVer={0} />
           )}
