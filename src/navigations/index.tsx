@@ -93,7 +93,13 @@ function Navigation() {
           />
         </>
       ) : (
-        <Stack.Screen name='AuthStack' component={AuthStack} />
+        <Stack.Screen
+          name='AuthStack'
+          component={AuthStack}
+          options={{
+            headerShown: false,
+          }}
+        />
       )}
 
       {/* terms */}
