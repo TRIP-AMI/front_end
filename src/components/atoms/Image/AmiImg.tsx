@@ -10,12 +10,14 @@ import {
 function AmiImg({
   imgUrl,
   style,
+  isBasic,
 }: {
   imgUrl: string;
   style?: StyleProp<ImageStyle> | undefined;
+  isBasic?: boolean;
 }) {
   return (
-    <View style={styles.container}>
+    <View style={isBasic && styles.container}>
       <Image source={{ uri: imgUrl }} style={[styles.image, style]} />
     </View>
   );
