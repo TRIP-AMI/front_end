@@ -7,6 +7,7 @@ import ReviewDetailsModal from '@components/molecules/Modal/ReviewDetailsModal';
 import ApplicationFilterModal from '@components/molecules/Modal/ApplicationFilterModal';
 import LogoutModal from '@components/molecules/Modal/LogoutModal';
 import ImgChangeModal from '@components/molecules/Modal/ImgChangeModal';
+import CompleteWithdrawalModal from '@components/molecules/Modal/CompleteWithdrawalModal';
 import modalState from '@/utils/recoil/modal';
 import SearchModal from '@/components/organisms/Modal/SearchModal';
 import ApplyModal from '@/components/organisms/Modal/ApplyModal';
@@ -69,6 +70,7 @@ export default function ModalProvider() {
         onChange={modal.imageChange.onChange}
       />
     ),
+    WITHDRAWAL: <CompleteWithdrawalModal />,
   };
 
   return <View style={styles.backdrop}>{ModalList[modalName]}</View>;

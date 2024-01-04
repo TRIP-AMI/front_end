@@ -17,7 +17,8 @@ export type ModalName =
   | 'REVIEW_DETAIL'
   | 'APPLICATION_FILTER'
   | 'LOGOUT'
-  | 'IMAGE_CHANGE';
+  | 'IMAGE_CHANGE'
+  | 'WITHDRAWAL';
 
 export type ApplyCheckProps = {
   date: string;

@@ -12,9 +12,29 @@ import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import ReviewContentItem from '@components/atoms/Item/ReviewContentItem';
 import ReviewInput from '@components/molecules/Input/ReviewInput';
+import { useState } from 'react';
+import useModalHook from '@hooks/modalHook';
+import { useForm } from 'react-hook-form';
+import StarRating from '@components/molecules/etc/StarRating';
 import { ApplicationItemProps } from '@/types/ModalTypes';
 
 function ReviewModal({ imgUrl, title }: ApplicationItemProps) {
+  const [starRating, setStarRating] = useState(0);
+  const { setModalName } = useModalHook();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { content: '' },
+  });
+
+  const onSubmit = (data: unknown) => {
+    console.log('data::::', data);
+    console.log('starRating::::', starRating);
+    setModalName('REVIEW_DETAIL');
+  };
+
   return (
     <BasicFullScreenModal
       headerStyle={styles.headerStyle}
@@ -32,7 +52,15 @@ function ReviewModal({ imgUrl, title }: ApplicationItemProps) {
                 Please leave a score and review for AMI!
               </Text>
             </View>
-            <ReviewInput />
+            <StarRating starRating={starRating} setStarRating={setStarRating} />
+            <ReviewInput
+              control={control}
+              errorText={errors.content?.message}
+              starRating={starRating}
+              placeholder='Good things, things to improve, etc.'
+              handleSubmit={handleSubmit}
+              onSubmit={onSubmit}
+            />
           </View>
         </View>
       </TouchableWithoutFeedback>

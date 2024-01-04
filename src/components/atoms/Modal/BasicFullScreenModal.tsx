@@ -20,12 +20,14 @@ function BasicFullScreenModal({
   noClose,
   headerStyle,
   bodyStyle,
+  onPress,
 }: {
   children: ReactNode;
   modalTitle?: string;
   noClose?: boolean;
   headerStyle?: StyleProp<ViewStyle>;
   bodyStyle?: StyleProp<ViewStyle>;
+  onPress?: () => void;
 }) {
   const { resetModal } = useModalHook();
 
@@ -39,7 +41,7 @@ function BasicFullScreenModal({
 
           {/* close icon */}
           {!noClose && (
-            <Pressable onPress={resetModal}>
+            <Pressable onPress={!onPress ? resetModal : onPress}>
               <AntDesign name='close' size={22} color='black' />
             </Pressable>
           )}
