@@ -1,29 +1,22 @@
 import { View, StyleSheet } from 'react-native';
 import { FeatherIconButton } from '@components/atoms/Button/IconButton';
-import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
 
 export default function HomeHeaderIcons() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  console.log(isVisible);
-
+  const navigation = useNavigation<MyPageStackNavigationProp>();
   const onOpen = () => {
-    setIsVisible(true);
+    navigation.navigate('Setting');
   };
-  // const onClose = () => {
-  //   setIsVisible(false);
-  // };
 
   return (
     <View style={styles.container}>
-      <View>
-        <FeatherIconButton
-          icon='settings'
-          size={24}
-          color='#121212'
-          onPress={onOpen}
-        />
-      </View>
+      <FeatherIconButton
+        icon='settings'
+        size={24}
+        color='#121212'
+        onPress={onOpen}
+      />
     </View>
   );
 }
@@ -32,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginRight: 26.64,
+    marginHorizontal: 10,
   },
   badge: {
     position: 'absolute',

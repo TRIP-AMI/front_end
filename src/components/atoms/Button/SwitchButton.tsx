@@ -1,5 +1,4 @@
 import { Text, Pressable, StyleSheet, View } from 'react-native';
-import Spacing from '@styles/spacing';
 import Colors from '@styles/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useRecoilState } from 'recoil';
@@ -38,7 +37,7 @@ function SwitchButton() {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    paddingLeft: Spacing.IOS392Margin,
+    paddingLeft: 10,
   },
   textContainer: {
     flexDirection: 'row',

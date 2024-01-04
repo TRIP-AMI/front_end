@@ -1,5 +1,4 @@
 export type ModalName =
-  | 'NOTIFICATION'
   | 'SEARCH'
   | 'PICKER_SELECT'
   | 'LOGIN_INVALID'
@@ -16,7 +15,9 @@ export type ModalName =
   | 'APPLICATION_CANCEL'
   | 'APPLICANT_INFO'
   | 'REVIEW_DETAIL'
-  | 'APPLICATION_FILTER';
+  | 'APPLICATION_FILTER'
+  | 'LOGOUT'
+  | 'IMAGE_CHANGE';
 
 export type ApplyCheckProps = {
   date: string;
@@ -38,6 +39,7 @@ export type CustomModalProps = {
   applicationItem?: ApplicationItemProps;
   applicationFilter?: ApplicationFilterProps;
   imgUrl?: string;
+  imageChange?: ImageChangeProps;
 };
 
 export type ModalState = CustomModalProps & {
@@ -47,4 +49,9 @@ export type ModalState = CustomModalProps & {
 export type ApplicationFilterProps = {
   category: string;
   onChange: (select: string) => void;
+};
+
+export type ImageChangeProps = {
+  imgUrl: string;
+  onChange: (imgUrl: string) => void;
 };
