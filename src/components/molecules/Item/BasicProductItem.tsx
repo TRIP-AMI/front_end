@@ -16,7 +16,7 @@ function LastDateBadge({ date }: { date: Date }) {
   }
 
   return (
-    <View style={{ width: '23%', marginBottom: 5 }}>
+    <View style={{ width: 39, marginBottom: 5 }}>
       <BlackBadge text='D-1' />
     </View>
   );
@@ -87,7 +87,7 @@ export default function BasicProductItem({
 
 const styles = StyleSheet.create({
   basicItemWrap: {
-    width: '48.5%',
+    width: 168,
     marginBottom: 20,
   },
   imgWrap: {
