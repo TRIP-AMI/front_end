@@ -10,7 +10,7 @@ const Fonts = {
       color: '#000000',
       fontFamily: 'Mortend-Bold',
       fontSize: 18,
-      lineHeight: 25,
+      lineHeight: 24,
       // letterSpacing: 0,
     },
     title: {

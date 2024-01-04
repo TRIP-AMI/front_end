@@ -15,6 +15,7 @@ import Fonts from '@/styles/typography';
 import MenuStack, { MenuParamList } from './Menu/MenuStack';
 import MyPageStack, { MyPageParamList } from './MyPage/MyPageStack';
 import UploadStack, { UploadStackParamList } from './Upload/UploadStack';
+import HomeHeaderLeft from '@/components/molecules/Header/HomeHeaderLeft';
 
 export type MainBottomNavTabParamList = {
   MenuStack: NavigatorScreenParams<MenuParamList>;
@@ -76,9 +77,10 @@ export default function MainBottomNavTab() {
           tabBarIcon: ({ color }) => (
             <Ionicons name='md-home-outline' color={color} size={iconSize} />
           ),
-          title: 'TRIPAMI',
+          title: '',
           tabBarLabel: 'Home',
           headerTitleStyle: Fonts.header.logo,
+          headerLeft: () => <HomeHeaderLeft />,
           headerRight: () => <HomeHeaderIcons />,
         }}
       />

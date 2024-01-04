@@ -22,6 +22,8 @@ import NotificationScreen from '@/screens/Notification';
 import HeaderLeftTitle from '@/components/atoms/Text/HeaderLeftTitle';
 import RightCloseX from '@/components/molecules/Header/RightCloseX';
 import { Category, CategoryFindLabel } from '@/constants/category';
+import ProductListScreen from '@/screens/Product/ProductListScreen';
+import Fonts from '@/styles/typography';
 
 export type RootStackParamList = {
   MainBottomNavTab: NavigatorScreenParams<MainBottomNavTabParamList>;
@@ -29,6 +31,7 @@ export type RootStackParamList = {
   ContentStack: NavigatorScreenParams<ContentStackParamList>;
   TermsStack: NavigatorScreenParams<TermsStackParamList>;
   Category: { categoryId: Category };
+  ProductList: { listId: string; title: string };
   Notification: undefined;
 };
 
@@ -55,7 +58,7 @@ function Navigation() {
             component={MainBottomNavTab}
             options={{ headerShown: false }}
           />
-
+          {/* category */}
           <Stack.Screen
             name='Category'
             component={CategoryScreen}
@@ -71,6 +74,16 @@ function Navigation() {
               },
               headerLeft: () => <BackLeft theme='white' />,
               headerRight: () => <SearchNotificationRight theme='white' />,
+            })}
+          />
+          {/* product list */}
+          <Stack.Screen
+            name='ProductList'
+            component={ProductListScreen}
+            options={({ route }) => ({
+              title: route.params.title,
+              headerLeft: () => <BackLeft />,
+              headerTitleStyle: Fonts.header.title,
             })}
           />
           {/* content */}
