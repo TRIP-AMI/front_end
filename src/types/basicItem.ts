@@ -1,6 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
 export default class BasicItem {
-  itemId: string;
+  itemId: number;
 
   itemImg: string;
 
@@ -30,7 +30,7 @@ export default class BasicItem {
 }
 
 class BasicItemBuilder {
-  itemId: string = '';
+  itemId: number = 0;
 
   itemImg: string = '';
 
@@ -42,7 +42,7 @@ class BasicItemBuilder {
 
   itemLike?: boolean;
 
-  withBasicItemId(itemId: string): BasicItemBuilder {
+  withBasicItemId(itemId: number): BasicItemBuilder {
     this.itemId = itemId;
     return this;
   }

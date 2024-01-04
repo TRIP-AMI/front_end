@@ -41,7 +41,7 @@ export default function HomeProgramSection({
       <FlatList
         data={section.data}
         renderItem={({ item }) => <BasicProductItem basicItem={item} />}
-        keyExtractor={(item) => item.itemId}
+        keyExtractor={(item) => `${item.itemId}`}
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
         style={{ paddingLeft: Spacing.IOS392Margin }}

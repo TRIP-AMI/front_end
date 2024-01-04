@@ -58,42 +58,42 @@
   ],
   "like": [
     {
-      "likeId": "1",
+      "likeId": 1,
       "likeImg": "https://via.placeholder.com/450x450/ECECEC",
       "likeTitle": "Itaewon Tour",
       "likeSubTitle": "Restaurant - Cafe - Photo",
       "likeDate": "2024-01-04 12:00"
     },
     {
-      "likeId": "12",
+      "likeId": 2,
       "likeImg": "https://via.placeholder.com/450x450/ECECEC",
       "likeTitle": "Itaewon Tour",
       "likeSubTitle": "Restaurant - Cafe - Photo",
       "likeDate": "2024-1-3"
     },
     {
-      "likeId": "123",
+      "likeId": 3,
       "likeImg": "https://via.placeholder.com/450x450/ECECEC",
       "likeTitle": "Itaewon Tour",
       "likeSubTitle": "Restaurant - Cafe - Photo",
       "likeDate": "2024-1-4"
     },
     {
-      "likeId": "1234",
+      "likeId": 4,
       "likeImg": "https://via.placeholder.com/450x450/ECECEC",
       "likeTitle": "Itaewon Tour",
       "likeSubTitle": "Restaurant - Cafe - Photo",
       "likeDate": "2024-1-5"
     },
     {
-      "likeId": "12345",
+      "likeId": 5,
       "likeImg": "https://via.placeholder.com/450x450/ECECEC",
       "likeTitle": "Itaewon Tour",
       "likeSubTitle": "Restaurant - Cafe - Photo",
       "likeDate": "2024-1-4"
     },
     {
-      "likeId": "123456",
+      "likeId": 6,
       "likeImg": "https://via.placeholder.com/450x450/ECECEC",
       "likeTitle": "Itaewon Tour",
       "likeSubTitle": "Restaurant - Cafe - Photo",
@@ -206,49 +206,49 @@
   ],
   "homeprogram": [
     {
-      "id": "1",
+      "id": 1,
       "title": "Itaewon Tour Itaewon Tour Itaewon Tour",
       "subTitle": "Restaurant - Cafe - Photo Restaurant - Cafe - Photo Restaurant - Cafe - Photo Restaurant - Cafe - Photo Restaurant - Cafe - Photo",
       "imgUrl": "https://via.placeholder.com/450x450/ECECEC",
       "date": "2024-01-04 12:00"
     },
     {
-      "id": "2",
+      "id": 2,
       "title": "Itaewon Tour",
       "subTitle": "Restaurant - Cafe - Photo",
       "imgUrl": "https://via.placeholder.com/450x450/ECECEC",
       "date": "2024-01-010 12:00"
     },
     {
-      "id": "3",
+      "id": 3,
       "title": "Itaewon Tour",
       "subTitle": "Restaurant - Cafe - Photo",
       "imgUrl": "https://via.placeholder.com/450x450/ECECEC",
       "date": "2024-01-04 12:00"
     },
     {
-      "id": "4",
+      "id": 4,
       "title": "Itaewon Tour",
       "subTitle": "Restaurant - Cafe - Photo",
       "imgUrl": "https://via.placeholder.com/450x450/ECECEC",
       "date": "2024-01-04 12:00"
     },
     {
-      "id": "5",
+      "id": 5,
       "title": "Itaewon Tour",
       "subTitle": "Restaurant - Cafe - Photo",
       "imgUrl": "https://via.placeholder.com/450x450/ECECEC",
       "date": "2024-01-04 12:00"
     },
     {
-      "id": "6",
+      "id": 6,
       "title": "Itaewon Tour",
       "subTitle": "Restaurant - Cafe - Photo",
       "imgUrl": "https://via.placeholder.com/450x450/ECECEC",
       "date": "2024-01-04 12:00"
     },
     {
-      "id": "7",
+      "id": 7,
       "title": "Itaewon Tour",
       "subTitle": "Restaurant - Cafe - Photo",
       "imgUrl": "https://via.placeholder.com/450x450/ECECEC",
