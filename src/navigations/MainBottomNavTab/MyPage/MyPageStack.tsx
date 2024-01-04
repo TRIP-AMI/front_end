@@ -9,6 +9,9 @@ import EditProfileScreen from '@screens/bottomNav/MyPage/Setting/EditProfileScre
 import InquiryDetailsScreen from '@screens/bottomNav/MyPage/Setting/InquiryDetailsScreen';
 import TermsAndConditionScreen from '@screens/bottomNav/MyPage/Setting/TermsAndConditionScreen';
 import AccountManagementScreen from '@screens/bottomNav/MyPage/Setting/AccountManagementScreen';
+import WithdrawalScreen from '@screens/bottomNav/MyPage/Setting/WithdrawalScreen';
+import { View } from 'react-native';
+import RightCloseX from '@components/molecules/Header/RightCloseX';
 import MyPageScreen from '@/screens/bottomNav/MyPage/MyPageScreen';
 import ApplicationDetailsScreen from '@/screens/ApplicationDetailsScreen';
 import Fonts from '@/styles/typography';
@@ -30,6 +33,7 @@ export type MyPageParamList = {
   AccountManagement: undefined;
   InquiryDetails: undefined;
   TermsAndConditions: undefined;
+  Withdrawal: undefined;
 };
 
 export type MyPageStackNavigationProp =
@@ -131,6 +135,15 @@ export default function MyPageStack() {
           headerTitleStyle: Fonts.header.title,
           headerLeft: () => <BackLeftArrow />,
           headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name='Withdrawal'
+        component={WithdrawalScreen}
+        options={{
+          headerTitle: '',
+          headerLeft: () => <View />,
+          headerRight: () => <RightCloseX />,
         }}
       />
     </Stack.Navigator>
