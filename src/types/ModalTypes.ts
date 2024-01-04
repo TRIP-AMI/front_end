@@ -5,6 +5,7 @@ export type ModalName =
   | 'JOIN_CANCEL'
   | 'JOIN_COMPLETE'
   | 'AUTH_ALERT'
+  | 'FULL_IMAGE'
   | 'REPORT_COMPLETE'
   | 'APPLY'
   | 'APPLY_CHECK'
@@ -38,6 +39,7 @@ export type CustomModalProps = {
   title?: string;
   applicationItem?: ApplicationItemProps;
   applicationFilter?: ApplicationFilterProps;
+  imgUrl?: string;
   imageChange?: ImageChangeProps;
 };
 

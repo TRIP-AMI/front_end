@@ -1,4 +1,5 @@
-import { View, Image, StyleSheet, Dimensions } from 'react-native';
+import { Pressable, Image, StyleSheet, Dimensions } from 'react-native';
+import useModalHook from '@/hooks/modalHook';
 
 type ContentBannerCardProps = {
   id: number;
@@ -11,14 +12,26 @@ export default function ContentBannerCard({
 }: {
   item: ContentBannerCardProps;
 }) {
+  const { setModalName } = useModalHook();
+
+  const onPress = () => {
+    setModalName('FULL_IMAGE', { imgUrl: item.imgUrl });
+  };
+
   return (
-    <View style={styles.imgContainer}>
+    <Pressable
+      style={({ pressed }) => [
+        styles.imgContainer,
+        pressed && { opacity: 0.8 },
+      ]}
+      onPress={onPress}
+    >
       <Image
         source={{ uri: item.imgUrl }}
         resizeMode='cover'
         style={styles.img}
       />
-    </View>
+    </Pressable>
   );
 }
 

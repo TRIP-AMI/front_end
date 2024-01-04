@@ -6,9 +6,14 @@ import Spacing from '@/styles/spacing';
 interface DropToggleProps {
   title: string;
   content: string;
+  lastIndex?: boolean;
 }
 
-export default function DropToggle({ title, content }: DropToggleProps) {
+export default function DropToggle({
+  title,
+  content,
+  lastIndex,
+}: DropToggleProps) {
   const [isActive, setIsActive] = useState(false);
 
   const animationFade = useRef(new Animated.Value(0)).current;
@@ -37,7 +42,7 @@ export default function DropToggle({ title, content }: DropToggleProps) {
   }, [isActive, animationFade, animationRotate]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, lastIndex && { borderBottomWidth: 0 }]}>
       {/* title */}
       <Pressable onPress={handleToggle} style={styles.pressWrap}>
         <Text style={styles.title}>{title}</Text>

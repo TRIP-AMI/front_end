@@ -19,6 +19,7 @@ import JoinCompleteModal from '@/components/organisms/Modal/JoinCompleteModal';
 import AuthAlertModal from '@/components/molecules/Modal/AuthAlertModal';
 import ReportCompleteModal from './ReportCompleteModal';
 import UploadCompleteModal from './UploadCompleteModal';
+import FullImageModal from './FullImageModal';
 
 export default function ModalProvider() {
   const modal = useRecoilValue(modalState);
@@ -34,6 +35,9 @@ export default function ModalProvider() {
     ) : undefined,
     AUTH_ALERT: <AuthAlertModal />,
     SEARCH: <SearchModal />,
+    FULL_IMAGE: modal.imgUrl ? (
+      <FullImageModal imgUrl={modal.imgUrl} />
+    ) : undefined,
     REPORT_COMPLETE: <ReportCompleteModal />,
     APPLY: <ApplyModal />,
     APPLY_CHECK: modal.applyCheck && (

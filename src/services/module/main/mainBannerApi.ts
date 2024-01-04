@@ -1,6 +1,14 @@
 import instance, { BASE_API_URL } from '@/services/config/axios';
 
-const getBanner = () => {
+export type ContentBannerCardType = {
+  id: number;
+  title: string;
+  imgUrl: string;
+};
+
+export type BannerListResponse = ContentBannerCardType[];
+
+const getBanner = (): Promise<BannerListResponse> => {
   const url = `${BASE_API_URL}/banner`;
   const method = 'GET';
   return instance({ url, method });
