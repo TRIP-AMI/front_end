@@ -1,9 +1,11 @@
 import { View, StyleSheet, FlatList, Text, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
 import BasicItem from '@/types/basicItem';
 import BasicProductItem from '../Item/BasicProductItem';
 import Spacing from '@/styles/spacing';
 import { HomeProgramSectionId } from '@/types/Literal/home';
+import { RootStackNavigationProp } from '@/navigations';
 
 type HomeProgramSectionProps = {
   section: {
@@ -16,6 +18,13 @@ type HomeProgramSectionProps = {
 export default function HomeProgramSection({
   section,
 }: HomeProgramSectionProps) {
+  const { navigate } = useNavigation<RootStackNavigationProp>();
+  const onMorePress = () => {
+    navigate('ProductList', {
+      listId: section.id,
+      title: section.title,
+    });
+  };
   return (
     <View>
       <SectionDividerBar style={{ marginVertical: 15 }} />
@@ -23,7 +32,9 @@ export default function HomeProgramSection({
       <View style={styles.sectionHeaderWrap}>
         <Text style={styles.sectionHeaderText}>{section.title}</Text>
         <Pressable>
-          <Text style={styles.sectionHeaderTextMoreText}>More</Text>
+          <Text style={styles.sectionHeaderTextMoreText} onPress={onMorePress}>
+            More
+          </Text>
         </Pressable>
       </View>
       {/* content list */}
