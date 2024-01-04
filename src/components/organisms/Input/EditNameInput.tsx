@@ -1,6 +1,6 @@
 import { NameInput } from '@components/molecules/Input/LoginInput';
 import { Dimensions, Keyboard, StyleSheet, View } from 'react-native';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import ConfirmButton from '@components/atoms/Button/ConfirmButton';
 
 type dataType = {
@@ -27,12 +27,22 @@ function EditNameInput({
   });
 
   // TODO API 연결
-  // TODO 동일 이름 입력 시 에러 처리
+  // TODO 동일 이름 입력 시 에러 문구 처리
   const onSubmit = (data: dataType) => {
     console.log('data::::', data);
     Keyboard.dismiss();
     reset();
     setUserName(data.nickname);
+  };
+
+  const nicknameValue = useWatch({ control, name: 'nickname' });
+
+  // isDirty: 사용자가 input에 무언가를 입력했는지 여부
+  // isValid: 입력된 값이 유효한지 여부
+  const isDisabled = () => {
+    return (
+      !!errors.nickname || !isDirty || !isValid || nicknameValue === userName
+    );
   };
 
   return (
@@ -47,7 +57,7 @@ function EditNameInput({
       </View>
       <View>
         <ConfirmButton
-          disabled={!!errors.nickname || !isDirty || !isValid}
+          disabled={isDisabled()}
           content='Confirm'
           onPress={handleSubmit(onSubmit)}
           customStyle={styles.button}
