@@ -6,10 +6,13 @@ export default function BasicProductItemSubTitle({
   style,
 }: {
   children: ReactNode;
-  // eslint-disable-next-line react/require-default-props
   style?: StyleProp<TextStyle>;
 }) {
-  return <Text style={[styles.text, style]}>{children}</Text>;
+  return (
+    <Text style={[styles.text, style]} numberOfLines={2} ellipsizeMode='tail'>
+      {children}
+    </Text>
+  );
 }
 
 const styles = StyleSheet.create({

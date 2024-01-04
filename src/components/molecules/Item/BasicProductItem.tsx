@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import dayjs from 'dayjs';
+import { useNavigation } from '@react-navigation/native';
 import BasicItem from '@/types/basicItem';
 import BasicProductItemTitle from '@/components/atoms/Text/BasicProductItemTitle';
 import BasicProductItemSubTitle from '@/components/atoms/Text/BasicProductItemSubTitle';
@@ -7,6 +8,7 @@ import BasicProductItemImg from '@/components/atoms/Image/BasicProductItemImg';
 import LikeHeart from '@/components/atoms/Lottie/LikeHeart';
 import Colors from '@/styles/colors';
 import BlackBadge from '@/components/atoms/Tag/BlackBadge';
+import { RootStackNavigationProp } from '@/navigations';
 
 function LastDateBadge({ date }: { date: Date }) {
   const now = dayjs();
@@ -16,7 +18,7 @@ function LastDateBadge({ date }: { date: Date }) {
   }
 
   return (
-    <View style={{ width: '23%', marginBottom: 5 }}>
+    <View style={{ width: 39, marginBottom: 5 }}>
       <BlackBadge text='D-1' />
     </View>
   );
@@ -29,6 +31,7 @@ export default function BasicProductItem({
   basicItem: BasicItem;
   setList?: React.Dispatch<React.SetStateAction<BasicItem[]>>;
 }) {
+  const { navigate } = useNavigation<RootStackNavigationProp>();
   const dateFormat = dayjs(basicItem.itemDate).format('MM/DD(MMM) HH:mm');
 
   const updateLikeValue = (value: boolean) => {
@@ -49,8 +52,15 @@ export default function BasicProductItem({
     }
   };
 
+  const onPressItem = () => {
+    navigate('ContentStack', {
+      screen: 'Content',
+      params: { id: basicItem.itemId },
+    });
+  };
+
   return (
-    <View style={styles.basicItemWrap}>
+    <Pressable style={styles.basicItemWrap} onPress={onPressItem}>
       <View style={styles.imgWrap}>
         <BasicProductItemImg planUri={basicItem.itemImg}>
           {basicItem.itemLike !== undefined && (
@@ -81,13 +91,13 @@ export default function BasicProductItem({
           {dateFormat}
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   basicItemWrap: {
-    width: '48.5%',
+    width: 168,
     marginBottom: 20,
   },
   imgWrap: {
