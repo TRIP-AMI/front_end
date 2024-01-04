@@ -1,8 +1,6 @@
 import TextTitle from '@components/atoms/Text/TextTitle';
 import { StyleSheet, View } from 'react-native';
 import Spacing from '@styles/spacing';
-import ContentLocation from '@components/atoms/Text/ContentLocation';
-import Colors from '@styles/colors';
 import ContentProgramItem from '@components/molecules/Item/ContentProgramItem';
 
 const dummyProgram = [
@@ -50,39 +48,37 @@ const dummyProgram = [
 
 function ContentProgram() {
   return (
-    <View>
+    <View style={styles.container}>
       <TextTitle style={styles.title}>Program</TextTitle>
-      <ContentLocation style={styles.location} location='Jongno, Seoul' />
-      {dummyProgram.map((item) => (
-        <ContentProgramItem
-          key={item.id}
-          order={item.id}
-          location={item.location}
-          detail={item.detail}
-          imageUrl={item.imgUrl}
-          travelTime={item.travelTime}
-        />
-      ))}
+      <View style={styles.programContainer}>
+        {dummyProgram.map((item) => (
+          <ContentProgramItem
+            key={item.id}
+            order={item.id}
+            location={item.location}
+            detail={item.detail}
+            imageUrl={item.imgUrl}
+            travelTime={item.travelTime}
+          />
+        ))}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: Spacing.IOS392Margin,
+    paddingVertical: 30,
+  },
   title: {
     color: '#000000',
     fontSize: 18,
     fontFamily: 'Montserrat-Bold',
     letterSpacing: -0.36,
-    paddingVertical: 20,
-    paddingHorizontal: Spacing.IOS392Margin,
   },
-  location: {
-    color: Colors.fontGray03,
-    fontSize: 16,
-    fontFamily: 'Montserrat-Medium',
-    marginLeft: 4.87,
-    letterSpacing: -0.48,
-    marginBottom: 9,
+  programContainer: {
+    paddingTop: 15,
   },
 });
 

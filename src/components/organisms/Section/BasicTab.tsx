@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   tabContainer: {
     height: 45,
     flexDirection: 'row',
-    marginBottom: 25,
   },
   tabContainerFullScreen: {
     marginBottom: 20,
