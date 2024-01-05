@@ -4,12 +4,12 @@ import {
 } from '@react-navigation/native-stack';
 
 import { useRecoilState } from 'recoil';
-import SettingScreen from '@screens/bottomNav/MyPage/SettingScreen';
-import EditProfileScreen from '@screens/bottomNav/MyPage/Setting/EditProfileScreen';
-import InquiryDetailsScreen from '@screens/bottomNav/MyPage/Setting/InquiryDetailsScreen';
-import TermsAndConditionScreen from '@screens/bottomNav/MyPage/Setting/TermsAndConditionScreen';
-import AccountManagementScreen from '@screens/bottomNav/MyPage/Setting/AccountManagementScreen';
-import WithdrawalScreen from '@screens/bottomNav/MyPage/Setting/WithdrawalScreen';
+import SettingScreen from '@screens/bottomNav/MyPage/Setting/SettingScreen';
+import EditProfileScreen from '@screens/bottomNav/MyPage/Setting/EditProfile/EditProfileScreen';
+import InquiryDetailsScreen from '@screens/bottomNav/MyPage/Setting/InquiryDetails/InquiryDetailsScreen';
+import TermsAndConditionScreen from '@screens/bottomNav/MyPage/Setting/TermsAndConditions/TermsAndConditionScreen';
+import AccountManagementScreen from '@screens/bottomNav/MyPage/Setting/AccountManagement/AccountManagementScreen';
+import WithdrawalScreen from '@screens/bottomNav/MyPage/Setting/AccountManagement/Withdrawal/WithdrawalScreen';
 import { View } from 'react-native';
 import RightCloseX from '@components/molecules/Header/RightCloseX';
 import MyPageScreen from '@/screens/bottomNav/MyPage/MyPageScreen';
