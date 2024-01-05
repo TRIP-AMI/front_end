@@ -12,12 +12,12 @@ import AccountManagementScreen from '@screens/bottomNav/MyPage/Setting/AccountMa
 import WithdrawalScreen from '@screens/bottomNav/MyPage/Setting/AccountManagement/Withdrawal/WithdrawalScreen';
 import { View } from 'react-native';
 import RightCloseX from '@components/molecules/Header/RightCloseX';
+import ApplicationDetailsScreen from '@screens/bottomNav/MyPage/ApplicationDetails/ApplicationDetailsScreen';
+import BookDetailsScreen from '@screens/bottomNav/MyPage/ApplicationDetails/BookDetails/BookDetailsScreen';
+import ReviewDetailsScreen from '@screens/bottomNav/MyPage/ApplicationDetails/ReviewDetails/ReviewDetailsScreen';
 import MyPageScreen from '@/screens/bottomNav/MyPage/MyPageScreen';
-import ApplicationDetailsScreen from '@/screens/ApplicationDetailsScreen';
 import Fonts from '@/styles/typography';
 import BackLeftArrow from '@/components/molecules/Header/BackLeftArrow';
-import BookDetailsScreen from '@/screens/BookDetailsScreen';
-import ReviewDetailsScreen from '@/screens/ReviewDetailsScreen';
 import profileType from '@/utils/recoil/profile';
 import { Profile } from '@/types/UserTypes';
 import SettingIcon from '@/components/molecules/etc/SettingIcon';
