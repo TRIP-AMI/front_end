@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CloseButton from '@/components/atoms/Button/CloseButton';
-import JoinTermsScreen from '@/screens/JoinTermsScreen';
+import JoinTermsScreen from '@/screens/Terms/JoinTermsScreen';
 import Fonts from '@/styles/typography';
 
 export type JoinTermsScreenType = 'Age' | 'Privacy' | 'Terms' | 'Marketing';
