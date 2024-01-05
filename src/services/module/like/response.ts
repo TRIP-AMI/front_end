@@ -1,5 +1,5 @@
 export type LikeListItem = {
-  likeId: string;
+  likeId: number;
   likeImg: string;
   likeTitle: string;
   likeSubTitle: string;

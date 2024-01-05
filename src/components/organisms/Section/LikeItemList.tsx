@@ -71,7 +71,7 @@ export default function LikeItemList() {
       renderItem={(item) => (
         <BasicProductItem basicItem={item.item} setList={setLikeList} />
       )}
-      keyExtractor={(item) => item.itemId}
+      keyExtractor={(item) => item.itemId.toString()}
       numColumns={2}
       columnWrapperStyle={{ justifyContent: 'space-between' }}
       style={styles.listWrap}

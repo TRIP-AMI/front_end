@@ -1,7 +1,7 @@
 import instance, { BASE_API_URL } from '@/services/config/axios';
 
 export type HomeSectionProgramItem = {
-  id: string;
+  id: number;
   title: string;
   subTitle: string;
   imgUrl: string;
