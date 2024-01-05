@@ -28,7 +28,7 @@ function ApplicationDetailsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <BasicTab data={tabData} fullScreen={profile === 'AMI'} />
+      <BasicTab data={tabData} fullScreen />
     </SafeAreaView>
   );
 }
