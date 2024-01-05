@@ -5,12 +5,12 @@ import {
 } from '@react-navigation/native-stack';
 import CloseButton from '@/components/atoms/Button/CloseButton';
 import useModalHook from '@/hooks/modalHook';
-import CreateNameScreen from '@/screens/CreateNameScreen';
-import CreatePasswordScreen from '@/screens/CreatePasswordScreen';
-import EmailAuthScreen from '@/screens/EmailAuthScreen';
-import JoinScreen from '@/screens/JoinScreen';
-import LoginScreen from '@/screens/LoginScreen';
-import SelectProfileScreen from '@/screens/SelectProfileScreen';
+import CreateNameScreen from '@/screens/Login/Join/Name/CreateNameScreen';
+import CreatePasswordScreen from '@/screens/Login/Common/Password/CreatePasswordScreen';
+import EmailAuthScreen from '@/screens/Login/Common/Email/EmailAuthScreen';
+import JoinScreen from '@/screens/Login/Join/JoinScreen';
+import LoginScreen from '@/screens/Login/LoginScreen';
+import SelectProfileScreen from '@/screens/Login/SelectProfile/SelectProfileScreen';
 import Fonts from '@/styles/typography';
 
 export type CreatePasswordProps = {

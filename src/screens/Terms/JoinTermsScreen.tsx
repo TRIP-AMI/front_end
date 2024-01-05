@@ -1,5 +1,5 @@
 import { Text, StyleSheet, ScrollView } from 'react-native';
-import { JoinTermsProps } from '@/types/NavigationTypes';
+import { JoinTermsProps } from '@/navigations/Common/TermsStack';
 import Separator from '@/components/atoms/etc/Separator';
 import Colors from '@/styles/colors';
 
