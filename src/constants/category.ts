@@ -1,10 +1,21 @@
 /* eslint-disable import/extensions */
+
+// icon
+import { ImageSourcePropType } from 'react-native';
 import IconActivity from '@/assets/icons/category/Activity.png';
 import IconRestaurant from '@/assets/icons/category/Restaurant.png';
 import IconTourism from '@/assets/icons/category/Tourism.png';
 import IconPhoto from '@/assets/icons/category/Photo.png';
 import IconKPOP from '@/assets/icons/category/K-POP.png';
 import IconShopping from '@/assets/icons/category/Shopping.png';
+
+// img
+import ImgActivity from '@/assets/images/catagoryBanner/ActivityBanner.png';
+import ImgRestaurant from '@/assets/images/catagoryBanner/RestaurantBanner.png';
+import ImgTourism from '@/assets/images/catagoryBanner/TourismBanner.png';
+import ImgPhoto from '@/assets/images/catagoryBanner/PhotoBanner.png';
+import ImgKPOP from '@/assets/images/catagoryBanner/kpopBanner.png';
+import ImgShopping from '@/assets/images/catagoryBanner/ShoppingBanner.png';
 
 export type Category =
   | 'ACTIVITY'
@@ -35,4 +46,17 @@ export const CategoryIcon = {
   PHOTO: IconPhoto,
   KPOP: IconKPOP,
   SHOPPING: IconShopping,
+};
+
+export type CategoryBannerImgType = {
+  [key in Category]: ImageSourcePropType;
+};
+
+export const CategoryBannerImg: CategoryBannerImgType = {
+  ACTIVITY: ImgActivity,
+  RESTAURANT: ImgRestaurant,
+  TOURISM: ImgTourism,
+  PHOTO: ImgPhoto,
+  KPOP: ImgKPOP,
+  SHOPPING: ImgShopping,
 };

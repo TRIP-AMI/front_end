@@ -1,7 +1,7 @@
 import { StyleSheet, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import HomeBannerCarousel from '@components/molecules/Banner/HomeBannerCarousel';
 import CategoryTagList from '@/components/molecules/Section/CategoryTagList';
 import CategoryProductList from '@/components/organisms/Section/CategoryProductList';
+import CategoryBanner from '@/components/molecules/Banner/CategoryBanner';
 
 export default function CategoryScreen() {
   return (
@@ -9,7 +9,7 @@ export default function CategoryScreen() {
       <StatusBar barStyle='light-content' />
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* banner */}
-        <HomeBannerCarousel />
+        <CategoryBanner />
         {/* tag */}
         <CategoryTagList />
         {/* list */}
