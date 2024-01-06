@@ -8,10 +8,12 @@ type ProductItemListProps = {
   products: BasicItem[];
   topContent?: JSX.Element;
   bottomContent?: JSX.Element;
+  totalCountVisible?: boolean;
 };
 
 export default function ProductItemList({
   products,
+  totalCountVisible = true,
   topContent,
   bottomContent,
 }: ProductItemListProps) {
@@ -29,14 +31,16 @@ export default function ProductItemList({
         ListHeaderComponent={() => (
           <>
             {topContent && topContent}
-            <View
-              style={{
-                marginVertical: 13,
-                paddingHorizontal: Spacing.IOS392Margin,
-              }}
-            >
-              <TotalText total={products.length} />
-            </View>
+            {totalCountVisible && (
+              <View
+                style={{
+                  marginVertical: 13,
+                  paddingHorizontal: Spacing.IOS392Margin,
+                }}
+              >
+                <TotalText total={products.length} />
+              </View>
+            )}
           </>
         )}
         ListFooterComponent={bottomContent && bottomContent}

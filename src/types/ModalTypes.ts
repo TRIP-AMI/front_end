@@ -1,5 +1,4 @@
 export type ModalName =
-  | 'SEARCH'
   | 'PICKER_SELECT'
   | 'LOGIN_INVALID'
   | 'JOIN_CANCEL'

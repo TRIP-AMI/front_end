@@ -24,6 +24,7 @@ import RightCloseX from '@/components/molecules/Header/RightCloseX';
 import { Category, CategoryFindLabel } from '@/constants/category';
 import ProductListScreen from '@/screens/Product/ProductListScreen';
 import Fonts from '@/styles/typography';
+import SearchScreen from '@/screens/Search';
 
 export type RootStackParamList = {
   MainBottomNavTab: NavigatorScreenParams<MainBottomNavTabParamList>;
@@ -33,6 +34,7 @@ export type RootStackParamList = {
   Category: { categoryId: Category };
   ProductList: { listId: string; title: string };
   Notification: undefined;
+  Search: undefined;
 };
 
 export type RootStackNavigationProp =
@@ -102,6 +104,17 @@ function Navigation() {
               headerLeft: () => <HeaderLeftTitle title='Notification' />,
               headerRight: () => <RightCloseX />,
               headerShadowVisible: false,
+            }}
+          />
+          {/* Search */}
+          <Stack.Screen
+            name='Search'
+            component={SearchScreen}
+            options={{
+              headerTitle: '',
+              headerRight: () => <RightCloseX />,
+              headerShadowVisible: false,
+              headerBackVisible: false,
             }}
           />
         </>
