@@ -10,8 +10,6 @@ import MainBottomNavTab, {
   MainBottomNavTabParamList,
 } from './MainBottomNavTab/MainBottomNavTab';
 import CategoryScreen from '@/screens/Category/CategoryScreen';
-import Colors from '@/styles/colors';
-import SearchNotificationRight from '@/components/molecules/Header/SearchNotificationRight';
 import BackLeft from '@/components/molecules/Header/BackLeft';
 import useLoginHook from '@/hooks/loginHook';
 
@@ -25,6 +23,7 @@ import { Category, CategoryFindLabel } from '@/constants/category';
 import ProductListScreen from '@/screens/Product/ProductListScreen';
 import Fonts from '@/styles/typography';
 import SearchScreen from '@/screens/Search';
+import CategoryHeader from '@/components/molecules/Header/CategoryHeader';
 
 export type RootStackParamList = {
   MainBottomNavTab: NavigatorScreenParams<MainBottomNavTabParamList>;
@@ -65,17 +64,13 @@ function Navigation() {
             name='Category'
             component={CategoryScreen}
             options={({ route }) => ({
-              title: CategoryFindLabel(route.params.categoryId),
-              headerStyle: {
-                backgroundColor: Colors.primary,
+              header: () => {
+                return (
+                  <CategoryHeader
+                    title={CategoryFindLabel(route.params.categoryId)}
+                  />
+                );
               },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontFamily: 'Montserrat-ExtraBold',
-                fontSize: 20,
-              },
-              headerLeft: () => <BackLeft theme='white' />,
-              headerRight: () => <SearchNotificationRight theme='white' />,
             })}
           />
           {/* product list */}
