@@ -1,26 +1,23 @@
 import { ScrollView } from 'react-native';
+import { useRoute, RouteProp } from '@react-navigation/native';
 import PressHashTag from '@/components/atoms/Tag/PressHashTag';
 import Spacing from '@/styles/spacing';
-
-const categoryTagList = [
-  { id: '11', label: 'Itaewon' },
-  { id: '22', label: 'Itaewon' },
-  { id: '33', label: 'Itaewon' },
-  { id: '44', label: 'Itaewon' },
-  { id: '55', label: 'Itaewon' },
-];
+import { RootStackParamList } from '@/navigations';
+import { CategoryTagListObject } from '@/constants/category';
 
 function CategoryTagList() {
+  const { params } = useRoute<RouteProp<RootStackParamList, 'Category'>>();
+  const { categoryId } = params;
   return (
     <ScrollView
       horizontal
       style={{ paddingVertical: 10, paddingLeft: Spacing.IOS392Margin }}
     >
-      {categoryTagList.map((tag) => {
+      {CategoryTagListObject[categoryId].map((tag) => {
         return (
           <PressHashTag
             key={tag.id}
-            label={`#${tag.label}`}
+            label={`${tag.label}`}
             style={{ marginRight: 5 }}
           />
         );

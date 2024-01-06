@@ -60,3 +60,51 @@ export const CategoryBannerImg: CategoryBannerImgType = {
   KPOP: ImgKPOP,
   SHOPPING: ImgShopping,
 };
+
+export type CategoryTagListObjectType = {
+  [key in Category]: { id: number; label: string }[];
+};
+
+export const CategoryTagListObject: CategoryTagListObjectType = {
+  ACTIVITY: [
+    { id: 1, label: 'Christmas' },
+    { id: 2, label: 'Sports' },
+    { id: 3, label: 'Exercise' },
+    { id: 4, label: 'Ski' },
+    { id: 5, label: 'Camping' },
+  ],
+  RESTAURANT: [
+    { id: 1, label: 'Chicken' },
+    { id: 2, label: 'Bulgogi' },
+    { id: 3, label: 'Dduckbokki' },
+    { id: 4, label: 'Beer' },
+    { id: 5, label: 'Jjimdak' },
+  ],
+  TOURISM: [
+    { id: 1, label: 'Namsan Tower' },
+    { id: 2, label: 'Sports' },
+    { id: 3, label: 'Gyeongbokgung' },
+    { id: 4, label: 'Han River' },
+  ],
+  PHOTO: [
+    { id: 1, label: 'Night view' },
+    { id: 2, label: 'Lotte Tower' },
+    { id: 3, label: 'Nature' },
+    { id: 4, label: 'City' },
+    { id: 5, label: 'sea' },
+  ],
+  KPOP: [
+    { id: 1, label: 'Concert' },
+    { id: 2, label: 'BTS' },
+    { id: 3, label: 'BLACKPINK' },
+    { id: 4, label: 'Busking' },
+    { id: 5, label: 'Band' },
+  ],
+  SHOPPING: [
+    { id: 1, label: 'Market' },
+    { id: 2, label: 'DDP' },
+    { id: 3, label: 'Hongdae' },
+    { id: 4, label: 'Myeongdong' },
+    { id: 5, label: 'Gangnam' },
+  ],
+};
