@@ -3,15 +3,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { useState } from 'react';
 import Colors from '@styles/colors';
 
-function SearchInput({
-  onShearch,
-}: {
-  onShearch: (inputValue: string) => void;
-}) {
+function SearchInput({ onSearch }: { onSearch: (inputValue: string) => void }) {
   const [text, setText] = useState('');
 
   const onSubmitEditing = () => {
-    onShearch(text);
+    onSearch(text);
   };
   return (
     <View style={style.searchWrap}>
