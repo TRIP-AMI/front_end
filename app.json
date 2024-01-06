@@ -39,6 +39,7 @@
       "Montserrat-Bold": "./src/assets/fonts/montserrat/Montserrat-Bold.ttf",
       "Montserrat-SemiBold": "./src/assets/fonts/montserrat/Montserrat-SemiBold.ttf",
       "Montserrat-ExtraBold": "./src/assets/fonts/montserrat/Montserrat-ExtraBold.ttf"
-    }
+    },
+    "scheme": "tripami"
   }
 }
