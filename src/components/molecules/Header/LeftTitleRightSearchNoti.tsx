@@ -3,7 +3,7 @@ import Spacing from '@/styles/spacing';
 import Fonts from '@/styles/typography';
 import SearchNotificationRight from './SearchNotificationRight';
 
-export default function LeftTitleRightSearchNoti() {
+export default function LeftTitleRightSearchNoti({ title }: { title: string }) {
   return (
     <View style={{ backgroundColor: '#fff' }}>
       {/* safe */}
@@ -19,7 +19,7 @@ export default function LeftTitleRightSearchNoti() {
         }}
       >
         {/* left */}
-        <Text style={Fonts.header.title}>MENU</Text>
+        <Text style={Fonts.header.title}>{title}</Text>
         {/* right */}
         <SearchNotificationRight />
       </View>

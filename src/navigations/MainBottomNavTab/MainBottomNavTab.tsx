@@ -6,7 +6,6 @@ import {
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Colors from '@styles/colors';
-import HomeHeaderIcons from '@components/molecules/Header/HomeHeaderIcons';
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import LikeScreen from '@/screens/bottomNav/Like/LikeScreen';
@@ -16,6 +15,8 @@ import MenuStack, { MenuParamList } from './Menu/MenuStack';
 import MyPageStack, { MyPageParamList } from './MyPage/MyPageStack';
 import UploadStack, { UploadStackParamList } from './Upload/UploadStack';
 import HomeHeaderLeft from '@/components/molecules/Header/HomeHeaderLeft';
+import SearchNotificationRight from '@/components/molecules/Header/SearchNotificationRight';
+import LeftTitleRightSearchNoti from '@/components/molecules/Header/LeftTitleRightSearchNoti';
 
 export type MainBottomNavTabParamList = {
   MenuStack: NavigatorScreenParams<MenuParamList>;
@@ -43,6 +44,9 @@ export default function MainBottomNavTab() {
         },
         headerTitleStyle: Fonts.header.title,
         headerTitleAlign: 'left',
+        headerTitleContainerStyle: {
+          paddingLeft: 10,
+        },
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.fontGray02,
         tabBarLabelStyle: Fonts.tabBar.label,
@@ -63,11 +67,11 @@ export default function MainBottomNavTab() {
         name='Like'
         component={LikeScreen}
         options={{
-          title: 'LIKE',
           tabBarLabel: 'Like',
           tabBarIcon: ({ color }) => (
             <FontAwesome5 name='heart' size={iconSize} color={color} />
           ),
+          header: () => <LeftTitleRightSearchNoti title='Like' />,
         }}
       />
       <Tab.Screen
@@ -81,7 +85,10 @@ export default function MainBottomNavTab() {
           tabBarLabel: 'Home',
           headerTitleStyle: Fonts.header.logo,
           headerLeft: () => <HomeHeaderLeft />,
-          headerRight: () => <HomeHeaderIcons />,
+          headerRight: () => <SearchNotificationRight />,
+          headerRightContainerStyle: {
+            paddingRight: 15,
+          },
         }}
       />
       <Tab.Screen

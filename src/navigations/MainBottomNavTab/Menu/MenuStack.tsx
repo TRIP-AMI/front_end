@@ -38,7 +38,7 @@ export default function MenuStack() {
         name='Menu'
         component={MenuScreen}
         options={{
-          header: () => <LeftTitleRightSearchNoti />,
+          header: () => <LeftTitleRightSearchNoti title='MENU' />,
         }}
       />
       <Stack.Group
