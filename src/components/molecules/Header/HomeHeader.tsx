@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import Spacing from '@/styles/spacing';
-import Fonts from '@/styles/typography';
+import HomeHeaderLeft from './HomeHeaderLeft';
 import SearchNotificationRight from './SearchNotificationRight';
 import HeaderSafe from '@/components/atoms/etc/HeaderSafe';
 
-export default function LeftTitleRightSearchNoti({ title }: { title: string }) {
+export default function HomeHeader() {
   return (
     <View style={{ backgroundColor: '#fff' }}>
       {/* safe */}
@@ -20,7 +20,7 @@ export default function LeftTitleRightSearchNoti({ title }: { title: string }) {
         }}
       >
         {/* left */}
-        <Text style={Fonts.header.title}>{title}</Text>
+        <HomeHeaderLeft />
         {/* right */}
         <SearchNotificationRight />
       </View>

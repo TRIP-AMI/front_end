@@ -14,9 +14,9 @@ import Fonts from '@/styles/typography';
 import MenuStack, { MenuParamList } from './Menu/MenuStack';
 import MyPageStack, { MyPageParamList } from './MyPage/MyPageStack';
 import UploadStack, { UploadStackParamList } from './Upload/UploadStack';
-import HomeHeaderLeft from '@/components/molecules/Header/HomeHeaderLeft';
-import SearchNotificationRight from '@/components/molecules/Header/SearchNotificationRight';
+
 import LeftTitleRightSearchNoti from '@/components/molecules/Header/LeftTitleRightSearchNoti';
+import HomeHeader from '@/components/molecules/Header/HomeHeader';
 
 export type MainBottomNavTabParamList = {
   MenuStack: NavigatorScreenParams<MenuParamList>;
@@ -44,9 +44,6 @@ export default function MainBottomNavTab() {
         },
         headerTitleStyle: Fonts.header.title,
         headerTitleAlign: 'left',
-        headerTitleContainerStyle: {
-          paddingLeft: 10,
-        },
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.fontGray02,
         tabBarLabelStyle: Fonts.tabBar.label,
@@ -81,14 +78,8 @@ export default function MainBottomNavTab() {
           tabBarIcon: ({ color }) => (
             <Ionicons name='md-home-outline' color={color} size={iconSize} />
           ),
-          title: '',
           tabBarLabel: 'Home',
-          headerTitleStyle: Fonts.header.logo,
-          headerLeft: () => <HomeHeaderLeft />,
-          headerRight: () => <SearchNotificationRight />,
-          headerRightContainerStyle: {
-            paddingRight: 15,
-          },
+          header: () => <HomeHeader />,
         }}
       />
       <Tab.Screen
