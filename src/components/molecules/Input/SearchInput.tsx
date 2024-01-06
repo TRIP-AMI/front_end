@@ -22,6 +22,9 @@ function SearchInput({
         onChangeText={setText}
         defaultValue={text}
         onSubmitEditing={onSubmitEditing}
+        multiline={false}
+        returnKeyLabel='search'
+        returnKeyType='search'
       />
     </View>
   );
