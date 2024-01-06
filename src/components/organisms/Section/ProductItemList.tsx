@@ -15,12 +15,6 @@ export default function ProductItemList({
   topContent,
   bottomContent,
 }: ProductItemListProps) {
-  let footer;
-
-  if (bottomContent) {
-    footer = bottomContent;
-  }
-
   return (
     <View>
       <FlatList
@@ -45,7 +39,7 @@ export default function ProductItemList({
             </View>
           </>
         )}
-        ListFooterComponent={footer}
+        ListFooterComponent={bottomContent && bottomContent}
       />
     </View>
   );
