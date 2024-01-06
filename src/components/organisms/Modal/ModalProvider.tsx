@@ -9,7 +9,6 @@ import LogoutModal from '@components/molecules/Modal/LogoutModal';
 import ImgChangeModal from '@components/molecules/Modal/ImgChangeModal';
 import CompleteWithdrawalModal from '@components/molecules/Modal/CompleteWithdrawalModal';
 import modalState from '@/utils/recoil/modal';
-import SearchModal from '@/components/organisms/Modal/SearchModal';
 import ApplyModal from '@/components/organisms/Modal/ApplyModal';
 import ApplyCheckModal from '@/components/molecules/Modal/ApplyCheckModal';
 import ApplyCompleteModal from '@/components/organisms/Modal/ApplyCompleteModal';
@@ -34,7 +33,6 @@ export default function ModalProvider() {
       <JoinCompleteModal title={modal.title} />
     ) : undefined,
     AUTH_ALERT: <AuthAlertModal />,
-    SEARCH: <SearchModal />,
     FULL_IMAGE: modal.imgUrl ? (
       <FullImageModal imgUrl={modal.imgUrl} />
     ) : undefined,
