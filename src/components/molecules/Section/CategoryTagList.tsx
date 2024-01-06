@@ -11,7 +11,10 @@ function CategoryTagList() {
   return (
     <ScrollView
       horizontal
-      style={{ paddingVertical: 10, paddingLeft: Spacing.IOS392Margin }}
+      style={{
+        paddingVertical: 10,
+        paddingLeft: Spacing.IOS392Margin,
+      }}
     >
       {CategoryTagListObject[categoryId].map((tag) => {
         return (
