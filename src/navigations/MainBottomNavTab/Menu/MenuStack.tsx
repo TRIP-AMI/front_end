@@ -2,7 +2,7 @@ import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import { View, Text } from 'react-native';
+
 import BackLeftArrow from '@/components/molecules/Header/BackLeftArrow';
 import AboutScreen from '@/screens/bottomNav/Menu/About';
 import AnnouncementScreen from '@/screens/bottomNav/Menu/Announcement';
@@ -11,7 +11,7 @@ import FAQScreen from '@/screens/bottomNav/Menu/FAQ/FAQScreen';
 import InquiryScreen from '@/screens/bottomNav/Menu/Inquiry/InquiryScreen';
 import Fonts from '@/styles/typography';
 import MenuScreen from '@/screens/bottomNav/Menu/MenuScreen';
-import HomeHeaderIcons from '@/components/molecules/Header/HomeHeaderIcons';
+import LeftTitleRightSearchNoti from '@/components/molecules/Header/LeftTitleRightSearchNoti';
 
 export type MenuParamList = {
   Menu: undefined;
@@ -38,13 +38,7 @@ export default function MenuStack() {
         name='Menu'
         component={MenuScreen}
         options={{
-          headerTitle: '',
-          headerLeft: () => (
-            <View>
-              <Text style={Fonts.header.title}>MENU</Text>
-            </View>
-          ),
-          headerRight: () => <HomeHeaderIcons />,
+          header: () => <LeftTitleRightSearchNoti />,
         }}
       />
       <Stack.Group
