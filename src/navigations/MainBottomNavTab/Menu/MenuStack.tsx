@@ -3,7 +3,6 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
-import BackLeftArrow from '@/components/molecules/Header/BackLeftArrow';
 import AboutScreen from '@/screens/bottomNav/Menu/About';
 import AnnouncementScreen from '@/screens/bottomNav/Menu/Announcement';
 import AnnouncementDetailScreen from '@/screens/bottomNav/Menu/Announcement/detail';
@@ -12,6 +11,7 @@ import InquiryScreen from '@/screens/bottomNav/Menu/Inquiry/InquiryScreen';
 import Fonts from '@/styles/typography';
 import MenuScreen from '@/screens/bottomNav/Menu/MenuScreen';
 import LeftTitleRightSearchNoti from '@/components/molecules/Header/LeftTitleRightSearchNoti';
+import LeftBackCenterTitle from '@/components/molecules/Header/LeftBackCenterTitle';
 
 export type MenuParamList = {
   Menu: undefined;
@@ -43,12 +43,20 @@ export default function MenuStack() {
       />
       <Stack.Group
         screenOptions={{
-          headerLeft: () => <BackLeftArrow />,
+          header: (props) => {
+            return (
+              <LeftBackCenterTitle
+                title={props.options.title || props.route.name}
+              />
+            );
+          },
         }}
       >
         <Stack.Screen
           name='About'
-          options={{ title: 'About TRIPAMI' }}
+          options={{
+            title: 'About TRIPAMI',
+          }}
           component={AboutScreen}
         />
         <Stack.Screen name='Announcement' component={AnnouncementScreen} />
