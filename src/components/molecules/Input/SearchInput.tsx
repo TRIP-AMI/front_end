@@ -3,8 +3,16 @@ import { AntDesign } from '@expo/vector-icons';
 import { useState } from 'react';
 import Colors from '@styles/colors';
 
-function SearchInput() {
+function SearchInput({
+  onShearch,
+}: {
+  onShearch: (inputValue: string) => void;
+}) {
   const [text, setText] = useState('');
+
+  const onSubmitEditing = () => {
+    onShearch(text);
+  };
   return (
     <View style={style.searchWrap}>
       <AntDesign name='search1' size={18} color={Colors.primary} />
@@ -13,6 +21,7 @@ function SearchInput() {
         placeholder='What kind of trip do you want?'
         onChangeText={setText}
         defaultValue={text}
+        onSubmitEditing={onSubmitEditing}
       />
     </View>
   );

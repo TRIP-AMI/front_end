@@ -1,35 +1,39 @@
 import { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import SearchTitle from '@components/atoms/Text/SearchTitle';
 import PressHashTag from '@components/atoms/Tag/PressHashTag';
 
 function SearchRecommeded() {
   const [tagList] = useState([
     {
-      id: Math.random(),
-      label: '#Itaewon',
+      id: 1,
+      label: 'Activity',
     },
     {
-      id: Math.random(),
-      label: '#Itaewon',
+      id: 2,
+      label: 'Restaurant',
     },
     {
-      id: Math.random(),
-      label: '#Itaewon',
+      id: 3,
+      label: 'Tourism',
     },
     {
-      id: Math.random(),
-      label: '#Itaewon',
+      id: 4,
+      label: 'Photo',
     },
     {
-      id: Math.random(),
-      label: '#Itaewon',
+      id: 5,
+      label: 'K-POP',
+    },
+    {
+      id: 6,
+      label: 'Shopping',
     },
   ]);
   return (
     <View>
       <SearchTitle style={{ marginTop: 30 }}>Recommended keywords</SearchTitle>
-      <View style={style.tagWrap}>
+      <ScrollView horizontal style={style.tagWrap}>
         {tagList.map((tag) => {
           return (
             <PressHashTag
@@ -39,7 +43,7 @@ function SearchRecommeded() {
             />
           );
         })}
-      </View>
+      </ScrollView>
     </View>
   );
 }
