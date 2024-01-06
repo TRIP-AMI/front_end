@@ -3,15 +3,13 @@ import { Badge } from 'react-native-paper';
 import { IconButton } from '@components/atoms/Button/IconButton';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import useModalHook from '@/hooks/modalHook';
 import { RootStackNavigationProp } from '@/navigations';
 
 export default function HomeHeaderIcons() {
-  const { setModalName } = useModalHook();
   const { navigate } = useNavigation<RootStackNavigationProp>();
 
   const onSearchPress = () => {
-    setModalName('SEARCH');
+    navigate('Search');
   };
 
   const onNotiPress = () => {
