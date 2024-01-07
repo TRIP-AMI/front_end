@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import * as Linking from 'expo-linking';
 import { RecoilRoot } from 'recoil';
 import Toast, { ToastConfig } from 'react-native-toast-message';
-import { NavigationContainer } from '@react-navigation/native';
 import Navigation from '@/navigations/';
-import ModalProvider from '@/components/organisms/Modal/ModalProvider';
 import CustomToast from '@/components/atoms/Toast/CustomToast';
 
 const fetchFonts = async () => {
@@ -25,28 +22,8 @@ const fetchFonts = async () => {
   });
 };
 
-const prefix = Linking.createURL('/');
-
 export default function App() {
   const [fontLoad, setFontLoad] = useState(false);
-  const linking = {
-    prefixes: [prefix],
-    config: {
-      screens: {
-        ContentStack: {
-          path: '',
-          screens: {
-            Content: {
-              path: 'content/:id',
-              parse: {
-                id: Number,
-              },
-            },
-          },
-        },
-      },
-    },
-  };
 
   useEffect(() => {
     SplashScreen.preventAutoHideAsync();
@@ -62,10 +39,7 @@ export default function App() {
 
   return (
     <RecoilRoot>
-      <NavigationContainer linking={linking}>
-        <Navigation />
-        <ModalProvider />
-      </NavigationContainer>
+      <Navigation />
       <Toast config={CustomToast as ToastConfig} />
     </RecoilRoot>
   );
