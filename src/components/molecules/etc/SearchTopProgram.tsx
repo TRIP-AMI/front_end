@@ -3,39 +3,38 @@ import { useState } from 'react';
 import Colors from '@styles/colors';
 import SearchTitle from '@components/atoms/Text/SearchTitle';
 
+const data = [
+  {
+    id: 1,
+    label: "Jenny's Itaewon tour",
+  },
+  {
+    id: 2,
+    label: "Jenny's Itaewon tour",
+  },
+  {
+    id: 3,
+    label: "Jenny's Itaewon tour",
+  },
+  {
+    id: 4,
+    label: "Jenny's Itaewon tour",
+  },
+  {
+    id: 5,
+    label: "Jenny's Itaewon tour",
+  },
+];
+
 function SearchTopProgram() {
-  const [topProgramList] = useState([
-    {
-      id: Math.random(),
-      label: "Jenny's Itaewon tour",
-    },
-    {
-      id: Math.random(),
-      label: "Jenny's Itaewon tour",
-    },
-    {
-      id: Math.random(),
-      label: "Jenny's Itaewon tour",
-    },
-    {
-      id: Math.random(),
-      label: "Jenny's Itaewon tour",
-    },
-    {
-      id: Math.random(),
-      label: "Jenny's Itaewon tour",
-    },
-  ]);
+  const [topProgramList] = useState(data);
 
   const onPressProgram = () => {};
   return (
     <View>
-      <SearchTitle style={{ marginTop: 30 }}>Top 5 Program</SearchTitle>
-      <Text
-        style={[style.textTitleSub, { marginTop: 6, marginBottom: 20 - 12.5 }]}
-      >
-        The most requested AMI on the last 3 days.
-      </Text>
+      <SearchTitle style={{ marginTop: 30, marginBottom: 15 }}>
+        Latest registration program
+      </SearchTitle>
 
       {topProgramList.map((program, i) => {
         return (

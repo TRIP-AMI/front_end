@@ -16,8 +16,6 @@ import MainBottomNavTab, {
   MainBottomNavTabParamList,
 } from './MainBottomNavTab/MainBottomNavTab';
 import CategoryScreen from '@/screens/Category/CategoryScreen';
-import Colors from '@/styles/colors';
-import SearchNotificationRight from '@/components/molecules/Header/SearchNotificationRight';
 import BackLeft from '@/components/molecules/Header/BackLeft';
 
 import AuthStack, { AuthStackParamList } from './AuthStack/AuthStack';
@@ -31,6 +29,8 @@ import ProductListScreen from '@/screens/Product/ProductListScreen';
 import Fonts from '@/styles/typography';
 import ModalProvider from '@/components/organisms/Modal/ModalProvider';
 import loginState from '@/utils/recoil/login';
+import SearchScreen from '@/screens/Search';
+import CategoryHeader from '@/components/molecules/Header/CategoryHeader';
 
 export type RootStackParamList = {
   MainBottomNavTab: NavigatorScreenParams<MainBottomNavTabParamList>;
@@ -40,6 +40,7 @@ export type RootStackParamList = {
   Category: { categoryId: Category };
   ProductList: { listId: string; title: string };
   Notification: undefined;
+  Search: undefined;
 };
 
 export type RootStackNavigationProp =
@@ -110,17 +111,13 @@ function Navigation() {
               name='Category'
               component={CategoryScreen}
               options={({ route }) => ({
-                title: CategoryFindLabel(route.params.categoryId),
-                headerStyle: {
-                  backgroundColor: Colors.primary,
+                header: () => {
+                  return (
+                    <CategoryHeader
+                      title={CategoryFindLabel(route.params.categoryId)}
+                    />
+                  );
                 },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                  fontFamily: 'Montserrat-ExtraBold',
-                  fontSize: 20,
-                },
-                headerLeft: () => <BackLeft theme='white' />,
-                headerRight: () => <SearchNotificationRight theme='white' />,
               })}
             />
             {/* product list */}
@@ -139,7 +136,6 @@ function Navigation() {
               component={ContentStack}
               options={{ headerShown: false }}
             />
-
             {/* Notification */}
             <Stack.Screen
               name='Notification'
@@ -149,6 +145,17 @@ function Navigation() {
                 headerLeft: () => <HeaderLeftTitle title='Notification' />,
                 headerRight: () => <RightCloseX />,
                 headerShadowVisible: false,
+              }}
+            />
+            {/* Search */}
+            <Stack.Screen
+              name='Search'
+              component={SearchScreen}
+              options={{
+                headerTitle: '',
+                headerRight: () => <RightCloseX />,
+                headerShadowVisible: false,
+                headerBackVisible: false,
               }}
             />
           </>
@@ -161,7 +168,6 @@ function Navigation() {
             }}
           />
         )}
-
         {/* terms */}
         <Stack.Screen
           name='TermsStack'

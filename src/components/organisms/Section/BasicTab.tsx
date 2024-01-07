@@ -11,9 +11,11 @@ type TabTypes = {
 function BasicTab({
   data,
   fullScreen,
+  sm,
 }: {
   data: TabTypes[];
   fullScreen?: boolean;
+  sm?: boolean;
 }) {
   const [activeTab, setActiveTab] = React.useState(data[0].tabName);
 
@@ -24,11 +26,14 @@ function BasicTab({
       onPress={() => setActiveTab(item.tabName)}
     >
       <View
-        style={[styles.tab, activeTab === item.tabName && styles.activeTab]}
+        style={[
+          sm ? styles.smTab : styles.tab,
+          activeTab === item.tabName && styles.activeTab,
+        ]}
       >
         <Text
           style={[
-            styles.tabText,
+            sm ? styles.smTabText : styles.tabText,
             activeTab === item.tabName && styles.activeTabText,
           ]}
         >
@@ -73,6 +78,9 @@ const styles = StyleSheet.create({
   tab: {
     paddingTop: 13,
   },
+  smTab: {
+    paddingTop: 7,
+  },
   activeTab: {
     borderBottomWidth: 2,
     borderBottomColor: Colors.tabIndicator,
@@ -83,6 +91,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Montserrat-SemiBold',
     lineHeight: 19,
+  },
+  smTabText: {
+    flex: 1,
+    color: Colors.fontGray04,
+    fontSize: 13,
+    textAlign: 'center',
+    fontFamily: 'Montserrat-SemiBold',
+    lineHeight: 15,
   },
   activeTabText: {
     color: 'black',

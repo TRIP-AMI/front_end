@@ -3,10 +3,8 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import UploadScreen from '@/screens/bottomNav/Upload/UploadScreen';
-import BackLeftArrow from '@/components/molecules/Header/BackLeftArrow';
 import CalendarScreen from '@/screens/bottomNav/Upload/Calendar/CalendarScreen';
-import Fonts from '@/styles/typography';
-import BackLeft from '@/components/molecules/Header/BackLeft';
+import LeftBackCenterTitle from '@/components/molecules/Header/LeftBackCenterTitle';
 
 export type CalendarProps = {
   availableDates: string[];
@@ -27,17 +25,20 @@ export default function UploadStack() {
     <Stack.Navigator
       initialRouteName='Upload'
       screenOptions={{
-        headerTitleStyle: Fonts.header.title,
+        header: (props) => {
+          return (
+            <LeftBackCenterTitle
+              title={props.options.title || props.route.name}
+            />
+          );
+        },
       }}
     >
       <Stack.Screen
         name='Upload'
         component={UploadScreen}
         options={{
-          headerLeft: () => <BackLeftArrow />,
-          title: 'Upload',
-          headerTitle: 'Create Content',
-          headerTitleAlign: 'center',
+          title: 'Create Content',
         }}
       />
       <Stack.Screen
@@ -45,8 +46,6 @@ export default function UploadStack() {
         component={CalendarScreen}
         options={{
           title: 'Available Dates',
-
-          headerLeft: () => <BackLeft />,
         }}
       />
     </Stack.Navigator>

@@ -16,7 +16,7 @@ export const BASE_API_URL = 'http://localhost:9999';
 
 // create an axios instance
 const instance = axios.create({
-  baseURL: 'exp://192.168.10.140:8081',
+  baseURL: BASE_API_URL,
   timeout: 10 * 1000,
   headers: { 'X-Custom-Header': 'foobar' },
 });
