@@ -9,6 +9,7 @@ export default function BackLeftArrow({
   theme?: 'white' | 'black';
 }) {
   const navigation = useNavigation<RootStackNavigationProp>();
+  const stackLength = navigation.getState().routes.length;
   return (
     <View style={styles.container}>
       <View>
@@ -17,7 +18,12 @@ export default function BackLeftArrow({
           size={24}
           color={theme}
           onPress={() => {
-            navigation.goBack();
+            console.log('stacks', stackLength);
+            if (stackLength > 1) navigation.goBack();
+            else
+              navigation.navigate('MainBottomNavTab', {
+                screen: 'Home',
+              });
           }}
         />
       </View>
