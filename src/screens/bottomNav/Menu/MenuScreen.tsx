@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    paddingTop: 42 - 10,
+    paddingTop: 20,
     paddingHorizontal: Spacing.IOS392Margin,
   },
 });

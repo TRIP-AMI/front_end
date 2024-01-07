@@ -6,7 +6,6 @@ import {
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Colors from '@styles/colors';
-import HomeHeaderIcons from '@components/molecules/Header/HomeHeaderIcons';
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import LikeScreen from '@/screens/bottomNav/Like/LikeScreen';
@@ -15,7 +14,9 @@ import Fonts from '@/styles/typography';
 import MenuStack, { MenuParamList } from './Menu/MenuStack';
 import MyPageStack, { MyPageParamList } from './MyPage/MyPageStack';
 import UploadStack, { UploadStackParamList } from './Upload/UploadStack';
-import HomeHeaderLeft from '@/components/molecules/Header/HomeHeaderLeft';
+
+import LeftTitleRightSearchNoti from '@/components/molecules/Header/LeftTitleRightSearchNoti';
+import HomeHeader from '@/components/molecules/Header/HomeHeader';
 
 export type MainBottomNavTabParamList = {
   MenuStack: NavigatorScreenParams<MenuParamList>;
@@ -63,11 +64,11 @@ export default function MainBottomNavTab() {
         name='Like'
         component={LikeScreen}
         options={{
-          title: 'LIKE',
           tabBarLabel: 'Like',
           tabBarIcon: ({ color }) => (
             <FontAwesome5 name='heart' size={iconSize} color={color} />
           ),
+          header: () => <LeftTitleRightSearchNoti title='Like' />,
         }}
       />
       <Tab.Screen
@@ -77,11 +78,8 @@ export default function MainBottomNavTab() {
           tabBarIcon: ({ color }) => (
             <Ionicons name='md-home-outline' color={color} size={iconSize} />
           ),
-          title: '',
           tabBarLabel: 'Home',
-          headerTitleStyle: Fonts.header.logo,
-          headerLeft: () => <HomeHeaderLeft />,
-          headerRight: () => <HomeHeaderIcons />,
+          header: () => <HomeHeader />,
         }}
       />
       <Tab.Screen
