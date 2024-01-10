@@ -56,10 +56,10 @@ function ApplicationItemForAmi({
             <View style={styles.subContainer}>
               {!isApplicationEnd ? (
                 <Text style={[styles.title, { color: '#46A6FB' }]}>
-                  Last Application
+                  New Application
                 </Text>
               ) : (
-                <Text style={styles.title}>New Application</Text>
+                <Text style={styles.title}>Last Application</Text>
               )}
               <Badge
                 size={7}
