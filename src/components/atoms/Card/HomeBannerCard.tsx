@@ -1,5 +1,5 @@
 import { View, Image, StyleSheet, Dimensions, Pressable } from 'react-native';
-import { BannerListItem } from '@/services/module/main/mainBannerApi';
+import { BannerListItem } from '@/services/module/home/banner';
 
 export default function HomeBannerCard({ item }: { item: BannerListItem }) {
   const goContent = () => {
