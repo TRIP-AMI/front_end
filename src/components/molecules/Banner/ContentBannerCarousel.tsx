@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import bannerApi, {
-  ContentBannerCardType,
-} from '@services/module/main/mainBannerApi';
 import { FlatList, StyleSheet, View } from 'react-native';
 import ContentBannerCard from '@components/atoms/Card/ContentBannerCard';
+import bannerApi, {
+  ContentBannerCardType,
+} from '@/services/module/home/banner';
 
 export default function ContentBannerCarousel() {
   const [dummyBanners, setDummyBanners] = useState<ContentBannerCardType[]>([]);
