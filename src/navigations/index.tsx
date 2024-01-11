@@ -1,8 +1,6 @@
 import { View, Text } from 'react-native';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import 'react-native-gesture-handler';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRecoilState } from 'recoil';
 import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
@@ -28,9 +26,9 @@ import { Category, CategoryFindLabel } from '@/constants/category';
 import ProductListScreen from '@/screens/Product/ProductListScreen';
 import Fonts from '@/styles/typography';
 import ModalProvider from '@/components/organisms/Modal/ModalProvider';
-import loginState from '@/utils/recoil/login';
 import SearchScreen from '@/screens/Search';
 import CategoryHeader from '@/components/molecules/Header/CategoryHeader';
+import useToken from '@/hooks/tokenHook';
 
 export type RootStackParamList = {
   MainBottomNavTab: NavigatorScreenParams<MainBottomNavTabParamList>;
@@ -51,17 +49,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const prefix = Linking.createURL('/');
 
 function Navigation() {
-  // const { isLoggedIn, getStoredToken } = useLoginHook();
-  const [loading, setLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
-
-  const getStoredToken = async () => {
-    const token = await AsyncStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    }
-    setLoading(false);
-  };
+  const { isLoggedIn, loading, getStoredToken } = useToken();
 
   const linking = {
     prefixes: [prefix],
