@@ -73,20 +73,30 @@ const useAuthForm = ({
     }
   };
 
+  const onResendEmail = async () => {
+    try {
+      showToast('Sent an authentication number to that email.');
+      await joinApi.sendAuthCode({ email });
+      setIsEmailSent(true);
+      setTimer(TIMER);
+    } catch (error) {
+      showToast('Failed to send authentication number.');
+    }
+  };
+
   const onCheckAuthCode = async (data: IJoinAuthInputs) => {
     if (errors.authCode || !data.authCode || timer === 0) return;
     try {
-      const res = await joinApi.checkAuthCode({
+      await joinApi.checkAuthCode({
         email,
         inputCode: data.authCode,
       });
-      if (res.status === 200) {
-        if (mode === 'JOIN')
-          navigate('CreateName', {
-            email,
-            agreedMarketing: params?.optionalChecked || false,
-          });
-      } else if (mode === 'FIND_PW') {
+      if (mode === 'JOIN')
+        navigate('CreateName', {
+          email,
+          agreedMarketing: params?.optionalChecked || false,
+        });
+      else if (mode === 'FIND_PW') {
         navigate('ResetPassword', { mode: 'RESET', email });
       }
     } catch (error) {
@@ -104,6 +114,7 @@ const useAuthForm = ({
     timer,
     handleSubmit,
     onConfirmEmail,
+    onResendEmail,
     onCheckAuthCode,
     setTimer,
   };
