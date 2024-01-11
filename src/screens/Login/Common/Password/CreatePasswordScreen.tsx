@@ -7,6 +7,7 @@ import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
 import { ICreatePasswordInputs } from '@/types/FormTypes';
 import instance, { BASE_API_URL } from '@/services/config/axios';
+import joinApi from '@/services/module/join/join';
 
 export default function CreatePasswordScreen({
   route,
@@ -33,15 +34,13 @@ export default function CreatePasswordScreen({
     if (errors.password || errors.reentered || data.password !== data.reentered)
       return;
     try {
-      await instance.post(`${BASE_API_URL}/password`, {
-        password: data.password,
-      });
+      await joinApi.checkPassword({ password: data.password });
       if (mode === 'CREATE') {
-        await instance.post(`${BASE_API_URL}/join`, {
+        await joinApi.join({
           email,
-          nickName: nickname,
+          nickname: nickname!,
           password: data.password,
-          agreedMarketing,
+          agreedMarketing: agreedMarketing!,
         });
         setModalName('JOIN_COMPLETE', {
           title: `Membership registration\nhas been completed!`,
@@ -58,6 +57,7 @@ export default function CreatePasswordScreen({
       console.log(e);
     }
   };
+
   const contents = {
     title:
       mode === 'CREATE'

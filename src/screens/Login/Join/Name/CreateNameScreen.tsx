@@ -7,9 +7,9 @@ import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
 import Colors from '@/styles/colors';
-import instance, { BASE_API_URL } from '@/services/config/axios';
 import Spacing from '@/styles/spacing';
 import showToast from '@/utils/toast/toast';
+import joinApi from '@/services/module/join/join';
 
 interface ICreateNameInputs {
   nickname: string;
@@ -41,16 +41,18 @@ export default function CreateNameScreen({
   const onNext = async (data: ICreateNameInputs) => {
     if (errors.nickname) return;
     try {
-      await instance.post(`${BASE_API_URL}/nickname`, {
-        nickName: data.nickname,
-      });
-      navigation.navigate('CreatePassword', {
-        mode: 'CREATE',
-        nickname: data.nickname,
-        email,
-        agreedMarketing,
-      });
+      const res = await joinApi.checkNickname({ nickName: data.nickname });
+      // console.log('res', res);
+      if (res && res.status === 200) {
+        navigation.navigate('CreatePassword', {
+          mode: 'CREATE',
+          nickname: data.nickname,
+          email,
+          agreedMarketing,
+        });
+      }
     } catch (error) {
+      // console.log('error', error);
       showToast('The name is already in use.', Spacing.ToastWithButtons);
     }
   };

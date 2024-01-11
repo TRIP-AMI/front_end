@@ -6,9 +6,9 @@ import {
   EmailAuthProps,
 } from '@/navigations/AuthStack/AuthStack';
 import { IJoinAuthInputs } from '@/types/FormTypes';
-import instance, { BASE_API_URL } from '@/services/config/axios';
 import showToast from '@/utils/toast/toast';
 import useModalHook from './modalHook';
+import joinApi from '@/services/module/join/join';
 
 const useAuthForm = ({
   mode,
@@ -43,20 +43,29 @@ const useAuthForm = ({
     },
   });
 
-  // TODO: 이메일 인증 요청
   const onConfirmEmail = async (data: IJoinAuthInputs) => {
     if (errors.email) return;
     try {
-      await instance.post(`${BASE_API_URL}/email`, { email: data.email });
-      if (isEmailSent === true)
+      const res =
+        mode === 'JOIN'
+          ? await joinApi.checkEmail({ email: data.email })
+          : await joinApi.checkMember({ email: data.email });
+      if (res.status === 200) {
+        setIsEmailSent(true);
+        setEmail(data.email);
         showToast('Sent an authentication number to that email.');
-      setIsEmailSent(true);
-      setTitle(`To the email you entered\nAuthentication number has been sent`);
-      setEmail(data.email);
-      setTimer(TIMER);
-    } catch (e) {
+        setTitle(
+          `To the email you entered\nAuthentication number has been sent`,
+        );
+        setTimer(TIMER);
+        await joinApi.sendAuthCode({ email: data.email });
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      // TODO: any 타입 수정
+      const { status } = error.response;
       if (mode === 'JOIN') showToast('This account is already registered.');
-      else if (mode === 'FIND_PW') setModalName('AUTH_ALERT');
+      else if (mode === 'FIND_PW' && status === 400) setModalName('AUTH_ALERT');
       setIsEmailSent(false);
       setTitle(TITLE);
       setTimer(TIMER);
@@ -64,23 +73,23 @@ const useAuthForm = ({
     }
   };
 
-  // TODO: 인증 코드 확인 요청
   const onCheckAuthCode = async (data: IJoinAuthInputs) => {
     if (errors.authCode || !data.authCode || timer === 0) return;
     try {
-      if (mode === 'JOIN') {
-        await instance.post(`${BASE_API_URL}/confirm`, {
-          email,
-          authCode: data.authCode,
-        });
-        navigate('CreateName', {
-          email,
-          agreedMarketing: params?.optionalChecked || false,
-        });
+      const res = await joinApi.checkAuthCode({
+        email,
+        inputCode: data.authCode,
+      });
+      if (res.status === 200) {
+        if (mode === 'JOIN')
+          navigate('CreateName', {
+            email,
+            agreedMarketing: params?.optionalChecked || false,
+          });
       } else if (mode === 'FIND_PW') {
         navigate('ResetPassword', { mode: 'RESET', email });
       }
-    } catch (e) {
+    } catch (error) {
       setError('authCode', {
         message: 'The authentication number is invalid.',
       });
