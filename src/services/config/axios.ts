@@ -15,12 +15,6 @@ export const BASE_API_URL = 'http://localhost:8080/api/v1';
 // TODO: 개발서버 url
 // export const BASE_API_URL = 'http://43.202.134.168:8080';
 
-// export interface IAxiosResponse<T> {
-//   statusCode: number;
-//   data: T;
-//   message: string;
-// }
-
 // create an axios instance
 const instance = axios.create({
   baseURL: BASE_API_URL,
