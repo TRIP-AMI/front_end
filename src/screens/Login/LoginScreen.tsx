@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  Pressable,
+  Keyboard,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import BasicButton from '@/components/atoms/Button/BasicButton';
@@ -46,36 +53,40 @@ export default function LoginScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style='auto' />
-      <View style={styles.inputContainer}>
-        <EmailInput control={control} />
-        <PasswordInput control={control} autoFocus={false} />
-        <LabeledCheckBox
-          label='Remember me'
-          isChecked={isChecked}
-          onCheck={onCheck}
-        />
-      </View>
-      <View style={styles.button}>
-        <BasicButton
-          onPress={handleSubmit(onLoginPress)}
-          content='Login'
-          round
-          disabled={!!errors.email || !!errors.password}
-        />
-      </View>
-      <View style={styles.footer}>
-        <TextButton
-          title='Forgot password?'
-          onPress={() => navigate('FindPassword', { mode: 'FIND_PW' })}
-          style={styles.footerText}
-        />
-        <Text style={[styles.footerText, { color: Colors.lineGray04 }]}>|</Text>
-        <TextButton
-          title='Join'
-          onPress={() => navigate('Join')}
-          style={styles.footerText}
-        />
-      </View>
+      <Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
+        <View style={styles.inputContainer}>
+          <EmailInput control={control} />
+          <PasswordInput control={control} autoFocus={false} />
+          <LabeledCheckBox
+            label='Remember me'
+            isChecked={isChecked}
+            onCheck={onCheck}
+          />
+        </View>
+        <View style={styles.button}>
+          <BasicButton
+            onPress={handleSubmit(onLoginPress)}
+            content='Login'
+            round
+            disabled={!!errors.email || !!errors.password}
+          />
+        </View>
+        <View style={styles.footer}>
+          <TextButton
+            title='Forgot password?'
+            onPress={() => navigate('FindPassword', { mode: 'FIND_PW' })}
+            style={styles.footerText}
+          />
+          <Text style={[styles.footerText, { color: Colors.lineGray04 }]}>
+            |
+          </Text>
+          <TextButton
+            title='Join'
+            onPress={() => navigate('Join')}
+            style={styles.footerText}
+          />
+        </View>
+      </Pressable>
     </SafeAreaView>
   );
 }

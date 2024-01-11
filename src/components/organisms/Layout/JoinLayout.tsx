@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Keyboard } from 'react-native';
 import Fonts from '@/styles/typography';
 
 export default function JoinLayout({
@@ -12,9 +12,11 @@ export default function JoinLayout({
 }) {
   return (
     <View style={styles.container}>
-      <Text style={Fonts.title}>{title} </Text>
-      {subtitle && <Text style={Fonts.subtitle}>{subtitle}</Text>}
-      <View style={styles.content}>{children}</View>
+      <Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
+        <Text style={Fonts.title}>{title} </Text>
+        {subtitle && <Text style={Fonts.subtitle}>{subtitle}</Text>}
+        <View style={styles.content}>{children}</View>
+      </Pressable>
     </View>
   );
 }
