@@ -3,6 +3,7 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { RecoilRoot } from 'recoil';
 import Toast, { ToastConfig } from 'react-native-toast-message';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Navigation from '@/navigations/';
 import CustomToast from '@/components/atoms/Toast/CustomToast';
 
@@ -22,6 +23,8 @@ const fetchFonts = async () => {
   });
 };
 
+const queryClient = new QueryClient();
+
 export default function App() {
   const [fontLoad, setFontLoad] = useState(false);
 
@@ -38,9 +41,11 @@ export default function App() {
   if (!fontLoad) return null;
 
   return (
-    <RecoilRoot>
-      <Navigation />
-      <Toast config={CustomToast as ToastConfig} />
-    </RecoilRoot>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <Navigation />
+        <Toast config={CustomToast as ToastConfig} />
+      </RecoilRoot>
+    </QueryClientProvider>
   );
 }
