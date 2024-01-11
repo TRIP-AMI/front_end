@@ -1,13 +1,14 @@
+import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet, Share } from 'react-native';
 import { Badge } from 'react-native-paper';
 import {
   FeatherIconButton,
   IconButton,
 } from '@/components/atoms/Button/IconButton';
-import useModalHook from '@/hooks/modalHook';
+import { RootStackNavigationProp } from '@/navigations';
 
 export default function ContentHeaderRightIcons() {
-  const { setModalName } = useModalHook();
+  const { navigate } = useNavigation<RootStackNavigationProp>();
 
   // TODO: 공유 기능 구현
   const onSharePress = async () => {
@@ -17,7 +18,7 @@ export default function ContentHeaderRightIcons() {
   };
 
   const onNotiPress = () => {
-    setModalName('NOTIFICATION');
+    navigate('Notification');
   };
 
   return (

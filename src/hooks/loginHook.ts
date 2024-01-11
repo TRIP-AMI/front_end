@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import loginState from '@/utils/recoil/login';
 import loginApi from '@/services/module/login/login';
@@ -10,17 +10,8 @@ import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 
 const useLoginHook = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
-  const [profileState, setProfileState] = useRecoilState<Profile>(profileType);
+  const profileState = useRecoilValue<Profile>(profileType);
   const { navigate } = useNavigation<AuthStackNavigationProp>();
-
-  const getStoredToken = async () => {
-    const token = await AsyncStorage.getItem('token');
-    const profile = await AsyncStorage.getItem('profile');
-    if (token && profile) {
-      setIsLoggedIn(true);
-      setProfileState(profile as Profile);
-    }
-  };
 
   const onLogin = async (isAuto: boolean, req: ILoginInputs) => {
     try {
@@ -46,7 +37,7 @@ const useLoginHook = () => {
     setIsLoggedIn(false);
   };
 
-  return { isLoggedIn, profileState, getStoredToken, onLogin, onLogout };
+  return { isLoggedIn, profileState, onLogin, onLogout };
 };
 
 export default useLoginHook;

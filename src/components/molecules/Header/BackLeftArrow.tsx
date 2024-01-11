@@ -9,6 +9,16 @@ export default function BackLeftArrow({
   theme?: 'white' | 'black';
 }) {
   const navigation = useNavigation<RootStackNavigationProp>();
+  const stackLength = navigation.getState().routes.length;
+  console.log('stacks', stackLength);
+
+  // TODO : deep link 시 goBack()이 안되는 문제 해결
+  const onPress = () => {
+    // if (stackLength === 1)
+    //   navigation.navigate('MainBottomNavTab', { screen: 'Home' });
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -16,9 +26,7 @@ export default function BackLeftArrow({
           icon='arrow-back'
           size={24}
           color={theme}
-          onPress={() => {
-            navigation.goBack();
-          }}
+          onPress={onPress}
         />
       </View>
     </View>
