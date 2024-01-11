@@ -9,10 +9,17 @@ import axios from 'axios';
  * xcode 시뮬레이터 사용시 그냥 npm run stdb 실행
  */
 // export const BASE_API_URL = 'http://10.19.201.109:9999';
-export const BASE_API_URL = 'http://localhost:9999';
+export const BASE_API_URL = 'http://localhost:8080/api/v1';
+// export const BASE_API_URL = 'http://localhost:9999';
 
 // TODO: 개발서버 url
 // export const BASE_API_URL = 'http://43.202.134.168:8080';
+
+// export interface IAxiosResponse<T> {
+//   statusCode: number;
+//   data: T;
+//   message: string;
+// }
 
 // create an axios instance
 const instance = axios.create({
@@ -24,11 +31,13 @@ const instance = axios.create({
 // response interceptor
 instance.interceptors.response.use(
   (response) => {
-    return response.data;
+    console.log(`[axios] ${response.config.url} ${response.status}`);
+    return response;
   },
-  (error) => {
-    console.error('네트워크 에러 입니다.', error);
-  },
+  // (error) => {
+  //     console.error('네트워크 에러 입니다.', error);
+  //   }
+  // },
 );
 
 export default instance;
