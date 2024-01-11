@@ -47,6 +47,7 @@ export default function EmailAuthScreen({
                 paddingVertical: 14,
                 borderColor: Colors.fontGray06,
               }}
+              textColor={Colors.fontGray05}
             />
           ) : (
             <BasicButton

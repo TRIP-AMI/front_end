@@ -7,6 +7,7 @@ type OutlinedButtonProps = {
   disabled?: boolean;
   background?: boolean;
   customStyle?: StyleProp<ViewStyle>;
+  textColor?: string;
   onPress: () => void;
 };
 
@@ -15,6 +16,7 @@ export default function OutlinedButton({
   disabled,
   background,
   customStyle,
+  textColor = Colors.primary,
   onPress,
 }: OutlinedButtonProps) {
   return (
@@ -31,7 +33,7 @@ export default function OutlinedButton({
     >
       <ButtonText
         content={content}
-        color={disabled || customStyle ? Colors.fontGray05 : Colors.primary}
+        color={disabled ? Colors.fontGray05 : textColor}
         small={!!customStyle}
       />
     </Pressable>
