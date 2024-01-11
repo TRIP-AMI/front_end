@@ -45,7 +45,7 @@ function ApplicationContentItem({
     <View style={styles.container}>
       <Pressable
         onPress={() =>
-          navigation.navigate('ContentStack', {
+          navigation.push('ContentStack', {
             screen: 'Content',
             params: { id },
           })
