@@ -24,7 +24,7 @@ import useLoginHook from '@/hooks/loginHook';
 import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 
 export default function LoginScreen() {
-  const { onLogin } = useLoginHook();
+  const { onLogin, isLoading } = useLoginHook();
   const { navigate } = useNavigation<AuthStackNavigationProp>();
   const [isChecked, setChecked] = useState(false);
   const { setModalName } = useModalHook();
@@ -68,7 +68,7 @@ export default function LoginScreen() {
             onPress={handleSubmit(onLoginPress)}
             content='Login'
             round
-            disabled={!!errors.email || !!errors.password}
+            disabled={!!errors.email || !!errors.password || isLoading}
           />
         </View>
         <View style={styles.footer}>

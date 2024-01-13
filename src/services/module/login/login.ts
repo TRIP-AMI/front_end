@@ -1,12 +1,21 @@
-import instance, { BASE_API_URL } from '@/services/config/axios';
-import { ILoginInputs } from '@/types/FormTypes';
-import { User } from '@/types/UserTypes';
+import { AxiosResponse } from 'axios';
+import instance from '@/services/config/axios';
+import { ILoginInputs as LoginRequest } from '@/types/FormTypes';
 
-const getLoginUser = (req: ILoginInputs): Promise<User> => {
-  const url = `${BASE_API_URL}/login`;
-  const method = 'GET';
-  console.log('login:', req);
-  return instance({ url, method });
+export type LoginResponse = {
+  email: string;
+  nickname: string;
+  imgUrl: string;
+};
+
+const getLoginUser = (
+  req: LoginRequest,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Promise<AxiosResponse<LoginResponse, any>> => {
+  const url = `auth/login`;
+  const method = 'POST';
+  const data = req;
+  return instance({ url, method, data });
 };
 
 export default { getLoginUser };

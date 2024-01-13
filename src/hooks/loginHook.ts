@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
@@ -7,37 +8,46 @@ import { ILoginInputs } from '@/types/FormTypes';
 import profileType from '@/utils/recoil/profile';
 import { Profile } from '@/types/UserTypes';
 import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
+import useModalHook from '@/hooks/modalHook';
 
 const useLoginHook = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
+  const [isLoading, setIsLoading] = useState(false);
   const profileState = useRecoilValue<Profile>(profileType);
-  const { navigate } = useNavigation<AuthStackNavigationProp>();
+  const { replace } = useNavigation<AuthStackNavigationProp>();
+  const { setModalName } = useModalHook();
 
   const onLogin = async (isAuto: boolean, req: ILoginInputs) => {
     try {
-      // TODO: 로그인 API 연동
-      const userInfo = await loginApi.getLoginUser(req);
+      setIsLoading(true);
+      const res = await loginApi.getLoginUser(req);
+      setIsLoading(false);
+      const { data, headers } = res;
+      const accessToken = headers['authorization'];
+      const refreshToken = headers['refresh'];
       if (isAuto) {
-        await AsyncStorage.setItem('token', userInfo.token);
+        await AsyncStorage.multiSet([
+          ['token', accessToken],
+          ['refresh', refreshToken],
+        ]);
       }
-      navigate('SelectProfile', {
-        nickname: userInfo.nickname,
-        imgUrl: userInfo.imgUrl,
+      replace('SelectProfile', {
+        nickname: data.nickname,
+        imgUrl: data.imgUrl,
       });
     } catch (e) {
-      // TODO: 로그인 실패시 처리
-      console.log('로그인 실패: ', e);
+      setModalName('LOGIN_INVALID');
+      setIsLoading(false);
     }
   };
 
   const onLogout = async () => {
     // TODO: 로그아웃 API 연동
-    await AsyncStorage.removeItem('profile');
-    await AsyncStorage.removeItem('token');
+    await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
     setIsLoggedIn(false);
   };
 
-  return { isLoggedIn, profileState, onLogin, onLogout };
+  return { isLoggedIn, isLoading, profileState, onLogin, onLogout };
 };
 
 export default useLoginHook;
