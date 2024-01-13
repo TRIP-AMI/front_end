@@ -8,9 +8,12 @@ import axios from 'axios';
  * 2. http://localhost:9999
  * xcode 시뮬레이터 사용시 그냥 npm run stdb 실행
  */
-// export const BASE_API_URL = 'http://10.19.201.109:9999';
+
+// 로컬 서버 URL
 export const BASE_API_URL = 'http://localhost:8080/api/v1';
-// export const BASE_API_URL = 'http://localhost:9999';
+
+// json-server URL
+export const BASE_MOCK_API_URL = 'http://localhost:9999';
 
 // TODO: 개발서버 url
 // export const BASE_API_URL = 'http://43.202.134.168:8080';
@@ -22,6 +25,12 @@ const instance = axios.create({
   headers: { 'X-Custom-Header': 'foobar' },
 });
 
+export const mockInstance = axios.create({
+  baseURL: BASE_MOCK_API_URL,
+  timeout: 10 * 1000,
+  headers: { 'X-Custom-Header': 'foobar' },
+});
+
 // response interceptor
 instance.interceptors.response.use(
   (response) => {
@@ -29,8 +38,7 @@ instance.interceptors.response.use(
     return response;
   },
   // (error) => {
-  //     console.error('네트워크 에러 입니다.', error);
-  //   }
+  //   console.error('네트워크 에러 입니다.', error);
   // },
 );
 
