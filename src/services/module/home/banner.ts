@@ -12,7 +12,7 @@ export type BannerListItem = {
 export type BannerListResponse = BannerListItem[];
 
 const getBanner = (): Promise<BannerListResponse> => {
-  return instance.get(`/banner`);
+  return instance.get(`/banners`);
 };
 
 export const useBannerQuery = () => {

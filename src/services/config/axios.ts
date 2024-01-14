@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 // local mock 서버
@@ -22,7 +23,7 @@ export const BASE_MOCK_API_URL = 'http://localhost:9999';
 const instance = axios.create({
   baseURL: BASE_API_URL,
   timeout: 10 * 1000,
-  headers: { 'X-Custom-Header': 'foobar' },
+  headers: { 'X-Custom-Header': 'foobar', 'Content-Type': 'application/json' },
 });
 
 export const mockInstance = axios.create({
@@ -31,15 +32,41 @@ export const mockInstance = axios.create({
   headers: { 'X-Custom-Header': 'foobar' },
 });
 
+const getNewAccessToken = async () => {
+  try {
+    const { headers } = await instance.patch('/auth/token/reissue');
+    const accessToken = headers['authorization'];
+    instance.defaults.headers.common['Authorization'] = accessToken;
+    await AsyncStorage.setItem('token', accessToken);
+    // eslint-disable-next-line
+  } catch (e: any) {
+    console.log(`token reissue error: ${e}`);
+    if (e.response.status === 401) {
+      await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
+    }
+  }
+};
+
 // response interceptor
 instance.interceptors.response.use(
   (response) => {
-    console.log(`[axios] ${response.config.url} ${response.status}`);
+    console.log(
+      `[axios] url: ${response.config.url} status: ${response.status}`,
+    );
     return response;
   },
-  // (error) => {
-  //   console.error('네트워크 에러 입니다.', error);
-  // },
+  async (error) => {
+    console.log(
+      `[axios] url: ${error.config.url} status: ${error.response.status}`,
+    );
+    if (
+      error.response.status === 401 &&
+      error.config.url !== '/auth/token/reissue'
+    ) {
+      getNewAccessToken();
+    }
+    return Promise.reject(error);
+  },
 );
 
 export default instance;
