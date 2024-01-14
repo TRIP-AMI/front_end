@@ -9,6 +9,7 @@ import profileType from '@/utils/recoil/profile';
 import { Profile } from '@/types/UserTypes';
 import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 import useModalHook from '@/hooks/modalHook';
+import instance from '@/services/config/axios';
 
 const useLoginHook = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
@@ -25,6 +26,7 @@ const useLoginHook = () => {
       const { data, headers } = res;
       const accessToken = headers['authorization'];
       const refreshToken = headers['refresh'];
+      instance.defaults.headers.common['Authorization'] = accessToken;
       if (isAuto) {
         await AsyncStorage.multiSet([
           ['token', accessToken],
@@ -44,6 +46,7 @@ const useLoginHook = () => {
   const onLogout = async () => {
     // TODO: 로그아웃 API 연동
     await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
+    delete instance.defaults.headers.common['Authorization'];
     setIsLoggedIn(false);
   };
 
