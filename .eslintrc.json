@@ -44,6 +44,7 @@
     "react/prop-types": 0,
     "react/style-prop-object": "off",
     "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "dot-notation": "off"
   }
 }

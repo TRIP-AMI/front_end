@@ -1,10 +1,10 @@
 import { View, FlatList, StyleSheet } from 'react-native';
-
 import HomeBannerCard from '@components/atoms/Card/HomeBannerCard';
 import { useBannerQuery } from '@/services/module/home/banner';
 
 export default function HomeBannerCarousel() {
   const { data, isLoading } = useBannerQuery();
+  const { banners } = data || { banners: [] };
 
   if (isLoading)
     return (
@@ -14,7 +14,7 @@ export default function HomeBannerCarousel() {
   return (
     <View style={styles.bannerListContainer}>
       <FlatList
-        data={data}
+        data={banners}
         renderItem={({ item }) => <HomeBannerCard item={item} />}
         keyExtractor={(item) => item.id.toString()}
         horizontal

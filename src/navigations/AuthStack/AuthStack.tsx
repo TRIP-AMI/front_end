@@ -32,7 +32,9 @@ export type EmailAuthProps = {
 // 유저 정보 prop으로 받기
 
 export type SelectProfileProps = {
+  memberId: number;
   nickname: string;
+  email: string;
   imgUrl: string;
 };
 

@@ -1,13 +1,19 @@
 import { atom } from 'recoil';
 
-const userState = atom({
+export type UserType = {
+  memberId: number;
+  nickname: string;
+  email: string;
+  imgUrl: string;
+};
+
+const userState = atom<UserType>({
   key: 'userState',
   default: {
-    id: '1',
-    name: 'Jenny',
+    memberId: 1,
+    nickname: 'Jenny',
     email: 'tripami@tripami.co.kr',
-    profileImgUrl:
-      'https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg',
+    imgUrl: 'https://geographical.co.uk/wp-content/uploads/panda1200-1.jpg',
   },
 });
 

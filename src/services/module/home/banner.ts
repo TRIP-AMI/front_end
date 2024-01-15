@@ -5,14 +5,17 @@ export const QUERY_KEY = '/banner';
 
 export type BannerListItem = {
   id: number;
-  link: string;
+  title: string;
   imgUrl: string;
 };
 
-export type BannerListResponse = BannerListItem[];
+export type BannerListResponse = {
+  banners: BannerListItem[];
+};
 
-const getBanner = (): Promise<BannerListResponse> => {
-  return instance.get(`/banner`);
+export const getBanner = async (): Promise<BannerListResponse> => {
+  const res = await instance.get(`/banners`);
+  return res.data.data;
 };
 
 export const useBannerQuery = () => {

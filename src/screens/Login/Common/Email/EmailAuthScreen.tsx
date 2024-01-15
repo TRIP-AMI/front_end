@@ -23,6 +23,7 @@ export default function EmailAuthScreen({
     timer,
     handleSubmit,
     onConfirmEmail,
+    onResendEmail,
     onCheckAuthCode,
     setTimer,
   } = useAuthForm({ mode: route.params.mode, params: route.params });
@@ -40,12 +41,13 @@ export default function EmailAuthScreen({
         <View style={styles.button}>
           {isEmailSent ? (
             <OutlinedButton
-              onPress={handleSubmit(onConfirmEmail)}
+              onPress={handleSubmit(onResendEmail)}
               content='Resend'
               customStyle={{
                 paddingVertical: 14,
                 borderColor: Colors.fontGray06,
               }}
+              textColor={Colors.fontGray05}
             />
           ) : (
             <BasicButton

@@ -87,6 +87,7 @@ export default function JoinScreen() {
                 ? Colors.lineGray04
                 : Colors.fontGray06,
           }}
+          textColor={Colors.fontGray05}
           background={checkedIds.length === JOIN_TERMS.length}
         />
         <View style={styles.itemContainer}>

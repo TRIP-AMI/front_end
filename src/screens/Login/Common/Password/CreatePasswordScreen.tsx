@@ -1,12 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { View, StyleSheet } from 'react-native';
-import { CreatePasswordProps } from '@/navigations/AuthStack/AuthStack';
+import {
+  AuthStackNavigationProp,
+  CreatePasswordProps,
+} from '@/navigations/AuthStack/AuthStack';
 import { PasswordInput } from '@/components/molecules/Input/LoginInput';
 import JoinLayout from '@/components/organisms/Layout/JoinLayout';
 import BottomButtons from '@/components/atoms/Button/BottomButtons';
 import useModalHook from '@/hooks/modalHook';
 import { ICreatePasswordInputs } from '@/types/FormTypes';
-import instance, { BASE_API_URL } from '@/services/config/axios';
+import instance from '@/services/config/axios';
+import joinApi from '@/services/module/join/join';
 
 export default function CreatePasswordScreen({
   route,
@@ -14,6 +19,7 @@ export default function CreatePasswordScreen({
   route: { params: CreatePasswordProps };
 }) {
   const { setModalName } = useModalHook();
+  const { navigate } = useNavigation<AuthStackNavigationProp>();
   const { mode, nickname, email, agreedMarketing } = route.params;
   const {
     control,
@@ -33,21 +39,19 @@ export default function CreatePasswordScreen({
     if (errors.password || errors.reentered || data.password !== data.reentered)
       return;
     try {
-      await instance.post(`${BASE_API_URL}/password`, {
-        password: data.password,
-      });
+      await joinApi.checkPassword({ password: data.password });
       if (mode === 'CREATE') {
-        await instance.post(`${BASE_API_URL}/join`, {
+        await joinApi.join({
           email,
-          nickName: nickname,
+          nickname: nickname!,
           password: data.password,
-          agreedMarketing,
+          agreedMarketing: agreedMarketing!,
         });
         setModalName('JOIN_COMPLETE', {
           title: `Membership registration\nhas been completed!`,
         });
       } else if (mode === 'RESET') {
-        await instance.post(`${BASE_API_URL}/resetPassword`, {
+        await instance.post(`/resetPassword`, {
           password: data.password,
         });
         setModalName('JOIN_COMPLETE', {
@@ -58,12 +62,21 @@ export default function CreatePasswordScreen({
       console.log(e);
     }
   };
+
   const contents = {
     title:
       mode === 'CREATE'
         ? 'Please enter your password'
         : 'Please set a new password',
     subtitle: `At least 10 characters in combination of\na capital letter, numbers, and special characters.`,
+  };
+
+  const onCancel = () => {
+    if (mode === 'CREATE') {
+      setModalName('JOIN_CANCEL');
+    } else if (mode === 'RESET') {
+      navigate('Login');
+    }
   };
 
   return (
@@ -97,7 +110,7 @@ export default function CreatePasswordScreen({
         </View>
       </JoinLayout>
       <BottomButtons
-        onCancel={() => setModalName('JOIN_CANCEL')}
+        onCancel={onCancel}
         onNext={handleSubmit(onNext)}
         disabled={!!errors.password || !!errors.reentered}
         confirmText={mode === 'CREATE' ? 'Join' : 'Submit'}

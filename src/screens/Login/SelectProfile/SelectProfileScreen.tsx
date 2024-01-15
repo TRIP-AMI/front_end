@@ -11,6 +11,7 @@ import BulletListItem from '@/components/atoms/Text/BulletListItem';
 import FooterButton from '@/components/molecules/Button/FooterButton';
 import loginState from '@/utils/recoil/login';
 import profileType from '@/utils/recoil/profile';
+import userState, { UserType } from '@/utils/recoil/user';
 
 export default function SelectProfileScreen({
   route,
@@ -21,7 +22,7 @@ export default function SelectProfileScreen({
   const [profile, setProfile] = useState<Profile | ''>('');
   const setProfileState = useSetRecoilState<Profile>(profileType);
   const setIsLoggedIn = useSetRecoilState<boolean>(loginState);
-
+  const setUserState = useSetRecoilState<UserType>(userState);
   const descriptions = [
     {
       id: 1,
@@ -38,6 +39,7 @@ export default function SelectProfileScreen({
     await AsyncStorage.setItem('profile', profile);
     setIsLoggedIn(true);
     setProfileState(profile);
+    setUserState(route.params);
   };
 
   return (
