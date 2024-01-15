@@ -10,13 +10,14 @@ import { Profile } from '@/types/UserTypes';
 import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 import useModalHook from '@/hooks/modalHook';
 import instance from '@/services/config/axios';
-import userState, { UserType } from '@/utils/recoil/user';
+import userState from '@/utils/recoil/user';
+// import userState, { UserType } from '@/utils/recoil/user';
 
 const useLoginHook = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
   const [isLoading, setIsLoading] = useState(false);
   const profileState = useRecoilValue<Profile>(profileType);
-  const userData = useRecoilValue<UserType>(userState);
+  // const userData = useRecoilValue<UserType>(userState);
   const resetUser = useResetRecoilState(userState);
   const { replace } = useNavigation<AuthStackNavigationProp>();
   const { setModalName } = useModalHook();
@@ -54,8 +55,8 @@ const useLoginHook = () => {
 
   // TODO: 로그아웃 API 체크
   const onLogout = async () => {
-    const { memberId } = userData;
-    await instance.patch(`/members/${memberId}/logout`);
+    // const { memberId } = userData;
+    // await instance.patch(`/members/${memberId}/logout`);
     await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
     delete instance.defaults.headers.common['Authorization'];
     resetUser();
