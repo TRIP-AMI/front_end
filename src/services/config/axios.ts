@@ -1,5 +1,5 @@
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+// import getNewAccessToken from '@/services/module/reissue/reissue';
 
 // local mock 서버
 /**
@@ -32,27 +32,6 @@ export const mockInstance = axios.create({
   headers: { 'X-Custom-Header': 'foobar' },
 });
 
-// const getNewAccessToken = async () => {
-//   try {
-//     const { headers } = await instance.patch('/auth/token/reissue', {
-//       headers: {
-//         Refresh: await AsyncStorage.getItem('refresh'),
-//         Authroization: await AsyncStorage.getItem('token'),
-//       },
-//     });
-//     const accessToken = headers['authorization'];
-//     instance.defaults.headers.common['Authorization'] = accessToken;
-//     await AsyncStorage.setItem('token', accessToken);
-//     // eslint-disable-next-line
-//   } catch (e: any) {
-//     console.log(`token reissue error: ${e}`);
-//     if (e.response.status === 401) {
-//       // TODO: 로그아웃 처리
-//       await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
-//     }
-//   }
-// };
-
 // response interceptor
 instance.interceptors.response.use(
   (response) => {
@@ -61,7 +40,7 @@ instance.interceptors.response.use(
     );
     return response;
   },
-  (error) => {
+  async (error) => {
     console.log(
       `[axios] url: ${error.config.url} status: ${error.response.status}`,
     );
