@@ -24,8 +24,8 @@ function ApplicantInfoModal() {
       <View style={styles.container}>
         <Text style={styles.name}>
           {profile === 'AMI'
-            ? `• Name: ${userData.name}`
-            : `• AMI: ${userData.name}`}
+            ? `• Name: ${userData.nickname}`
+            : `• AMI: ${userData.nickname}`}
         </Text>
         <View style={styles.subContainer}>
           <Text style={styles.email}>• E-mail: </Text>

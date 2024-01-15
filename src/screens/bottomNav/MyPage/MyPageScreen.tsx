@@ -105,7 +105,7 @@ export default function MyPageScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.headerMargin} />
         <View style={{ paddingBottom: 12 }}>
-          <AmiProfile imgUrl={userData.profileImgUrl} name={userData.name} />
+          <AmiProfile imgUrl={userData.imgUrl} name={userData.nickname} />
         </View>
         {profile === 'AMI' ? (
           <>
