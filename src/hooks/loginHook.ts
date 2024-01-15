@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import loginState from '@/utils/recoil/login';
 import loginApi from '@/services/module/login/login';
@@ -10,11 +10,14 @@ import { Profile } from '@/types/UserTypes';
 import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 import useModalHook from '@/hooks/modalHook';
 import instance from '@/services/config/axios';
+import userState, { UserType } from '@/utils/recoil/user';
 
 const useLoginHook = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
   const [isLoading, setIsLoading] = useState(false);
   const profileState = useRecoilValue<Profile>(profileType);
+  const userData = useRecoilValue<UserType>(userState);
+  const resetUser = useResetRecoilState(userState);
   const { replace } = useNavigation<AuthStackNavigationProp>();
   const { setModalName } = useModalHook();
 
@@ -27,6 +30,10 @@ const useLoginHook = () => {
       const accessToken = headers['authorization'];
       const refreshToken = headers['refresh'];
       instance.defaults.headers.common['Authorization'] = accessToken;
+      // console.log(
+      //   'login 토큰:',
+      //   instance.defaults.headers.common['Authorization'],
+      // );
       if (isAuto) {
         await AsyncStorage.multiSet([
           ['token', accessToken],
@@ -45,10 +52,13 @@ const useLoginHook = () => {
     }
   };
 
+  // TODO: 로그아웃 API 체크
   const onLogout = async () => {
-    // TODO: 로그아웃 API 연동
+    const { memberId } = userData;
+    await instance.patch(`/members/${memberId}/logout`);
     await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
     delete instance.defaults.headers.common['Authorization'];
+    resetUser();
     setIsLoggedIn(false);
   };
 
