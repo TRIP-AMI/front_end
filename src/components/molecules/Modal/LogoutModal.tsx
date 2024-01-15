@@ -1,10 +1,10 @@
 import BasicTwoButtonModal from '@components/atoms/Modal/BasicTwoButtonsModal';
-import useLoginHook from '@hooks/loginHook';
 import useModalHook from '@hooks/modalHook';
 import BasicModalText from '@components/atoms/Text/BasicModalText';
+import useToken from '@/hooks/tokenHook';
 
 function LogoutModal() {
-  const { onLogout } = useLoginHook();
+  const { onLogout } = useToken();
   const { resetModal } = useModalHook();
 
   const logout = () => {

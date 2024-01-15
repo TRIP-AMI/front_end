@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import loginState from '@/utils/recoil/login';
 import loginApi from '@/services/module/login/login';
@@ -10,15 +10,11 @@ import { Profile } from '@/types/UserTypes';
 import { AuthStackNavigationProp } from '@/navigations/AuthStack/AuthStack';
 import useModalHook from '@/hooks/modalHook';
 import instance from '@/services/config/axios';
-import userState from '@/utils/recoil/user';
-// import userState, { UserType } from '@/utils/recoil/user';
 
 const useLoginHook = () => {
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
+  const isLoggedIn = useRecoilValue(loginState);
   const [isLoading, setIsLoading] = useState(false);
   const profileState = useRecoilValue<Profile>(profileType);
-  // const userData = useRecoilValue<UserType>(userState);
-  const resetUser = useResetRecoilState(userState);
   const { replace } = useNavigation<AuthStackNavigationProp>();
   const { setModalName } = useModalHook();
 
@@ -53,17 +49,7 @@ const useLoginHook = () => {
     }
   };
 
-  // TODO: 로그아웃 API 체크
-  const onLogout = async () => {
-    // const { memberId } = userData;
-    // await instance.patch(`/members/${memberId}/logout`);
-    await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
-    delete instance.defaults.headers.common['Authorization'];
-    resetUser();
-    setIsLoggedIn(false);
-  };
-
-  return { isLoggedIn, isLoading, profileState, onLogin, onLogout };
+  return { isLoggedIn, isLoading, profileState, onLogin };
 };
 
 export default useLoginHook;

@@ -2,11 +2,11 @@ import BasicFullScreenModal from '@components/atoms/Modal/BasicFullScreenModal';
 import { AntDesign } from '@expo/vector-icons';
 import Colors from '@styles/colors';
 import { StyleSheet, Text } from 'react-native';
-import useLoginHook from '@hooks/loginHook';
 import useModalHook from '@hooks/modalHook';
+import useToken from '@/hooks/tokenHook';
 
 function CompleteWithdrawalModal() {
-  const { onLogout } = useLoginHook();
+  const { onLogout } = useToken();
   const { resetModal } = useModalHook();
 
   // TODO 로딩 처리
