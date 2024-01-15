@@ -26,7 +26,6 @@ const useLoginHook = () => {
     try {
       setIsLoading(true);
       const res = await loginApi.getLoginUser(req);
-      setIsLoading(false);
       const { data, headers } = res;
       const accessToken = headers['authorization'];
       const refreshToken = headers['refresh'];
@@ -49,6 +48,7 @@ const useLoginHook = () => {
       });
     } catch (e) {
       setModalName('LOGIN_INVALID');
+    } finally {
       setIsLoading(false);
     }
   };

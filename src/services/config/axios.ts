@@ -61,7 +61,7 @@ instance.interceptors.response.use(
     );
     return response;
   },
-  async (error) => {
+  (error) => {
     console.log(
       `[axios] url: ${error.config.url} status: ${error.response.status}`,
     );
