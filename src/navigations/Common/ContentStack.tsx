@@ -33,7 +33,6 @@ export type ContentStackNavigationProp =
 const Stack = createNativeStackNavigator<ContentStackParamList>();
 
 export default function ContentStack() {
-  // TODO: goBack 없을 때 처리
   const { goBack } = useNavigation();
   return (
     <Stack.Navigator initialRouteName='Content'>

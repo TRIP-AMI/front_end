@@ -9,14 +9,13 @@ export default function BackLeftArrow({
   theme?: 'white' | 'black';
 }) {
   const navigation = useNavigation<RootStackNavigationProp>();
-  const stackLength = navigation.getState().routes.length;
-  console.log('stacks', stackLength);
 
-  // TODO : deep link 시 goBack()이 안되는 문제 해결
   const onPress = () => {
-    // if (stackLength === 1)
-    //   navigation.navigate('MainBottomNavTab', { screen: 'Home' });
-    navigation.goBack();
+    return navigation.canGoBack()
+      ? navigation.goBack()
+      : navigation.navigate('MainBottomNavTab', {
+          screen: 'Home',
+        });
   };
 
   return (
