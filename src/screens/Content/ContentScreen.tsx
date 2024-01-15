@@ -13,6 +13,7 @@ import ContentReportButton from '@/components/organisms/Section/ContentReportBut
 import { ContentStackParamList } from '@/navigations/Common/ContentStack';
 import FAQSection from '@/components/molecules/Section/FAQSection';
 import ContentReview from '@/components/molecules/Section/ContentReview';
+import useProgramDetail from '@/hooks/programDetailHook';
 
 export type ContentScreenProps = StackScreenProps<
   ContentStackParamList,
@@ -22,15 +23,34 @@ export type ContentScreenProps = StackScreenProps<
 // TODO: 구조, 스타일 수정
 export default function ContentScreen({ route }: ContentScreenProps) {
   const { id } = route.params;
+  const {
+    title,
+    subTitle,
+    startTime,
+    keywords,
+    images,
+    content,
+    amiId,
+    isPending,
+  } = useProgramDetail(id);
+
+  // TODO: 로딩, 에러 처리
+  if (isPending) return <View />;
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style='auto' />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ContentBannerCarousel />
-        <ContentMain />
+        <ContentBannerCarousel images={images} />
+        <ContentMain
+          title={title}
+          subtitle={subTitle}
+          time={startTime}
+          keywords={keywords}
+          location='3-11, Jamsil-dong, Songpa-gu, Seoul'
+        />
         <SectionDividerBar style={{ height: 8 }} />
-        <ContentAmi />
+        <ContentAmi amiId={amiId} content={content} />
         <SectionDividerBar style={{ height: 8 }} />
         <ContentProgram />
         <SectionDividerBar style={{ height: 8 }} />

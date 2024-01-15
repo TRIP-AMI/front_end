@@ -39,28 +39,15 @@ const dummyAmiData = [
   },
 ];
 
-const dummyIntroduce =
-  'Hi, My name is Jenny😊\n' +
-  '\n' +
-  "Welcome to Korea! I'll be your friends and help you make more wonderful memories in Korea :)\n" +
-  '\n' +
-  'First of all to introduce myself briefly, I am active and I like to meet friends and talk.\n' +
-  '\n' +
-  'I love listening to you guys, and I can tell you all my questions about Korea!\n' +
-  '\n' +
-  'I hope we can feel the way young Korean friends hang out route while taking delicious restaurants, cafes, and pictures together and become good friends🖤\n' +
-  '\n' +
-  'Available dates (select one)\n' +
-  '- January 6, 2024\n' +
-  '- January 6, 2024\n' +
-  '- January 6, 2024\n' +
-  '- January 6, 2024\n' +
-  '- January 6, 2024\n' +
-  '\n' +
-  'Contact: tripamics@trimami.co.kr';
+type ContentAmiProps = {
+  amiId: number;
+  content: string;
+};
 
-function ContentAmi() {
+function ContentAmi({ amiId, content }: ContentAmiProps) {
   const dummyProfile = dummyData[0];
+  console.log(`amiId: ${amiId}`);
+  // TODO: amiId로 ami 정보 가져오기, 눌렀을 때 아미 소개로 이동
   return (
     <View
       style={{ paddingVertical: 30, paddingHorizontal: Spacing.IOS392Margin }}
@@ -72,7 +59,7 @@ function ContentAmi() {
       {dummyAmiData.map((score) => (
         <AmiScoreTable key={score.title} scores={score} />
       ))}
-      <AmiIntroduce>{dummyIntroduce}</AmiIntroduce>
+      <AmiIntroduce>{content}</AmiIntroduce>
     </View>
   );
 }

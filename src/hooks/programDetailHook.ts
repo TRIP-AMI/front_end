@@ -2,6 +2,7 @@ import { useProgramQuery } from '@/services/module/program/program';
 
 const useProgramDetail = (id: number) => {
   const { data, isPending, isError } = useProgramQuery(id);
+
   const {
     title,
     subTitle,
@@ -14,7 +15,19 @@ const useProgramDetail = (id: number) => {
     keywords,
     spots,
     imgUrl,
-  } = data || {};
+  } = data || {
+    title: '',
+    subTitle: '',
+    images: [],
+    startTime: new Date(),
+    content: '',
+    price: 0,
+    amiId: -1,
+    theme: '',
+    keywords: [],
+    spots: [],
+    imgUrl: '',
+  };
 
   return {
     title,
