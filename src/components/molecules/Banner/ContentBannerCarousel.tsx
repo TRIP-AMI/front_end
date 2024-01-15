@@ -1,32 +1,18 @@
-import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import ContentBannerCard from '@components/atoms/Card/ContentBannerCard';
-import bannerApi, {
-  ContentBannerCardType,
-} from '@/services/module/home/banner';
 
-export default function ContentBannerCarousel() {
-  const [dummyBanners, setDummyBanners] = useState<ContentBannerCardType[]>([]);
-
-  const getData = async () => {
-    try {
-      const data = await bannerApi.getBanner();
-      setDummyBanners(data);
-    } catch (error) {
-      console.error('배너 목록 호출에 실패하였습니다.', error);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+export default function ContentBannerCarousel({
+  images,
+}: {
+  images: string[];
+}) {
   return (
+    // TODO: key 중복 문제 확인하기
     <View style={styles.bannerListContainer}>
       <FlatList
-        data={dummyBanners}
-        renderItem={({ item }) => <ContentBannerCard item={item} />}
-        keyExtractor={(item) => item.id.toString()}
+        data={images}
+        renderItem={({ item }) => <ContentBannerCard imgUrl={item} />}
+        keyExtractor={(item) => item}
         horizontal
         pagingEnabled
       />

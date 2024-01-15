@@ -1,21 +1,11 @@
 import { Pressable, Image, StyleSheet, Dimensions } from 'react-native';
 import useModalHook from '@/hooks/modalHook';
 
-type ContentBannerCardProps = {
-  id: number;
-  title: string;
-  imgUrl: string;
-};
-
-export default function ContentBannerCard({
-  item,
-}: {
-  item: ContentBannerCardProps;
-}) {
+export default function ContentBannerCard({ imgUrl }: { imgUrl: string }) {
   const { setModalName } = useModalHook();
 
   const onPress = () => {
-    setModalName('FULL_IMAGE', { imgUrl: item.imgUrl });
+    setModalName('FULL_IMAGE', { imgUrl });
   };
 
   return (
@@ -26,11 +16,7 @@ export default function ContentBannerCard({
       ]}
       onPress={onPress}
     >
-      <Image
-        source={{ uri: item.imgUrl }}
-        resizeMode='cover'
-        style={styles.img}
-      />
+      <Image source={{ uri: imgUrl }} resizeMode='cover' style={styles.img} />
     </Pressable>
   );
 }
