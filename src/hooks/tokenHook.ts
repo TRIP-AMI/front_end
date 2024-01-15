@@ -18,9 +18,10 @@ const useToken = () => {
       'profile',
     ]);
     if (token[1] && refresh[1] && profile[1]) {
+      console.log(`***token: ${token[1]}`);
       setIsLoggedIn(true);
       setProfileState(profile[1] as Profile);
-      instance.defaults.headers.common['Authorization'] = `Bearer ${token[1]}`;
+      instance.defaults.headers.common['Authorization'] = `${token[1]}`;
     } else delete instance.defaults.headers.common['Authorization'];
     setLoading(false);
   };
