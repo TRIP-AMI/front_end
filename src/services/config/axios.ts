@@ -67,7 +67,8 @@ instance.interceptors.response.use(
     );
     if (
       error.response.status === 401 &&
-      error.config.url !== '/auth/token/reissue'
+      error.config.url !== 'auth/token/reissue' &&
+      error.config.url !== 'auth/login'
     ) {
       console.log(`토큰 만료 에러: ${error}`);
       // getNewAccessToken();
