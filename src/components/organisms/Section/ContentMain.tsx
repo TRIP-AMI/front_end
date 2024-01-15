@@ -2,38 +2,40 @@ import BlackBadge from '@components/atoms/Tag/BlackBadge';
 import ContentTitles from '@components/molecules/Text/ContentTitles';
 import HashTagList from '@components/molecules/etc/HashTagList';
 import ContentTimeLocation from '@components/molecules/Text/ContentTimeLocation';
-import ContentPrice from '@components/molecules/Text/ContentPrice';
-import Colors from '@styles/colors';
 import { StyleSheet, View } from 'react-native';
 import Spacing from '@styles/spacing';
-import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
+import dayjs from 'dayjs';
 
-function ContentMain() {
-  const dummyData = ['Itaewon', 'Seoul', 'Korea'];
+type ContentMainProps = {
+  title: string;
+  subtitle: string;
+  time: Date;
+  location: string;
+  keywords: string[];
+};
+
+function ContentMain({
+  title,
+  subtitle,
+  time,
+  keywords,
+  location,
+}: ContentMainProps) {
+  const now = dayjs();
+  const diff = dayjs(time).diff(now, 'day');
+
   return (
-    <>
-      <View style={{ paddingVertical: 20 }}>
-        <View style={styles.container}>
-          <BlackBadge text='D-1' />
-        </View>
-        <ContentTitles
-          title="Jenny's Seoul tour"
-          subtitle="Let's Play Together at Itaewon Street!"
-        />
-        <HashTagList data={dummyData} />
-        <ContentTimeLocation
-          time='12/16(Sat) 19:30'
-          location='3-11, Jamsil-dong, Songpa-gu, Seoul'
-        />
+    <View style={{ paddingVertical: 20 }}>
+      <View style={styles.container}>
+        {diff === 1 && <BlackBadge text='D-1' />}
       </View>
-      <SectionDividerBar
-        style={{ backgroundColor: Colors.lineGray03, height: 1 }}
+      <ContentTitles title={title} subtitle={subtitle} />
+      <HashTagList data={keywords} />
+      <ContentTimeLocation
+        time={dayjs(time).format('MM/DD(ddd) HH:mm')}
+        location={location}
       />
-      <ContentPrice
-        price='Free'
-        option='(It covers all expenses incurred in the program.)'
-      />
-    </>
+    </View>
   );
 }
 
