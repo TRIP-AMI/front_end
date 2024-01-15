@@ -34,7 +34,9 @@ const useLoginHook = () => {
         ]);
       }
       replace('SelectProfile', {
+        memberId: data.authMemberid,
         nickname: data.nickname,
+        email: data.email,
         imgUrl: data.imgUrl,
       });
     } catch (e) {

@@ -3,6 +3,7 @@ import instance from '@/services/config/axios';
 import { ILoginInputs as LoginRequest } from '@/types/FormTypes';
 
 export type LoginResponse = {
+  authMemberid: number;
   email: string;
   nickname: string;
   imgUrl: string;
