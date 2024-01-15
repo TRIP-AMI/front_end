@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 // local mock 서버
@@ -32,20 +32,26 @@ export const mockInstance = axios.create({
   headers: { 'X-Custom-Header': 'foobar' },
 });
 
-const getNewAccessToken = async () => {
-  try {
-    const { headers } = await instance.patch('/auth/token/reissue');
-    const accessToken = headers['authorization'];
-    instance.defaults.headers.common['Authorization'] = accessToken;
-    await AsyncStorage.setItem('token', accessToken);
-    // eslint-disable-next-line
-  } catch (e: any) {
-    console.log(`token reissue error: ${e}`);
-    if (e.response.status === 401) {
-      await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
-    }
-  }
-};
+// const getNewAccessToken = async () => {
+//   try {
+//     const { headers } = await instance.patch('/auth/token/reissue', {
+//       headers: {
+//         Refresh: await AsyncStorage.getItem('refresh'),
+//         Authroization: await AsyncStorage.getItem('token'),
+//       },
+//     });
+//     const accessToken = headers['authorization'];
+//     instance.defaults.headers.common['Authorization'] = accessToken;
+//     await AsyncStorage.setItem('token', accessToken);
+//     // eslint-disable-next-line
+//   } catch (e: any) {
+//     console.log(`token reissue error: ${e}`);
+//     if (e.response.status === 401) {
+//       // TODO: 로그아웃 처리
+//       await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
+//     }
+//   }
+// };
 
 // response interceptor
 instance.interceptors.response.use(
@@ -63,7 +69,8 @@ instance.interceptors.response.use(
       error.response.status === 401 &&
       error.config.url !== '/auth/token/reissue'
     ) {
-      getNewAccessToken();
+      console.log(`토큰 만료 에러: ${error}`);
+      // getNewAccessToken();
     }
     return Promise.reject(error);
   },
