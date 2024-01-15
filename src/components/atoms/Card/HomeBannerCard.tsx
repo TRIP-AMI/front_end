@@ -8,7 +8,7 @@ export default function HomeBannerCard({ item }: { item: BannerListItem }) {
   };
 
   return (
-    <Pressable onPress={goContent} disabled={!item.link}>
+    <Pressable onPress={goContent}>
       <View style={styles.imgContainer}>
         <Image
           source={{ uri: item.imgUrl }}
