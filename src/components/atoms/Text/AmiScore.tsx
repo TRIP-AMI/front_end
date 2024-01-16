@@ -17,7 +17,7 @@ function AmiScore({
   style,
 }: {
   keyName: string;
-  score?: number | undefined;
+  score?: string | number | undefined;
   title: string;
   onPress?: () => void;
   style?: StyleProp<TextStyle>;
@@ -40,7 +40,7 @@ function AmiScore({
       style={styles.container}
       onPress={onPress === undefined ? pressHandler : onPress}
     >
-      {typeof score === 'number' && <Text style={styles.score}>{score}</Text>}
+      <Text style={styles.score}>{score}</Text>
       <Text style={[styles.title, style]}>{title}</Text>
     </Pressable>
   );

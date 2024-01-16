@@ -11,29 +11,26 @@ import VerticalLine from '@components/atoms/etc/VerticalLine';
 
 type AmiScoreTableProps = {
   scores: {
+    id: number;
+    key: string;
     title: string;
-    data: {
-      id: number;
-      key: string;
-      score: number;
-      title: string;
-    }[];
-  };
+    score: number | string | undefined;
+  }[];
   style?: StyleProp<ViewStyle>;
 };
 
 function AmiScoreTable({ scores, style }: AmiScoreTableProps) {
   return (
     <View style={[styles.container, style]}>
-      {scores.data.map((item, index) => (
+      {scores.map((item, index) => (
         <>
           <AmiScore
-            key={scores.title + item.id.toString()}
+            key={item.title + item.id.toString()}
             keyName={item.key}
             score={item.score}
             title={item.title}
           />
-          {index !== scores.data.length - 1 && <VerticalLine hei={22} />}
+          {index !== scores.length - 1 && <VerticalLine hei={22} />}
         </>
       ))}
     </View>
