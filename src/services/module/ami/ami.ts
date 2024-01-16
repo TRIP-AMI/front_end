@@ -7,12 +7,13 @@ export type AmiItem = {
   email: string;
   nickname: string;
   imgUrl: string;
+  rating: number;
   programIdList: number[];
 };
 
 export const getAmi = async (amiId: number): Promise<AmiItem> => {
   const res = await instance.get(`/amis/${amiId}`);
-  return res.data;
+  return res.data.data;
 };
 
 export const useAmiQuery = (amiId: number) => {
