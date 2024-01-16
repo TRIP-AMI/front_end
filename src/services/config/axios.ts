@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import getNewAccessToken from '@/services/module/reissue/reissue';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // local mock 서버
 /**
@@ -18,6 +18,27 @@ export const BASE_MOCK_API_URL = 'http://localhost:9999';
 
 // TODO: 개발서버 url
 // export const BASE_API_URL = 'http://43.202.134.168:8080';
+
+const getNewAccessToken = async () => {
+  try {
+    const { headers } = await instance.patch('/auth/token/reissue', {
+      headers: {
+        Refresh: await AsyncStorage.getItem('refresh'),
+        Authroization: await AsyncStorage.getItem('token'),
+      },
+    });
+    const accessToken = headers['authorization'];
+    instance.defaults.headers.common['Authorization'] = accessToken;
+    await AsyncStorage.setItem('token', accessToken);
+    // eslint-disable-next-line
+  } catch (e: any) {
+    console.log(`token reissue error: ${e}`);
+    if (e.response.status === 401) {
+      // TODO: 로그아웃 처리
+      await AsyncStorage.multiRemove(['token', 'refresh', 'profile']);
+    }
+  }
+};
 
 // create an axios instance
 const instance = axios.create({
@@ -50,7 +71,7 @@ instance.interceptors.response.use(
       error.config.url !== 'auth/login'
     ) {
       console.log(`토큰 만료 에러: ${error}`);
-      // getNewAccessToken();
+      getNewAccessToken();
     }
     return Promise.reject(error);
   },
