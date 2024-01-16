@@ -4,7 +4,6 @@ import ContentMain from '@components/organisms/Section/ContentMain';
 import ContentAmi from '@components/organisms/Section/ContentAmi';
 import ContentProgram from '@components/organisms/Section/ContentProgram';
 import ContentBannerCarousel from '@components/molecules/Banner/ContentBannerCarousel';
-import ContentPayment from '@components/molecules/Section/ContentPayment';
 import { StackScreenProps } from '@react-navigation/stack';
 import ContentButtons from '@/components/organisms/Section/ContentButtons';
 import SectionDividerBar from '@/components/atoms/etc/SectionDividerBar';
@@ -53,8 +52,6 @@ export default function ContentScreen({ route }: ContentScreenProps) {
         <ContentAmi amiId={amiId} content={content} />
         <SectionDividerBar style={{ height: 8 }} />
         <ContentProgram />
-        <SectionDividerBar style={{ height: 8 }} />
-        <ContentPayment />
         <SectionDividerBar style={{ height: 8 }} />
         <ContentReview />
         <SectionDividerBar style={{ height: 8 }} />
