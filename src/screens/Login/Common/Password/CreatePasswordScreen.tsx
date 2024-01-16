@@ -12,6 +12,7 @@ import useModalHook from '@/hooks/modalHook';
 import { ICreatePasswordInputs } from '@/types/FormTypes';
 import instance from '@/services/config/axios';
 import joinApi from '@/services/module/join/join';
+import Regex from '@/constants/regex';
 
 export default function CreatePasswordScreen({
   route,
@@ -90,6 +91,17 @@ export default function CreatePasswordScreen({
               placeholder='Enter a password'
               validText={errors.password ? undefined : 'Password Available'}
               autoFocus
+              rules={{
+                required: 'This is required',
+                pattern: {
+                  value: Regex.password,
+                  message: 'It does not fit the password format.',
+                },
+                maxLength: {
+                  value: 20,
+                  message: 'Pleas enter no more than 20 characters.',
+                },
+              }}
             />
           </View>
         </View>

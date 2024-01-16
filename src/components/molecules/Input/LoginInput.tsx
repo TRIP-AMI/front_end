@@ -61,7 +61,7 @@ export function PasswordInput({
   autoFocus?: boolean;
   validText?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  rules?: Record<string, any>;
+  rules: Record<string, any>;
   reentered?: boolean;
 }) {
   const {
@@ -69,19 +69,7 @@ export function PasswordInput({
   } = useController({
     name: reentered ? 'reentered' : 'password',
     control,
-    rules: reentered
-      ? rules
-      : {
-          required: 'This is required',
-          pattern: {
-            value: Regex.password,
-            message: 'It does not fit the password format.',
-          },
-          maxLength: {
-            value: 20,
-            message: 'Pleas enter no more than 20 characters.',
-          },
-        },
+    rules,
   });
   return (
     <BasicInput
