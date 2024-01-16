@@ -56,7 +56,11 @@ export default function LoginScreen() {
       <Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
         <View style={styles.inputContainer}>
           <EmailInput control={control} />
-          <PasswordInput control={control} autoFocus={false} />
+          <PasswordInput
+            control={control}
+            autoFocus={false}
+            rules={{ required: true }}
+          />
           <LabeledCheckBox
             label='Remember me'
             isChecked={isChecked}
