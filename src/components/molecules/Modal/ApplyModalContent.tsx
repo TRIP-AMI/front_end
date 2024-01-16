@@ -6,11 +6,9 @@ import ApplyModalButton from '@/components/molecules/Modal/ApplyModalButton';
 export default function ApplyModalContent({
   selectedDate,
   setSelectedDate,
-  price,
 }: {
   selectedDate: string;
   setSelectedDate: Dispatch<SetStateAction<string>>;
-  price: number;
 }) {
   return (
     <>
@@ -19,11 +17,10 @@ export default function ApplyModalContent({
           <SelectedOptionCard
             selectedItem={selectedDate}
             setSelectedItem={setSelectedDate}
-            price={price}
           />
         )}
       </View>
-      <ApplyModalButton price={price} selectedDate={selectedDate} />
+      <ApplyModalButton selectedDate={selectedDate} />
     </>
   );
 }

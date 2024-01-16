@@ -8,7 +8,7 @@ import {
 } from '@/components/atoms/Modal/ModalHeader';
 import ApplyModalContent from '@/components/molecules/Modal/ApplyModalContent';
 
-// TODO: 상세 페이지에서 prop으로 받아오기
+// TODO: 상세 페이지에서 prop으로 받아오기 or 프로그램 id로 조회
 const dates = [
   { id: 1, date: 'January 2, 2024', person: 1 },
   { id: 2, date: 'January 3, 2024', person: 2 },
@@ -18,7 +18,6 @@ const dates = [
 ];
 
 export default function ApplyModal() {
-  const price = 100; // TODO: 상세 페이지에서 prop으로 받아오기
   const [selectedDate, setSelectedDate] = useState('');
   const [selectOpen, setSelectOpen] = useState(true);
 
@@ -45,7 +44,6 @@ export default function ApplyModal() {
         <ApplyModalContent
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
-          price={price}
         />
       ) : null}
     </BasicBottomModal>

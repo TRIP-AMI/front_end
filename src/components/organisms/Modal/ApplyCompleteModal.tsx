@@ -2,16 +2,22 @@ import { useNavigation } from '@react-navigation/native';
 import IconFullScreenView from '@/components/atoms/Modal/IconFullScreenView';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import useModalHook from '@/hooks/modalHook';
-import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
+import { RootStackNavigationProp } from '@/navigations';
 
 export default function ApplyCompleteModal() {
   const { resetModal } = useModalHook();
-  const { navigate } = useNavigation<MyPageStackNavigationProp>();
+  const { navigate } = useNavigation<RootStackNavigationProp>();
 
   // TODO: application detail prop 정의
   const onPressButton = () => {
+    // TODO: push 안되는 이유 찾기
+    navigate('MainBottomNavTab', {
+      screen: 'MyPageStack',
+      params: {
+        screen: 'ApplicationDetails',
+      },
+    });
     resetModal();
-    navigate('ApplicationDetails');
   };
 
   return (
