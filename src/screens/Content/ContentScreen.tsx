@@ -13,6 +13,7 @@ import { ContentStackParamList } from '@/navigations/Common/ContentStack';
 import FAQSection from '@/components/molecules/Section/FAQSection';
 import ContentReview from '@/components/molecules/Section/ContentReview';
 import useProgramDetail from '@/hooks/programDetailHook';
+import OnePersonLeftFooter from '@/components/atoms/etc/OnePersonLeftFooter';
 
 export type ContentScreenProps = StackScreenProps<
   ContentStackParamList,
@@ -63,6 +64,8 @@ export default function ContentScreen({ route }: ContentScreenProps) {
         <ContentReportButton programId={id} />
         <HomeFooter />
       </ScrollView>
+      {/* TODO : 조건 추가 */}
+      <OnePersonLeftFooter />
       <ContentButtons />
     </SafeAreaView>
   );
