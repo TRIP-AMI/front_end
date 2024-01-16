@@ -25,6 +25,7 @@ export default function ContentScreen({ route }: ContentScreenProps) {
   const {
     title,
     subTitle,
+    location,
     startTime,
     keywords,
     images,
@@ -46,7 +47,7 @@ export default function ContentScreen({ route }: ContentScreenProps) {
           subtitle={subTitle}
           time={startTime}
           keywords={keywords}
-          location='3-11, Jamsil-dong, Songpa-gu, Seoul'
+          location={location}
         />
         <SectionDividerBar style={{ height: 8 }} />
         <ContentAmi amiId={amiId} content={content} />

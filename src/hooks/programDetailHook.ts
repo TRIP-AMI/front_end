@@ -6,6 +6,7 @@ const useProgramDetail = (id: number) => {
   const {
     title,
     subTitle,
+    location,
     images,
     startTime,
     content,
@@ -18,6 +19,7 @@ const useProgramDetail = (id: number) => {
   } = data || {
     title: '',
     subTitle: '',
+    location: '',
     images: [],
     startTime: new Date(),
     content: '',
@@ -32,6 +34,7 @@ const useProgramDetail = (id: number) => {
   return {
     title,
     subTitle,
+    location,
     images,
     startTime,
     content,

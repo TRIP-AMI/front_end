@@ -8,6 +8,7 @@ export const QUERY_KEY = '/programs';
 export type ProgramDetailsResponse = {
   title: string;
   subTitle: string;
+  location: string;
   images: string[];
   startTime: Date;
   content: string;
