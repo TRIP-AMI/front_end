@@ -44,7 +44,7 @@ function PostItemList() {
         <FlatList
           data={postList}
           renderItem={(item) => <MyPostItem postItem={item.item} />}
-          keyExtractor={(item) => item.itemId}
+          keyExtractor={(item) => item.itemId.toString()}
           numColumns={2}
           columnWrapperStyle={{ justifyContent: 'space-between' }}
           style={styles.listWrap}
