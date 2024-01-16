@@ -30,12 +30,12 @@ export default function ContentScreen({ route }: ContentScreenProps) {
     images,
     content,
     amiId,
+    spots,
     isPending,
   } = useProgramDetail(id);
 
   // TODO: 로딩, 에러 처리
   if (isPending) return <View />;
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style='auto' />
@@ -51,7 +51,7 @@ export default function ContentScreen({ route }: ContentScreenProps) {
         <SectionDividerBar style={{ height: 8 }} />
         <ContentAmi amiId={amiId} content={content} />
         <SectionDividerBar style={{ height: 8 }} />
-        <ContentProgram />
+        <ContentProgram spots={spots} />
         <SectionDividerBar style={{ height: 8 }} />
         <ContentReview />
         <SectionDividerBar style={{ height: 8 }} />

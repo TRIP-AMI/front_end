@@ -1,24 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import instance from '@/services/config/axios';
 import { Category } from '@/constants/category';
+import { Spot } from '@/types/program/ProgramCourse';
 
 export const QUERY_KEY = '/programs';
-
-export type TravelTime = {
-  WALK: Date;
-  BUS: Date;
-  TRAIN: Date;
-  CAR: Date;
-};
-
-export type Spot = {
-  id: number;
-  title: string;
-  imgUrl: string;
-  contnet: string;
-  requiredTime: string;
-  transportWithTimes: TravelTime;
-};
 
 export type ProgramDetailsResponse = {
   title: string;
@@ -30,7 +15,7 @@ export type ProgramDetailsResponse = {
   amiId: number;
   theme: Category;
   keywords: string[];
-  spots: [];
+  spots: Spot[];
   imgUrl: string;
 };
 

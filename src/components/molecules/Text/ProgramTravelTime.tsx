@@ -1,23 +1,21 @@
-import { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
-import ProgramWalkTime from '@components/atoms/Text/ProgramWalkTime';
-import ProgramCarTime from '@components/atoms/Text/ProgramCarTime';
 import DistanceTag from '@components/atoms/Tag/DistanceTag';
+import TravelTime from '@/components/atoms/Tag/TravelTiem';
 
 function ProgramTravelTime({
   distance,
   walkingTime,
   carTime,
 }: {
-  distance: ReactNode;
-  walkingTime: ReactNode;
-  carTime: ReactNode;
+  distance: string;
+  walkingTime: string;
+  carTime: string;
 }) {
   return (
     <View style={styles.container}>
       <DistanceTag dist={distance} />
-      <ProgramWalkTime walkingTime={walkingTime} />
-      <ProgramCarTime carTime={carTime} />
+      <TravelTime icon='WALK' travelTime={walkingTime} />
+      <TravelTime icon='CAR' travelTime={carTime} />
     </View>
   );
 }

@@ -19,3 +19,17 @@ export type ProgramCourseImg = {
   title: string;
   subTitle: string;
 };
+
+export type Transportations = 'WALK' | 'BUS' | 'TRAIN' | 'CAR';
+
+export type TravelTime = Record<Transportations, string>;
+
+export type Spot = {
+  id: number;
+  title: string;
+  imgUrl: string;
+  content: string;
+  requiredTime: string;
+  distance: string;
+  transportWithTimes: TravelTime;
+};

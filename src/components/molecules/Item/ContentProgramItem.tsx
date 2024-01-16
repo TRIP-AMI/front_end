@@ -4,46 +4,42 @@ import ProgramImg from '@components/atoms/Image/ProgramImg';
 import ProgramText from '@components/atoms/Text/ProgramText';
 import ProgramOrder from '@components/atoms/etc/ProgramOrder';
 import Spacing from '@styles/spacing';
-import { ReactNode } from 'react';
 import ProgramTravelTime from '@components/molecules/Text/ProgramTravelTime';
+import { Spot } from '@/types/program/ProgramCourse';
 
 // TODO order 사이에 세로선 추가해야 함
 function ContentProgramItem({
-  order,
-  imageUrl,
-  location,
-  detail,
-  travelTime,
-}: {
-  order: number;
-  imageUrl: string;
-  location: string;
-  detail: string;
-  // eslint-disable-next-line react/require-default-props
-  travelTime?: {
-    distance: ReactNode;
-    walkingTime: ReactNode;
-    carTime: ReactNode;
-  } | null;
-}) {
+  id,
+  title,
+  imgUrl,
+  content,
+  requiredTime,
+  distance,
+  transportWithTimes,
+}: Spot) {
+  const totalTime = requiredTime.split(':').map(Number);
+  const hours = totalTime[0] ? `${totalTime[0]}h` : '';
+  const minutes = totalTime[1] ? ` ${totalTime[1]}m` : '';
+
   return (
     <View style={{ paddingHorizontal: Spacing.IOS392Margin }}>
       <View style={styles.container}>
         <View style={styles.order}>
-          <ProgramOrder order={order} />
+          <ProgramOrder order={id} />
         </View>
         <View style={styles.textContainer}>
-          <ProgramImg imageUrl={imageUrl} />
-          <ProgramText location={location} detail={detail} />
+          <ProgramImg imageUrl={imgUrl} />
+          <ProgramText
+            location={`${title} (${hours}${minutes})`}
+            detail={content}
+          />
         </View>
       </View>
-      {travelTime && true ? (
-        <ProgramTravelTime
-          distance={travelTime.distance}
-          walkingTime={travelTime.walkingTime}
-          carTime={travelTime.carTime}
-        />
-      ) : null}
+      <ProgramTravelTime
+        distance={distance}
+        walkingTime={transportWithTimes.WALK}
+        carTime={transportWithTimes.CAR}
+      />
     </View>
   );
 }

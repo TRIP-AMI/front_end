@@ -4,7 +4,7 @@ import { Text, StyleSheet, View } from 'react-native';
 function DistanceTag({ dist }: { dist: ReactNode }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.tag}>{dist}km</Text>
+      <Text style={styles.tag}>{dist}</Text>
     </View>
   );
 }
