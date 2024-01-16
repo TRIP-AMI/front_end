@@ -25,11 +25,5 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 10,
-  },
-  badge: {
-    position: 'absolute',
-    top: 2,
-    right: 3,
   },
 });
