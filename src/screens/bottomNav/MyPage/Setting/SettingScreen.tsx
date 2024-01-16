@@ -5,12 +5,12 @@ import Colors from '@styles/colors';
 import Spacing from '@styles/spacing';
 import { useState } from 'react';
 import ToggleButton from '@components/atoms/Button/ToggleButton';
-import { useNavigation } from '@react-navigation/native';
+import { ParamListBase, useNavigation } from '@react-navigation/native';
 import LogoutButton from '@components/molecules/Button/LogoutButton';
-import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 function SettingScreen() {
-  const navigation = useNavigation<MyPageStackNavigationProp>();
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const [isAppPushEnabled, setIsAppPushEnabled] = useState(false);
   const appPushToggleSwitch = () =>
@@ -59,7 +59,6 @@ function SettingScreen() {
       case 'Logout':
         return null;
       default:
-        // TODO path error
         return (
           <Pressable
             style={styles.subContainer}
@@ -78,7 +77,7 @@ function SettingScreen() {
     }
   };
 
-  // TODO version 값 가져오기
+  // TODO Change Password path 수정해야 함
   const settingList = [
     { title: 'Edit Profile', value: '', path: 'EditProfile' },
     { title: 'Account Management', value: '', path: 'AccountManagement' },
@@ -92,6 +91,7 @@ function SettingScreen() {
     },
     { title: 'Terms and conditions', value: '', path: 'TermsAndConditions' },
     { title: 'Version', value: '1.0.0', path: 'Version' },
+    { title: 'Change Password', value: '', path: 'ChangePassword' },
   ];
 
   return (
