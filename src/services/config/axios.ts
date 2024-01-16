@@ -11,7 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  */
 
 // 로컬 서버 URL
-export const BASE_API_URL = 'http://localhost:8080/api/v1';
+export const BASE_API_URL = 'http://52.78.34.66:8080/api/v1';
 
 // json-server URL
 export const BASE_MOCK_API_URL = 'http://localhost:9999';
