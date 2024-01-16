@@ -1,15 +1,20 @@
 import { View, StyleSheet } from 'react-native';
+import { useRecoilValue } from 'recoil';
 import LikeButtonBox from '@/components/molecules/etc/LikeButtonBox';
 import BasicButton from '@/components/atoms/Button/BasicButton';
 import Spacing from '@/styles/spacing';
 import useModalHook from '@/hooks/modalHook';
+import profileType from '@/utils/recoil/profile';
+import showToast from '@/utils/toast/toast';
 
-// TODO: disabled 상태 확인 필요
 export default function ContentButtons() {
   const { setModalName } = useModalHook();
+  const profile = useRecoilValue(profileType);
 
   const onApply = () => {
-    setModalName('APPLY');
+    return profile === 'AMI'
+      ? showToast(`It's available on tourist profile.`, Spacing.ToastBottomNav)
+      : setModalName('APPLY');
   };
 
   return (
