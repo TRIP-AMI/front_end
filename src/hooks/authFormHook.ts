@@ -73,10 +73,10 @@ const useAuthForm = ({
     }
   };
 
-  const onResendEmail = async () => {
+  const onResendEmail = async (data: IJoinAuthInputs) => {
     try {
       showToast('Sent an authentication number to that email.');
-      await joinApi.sendAuthCode({ email });
+      await joinApi.sendAuthCode({ email: data.email });
       setIsEmailSent(true);
       setTimer(TIMER);
     } catch (error) {
