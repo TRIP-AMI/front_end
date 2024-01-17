@@ -3,7 +3,7 @@ import { FeatherIconButton } from '@components/atoms/Button/IconButton';
 import { useNavigation } from '@react-navigation/native';
 import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
 
-export default function HomeHeaderIcons() {
+export default function SettingIcon() {
   const navigation = useNavigation<MyPageStackNavigationProp>();
   const onOpen = () => {
     navigation.navigate('Setting');
