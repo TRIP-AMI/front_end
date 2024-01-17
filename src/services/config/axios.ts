@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // 로컬 서버 URL
-export const BASE_API_URL = 'http://52.78.34.66:8080/api/v1';
+export const BASE_API_URL = 'https://tripami.xyz/api/v1';
 
 // TODO: 개발서버 url
 // export const BASE_API_URL = 'http://43.202.134.168:8080';
