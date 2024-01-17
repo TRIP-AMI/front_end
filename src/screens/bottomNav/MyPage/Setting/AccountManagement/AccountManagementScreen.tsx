@@ -3,21 +3,24 @@ import Spacing from '@styles/spacing';
 import Colors from '@styles/colors';
 import Separator from '@components/atoms/etc/Separator';
 import { useNavigation } from '@react-navigation/native';
-import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
+import { useRecoilValue } from 'recoil';
 import SettiingSectionButton from '@/components/atoms/Button/SettingSectionButton';
+import { RootStackNavigationProp } from '@/navigations';
+import userState from '@/utils/recoil/user';
 
 function AccountManagementScreen() {
-  const navigation = useNavigation<MyPageStackNavigationProp>();
-
-  // TODO API mail 받아오기
-  const mail = 'dfdfdfd@dfdf.com';
+  const navigation = useNavigation<RootStackNavigationProp>();
+  const { email } = useRecoilValue(userState);
 
   const onPressChangePassword = () => {
-    // navigation.navigate('ChangePassword');
+    navigation.navigate('ResetPassword');
   };
 
   const onPressWithdrawal = () => {
-    navigation.navigate('Withdrawal');
+    navigation.navigate('MainBottomNavTab', {
+      screen: 'MyPageStack',
+      params: { screen: 'Withdrawal' },
+    });
   };
 
   return (
@@ -25,11 +28,10 @@ function AccountManagementScreen() {
       <View style={styles.subContainer}>
         <View style={styles.textContainer}>
           <Text style={styles.title}>E-mail</Text>
-          <Text style={styles.mail}>{mail}</Text>
+          <Text style={styles.mail}>{email}</Text>
         </View>
       </View>
       <Separator color={Colors.lineGray05} hei={8} marginVer={10} />
-      {/* TODO: 컴포넌트화 하기 */}
       <SettiingSectionButton
         title='Change Password'
         onPress={onPressChangePassword}

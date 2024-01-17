@@ -29,6 +29,7 @@ import ModalProvider from '@/components/organisms/Modal/ModalProvider';
 import SearchScreen from '@/screens/Search';
 import CategoryHeader from '@/components/molecules/Header/CategoryHeader';
 import useToken from '@/hooks/tokenHook';
+import ResetPasswordScreen from '@/screens/bottomNav/MyPage/Setting/AccountManagement/Password/ResetPasswordScreen';
 
 export type RootStackParamList = {
   MainBottomNavTab: NavigatorScreenParams<MainBottomNavTabParamList>;
@@ -39,6 +40,7 @@ export type RootStackParamList = {
   ProductList: { listId: string; title: string };
   Notification: undefined;
   Search: undefined;
+  ResetPassword: undefined;
 };
 
 export type RootStackNavigationProp =
@@ -144,6 +146,17 @@ function Navigation() {
                 headerRight: () => <RightCloseX />,
                 headerShadowVisible: false,
                 headerBackVisible: false,
+              }}
+            />
+            {/* ResetPassword */}
+            <Stack.Screen
+              name='ResetPassword'
+              component={ResetPasswordScreen}
+              options={{
+                title: 'Reset Password',
+                headerTitleStyle: Fonts.header.title,
+                headerLeft: () => <View />,
+                headerShadowVisible: false,
               }}
             />
           </>
