@@ -1,10 +1,10 @@
-import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import Spacing from '@styles/spacing';
 import Colors from '@styles/colors';
 import Separator from '@components/atoms/etc/Separator';
-import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { MyPageStackNavigationProp } from '@/navigations/MainBottomNavTab/MyPage/MyPageStack';
+import SettiingSectionButton from '@/components/atoms/Button/SettingSectionButton';
 
 function AccountManagementScreen() {
   const navigation = useNavigation<MyPageStackNavigationProp>();
@@ -30,22 +30,11 @@ function AccountManagementScreen() {
       </View>
       <Separator color={Colors.lineGray05} hei={8} marginVer={10} />
       {/* TODO: 컴포넌트화 하기 */}
-      <Pressable style={styles.buttonContainer} onPress={onPressChangePassword}>
-        <Text style={styles.title}>Change Password</Text>
-        <MaterialIcons
-          name='arrow-forward-ios'
-          size={20}
-          color={Colors.fontGray03}
-        />
-      </Pressable>
-      <Pressable style={styles.buttonContainer} onPress={onPressWithdrawal}>
-        <Text style={styles.title}>Withdrawal</Text>
-        <MaterialIcons
-          name='arrow-forward-ios'
-          size={20}
-          color={Colors.fontGray03}
-        />
-      </Pressable>
+      <SettiingSectionButton
+        title='Change Password'
+        onPress={onPressChangePassword}
+      />
+      <SettiingSectionButton title='Withdrawal' onPress={onPressWithdrawal} />
     </SafeAreaView>
   );
 }
