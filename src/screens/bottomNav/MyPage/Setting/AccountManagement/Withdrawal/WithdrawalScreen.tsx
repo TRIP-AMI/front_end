@@ -14,8 +14,12 @@ import Spacing from '@styles/spacing';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import Colors from '@styles/colors';
 import WithdrawalFooter from '@components/molecules/Footer/WithdrawalFooter';
+import { useRecoilValue } from 'recoil';
+import userState, { UserType } from '@utils/recoil/user';
+import { postWithdrawal } from '@services/module/withdrawal/withdrawal';
 
 function WithdrawalScreen() {
+  const userData = useRecoilValue<UserType>(userState);
   const { setModalName } = useModalHook();
   const {
     control,
@@ -25,8 +29,11 @@ function WithdrawalScreen() {
     defaultValues: { content: '' },
   });
 
-  const onSubmit = (data: unknown) => {
-    console.log('data::::', data);
+  const onSubmit = (contentData: { content: string }) => {
+    postWithdrawal({
+      memberId: userData.memberId,
+      reason: contentData.content,
+    }).then(() => {});
     setModalName('WITHDRAWAL');
   };
 

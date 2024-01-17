@@ -1,23 +1,35 @@
 import instance from '@services/config/axios';
-import { useQuery } from '@tanstack/react-query';
-
-export const QUERY_KEY = '/withdrawal';
+// import { useMutation } from '@tanstack/react-query';
 
 export type WithdrawalResponse = NonNullable<unknown>;
 
-export const getWithdrawal = async (
-  memberId: number,
-  reason: string,
-): Promise<WithdrawalResponse> => {
+export type WithdrawalRequest = {
+  memberId: number;
+  reason: string;
+};
+
+export const postWithdrawal = async ({
+  memberId,
+  reason,
+}: WithdrawalRequest): Promise<WithdrawalResponse> => {
   const res = await instance.post(`/members/${memberId}/withdrawal`, {
     reason,
   });
   return res.data.data;
 };
 
-export const useWithdrawalQuery = (memberId: number, reason: string) => {
-  return useQuery({
-    queryKey: [QUERY_KEY, memberId, reason],
-    queryFn: () => getWithdrawal(memberId, reason),
-  });
-};
+// TODO useMutation 동작을 잘 못함
+// export const useWithdrawalQuery = ({ memberId, reason }: WithdrawalRequest) => {
+//   return useMutation({
+//     mutationFn: async () => postWithdrawal({ memberId, reason }),
+//     onSuccess: () => {
+//       console.log('success');
+//     },
+//     onError: () => {
+//       console.log('error');
+//     },
+//     onSettled: () => {
+//       console.log('settled');
+//     },
+//   });
+// };
