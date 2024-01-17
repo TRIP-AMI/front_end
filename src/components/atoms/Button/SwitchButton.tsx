@@ -18,7 +18,7 @@ function SwitchButton() {
     } else {
       await AsyncStorage.setItem('profile', 'AMI');
       setProfileType('AMI');
-      showToast('Switching Traveler Profile.', Spacing.ToastBottomNav);
+      showToast('Switching Tourist Profile.', Spacing.ToastBottomNav);
     }
   };
 
@@ -26,7 +26,6 @@ function SwitchButton() {
     <Pressable style={styles.container} onPress={() => changeProfileType()}>
       <View style={styles.textContainer}>
         <Text style={styles.text}>{profile === 'AMI' ? 'Tourist' : 'Ami'}</Text>
-        {/* TODO 나중에 Icon 바꾸기 */}
         <AntDesign
           name='retweet'
           size={12}

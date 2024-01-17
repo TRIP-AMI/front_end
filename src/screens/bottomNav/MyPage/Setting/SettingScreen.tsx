@@ -91,7 +91,6 @@ function SettingScreen() {
     },
     { title: 'Terms and conditions', value: '', path: 'TermsAndConditions' },
     { title: 'Version', value: '1.0.0', path: 'Version' },
-    { title: 'Change Password', value: '', path: 'ChangePassword' },
   ];
 
   return (

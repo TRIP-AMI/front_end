@@ -12,6 +12,10 @@ function AccountManagementScreen() {
   // TODO API mail 받아오기
   const mail = 'dfdfdfd@dfdf.com';
 
+  const onPressChangePassword = () => {
+    // navigation.navigate('ChangePassword');
+  };
+
   const onPressWithdrawal = () => {
     navigation.navigate('Withdrawal');
   };
@@ -25,6 +29,15 @@ function AccountManagementScreen() {
         </View>
       </View>
       <Separator color={Colors.lineGray05} hei={8} marginVer={10} />
+      {/* TODO: 컴포넌트화 하기 */}
+      <Pressable style={styles.buttonContainer} onPress={onPressChangePassword}>
+        <Text style={styles.title}>Change Password</Text>
+        <MaterialIcons
+          name='arrow-forward-ios'
+          size={20}
+          color={Colors.fontGray03}
+        />
+      </Pressable>
       <Pressable style={styles.buttonContainer} onPress={onPressWithdrawal}>
         <Text style={styles.title}>Withdrawal</Text>
         <MaterialIcons
