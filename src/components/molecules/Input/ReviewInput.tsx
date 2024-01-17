@@ -19,7 +19,7 @@ function ReviewInput({
   placeholder: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleSubmit: any;
-  onSubmit: (data: unknown) => void;
+  onSubmit: (data: { content: string }) => void;
   notRequiredContent?: boolean;
 }) {
   return (
